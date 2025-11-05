@@ -1,0 +1,103 @@
+/* src/app/features/about-us/about-us.component.scss */
+
+.page-title {
+  text-align: center;
+}
+.page-subtitle {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+}
+
+// --- Sección Intro (Estilo IMG-20251020-WA0001.jpg) ---
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 6rem; // Espacio antes de la siguiente sección
+
+  .section-subtitle {
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-intro__image {
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+  }
+
+  @media (max-width: 992px) {
+    order: -1; // Imagen primero en móvil
+    margin-bottom: 2rem;
+  }
+}
+
+// --- Sección Core Values ---
+.core-values-section {
+  background-color: var(--bg-secondary);
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.core-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.core-value-card {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-primary); // Ligeramente más oscuro que el fondo de la sección
+  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+  }
+}
+
+.core-value-card__icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+
+  lucide-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.core-value-card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.core-value-card__desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}

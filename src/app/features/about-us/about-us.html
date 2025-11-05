@@ -1,0 +1,33 @@
+<div class="page-container container">
+  <h1 class="page-title">{{ 'ABOUT.TITLE' | translate }}</h1>
+  <p class="page-subtitle">{{ 'ABOUT.SUBTITLE' | translate }}</p>
+</div>
+
+<!-- Sección 1: Introducción (Estilo IMG-20251020-WA0001.jpg) -->
+<section class="about-intro container">
+  <div class="about-intro__text">
+    <span class="section-eyebrow">{{ 'ABOUT.INTRO_EYEBROW' | translate }}</span>
+    <h2 class="section-title">{{ 'ABOUT.INTRO_TITLE' | translate }}</h2>
+    <p class="section-subtitle">{{ 'ABOUT.INTRO_DESC_1' | translate }}</p>
+    <p class="section-subtitle">{{ 'ABOUT.INTRO_DESC_2' | translate }}</p>
+  </div>
+ <div class="about-intro__image">
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=600&q=80" 
+         alt="Arquitectura de Software en JSL Technology">
+  </div>
+</section>
+
+<!-- Sección 2: Misión, Visión, Valores -->
+<section class="core-values-section">
+  <div class="container">
+    <div class="core-values-grid">
+      <div class="core-value-card" *ngFor="let value of coreValues">
+        <div class="core-value-card__icon">
+          <lucide-icon [name]="value.icon"></lucide-icon>
+        </div>
+        <h3 class="core-value-card__title">{{ 'ABOUT.' + value.key + '_TITLE' | translate }}</h3>
+        <p class="core-value-card__desc">{{ 'ABOUT.' + value.key + '_DESC' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</section>

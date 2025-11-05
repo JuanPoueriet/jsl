@@ -1,0 +1,182 @@
+{
+  "HEADER": {
+    "HOME": "Inicio",
+    "SERVICES": "Soluciones",
+    "PRODUCTS": "Productos",
+    "PROJECTS": "Casos de Éxito",
+    "ABOUT": "Nosotros",
+    "CONTACT": "Contacto"
+  },
+  "TOP_BAR": {
+    "PORTFOLIO": "Portafolio",
+    "GET_QUOTE": "Cotizar",
+    "PRODUCTS": "Nuestros Productos",
+    "CONTACT": "Contáctanos"
+  },
+  "LANG": {
+    "ES": "Español",
+    "EN": "Inglés",
+    "ES_FULL": "Español (ES)",
+    "EN_FULL": "English (EN)"
+  },
+  "FOOTER": {
+    "SLOGAN": "Soluciones de software que impulsan a los líderes del mañana.",
+    "COMPANY": "Empresa",
+    "COPYRIGHT": "Todos los derechos reservados."
+  },
+  "PRODUCTS_LIST": {
+    "ERP": "Sistema ERP",
+    "POS": "Software POS",
+    "MOBILE": "Apps Propias"
+  },
+  "SERVICES_LIST": {
+    "WEB": "Desarrollo Web",
+    "MOBILE": "Aplicaciones Móviles",
+    "DESKTOP": "Software de Escritorio",
+    "CLOUD": "Soluciones Cloud"
+  },
+  "LEGAL": {
+    "PRIVACY": "Política de Privacidad",
+    "TERMS": "Términos de Servicio"
+  },
+  "HOME": {
+    "HERO1_TITLE": "Moldeando el Futuro de la Innovación Digital",
+    "HERO1_SUBTITLE": "Tu Socio Tecnológico Todo-en-Uno. Llevamos tus ideas a la realidad con soluciones Web, Móviles y de Escritorio.",
+    "HERO1_CTA": "Más Información",
+    "HERO2_TITLE": "Software ERP que Impulsa tu Crecimiento",
+    "HERO2_SUBTITLE": "Descubre nuestras soluciones de software empresarial (ERP y POS) diseñadas para optimizar y escalar tu negocio.",
+    "HERO2_CTA": "Nuestros Productos",
+    "HERO3_TITLE": "Soluciones a Medida para Desafíos Únicos",
+    "HERO3_SUBTITLE": "Desde aplicaciones móviles nativas hasta complejos sistemas en la nube, nuestro equipo de ingeniería crea la solución que necesitas.",
+    "HERO3_CTA": "Nuestras Soluciones",
+    "HERO_BAR_LEFT_1": "Creativos Tecnológicos &",
+    "HERO_BAR_LEFT_2": "Arquitectos de Soluciones",
+    "HERO_BAR_CENTER": "Impulsando la Innovación Digital con Creatividad y Tecnología. Entregamos Soluciones Web y Móviles de vanguardia.",
+    "HERO_BAR_RIGHT_1": "DESDE",
+    "HERO_BAR_RIGHT_2": "2023",
+    "WELCOME_EYEBROW": "Sobre JSL Technology",
+    "WELCOME_TITLE": "Creando Excelencia Digital",
+    "WELCOME_SUBTITLE": "Fundada en 2023 en la República Dominicana, JSL Technology transforma ideas audaces en realidades digitales. Somos arquitectos de soluciones a medida e innovadores de nuestros propios productos, comprometidos con la excelencia y el futuro de la tecnología.",
+    "LOGOS_TITLE": "Empresas que confían en nosotros para construir el futuro",
+    "SERVICES_EYEBROW": "Nuestra Experiencia",
+    "SERVICES_TITLE": "Un Socio Tecnológico Todo en Uno",
+    "SERVICES_SUBTITLE": "Ofrecemos un espectro completo de servicios de desarrollo para elevar su presencia digital, desde aplicaciones móviles nativas hasta software de escritorio robusto.",
+    "PRODUCTS_EYEBROW": "Innovación Propia",
+    "PRODUCTS_TITLE": "Nuestro Software Propietario",
+    "PRODUCTS_SUBTITLE": "Además del desarrollo a medida, creamos nuestras propias herramientas de software, incluyendo sistemas ERP, POS y aplicaciones móviles diseñadas para la máxima eficiencia.",
+    "PROJECTS_EYEBROW": "Nuestro Trabajo",
+    "PROJECTS_TITLE": "Casos de Éxito Destacados",
+    "PROJECTS_SUBTITLE": "No solo creamos software, construimos soluciones que generan resultados tangibles. Explora cómo hemos ayudado a empresas líderes a transformarse digitalmente.",
+    "PROCESS_EYEBROW": "Nuestra Metodología",
+    "PROCESS_TITLE": "De la Idea al Impacto",
+    "PROCESS_SUBTITLE": "Tenemos un proceso ágil y transparente de 4 pasos que garantiza la excelencia digital y alinea los resultados con tus objetivos de negocio.",
+    "PROCESS_STEP1_TITLE": "1. Descubrimiento y Estrategia",
+    "PROCESS_STEP1_DESC": "Analizamos tus metas, definimos el alcance y creamos una hoja de ruta estratégica para asegurar el éxito del proyecto.",
+    "PROCESS_STEP2_TITLE": "2. Diseño UI/UX e Ingeniería",
+    "PROCESS_STEP2_DESC": "Nuestros ingenieros y diseñadores colaboran para construir una arquitectura robusta y una interfaz intuitiva.",
+    "PROCESS_STEP3_TITLE": "3. Despliegue y Calidad",
+    "PROCESS_STEP3_DESC": "Implementamos pruebas rigurosas (QA) y desplegamos tu solución en una infraestructura escalable y segura.",
+    "PROCESS_STEP4_TITLE": "4. Soporte y Crecimiento",
+    "PROCESS_STEP4_DESC": "Ofrecemos soporte continuo y analizamos métricas para evolucionar tu producto, asegurando un impacto a largo plazo.",
+    "CTA_EYEBROW": "¿Tienes una idea?",
+    "CTA_TITLE": "Hablemos de tu Próximo Proyecto",
+    "CTA_SUBTITLE": "Nuestro equipo de arquitectos de soluciones está listo para transformar tu visión en una realidad digital funcional y vanguardista.",
+    "CTA_BUTTON": "Contactar Ahora"
+  },
+  "PAGE": {
+    "PLACEHOLDER": "El contenido de esta página estará disponible próximamente."
+  },
+  "CONTACT": {
+    "TITLE": "Hablemos de tu Proyecto",
+    "SUBTITLE": "¿Tienes una idea o un desafío? Nuestro equipo de expertos está listo para ayudarte a construir el futuro de tu negocio.",
+    "INFO_TITLE": "Información de Contacto",
+    "INFO_DESC": "No dudes en contactarnos por correo, teléfono o visitando nuestras oficinas.",
+    "EMAIL": "Correo Electrónico",
+    "PHONE": "Teléfono",
+    "LOCATION": "Ubicación",
+    "FORM": {
+      "NAME": "Nombre Completo",
+      "EMAIL": "Correo Electrónico",
+      "SERVICE": "Servicio de Interés",
+      "SERVICE_PROMPT": "Selecciona un servicio...",
+      "SERVICE_OTHER": "Otro",
+      "MESSAGE": "Tu Mensaje",
+      "SUBMIT": "Enviar Mensaje",
+      "ERRORS": {
+        "REQUIRED": "Este campo es requerido.",
+        "EMAIL": "Por favor, introduce un correo válido.",
+        "MINLENGTH": "Se requieren al menos {{value}} caracteres."
+      },
+      "SUCCESS": "¡Mensaje enviado! Gracias por contactarnos. Te responderemos pronto.",
+      "ERROR": "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde."
+    }
+  },
+  "COMMON": {
+    "READ_MORE": "Leer Más",
+    "DEFAULT_DESCRIPTION": "JSL Technology: Soluciones de software a medida, ERP, POS y desarrollo móvil para impulsar tu negocio."
+  },
+  "SOLUTIONS": {
+    "TITLE": "Soluciones de Software a Medida",
+    "SUBTITLE": "Creamos herramientas digitales precisas que se adaptan a tus necesidades. Desde aplicaciones web complejas hasta soluciones en la nube escalables, nuestro equipo de ingeniería transforma tus desafíos en ventajas competitivas.",
+    "WEB_TITLE": "Desarrollo Web",
+    "WEB_DESC": "Aplicaciones web robustas, rápidas y escalables utilizando las últimas tecnologías. Creamos desde SPAs hasta portales corporativos.",
+    "MOBILE_TITLE": "Aplicaciones Móviles",
+    "MOBILE_DESC": "Desarrollo nativo (iOS/Android) e híbrido para crear experiencias móviles fluidas que conectan con tus usuarios.",
+    "DESKTOP_TITLE": "Software de Escritorio",
+    "DESKTOP_DESC": "Soluciones de software potentes y seguras para entornos de escritorio, optimizadas para el rendimiento y la fiesta de datos.",
+    "CLOUD_TITLE": "Arquitectura Cloud",
+    "CLOUD_DESC": "Diseñamos e implementamos infraestructuras en la nube (AWS, Azure, GCP) que son escalables, seguras y rentables."
+  },
+  "PRODUCTS": {
+    "TITLE": "Nuestro Software Propietario",
+    "SUBTITLE": "Años de experiencia en ingeniería nos han permitido construir un ecosistema de productos robustos, diseñados para la máxima eficiencia y escalabilidad.",
+    "ERP_TITLE": "JSL-ERP (Sistema ERP)",
+    "ERP_DESC": "Una solución integral de planificación de recursos empresariales. Gestiona finanzas, inventario, logística y más, todo desde una plataforma unificada.",
+    "POS_TITLE": "JSL-POS (Software POS)",
+    "POS_DESC": "Software de Punto de Venta (POS) rápido, confiable e intuitivo. Perfecto para retail y restaurantes, con gestión de inventario en tiempo real.",
+    "MOBILE_APPS_TITLE": "Aplicaciones Móviles Propias",
+    "MOBILE_APPS_DESC": "Un conjunto de aplicaciones móviles diseñadas para potenciar la productividad y la gestión de equipos en movimiento, integradas con nuestro ERP."
+  },
+  "PROJECTS": {
+    "TITLE": "Casos de Éxito",
+    "SUBTITLE": "No solo creamos software, construimos soluciones que generan resultados tangibles. Explora cómo hemos ayudado a empresas líderes a transformarse digitalmente.",
+    "CASE_ERP_TITLE": "Implementación de ERP para Logística",
+    "CASE_ERP_DESC": "Optimización completa de la cadena de suministro para un cliente de logística, reduciendo costos operativos en un 30% con nuestro JSL-ERP.",
+    "CASE_ECOMMERCE_TITLE": "Plataforma E-Commerce B2B",
+    "CASE_ECOMMERCE_DESC": "Desarrollo de una solución de comercio electrónico B2B a medida, manejando miles de SKUs y transacciones complejas para un distribuidor.",
+    "CASE_MOBILE_APP_TITLE": "App Móvil de Gestión de Flota",
+    "CASE_MOBILE_APP_DESC": "Creación de una aplicación móvil nativa para el seguimiento y gestión de flotas en tiempo real, mejorando la eficiencia en un 40%."
+  },
+  "ABOUT": {
+    "TITLE": "Sobre JSL Technology",
+    "SUBTITLE": "Somos más que desarrolladores; somos arquitectos de soluciones, innovadores y socios estratégicos comprometidos con tu éxito.",
+    "INTRO_EYEBROW": "Nuestra Filosofía",
+    "INTRO_TITLE": "Creando Excelencia Digital",
+    "INTRO_DESC_1": "Nuestro equipo se sitúa a la vanguardia de la innovación, transformando ideas audaces en realidad. Nos especializamos en desarrollo a medida e ingeniería de software de nivel empresarial.",
+    "INTRO_DESC_2": "Creamos soluciones que no solo son funcionales, sino que miran al futuro, asegurando que tu negocio esté siempre un paso adelante.",
+    "MISSION_TITLE": "Nuestra Misión",
+    "MISSION_DESC": "Empoderar a las empresas a través de tecnología innovadora y soluciones de software robustas, impulsando su eficiencia y crecimiento sostenible.",
+    "VISION_TITLE": "Nuestra Visión",
+    "VISION_DESC": "Ser la empresa líder en ingeniería de software y productos ERP en la región, reconocida por nuestra excelencia, innovación y compromiso con el éxito del cliente.",
+    "VALUES_TITLE": "Nuestros Valores",
+    "VALUES_DESC": "Integridad, Innovación, Calidad, Compromiso con el Cliente y Colaboración. Estos pilares guían cada línea de código que escribimos y cada proyecto que emprendemos."
+  },
+  "LEGAL": {
+    "PRIVACY_TITLE": "Política de Privacidad",
+    "TERMS_TITLE": "Términos de Servicio",
+    "LAST_UPDATED": "Última actualización: 28 de Octubre, 2025",
+    "PRIVACY_INTRO": "Bienvenido a JSL Technology. Esta política de privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando visita nuestro sitio web.",
+    "PRIVACY_SECTION_1_TITLE": "Información que Recopilamos",
+    "PRIVACY_SECTION_1_P1": "Podemos recopilar información de identificación personal que usted nos proporciona voluntariamente, como:",
+    "PRIVACY_SECTION_1_LI1": "Información de contacto (Nombre, correo electrónico) enviada a través de nuestro formulario de contacto.",
+    "PRIVACY_SECTION_1_LI2": "Datos de uso técnico (dirección IP, tipo de navegador) recopilados automáticamente.",
+    "PRIVACY_SECTION_2_TITLE": "Cómo Usamos su Información",
+    "PRIVACY_SECTION_2_P1": "Usamos la información que recopilamos para responder a sus consultas, mejorar nuestro sitio web y garantizar la seguridad de nuestra plataforma.",
+    "TERMS_SECTION_1_TITLE": "Aceptación de los Términos",
+    "TERMS_SECTION_1_P1": "Al acceder y utilizar este sitio web, usted acepta y se compromete a cumplir con estos Términos de Servicio y todas las leyes y regulaciones aplicables.",
+    "TERMS_SECTION_2_TITLE": "Uso del Sitio Web",
+    "TERMS_SECTION_2_P1": "Usted se compromete a no utilizar el sitio web para ningún propósito ilegal o prohibido por estos términos. No puede utilizar el sitio web de ninguna manera que pueda dañar, deshabilitar o sobrecargar el sitio.",
+    "TERMS_SECTION_3_TITLE": "Propiedad Intelectual",
+    "TERMS_SECTION_3_P1": "Todo el contenido presente en este sitio, incluyendo texto, gráficos, logotipos e imágenes, es propiedad de JSL Technology y está protegido por las leyes de derechos de autor."
+  }
+}

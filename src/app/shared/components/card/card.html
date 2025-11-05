@@ -1,0 +1,32 @@
+<a *ngIf="link" [routerLink]="link" class="card">
+  <!-- Mostrar Imagen si existe -->
+  <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ title }}" class="card__image">
+  
+  <!-- Mostrar Icono si NO hay imagen -->
+  <div *ngIf="!imageUrl && icon" class="card__icon">
+    <lucide-icon [name]="icon"></lucide-icon>
+  </div>
+
+  <div class="card__content">
+    <h3 class="card__title">{{ title }}</h3>
+    <p class="card__description">{{ description }}</p>
+    <span class="card__link">
+      {{ 'COMMON.READ_MORE' | translate }} <lucide-icon name="ArrowRight"></lucide-icon>
+    </span>
+  </div>
+</a>
+
+<div *ngIf="!link" class="card">
+  <!-- Mostrar Imagen si existe -->
+  <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ title }}" class="card__image">
+  
+  <!-- Mostrar Icono si NO hay imagen -->
+  <div *ngIf="!imageUrl && icon" class="card__icon">
+    <lucide-icon [name]="icon"></lucide-icon>
+  </div>
+
+  <div class="card__content">
+    <h3 class="card__title">{{ title }}</h3>
+    <p class="card__description">{{ description }}</p>
+  </div>
+</div>

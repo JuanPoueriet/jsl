@@ -1,0 +1,15 @@
+<div class="page-container container">
+  <h1 class="page-title">{{ 'PRODUCTS.TITLE' | translate }}</h1>
+  <p class="page-subtitle">{{ 'PRODUCTS.SUBTITLE' | translate }}</p>
+
+  <!-- Grid de Productos -->
+  <div class="products-grid">
+    <jsl-card 
+      *ngFor="let product of products"
+      [icon]="product.icon"
+      [title]="'PRODUCTS.' + product.key + '_TITLE' | translate"
+      [description]="'PRODUCTS.' + product.key + '_DESC' | translate"
+      [link]="product.link">
+    </jsl-card>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+// :host (el <jsl-top-bar>) ya NO está fijo
+:host {
+  // position: fixed; <-- ELIMINADO
+  // top: 0; <-- ELIMINADO
+  // left: 0; <-- ELIMINADO
+  width: 100%;
+  height: var(--top-bar-height);
+  z-index: 1001; // Sigue estando por encima del .header
+  
+  // transition: ...; <-- ELIMINADO (lo maneja el padre)
+
+  // &.hide { ... } <-- ELIMINADO (lo maneja el padre)
+}
+
+// .top-bar (el <div> interno) solo necesita altura
+.top-bar {
+  height: 100%;
+  // Añadimos el fondo que antes estaba en el :host
+  // background-color: var(--bg-primary); 
+  // border-bottom: 1px solid var(--border-color);
+}
+
+.top-bar__container {
+  display: flex;
+  justify-content: flex-end; // <-- ALINEAR TODO A LA DERECHA
+  align-items: center;
+  height: 100%;
+  gap: 1.5rem; // Espacio entre los enlaces y el selector de idioma
+}
+
+.top-bar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; // Espacio entre enlaces y separadores
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color var(--transition-speed) ease;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+}
+
+// Estilo para el separador "|"
+.top-bar__separator {
+  font-size: 0.9rem;
+  color: var(--border-color);
+  user-select: none; // Evita que el usuario seleccione la barra
+}
+
+// Ocultar enlaces en móvil, solo mostrar selector de idioma
+@media (max-width: 992px) {
+  .top-bar__links {
+    display: none;
+  }
+}

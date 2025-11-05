@@ -1,0 +1,541 @@
+/* src/app/features/home/home.component.scss */
+
+@use 'swiper/css' as *;
+@use 'swiper/css/effect-fade' as *;
+@use 'swiper/css/pagination' as *;
+
+@use '../solutions/solutions.scss';
+@use '../products/products.scss';
+@use '../projects/projects.scss';
+
+// --- 1. Hero Slider ---
+.hero-slider {
+  width: 100%;
+  height: 100vh; // Ocupa la pantalla completa
+  min-height: 600px;
+  max-height: 900px; // Límite para pantallas muy altas
+  background-color: var(--bg-primary);
+  position: relative; // Contexto para la barra inferior
+}
+
+swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // background: linear-gradient(
+    //   90deg,
+    //   rgba(13, 13, 13, 0.85) 0%,
+    //   rgba(13, 13, 13, 0.4) 100%
+    // );
+
+    background: radial-gradient(50% 50% at 50% 50%, rgba(50, 50, 50, 0) 0%, lab(0% 0 0 / 0.8) 100%);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+  }
+
+  &__title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    animation: fadeInDown 1s ease-out both;
+  }
+
+  &__subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+    animation: fadeInUp 1s ease-out 0.5s both;
+  }
+
+  &__cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent-gradient);
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    animation: fadeInUp 1s ease-out 1s both;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255, 65, 108, 0.2);
+    }
+  }
+}
+
+// --- 1.1. Hero Bottom Bar (Estilos Perfeccionados) ---
+.hero-bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; // Por encima del swiper
+  // Efecto de vidrio esmerilado
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(5px);
+  // Fondo semitransparente con gradiente sutil
+  // background: linear-gradient(180deg, rgba(26, 26, 26, 0.7) 0%, rgba(13, 13, 13, 0.8) 100%);
+  // Borde superior brillante sutil, como en la imagen
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2); // Sombra interna superior
+}
+
+.hero-bottom-bar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0; // Padding vertical
+  gap: 2rem;
+}
+
+.hero-bottom-bar__col {
+  color: var(--text-primary);
+
+  p {
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  // Columna Izquierda (Tech Creatives)
+  &:first-child {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    flex-shrink: 0; // Evita que se encoja
+  }
+
+  // Columna Centro (Descripción)
+  &--center {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 450px;
+    line-height: 1.6;
+  }
+
+  // Columna Derecha (SINCE 2023)
+  &--right {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: right;
+    color: var(--text-primary);
+    flex-shrink: 0;
+
+    // Estilo "SINCE"
+    p:first-child {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+    }
+  }
+}
+
+// Estilos para la paginación de Swiper
+:host::ng-deep {
+  .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5);
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    transition: background-color var(--transition-speed) ease;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: var(--text-primary);
+  }
+}
+
+// Keyframes para animación
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --- 2. Welcome Section (Tus estilos) ---
+.welcome-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  background: linear-gradient(345deg, hsla(0, 0%, 100%, 0.2) -2%, transparent 10.12%),
+    linear-gradient(160deg, hsla(0, 0%, 100%, 0.2), transparent 15.27%), var(--bg-primary);
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  margin-bottom: 6rem;
+  margin-top: 6rem;
+  max-width: 90vw !important;
+}
+.welcome-section::after {
+  background: linear-gradient(to left top, #a7a7a7, transparent 45%, transparent 55%, #a7a7a7);
+  border-radius: 16px;
+  content: '';
+  inset: 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: add, add;
+  -webkit-mask-composite: exclude;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  position: absolute;
+  background: var(
+    --broker-card-base-border-color,
+    linear-gradient(to left top, #a7a7a7 0, transparent 45%, transparent 55%, #a7a7a7 100%)
+  );
+  border-radius: var(--broker-card-base-border-radius, 16px);
+}
+
+.welcome-section__text {
+  .section-eyebrow {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.welcome-section__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
+
+  lucide-icon {
+    transition: transform var(--transition-speed) ease;
+  }
+
+  &:hover {
+    background-color: var(--border-color);
+    lucide-icon {
+      transform: translateX(5px);
+    }
+  }
+}
+
+.welcome-section__image {
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+  }
+}
+
+// --- 3. Client Logos Section ---
+.client-logos {
+  padding: 4rem 0 6rem 0;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.client-logos__title {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+}
+
+.client-logos__ticker {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.client-logos__track {
+  display: flex;
+  width: fit-content;
+  animation: scroll 40s linear infinite;
+
+  img {
+    height: 35px;
+    width: auto;
+    margin: 0 3rem;
+    filter: grayscale(1) brightness(0.7);
+    opacity: 0.7;
+    transition: filter var(--transition-speed) ease, opacity var(--transition-speed) ease;
+
+    &:hover {
+      filter: grayscale(0) brightness(1);
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+// --- 4. Featured Services, Products & Projects Section ---
+.featured-services,
+.featured-products,
+.featured-projects {
+  padding: 6rem 0;
+}
+
+.featured-services__header,
+.featured-products__header,
+.featured-projects__header {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 4rem auto;
+}
+
+// --- 5. Process Section ---
+.process-section {
+  padding: 6rem 0;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
+.process-header {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 4rem auto;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+
+.process-step {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+  }
+}
+
+.process-step__icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+  flex-shrink: 0;
+
+  lucide-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.process-step__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.process-step__desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.process-grid::after {
+  content: '';
+  position: absolute;
+  top: 52px;
+  left: 15%;
+  width: 70%;
+  height: 2px;
+  background: var(--border-color);
+  z-index: 1;
+}
+
+// --- 6. Final CTA Section ---
+.final-cta-section {
+  padding: 6rem 0;
+  margin-top: 4rem;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.final-cta__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .section-subtitle {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-slide__cta {
+    animation: none;
+  }
+}
+
+// Responsividad
+@media (max-width: 992px) {
+  .hero-bottom-bar__col--center {
+    display: none; // Ocultar el texto del medio en tablet
+  }
+  .hero-bottom-bar__container {
+    justify-content: space-between;
+  }
+
+  .welcome-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .welcome-section__image {
+    order: -1;
+  }
+  .welcome-section__cta {
+    margin: 0 auto;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .process-grid::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slide {
+    &__title {
+      font-size: 2.5rem;
+    }
+    &__subtitle {
+      font-size: 1rem;
+    }
+    &__cta {
+      padding: 0.8rem 2rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .hero-bottom-bar__container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .hero-bottom-bar__col--right {
+    text-align: center;
+  }
+
+  .welcome-section__text .section-title {
+    font-size: 2.2rem;
+  }
+
+  .client-logos__track img {
+    margin: 0 2rem;
+  }
+
+  .featured-services,
+  .featured-products,
+  .featured-projects,
+  .process-section,
+  .final-cta-section {
+    padding: 4rem 0;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .final-cta__content .section-title {
+    font-size: 2rem;
+  }
+}

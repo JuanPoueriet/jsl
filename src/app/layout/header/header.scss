@@ -1,0 +1,181 @@
+/* src/app/layout/header/header.component.scss */
+
+// :host (el <jsl-header>) ES EL CONTENEDOR FIJO
+// (Esta parte no cambia y maneja la animación de scroll)
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transform: translateY(0);
+  transition: transform 0.4s ease;
+}
+
+jsl-top-bar {
+  display: block;
+}
+
+.header {
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+}
+
+:host(.is-scrolled) {
+  // Mueve el componente ENTERO hacia arriba (ocultando el top-bar)
+  transform: translateY(calc(-1 * var(--top-bar-height)));
+  
+  transition: background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+  .header {
+    background-color: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+// --- LAYOUT DEL HEADER ---
+
+.header__nav {
+  display: flex;
+  justify-content: flex-start; // <-- ¡CAMBIO CLAVE!
+  align-items: center;
+  width: 100%;
+  gap: 2.5rem; // Espacio entre el Logo y los Links
+}
+
+.header__logo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -1px;
+  flex-shrink: 0;
+
+  &::first-letter {
+    color: var(--accent-primary);
+  }
+}
+
+// Links de navegación (izquierda)
+.header__nav-links {
+  display: flex;
+  align-items: center; // Alinear el selector de idioma verticalmente
+  gap: 2rem;
+  list-style: none;
+
+  a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color var(--transition-speed) ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-gradient);
+      transition: width var(--transition-speed) ease;
+    }
+
+    &.active,
+    &:hover {
+      color: var(--text-primary);
+    }
+
+    &.active::after {
+      width: 100%;
+    }
+  }
+}
+
+// Estilo para el <li> que contiene el switcher
+.header__language-item {
+  display: flex;
+  align-items: center;
+  // Añadimos un separador a la izquierda
+  border-left: 1px solid var(--border-color);
+  padding-left: 1.5rem;
+  margin-left: 0.5rem; // Pequeño espacio extra
+}
+
+// --- Controles (Derecha) ---
+.header__controls {
+  display: flex;
+  align-items: center;
+  margin-left: auto; // <-- ¡CAMBIO CLAVE! Empuja el toggle a la derecha
+}
+
+// Toggle (Móvil)
+.header__mobile-toggle {
+  display: none; // Oculto en desktop
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+
+  lucide-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+// --- Menú Desplegable Móvil ---
+.header__nav-links-mobile {
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  transform: translateY(-120%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+
+  &.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  a {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+
+    &.active,
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+}
+
+// --- Media Query para Responsividad ---
+@media (max-width: 992px) {
+  // Ocultar nav de desktop
+  .header__nav-links {
+    display: none;
+  }
+
+  // Mostrar toggle de móvil
+  .header__mobile-toggle {
+    display: block;
+  }
+
+  // Mostrar menú desplegable (si está 'open')
+  .header__nav-links-mobile {
+    display: flex;
+  }
+}

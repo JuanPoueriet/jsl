@@ -1,0 +1,21 @@
+<div class="lang-switcher">
+  <button class="lang-switcher__button" (click)="toggleDropdown()" aria-label="Select language" [class.is-open]="isDropdownOpen">
+    <lucide-icon name="Globe"></lucide-icon> <span>{{ currentLang | uppercase }}</span>
+    <lucide-icon name="ChevronDown"></lucide-icon>
+  </button>
+
+  <div class="lang-switcher__dropdown" [class.is-open]="isDropdownOpen">
+    <a 
+      [routerLink]="esRoute" 
+      (click)="closeDropdown()"
+      [class.active]="currentLang === 'es'">
+      {{ 'LANG.ES_FULL' | translate }}
+    </a>
+    <a 
+      [routerLink]="enRoute" 
+      (click)="closeDropdown()"
+      [class.active]="currentLang === 'en'">
+      {{ 'LANG.EN_FULL' | translate }}
+    </a>
+  </div>
+</div>

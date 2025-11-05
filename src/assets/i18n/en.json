@@ -1,0 +1,182 @@
+{
+  "HEADER": {
+    "HOME": "Home",
+    "SERVICES": "Solutions",
+    "PRODUCTS": "Products",
+    "PROJECTS": "Case Studies",
+    "ABOUT": "About Us",
+    "CONTACT": "Contact"
+  },
+  "TOP_BAR": {
+    "PORTFOLIO": "Portfolio",
+    "GET_QUOTE": "Get a Quote",
+    "PRODUCTS": "Our Products",
+    "CONTACT": "Contact Us"
+  },
+  "LANG": {
+    "ES": "Spanish",
+    "EN": "English",
+    "ES_FULL": "Español (ES)",
+    "EN_FULL": "English (EN)"
+  },
+  "FOOTER": {
+    "SLOGAN": "Software solutions that power tomorrow's leaders.",
+    "COMPANY": "Company",
+    "COPYRIGHT": "All rights reserved."
+  },
+  "PRODUCTS_LIST": {
+    "ERP": "ERP System",
+    "POS": "POS Software",
+    "MOBILE": "Proprietary Apps"
+  },
+  "SERVICES_LIST": {
+    "WEB": "Web Development",
+    "MOBILE": "Mobile Applications",
+    "DESKTOP": "Desktop Software",
+    "CLOUD": "Cloud Solutions"
+  },
+  "LEGAL": {
+    "PRIVACY": "Privacy Policy",
+    "TERMS": "Terms of Service"
+  },
+  "HOME": {
+    "HERO1_TITLE": "Shaping The Future Of Digital Innovation",
+    "HERO1_SUBTITLE": "Your All-In-One Tech Partner. Bringing Your Ideas to Life with Expertise in Web, Mobile, and Desktop platforms.",
+    "HERO1_CTA": "More Info",
+    "HERO2_TITLE": "ERP Software that Drives Your Growth",
+    "HERO2_SUBTITLE": "Discover our enterprise software solutions (ERP & POS) designed to optimize and scale your business.",
+    "HERO2_CTA": "Our Products",
+    "HERO3_TITLE": "Custom Solutions for Unique Challenges",
+    "HERO3_SUBTITLE": "From native mobile applications to complex cloud systems, our engineering team builds the solution you need.",
+    "HERO3_CTA": "Our Solutions",
+    "HERO_BAR_LEFT_1": "Tech Creatives &",
+    "HERO_BAR_LEFT_2": "Solution Architects",
+    "HERO_BAR_CENTER": "Fueling Digital Innovation With Creativity And Technology. We Deliver Cutting-Edge Web And Mobile Solutions.",
+    "HERO_BAR_RIGHT_1": "SINCE",
+    "HERO_BAR_RIGHT_2": "2023",
+    "WELCOME_EYEBROW": "About JSL Technology",
+    "WELCOME_TITLE": "Crafting Digital Excellence",
+    "WELCOME_SUBTITLE": "Founded in 2023 in the Dominican Republic, JSL Technology transforms bold ideas into digital realities. We are architects of custom solutions and innovators of our own products, committed to excellence and the future of technology.",
+    "LOGOS_TITLE": "Companies that trust us to build the future",
+    "SERVICES_EYEBROW": "Our Expertise",
+    "SERVICES_TITLE": "Your All-In-One Tech Partner",
+    "SERVICES_SUBTITLE": "We offer a full spectrum of development services to elevate your digital presence, from native mobile apps to robust desktop software.",
+    "PRODUCTS_EYEBROW": "Proprietary Innovation",
+    "PRODUCTS_TITLE": "Our Proprietary Software",
+    "PRODUCTS_SUBTITLE": "Beyond custom development, we build our own software tools, including ERP systems, POS, and mobile apps designed for maximum efficiency.",
+    "PROJECTS_EYEBROW": "Our Work",
+    "PROJECTS_TITLE": "Featured Case Studies",
+    "PROJECTS_SUBTITLE": "We don't just build software; we build solutions that deliver tangible results. Explore how we've helped industry leaders digitally transform.",
+    "PROCESS_EYEBROW": "Our Methodology",
+    "PROCESS_TITLE": "From Idea to Impact",
+    "PROCESS_SUBTITLE": "We have an agile and transparent 4-step process that ensures digital excellence and aligns results with your business goals.",
+    "PROCESS_STEP1_TITLE": "1. Discovery & Strategy",
+    "PROCESS_STEP1_DESC": "We analyze your goals, define the scope, and create a strategic roadmap to ensure the project's success.",
+    "PROCESS_STEP2_TITLE": "2. UI/UX Design & Engineering",
+    "PROCESS_STEP2_DESC": "Our engineers and designers collaborate to build a robust architecture and an intuitive user interface.",
+    "PROCESS_STEP3_TITLE": "3. Deployment & Quality",
+    "PROCESS_STEP3_DESC": "We implement rigorous testing (QA) and deploy your solution on scalable, secure infrastructure.",
+    "PROCESS_STEP4_TITLE": "4. Support & Growth",
+    "PROCESS_STEP4_DESC": "We offer ongoing support and analyze metrics to evolve your product, ensuring a long-term impact.",
+    "CTA_EYEBROW": "Have an idea?",
+    "CTA_TITLE": "Let's Talk About Your Next Project",
+    "CTA_SUBTITLE": "Our team of solution architects is ready to transform your vision into a functional, forward-thinking digital reality.",
+    "CTA_BUTTON": "Contact Us Now"
+  },
+  "PAGE": {
+    "PLACEHOLDER": "This page's content is coming soon."
+  },
+  "CONTACT": {
+    "TITLE": "Let's Talk About Your Project",
+    "SUBTITLE": "Have an idea or a challenge? Our team of experts is ready to help you build the future of your business.",
+    "INFO_TITLE": "Contact Information",
+    "INFO_DESC": "Feel free to reach out via email, phone, or by visiting our offices.",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "LOCATION": "Location",
+    "FORM": {
+      "NAME": "Full Name",
+      "EMAIL": "Email Address",
+      "SERVICE": "Service of Interest",
+      "SERVICE_PROMPT": "Select a service...",
+      "SERVICE_OTHER": "Other",
+      "MESSAGE": "Your Message",
+      "SUBMIT": "Send Message",
+      "ERRORS": {
+        "REQUIRED": "This field is required.",
+        "EMAIL": "Please enter a valid email address.",
+        "MINLENGTH": "At least {{value}} characters are required."
+      },
+      "SUCCESS": "Message sent! Thank you for contacting us. We will get back to you soon.",
+      "ERROR": "There was an error sending your message. Please try again later."
+    }
+  },
+  "COMMON": {
+    "READ_MORE": "Read More",
+    "DEFAULT_DESCRIPTION": "JSL Technology: Custom software solutions, ERP, POS, and mobile development to power your business."
+  },
+  "SOLUTIONS": {
+    "TITLE": "Custom Software Solutions",
+    "SUBTITLE": "We build precise digital tools tailored to your needs. From complex web applications to scalable cloud solutions, our engineering team transforms your challenges into competitive advantages.",
+    "WEB_TITLE": "Web Development",
+    "WEB_DESC": "Robust, fast, and scalable web applications using the latest technologies. We build everything from SPAs to corporate portals.",
+    "MOBILE_TITLE": "Mobile Applications",
+    "MOBILE_DESC": "Native (iOS/Android) and hybrid development to create fluid mobile experiences that connect with your users.",
+    "DESKTOP_TITLE": "Desktop Software",
+    "DESKTOP_DESC": "Powerful and secure software solutions for desktop environments, optimized for performance and data reliability.",
+    "CLOUD_TITLE": "Cloud Architecture",
+    "CLOUD_DESC": "We design and implement scalable, secure, and cost-effective cloud infrastructures (AWS, Azure, GCP)."
+  },
+  "PRODUCTS": {
+    "TITLE": "Our Proprietary Software",
+    "SUBTITLE": "Years of engineering experience have allowed us to build a robust ecosystem of products, designed for maximum efficiency and scalability.",
+    "ERP_TITLE": "JSL-ERP (ERP System)",
+    "ERP_DESC": "A comprehensive enterprise resource planning solution. Manage finances, inventory, logistics, and more, all from one unified platform.",
+    "POS_TITLE": "JSL-POS (POS Software)",
+    "POS_DESC": "Fast, reliable, and intuitive Point of Sale (POS) software. Perfect for retail and restaurants, with real-time inventory management.",
+    "MOBILE_APPS_TITLE": "Proprietary Mobile Apps",
+    "MOBILE_APPS_DESC": "A suite of mobile applications designed to enhance productivity and team management on the go, fully integrated with our ERP."
+  },
+  "PROJECTS": {
+    "TITLE": "Case Studies",
+    "SUBTITLE": "We don't just build software; we build solutions that deliver tangible results. Explore how we've helped industry leaders digitally transform.",
+    "CASE_ERP_TITLE": "ERP Implementation for Logistics",
+    "CASE_ERP_DESC": "Complete supply chain optimization for a logistics client, reducing operational costs by 30% using our JSL-ERP.",
+    "CASE_ECOMMERCE_TITLE": "B2B E-Commerce Platform",
+    "CASE_ECOMMERCE_DESC": "Development of a custom B2B e-commerce solution, handling thousands of SKUs and complex transactions for a major distributor.",
+    "CASE_MOBILE_APP_TITLE": "Fleet Management Mobile App",
+    "CASE_MOBILE_APP_DESC": "Creation of a native mobile app for real-time fleet tracking and management, improving efficiency by 40%."
+  },
+  "ABOUT": {
+    "TITLE": "About JSL Technology",
+    "SUBTITLE": "We are more than developers; we are solution architects, innovators, and strategic partners committed to your success.",
+    "INTRO_EYEBROW": "Our Philosophy",
+    "INTRO_TITLE": "Crafting Digital Excellence",
+    "INTRO_DESC_1": "Our dedicated team stands at the forefront of innovation, transforming bold ideas into reality. We specialize in custom development and enterprise-level software engineering.",
+    "INTRO_DESC_2": "We craft solutions that are not only functional but forward-thinking, ensuring your business is always one step ahead.",
+    "MISSION_TITLE": "Our Mission",
+    "MISSION_DESC": "To empower businesses through innovative technology and robust software solutions, driving their efficiency and sustainable growth.",
+    "VISION_TITLE": "Our Vision",
+    "VISION_DESC": "To be the leading software engineering and ERP products company in the region, recognized for our excellence, innovation, and commitment to client success.",
+    "VALUES_TITLE": "Our Values",
+    "VALUES_DESC": "Integrity, Innovation, Quality, Customer Commitment, and Collaboration. These pillars guide every line of code we write and every project we undertake."
+  },
+  "LEGAL": {
+    "PRIVACY_TITLE": "Privacy Policy",
+    "TERMS_TITLE": "Terms of Service",
+    "LAST_UPDATED": "Last Updated: October 28, 2025",
+    "PRIVACY_INTRO": "Welcome to JSL Technology. This privacy policy explains how we collect, use, disclose, and safeguard your information when you visit our website.",
+    "PRIVACY_SECTION_1_TITLE": "Information We Collect",
+    "PRIVACY_SECTION_1_P1": "We may collect personally identifiable information that you voluntarily provide to us, such as:",
+    "PRIVACY_SECTION_1_LI1": "Contact information (Name, email address) submitted through our contact form.",
+    "PRIVACY_SECTION_1_LI2": "Technical usage data (IP address, browser type) collected automatically.",
+    "PRIVACY_SECTION_2_TITLE": "How We Use Your Information",
+    "PRIVACY_SECTION_2_P1": "We use the information we collect to respond to your inquiries, improve our website, and ensure the security of our platform.",
+    "TERMS_SECTION_1_TITLE": "Acceptance of Terms",
+    "TERMS_SECTION_1_P1": "By accessing and using this website, you accept and agree to be bound by these Terms of Service and all applicable laws and regulations.",
+    "TERMS_SECTION_2_TITLE": "Use of the Website",
+    "TERMS_SECTION_2_P1": "You agree not to use the website for any unlawful purpose or any purpose prohibited by these terms. You may not use the website in any manner that could damage, disable, or overburden the site.",
+    "TERMS_SECTION_3_TITLE": "Intellectual Property",
+    "TERMS_SECTION_3_P1": "All content present on this site, including text, graphics, logos, and images, is the property of JSL Technology and is protected by copyright laws."
+  }
+}

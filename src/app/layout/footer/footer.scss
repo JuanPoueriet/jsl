@@ -1,0 +1,132 @@
+/* src/app/layout/footer/footer.component.scss */
+
+.footer {
+  background-color: var(--bg-secondary);
+  padding-top: 5rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 6rem; // Más espacio antes del footer
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.5rem;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.footer__logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  &::first-letter {
+    color: var(--accent-primary);
+  }
+}
+
+.footer__slogan {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 1.25rem;
+
+  a {
+    color: var(--text-secondary);
+    transition: color var(--transition-speed) ease;
+    &:hover {
+      color: var(--text-primary);
+    }
+    lucide-icon {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
+.footer__col-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.footer__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  a {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: color var(--transition-speed) ease, padding-left var(--transition-speed) ease;
+    &:hover {
+      color: var(--text-primary);
+      padding-left: 5px;
+    }
+  }
+}
+
+.footer__bottom {
+  border-top: 1px solid var(--border-color);
+  margin-top: 4rem;
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+
+  a {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+}
+
+.footer__bottom {
+  border-top: 1px solid var(--border-color);
+  margin-top: 4rem;
+  padding: 2rem 0;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; // Alineación
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer__bottom-links {
+  display: flex;
+  gap: 1.5rem;
+  a {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    &:hover {
+      color: var(--text-primary);
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__bottom {
+    justify-content: center; // Centrar en móvil
+    text-align: center;
+  }
+}

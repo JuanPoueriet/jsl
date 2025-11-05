@@ -1,0 +1,93 @@
+/* src/app/shared/components/card/card.component.scss */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  // padding: 2rem 1.5rem; // Eliminamos el padding superior
+  height: 100%;
+  text-decoration: none;
+  color: var(--text-primary);
+  overflow: hidden; // Para contener la imagen
+  transition: transform var(--transition-speed) ease, 
+              border-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.card__image {
+  width: 100%;
+  height: 200px; // Altura fija para la imagen del portafolio
+  object-fit: cover; // Asegura que la imagen cubra el espacio
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card__icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  color: #fff;
+  margin: 1.5rem; // Añadimos margen para compensar el padding eliminado
+  flex-shrink: 0;
+
+  lucide-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+// ¡NUEVO! Contenedor para el texto
+.card__content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; // Para que el contenido ocupe el espacio
+}
+
+.card__title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.card__description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  flex-grow: 1; // Empuja el 'read more' hacia abajo
+  margin-bottom: 1.5rem;
+}
+
+.card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: auto; // Asegura que el enlace esté al final
+  
+  lucide-icon {
+    width: 16px;
+    transition: transform var(--transition-speed) ease;
+  }
+
+  .card:hover & {
+    color: var(--accent-primary);
+    
+    lucide-icon {
+      transform: translateX(4px);
+    }
+  }
+}

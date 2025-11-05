@@ -31,8 +31,12 @@
     "@angular/platform-server": "^20.3.0",
     "@angular/router": "^20.3.0",
     "@angular/ssr": "^20.3.7",
+    "@ngx-translate/core": "^17.0.0",
+    "@ngx-translate/http-loader": "^17.0.0",
     "express": "^5.1.0",
+    "lucide-angular": "^0.552.0",
     "rxjs": "~7.8.0",
+    "swiper": "^12.0.3",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
