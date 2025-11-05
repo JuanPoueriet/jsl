@@ -1,23 +1,26 @@
-// :host (el <jsl-top-bar>) ya NO está fijo
 :host {
-  // position: fixed; <-- ELIMINADO
-  // top: 0; <-- ELIMINADO
-  // left: 0; <-- ELIMINADO
   width: 100%;
-  height: var(--top-bar-height);
-  z-index: 1001; // Sigue estando por encima del .header
-  
-  // transition: ...; <-- ELIMINADO (lo maneja el padre)
-
-  // &.hide { ... } <-- ELIMINADO (lo maneja el padre)
+  // height: var(--top-bar-height); // La altura la controla el .top-bar
 }
 
-// .top-bar (el <div> interno) solo necesita altura
 .top-bar {
-  height: 100%;
-  // Añadimos el fondo que antes estaba en el :host
+  // --- ESTADO INICIAL ---
+  height: var(--top-bar-height);
   // background-color: var(--bg-primary); 
   // border-bottom: 1px solid var(--border-color);
+  padding-top: 0; // Añadido para animar
+  padding-bottom: 0; // Añadido para animar
+  opacity: 1;
+  overflow: hidden; // Prevenir cualquier desbordamiento
+
+  // --- TRANSICIONES (La clave para la animación) ---
+  // Añadimos transiciones para que responda suavemente
+  // a los cambios desde header.scss
+  transition: height 0.3s ease-out, 
+              opacity 0.3s ease-out,
+              padding-top 0.3s ease-out,
+              padding-bottom 0.3s ease-out,
+              border-color 0.3s ease-out;
 }
 
 .top-bar__container {

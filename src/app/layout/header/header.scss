@@ -1,69 +1,102 @@
-/* src/app/layout/header/header.component.scss */
+/* src/app/layout/header/header.scss */
 
-// :host (el <jsl-header>) ES EL CONTENEDOR FIJO
-// (Esta parte no cambia y maneja la animación de scroll)
+// --- ESTADO BASE (:host) ---
 :host {
+  // :host es el <jsl-header>
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  transform: translateY(0);
-  transition: transform 0.4s ease;
-}
 
-jsl-top-bar {
-  display: block;
-}
-
-.header {
-  width: 100%;
-  height: var(--header-height);
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  backdrop-filter: none;
+  // Transición para el fondo y el borde
+  transition: background-color 0.3s ease-out, backdrop-filter 0.3s ease-out, border-color 0.3s ease-out;
+  
+  // Borde inferior transparente por defecto
   border-bottom: 1px solid transparent;
 }
 
+// --- ESTADO CON SCROLL (:host.is-scrolled) ---
 :host(.is-scrolled) {
-  // Mueve el componente ENTERO hacia arriba (ocultando el top-bar)
-  transform: translateY(calc(-1 * var(--top-bar-height)));
+  // 1. Aplicar el fondo con blur
+  background-color: rgba(13, 13, 13, 0.85); // Fondo semitransparente
+  backdrop-filter: blur(10px); // Efecto "vidrio"
+  border-bottom-color: var(--border-color); // Borde sólido al scrollear
+
+  // 2. Ocultar la Top-Bar (animará gracias a top-bar.scss)
+  // Seleccionamos el componente hijo <jsl-top-bar>
+  ::ng-deep jsl-top-bar .top-bar {
+    height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none; // Ocultar su borde
+  }
+
+  // 3. Encoger la barra de navegación principal
+  .header__nav {
+    height: 60px; // Altura encogida (de 75px)
+  }
   
-  transition: background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
-  .header {
-    background-color: rgba(13, 13, 13, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+  // 4. Ocultar la línea separadora (ya tenemos el borde del :host)
+  .header__nav::after {
+    opacity: 0;
   }
 }
 
-// --- LAYOUT DEL HEADER ---
+// --- ENVOLTORIO INTERNO .header ---
+// (Ya no necesita estados de scroll, es solo un contenedor)
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Centra el .container
+}
 
+// --- BARRA DE NAVEGACIÓN .header__nav ---
+// Esta clase también tiene la clase .container (desde app.html)
 .header__nav {
   display: flex;
-  justify-content: flex-start; // <-- ¡CAMBIO CLAVE!
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  gap: 2.5rem; // Espacio entre el Logo y los Links
+  width: 100%; // El .container se encarga del ancho (90% / max-width)
+  height: var(--header-height); // Altura inicial
+  position: relative;
+
+  // Transición suave para la altura
+  transition: height 0.3s ease-out;
+
+  // --- LA LÍNEA INFERIOR (CORREGIDA) ---
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0; 
+    width: 100%; // 100% del .container (este era el fix)
+    height: 1px;
+    background: var(--border-color);
+    opacity: 1;
+    // Transición para ocultarla suavemente
+    transition: opacity 0.3s ease-out;
+  }
 }
+
+// --- RESTO DE ESTILOS ---
+// (sin cambios, tu lógica de logo, links y menú móvil es correcta)
 
 .header__logo {
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -1px;
-  flex-shrink: 0;
-
+  
   &::first-letter {
     color: var(--accent-primary);
   }
 }
 
-// Links de navegación (izquierda)
 .header__nav-links {
   display: flex;
-  align-items: center; // Alinear el selector de idioma verticalmente
   gap: 2rem;
   list-style: none;
 
@@ -97,85 +130,79 @@ jsl-top-bar {
   }
 }
 
-// Estilo para el <li> que contiene el switcher
-.header__language-item {
-  display: flex;
-  align-items: center;
-  // Añadimos un separador a la izquierda
-  border-left: 1px solid var(--border-color);
-  padding-left: 1.5rem;
-  margin-left: 0.5rem; // Pequeño espacio extra
-}
-
-// --- Controles (Derecha) ---
 .header__controls {
   display: flex;
   align-items: center;
-  margin-left: auto; // <-- ¡CAMBIO CLAVE! Empuja el toggle a la derecha
+  gap: 1.5rem;
 }
 
-// Toggle (Móvil)
 .header__mobile-toggle {
-  display: none; // Oculto en desktop
+  display: none; 
   background: none;
   border: none;
   color: var(--text-primary);
   cursor: pointer;
-
+  
   lucide-icon {
     width: 28px;
     height: 28px;
   }
 }
 
-// --- Menú Desplegable Móvil ---
 .header__nav-links-mobile {
-  display: none;
-  flex-direction: column;
-  gap: 1.5rem;
-  list-style: none;
-  position: absolute;
-  top: var(--header-height);
-  left: 0;
-  width: 100%;
-  background: var(--bg-secondary);
-  padding: 2rem;
-  border-bottom: 1px solid var(--border-color);
-  transform: translateY(-120%);
-  opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-
-  &.open {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  a {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-
-    &.active,
-    &:hover {
-      color: var(--text-primary);
-    }
-  }
+  display: none; 
 }
 
 // --- Media Query para Responsividad ---
 @media (max-width: 992px) {
-  // Ocultar nav de desktop
   .header__nav-links {
-    display: none;
+    display: none; 
   }
 
-  // Mostrar toggle de móvil
   .header__mobile-toggle {
-    display: block;
+    display: block; 
   }
 
-  // Mostrar menú desplegable (si está 'open')
   .header__nav-links-mobile {
     display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    list-style: none;
+    position: absolute;
+    top: 60px; // Coincidir con la altura encogida
+    left: 0;
+    width: 100%;
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    
+    transform: translateY(-120%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+
+    &.open {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    a {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+
+      &.active,
+      &:hover {
+        color: var(--text-primary);
+      }
+    }
+  }
+
+  // Ajuste para el estado de scroll en móvil
+  :host(.is-scrolled) .header__nav-links-mobile {
+    top: 60px; // Asegurar que se alinee con la altura encogida
+  }
+  
+  :host(:not(.is-scrolled)) .header__nav-links-mobile {
+    top: var(--header-height); // Altura normal
   }
 }

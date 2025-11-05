@@ -15,20 +15,19 @@ import { TopBar } from '../top-bar/top-bar';
     TranslateModule,
     LucideAngularModule,
     // LanguageSwitcher, // <-- ELIMINADO
-        TopBar,     // 5. Añadir TopBar
-    
+    TopBar,
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
 export class Header {
   isMobileMenuOpen = false;
-  
+
   public currentLang: string;
 
   constructor(private translate: TranslateService) {
     this.currentLang = this.translate.getCurrentLang() || this.translate.defaultLang || 'es';
-    
+
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
     });
@@ -40,5 +39,9 @@ export class Header {
 
   closeMobileMenu() {
     this.isMobileMenuOpen = false;
+  }
+
+  ifMobile() {
+    return false;
   }
 }

@@ -1,35 +1,123 @@
-<jsl-top-bar></jsl-top-bar>
-
 <header class="header">
+
+  <jsl-top-bar></jsl-top-bar>
   <nav class="header__nav container">
-    
     <a [routerLink]="[currentLang, 'home']" class="header__logo" (click)="closeMobileMenu()">
       JSL Technology
     </a>
 
     <ul class="header__nav-links">
-      <li><a [routerLink]="[currentLang, 'home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">{{ 'HEADER.HOME' | translate }}</a></li>
-      <li><a [routerLink]="[currentLang, 'solutions']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.SERVICES' | translate }}</a></li>
-      <li><a [routerLink]="[currentLang, 'products']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.PRODUCTS' | translate }}</a></li>
-      <li><a [routerLink]="[currentLang, 'projects']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.PROJECTS' | translate }}</a></li>
-      <li><a [routerLink]="[currentLang, 'about-us']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.ABOUT' | translate }}</a></li>
-      <li><a [routerLink]="[currentLang, 'contact']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.CONTACT' | translate }}</a></li>
+      <li>
+        <a
+          [routerLink]="[currentLang, 'home']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.HOME' | translate }}</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="[currentLang, 'solutions']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.SERVICES' | translate }}</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="[currentLang, 'products']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.PRODUCTS' | translate }}</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="[currentLang, 'projects']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.PROJECTS' | translate }}</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="[currentLang, 'about-us']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.ABOUT' | translate }}</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="[currentLang, 'contact']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.CONTACT' | translate }}</a
+        >
+      </li>
     </ul>
-
+    @if(ifMobile()) {
     <div class="header__controls">
       <button class="header__mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle menu">
         <lucide-icon *ngIf="!isMobileMenuOpen" name="Menu"></lucide-icon>
         <lucide-icon *ngIf="isMobileMenuOpen" name="X"></lucide-icon>
       </button>
     </div>
+    }
   </nav>
-
+  @if(ifMobile()) {
   <ul class="header__nav-links-mobile" [class.open]="isMobileMenuOpen">
-    <li><a [routerLink]="[currentLang, 'home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">{{ 'HEADER.HOME' | translate }}</a></li>
-    <li><a [routerLink]="[currentLang, 'solutions']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.SERVICES' | translate }}</a></li>
-    <li><a [routerLink]="[currentLang, 'products']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.PRODUCTS' | translate }}</a></li>
-    <li><a [routerLink]="[currentLang, 'projects']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.PROJECTS' | translate }}</a></li>
-    <li><a [routerLink]="[currentLang, 'about-us']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.ABOUT' | translate }}</a></li>
-    <li><a [routerLink]="[currentLang, 'contact']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.CONTACT' | translate }}</a></li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'home']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMobileMenu()"
+        >{{ 'HEADER.HOME' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'solutions']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'HEADER.SERVICES' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'products']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'HEADER.PRODUCTS' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'projects']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'HEADER.PROJECTS' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'about-us']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'HEADER.ABOUT' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'contact']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'HEADER.CONTACT' | translate }}</a
+      >
+    </li>
   </ul>
+
+  }
 </header>
