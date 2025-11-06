@@ -6,7 +6,7 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
-// --- 1. AÑADIDO: Importar 'crypto' para generar el nonce ---
+// --- 1. Importar 'crypto' para generar el nonce ---
 import { randomBytes } from 'node:crypto';
 // --- FIN AÑADIDO ---
 import { PROJECTS, BLOG_POSTS } from './app/core/data/mock-data';
@@ -19,7 +19,7 @@ const angularApp = new AngularNodeAppEngine();
 
 // --- INICIO: Middleware de Cabeceras de Seguridad (MODIFICADO) ---
 app.use((req, res, next) => {
-  // --- 2. AÑADIDO: Generar un nonce único para esta petición ---
+  // --- 2. Generar un nonce único para esta petición ---
   const nonce = randomBytes(16).toString('base64');
   // Guardamos el nonce en 'res.locals' para que esté disponible
   // en el siguiente middleware (el que maneja Angular).
@@ -29,10 +29,11 @@ app.use((req, res, next) => {
   // Define los dominios permitidos para imágenes, fuentes, etc.
   const cspPolicies = [
     "default-src 'self'",
-    // --- 3. MODIFICADO: Añadir el nonce al 'script-src' ---
-    // Esto le dice al navegador: "Permite scripts de 'self' Y
-    // cualquier script inline que tenga el atributo nonce='{valor-del-nonce}'".
-    `script-src 'self' 'nonce-${nonce}'`,
+    // --- 3. MODIFICADO: Añadir 'unsafe-inline' ---
+    // El 'nonce' asegura las etiquetas <script> de Angular.
+    // 'unsafe-inline' es necesario para los "inline event handlers" (ej. onclick)
+    // que bibliotecas de terceros como Swiper.js pueden añadir.
+    `script-src 'self' 'nonce-${nonce}' 'unsafe-inline'`,
     // --- FIN MODIFICADO ---
     "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'", // 'unsafe-inline' es necesario para los estilos de componentes de Angular
     "font-src 'self' https://fonts.gstatic.com",
