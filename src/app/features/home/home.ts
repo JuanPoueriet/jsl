@@ -1,5 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, Inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+// --- CAMBIO: Añadir NgOptimizedImage ---
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterLink } from '@angular/router';
@@ -22,6 +23,7 @@ register();
   standalone: true,
   imports: [
     CommonModule,
+    NgOptimizedImage, // <-- AÑADIDO
     TranslateModule,
     LucideAngularModule,
     RouterLink,

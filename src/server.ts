@@ -138,6 +138,12 @@ app.use(
  * Handle all other requests by rendering the Angular application.
  */
 app.use((req, res, next) => {
+  // --- AÑADIDO: Cabeceras de Seguridad ---
+  res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  // --- FIN AÑADIDO ---
+
   angularApp
     .handle(req)
     .then((response) =>
