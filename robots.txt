@@ -1,9 +1,0 @@
-"assets": [
-  {
-    "glob": "**/*",
-    "input": "src/assets",
-    "output": "/assets"
-  },
-  "src/favicon.ico",
-  "src/robots.txt"  // <-- AÑADE ESTA LÍNEA
-],
