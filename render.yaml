@@ -3,11 +3,10 @@ services:
     name: jsl
     env: node
     plan: free
-    buildCommand: |
-      npm install
-      npm run build
-      mv dist/app/browser/index.csr.html dist/app/browser/index.html
-    startCommand: npx serve -s dist/app/browser -l $PORT
+    buildCommand: npm install && npm run build
+    startCommand: node dist/app/server/server.mjs
     envVars:
+      - key: NODE_ENV
+        value: production
       - key: NODE_VERSION
         value: 22.16.0
