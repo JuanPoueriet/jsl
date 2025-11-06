@@ -1,19 +1,10 @@
 services:
   - type: web
-    name: mi-app-ssr # <-- Puedes cambiar este nombre
+    name: jsl
     env: node
-    plan: free # O el plan que prefieras (ej: starter)
-    
-    # Comando para instalar dependencias y construir el proyecto
-    # Asegúrate de que 'npm run build' esté configurado en tu package.json 
-    # para ejecutar el build de SSR (usualmente 'ng build')
+    plan: free
     buildCommand: npm install && npm run build
-    
-    # ¡Esta es la parte más importante!
-    # Debes apuntar al archivo 'main.js' del servidor.
-    # Reemplaza 'NOMBRE_PROYECTO' con el nombre de tu app.
-    startCommand: node dist/app/server/main.js
-    
+    startCommand: npx serve -s dist/app -l $PORT
     envVars:
-      - key: NODE_ENV
-        value: production
+      - key: NODE_VERSION
+        value: 22.16.0

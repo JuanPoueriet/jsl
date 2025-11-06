@@ -7,7 +7,7 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-import { LucideAngularModule } from 'lucide-angular';
+import { ArrowLeft, LucideAngularModule } from 'lucide-angular';
 import {
   Home,
   Settings,
@@ -98,6 +98,7 @@ export const appConfig: ApplicationConfig = {
         ChevronRight,
         User,
         Calendar,
+        ArrowLeft
         // --- FIN AÑADIDOS ---
       })
     ),
