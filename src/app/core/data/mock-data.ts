@@ -53,7 +53,8 @@ export const TESTIMONIALS = [
     textKey: 'HOME.TESTIMONIAL_3_TEXT',
     nameKey: 'HOME.TESTIMONIAL_3_NAME',
     roleKey: 'HOME.TESTIMONIAL_3_ROLE',
-    imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?fit=crop&w=100&q=80',
+    // imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?fit=crop&w=100&q=80',
+    imageUrl: 'assets/imgs/photo-1580489944761-15a19d654956.avif',
   }
 ];
 
