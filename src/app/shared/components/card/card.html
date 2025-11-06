@@ -1,8 +1,6 @@
 <a *ngIf="link" [routerLink]="link" class="card">
-  <!-- Mostrar Imagen si existe -->
-  <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ title }}" class="card__image">
+  <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ title }}" class="card__image" loading="lazy">
   
-  <!-- Mostrar Icono si NO hay imagen -->
   <div *ngIf="!imageUrl && icon" class="card__icon">
     <lucide-icon [name]="icon"></lucide-icon>
   </div>
@@ -17,10 +15,8 @@
 </a>
 
 <div *ngIf="!link" class="card">
-  <!-- Mostrar Imagen si existe -->
-  <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ title }}" class="card__image">
+  <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ title }}" class="card__image" loading="lazy">
   
-  <!-- Mostrar Icono si NO hay imagen -->
   <div *ngIf="!imageUrl && icon" class="card__icon">
     <lucide-icon [name]="icon"></lucide-icon>
   </div>

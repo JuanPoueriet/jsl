@@ -1,7 +1,8 @@
 /* src/styles.scss */
 
 // 1. Importación de Tipografía (Poppins)
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+// --- ELIMINADO: @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+//     (Se movió a index.html para una carga más rápida)
 
 // 2. Definición de Variables CSS (Paleta Dark Mode)
 :root {

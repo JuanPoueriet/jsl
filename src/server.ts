@@ -15,6 +15,41 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 
+// --- INICIO: Middleware de Cabeceras de Seguridad ---
+// Define los dominios permitidos para imágenes, fuentes, etc.
+const cspPolicies = [
+  "default-src 'self'",
+  "script-src 'self'", // Angular SSR maneja sus scripts de forma segura
+  "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'", // 'unsafe-inline' es necesario para los estilos de componentes de Angular
+  "font-src 'self' https://fonts.gstatic.com",
+  // Dominios de imágenes permitidos (basado en mock-data.ts y home.html)
+  "img-src 'self' https://images.unsplash.com https://media.geeksforgeeks.org https://zaibatsutechnology.co.uk data:",
+  "connect-src 'self'", // Permite cargar /assets/i18n/es.json, etc.
+  "frame-ancestors 'none'" // Previene clickjacking (alternativa a X-Frame-Options)
+];
+
+app.use((req, res, next) => {
+  // 1. Content Security Policy (CSP)
+  //    Ayuda a prevenir ataques XSS.
+  res.setHeader('Content-Security-Policy', cspPolicies.join('; '));
+  
+  // 2. HTTP Strict Transport Security (HSTS)
+  //    Fuerza el uso de HTTPS después de la primera visita. (Duración: 1 año)
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  
+  // 3. X-Content-Type-Options
+  //    Previene que el navegador "adivine" el tipo de contenido.
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  
+  // 4. Referrer-Policy
+  //    Controla cuánta información de "referencia" se envía.
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  
+  next();
+});
+// --- FIN: Middleware de Cabeceras de Seguridad ---
+
+
 app.get('/', (req, res) => {
   // 302 es una redirección temporal, lo cual es apropiado aquí.
   res.redirect(302, '/es');
