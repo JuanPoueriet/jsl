@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
+import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll'; // Importar
+import { TEAM_MEMBERS } from '../../core/data/mock-data'; // Importar datos del equipo
 
 @Component({
   selector: 'jsl-about-us',
@@ -9,12 +11,17 @@ import { LucideAngularModule } from 'lucide-angular';
   imports: [
     CommonModule,
     TranslateModule,
-    LucideAngularModule // Asegurarse de importar
+    LucideAngularModule,
+    AnimateOnScroll // Añadir
   ],
   templateUrl: './about-us.html',
   styleUrl: './about-us.scss'
 })
 export class AboutUs {
+  
+  // Cargar datos del equipo desde el archivo mock
+  teamMembers = TEAM_MEMBERS;
+
   // Contenido de Misión, Visión, Valores
   coreValues = [
     {

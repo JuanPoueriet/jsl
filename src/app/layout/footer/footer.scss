@@ -1,4 +1,4 @@
-/* src/app/layout/footer/footer.component.scss */
+/* src/app/layout/footer/footer.scss */
 
 .footer {
   background-color: var(--bg-secondary);
@@ -9,14 +9,22 @@
 
 .footer__container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2.5rem;
+  // --- MODIFICADO: Grid más inteligente y adaptable ---
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 3rem; // Más espacio
 }
 
 .footer__col {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  
+  // Columna principal (logo) más ancha si es posible
+  &.footer__col--main {
+    @media (min-width: 992px) {
+      min-width: 300px; 
+    }
+  }
 }
 
 .footer__logo {
@@ -33,21 +41,42 @@
   font-size: 0.9rem;
   max-width: 280px;
   line-height: 1.6;
+  margin-bottom: 1rem; // Espacio antes del contacto
 }
 
 .footer__socials {
   display: flex;
-  gap: 1.25rem;
+  flex-wrap: wrap; // Permitir que se envuelvan en pantallas pequeñas
+  gap: 1rem; // Espacio entre iconos
 
-  a {
+  .social-link {
     color: var(--text-secondary);
-    transition: color var(--transition-speed) ease;
-    &:hover {
-      color: var(--text-primary);
-    }
+    background-color: var(--bg-primary); // Fondo más oscuro
+    border: 1px solid var(--border-color);
+    border-radius: 50%; // Círculo perfecto
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed) ease;
+
     lucide-icon {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
+    }
+
+    // --- Sazón: Colores de marca en hover ---
+    &:hover {
+      color: #fff;
+      transform: translateY(-3px);
+      border-color: var(--accent-primary);
+
+      &.social-link--linkedin { border-color: #0A66C2; background-color: #0A66C2; }
+      &.social-link--github { border-color: #C9D1D9; background-color: #24292F; }
+      &.social-link--twitter { border-color: #1DA1F2; background-color: #1DA1F2; }
+      &.social-link--instagram { border-color: #E4405F; background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
+      &.social-link--facebook { border-color: #1877F2; background-color: #1877F2; }
     }
   }
 }
@@ -69,32 +98,41 @@
     color: var(--text-secondary);
     font-size: 0.9rem;
     transition: color var(--transition-speed) ease, padding-left var(--transition-speed) ease;
+    
+    // --- Sazón: Alinear iconos en enlaces de contacto ---
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    lucide-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--border-color); // Color sutil para el icono
+      transition: color var(--transition-speed) ease;
+    }
+
     &:hover {
       color: var(--text-primary);
+      padding-left: 5px; // Mantenemos el empuje
+      
+      lucide-icon {
+        color: var(--accent-primary); // Icono se ilumina
+      }
+    }
+  }
+  
+  // Quitar el 'gap' y el 'padding-left' en hover para los enlaces que NO son de contacto
+  &:not(.footer__links--contact) a {
+    gap: 0;
+    lucide-icon { display: none; }
+    &:hover {
       padding-left: 5px;
     }
   }
-}
-
-.footer__bottom {
-  border-top: 1px solid var(--border-color);
-  margin-top: 4rem;
-  padding: 2rem 0;
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-
-  a {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-    &:hover {
-      color: var(--text-primary);
-    }
+  // Y quitar el 'padding-left' en hover para los enlaces de contacto
+  &.footer__links--contact a:hover {
+    padding-left: 0;
   }
 }
 
@@ -128,5 +166,21 @@
   .footer__bottom {
     justify-content: center; // Centrar en móvil
     text-align: center;
+  }
+  .footer__col {
+    text-align: center;
+  }
+  .footer__logo, .footer__slogan {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer__links {
+    a {
+      justify-content: center;
+      padding-left: 0 !important; // Evitar saltos en móvil
+    }
+  }
+  .footer__socials {
+    justify-content: center;
   }
 }

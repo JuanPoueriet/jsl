@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { languageInitGuard } from './core/guards/language-init-guard';
 import { languageRedirectGuard } from './core/guards/language-redirect-guard';
-// --- 1. IMPORTAR EL NUEVO COMPONENTE ---
 import { RouteRedirectorComponent } from './core/components/route-redirector/route-redirector';
 
 // 1. Definimos las rutas de las características (¡CON DATOS DE DESCRIPCIÓN!)
@@ -11,7 +10,7 @@ const featureRoutes: Routes = [
     loadComponent: () => import('./features/home/home').then(c => c.Home),
     data: { 
       title: 'HEADER.HOME',
-      description: 'HOME.HERO1_SUBTITLE' // <-- AÑADIDO
+      description: 'HOME.HERO1_SUBTITLE'
     }
   },
   {
@@ -19,7 +18,7 @@ const featureRoutes: Routes = [
     loadComponent: () => import('./features/solutions/solutions').then(c => c.Solutions),
     data: { 
       title: 'HEADER.SERVICES',
-      description: 'SOLUTIONS.SUBTITLE' // <-- AÑADIDO
+      description: 'SOLUTIONS.SUBTITLE'
     }
   },
   {
@@ -27,23 +26,59 @@ const featureRoutes: Routes = [
     loadComponent: () => import('./features/products/products').then(c => c.Products),
     data: { 
       title: 'HEADER.PRODUCTS',
-      description: 'PRODUCTS.SUBTITLE' // <-- AÑADIDO
+      description: 'PRODUCTS.SUBTITLE'
     }
   },
+  // --- MODIFICADO: Sistema de rutas para Proyectos (con detalle) ---
   {
     path: 'projects',
-    loadComponent: () => import('./features/projects/projects').then(c => c.Projects),
     data: { 
       title: 'HEADER.PROJECTS',
-      description: 'PROJECTS.SUBTITLE' // <-- AÑADIDO
-    }
+      description: 'PROJECTS.SUBTITLE'
+    },
+    children: [
+      {
+        path: '', // La ruta /:lang/projects (lista)
+        loadComponent: () => import('./features/projects/projects').then(c => c.Projects),
+      },
+      {
+        path: ':slug', // La ruta /:lang/projects/mi-proyecto (detalle)
+        loadComponent: () => import('./features/project-detail/project-detail').then(c => c.ProjectDetail),
+        data: { 
+          // El título se establecerá dinámicamente en el componente
+          description: 'PROJECTS.SUBTITLE' 
+        }
+      }
+    ]
+  },
+  // --- NUEVO: Sistema de rutas para Blog (con detalle) ---
+  {
+    path: 'blog',
+    data: {
+      title: 'HEADER.BLOG',
+      description: 'BLOG.SUBTITLE'
+    },
+    children: [
+      {
+        path: '', // La ruta /:lang/blog (lista)
+        loadComponent: () => import('./features/blog/blog').then(c => c.Blog),
+      },
+      {
+        path: ':slug', // La ruta /:lang/blog/mi-post (detalle)
+        loadComponent: () => import('./features/blog-detail/blog-detail').then(c => c.BlogDetail),
+        data: {
+          // El título se establecerá dinámicamente en el componente
+          description: 'BLOG.SUBTITLE'
+        }
+      }
+    ]
   },
   {
     path: 'about-us',
     loadComponent: () => import('./features/about-us/about-us').then(c => c.AboutUs),
     data: { 
       title: 'HEADER.ABOUT',
-      description: 'ABOUT.SUBTITLE' // <-- AÑADIDO
+      description: 'ABOUT.SUBTITLE'
     }
   },
   {
@@ -51,7 +86,7 @@ const featureRoutes: Routes = [
     loadComponent: () => import('./features/contact/contact').then(c => c.Contact),
     data: { 
       title: 'HEADER.CONTACT',
-      description: 'CONTACT.SUBTITLE' // <-- AÑADIDO
+      description: 'CONTACT.SUBTITLE'
     }
   },
   {
@@ -59,7 +94,7 @@ const featureRoutes: Routes = [
     loadComponent: () => import('./features/legal/privacy/privacy').then(c => c.Privacy),
     data: { 
       title: 'LEGAL.PRIVACY_TITLE',
-      description: 'LEGAL.PRIVACY_INTRO' // <-- AÑADIDO
+      description: 'LEGAL.PRIVACY_INTRO'
     }
   },
   {
@@ -67,7 +102,7 @@ const featureRoutes: Routes = [
     loadComponent: () => import('./features/legal/terms/terms').then(c => c.Terms),
     data: { 
       title: 'LEGAL.TERMS_TITLE',
-      description: 'LEGAL.TERMS_SECTION_1_P1' // <-- AÑADIDO
+      description: 'LEGAL.TERMS_SECTION_1_P1'
     }
   },
   {
@@ -91,16 +126,14 @@ export const routes: Routes = [
     ]
   },
   {
-    path: '', // <-- Ruta raíz
-    // --- 2. AÑADIR EL COMPONENTE FANTASMA ---
+    path: '',
     component: RouteRedirectorComponent,
-    canActivate: [languageRedirectGuard], // El guard ahora se ejecutará
+    canActivate: [languageRedirectGuard],
     pathMatch: 'full'
   },
   {
-    path: '**', // <-- Ruta catch-all
-    // --- 3. AÑADIR EL COMPONENTE FANTASMA ---
+    path: '**',
     component: RouteRedirectorComponent, 
-    canActivate: [languageRedirectGuard] // El guard ahora se ejecutará
+    canActivate: [languageRedirectGuard]
   }
 ];

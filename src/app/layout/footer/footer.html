@@ -1,45 +1,67 @@
 <footer class="footer">
   <div class="footer__container container">
     
-     <div class="footer__col">
-      <a routerLink="/home" class="footer__logo">JSL Technology</a>
+    <div class="footer__col footer__col--main">
+      <a [routerLink]="[currentLang, 'home']" class="footer__logo">JSL Technology</a>
       <p class="footer__slogan">{{ 'FOOTER.SLOGAN' | translate }}</p>
-      <div class="footer__socials">
-        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
-          <lucide-icon name="Linkedin"></lucide-icon>
-        </a>
-        <a href="https://github.com" target="_blank" aria-label="GitHub">
-          <lucide-icon name="Github"></lucide-icon>
-        </a>
-      </div>
-    </div>
-
-    <div class="footer__col">
-      <h4 class="footer__col-title">{{ 'HEADER.PRODUCTS' | translate }}</h4>
-      <ul class="footer__links">
-        <li><a [routerLink]="[currentLang, 'products']">{{ 'PRODUCTS_LIST.ERP' | translate }}</a></li>
-        <li><a [routerLink]="[currentLang, 'products']">{{ 'PRODUCTS_LIST.POS' | translate }}</a></li>
-        <li><a [routerLink]="[currentLang, 'products']">{{ 'PRODUCTS_LIST.MOBILE' | translate }}</a></li>
+      
+      <h4 class="footer__col-title">{{ 'FOOTER.CONTACT_INFO' | translate }}</h4>
+      <ul class="footer__links footer__links--contact">
+        <li>
+          <a href="tel:+18091234567">
+            <lucide-icon name="Phone"></lucide-icon>
+            <span>+1 (809) 123-4567</span>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:info@jsl.technology">
+            <lucide-icon name="Mail"></lucide-icon>
+            <span>info@jsl.technology</span>
+          </a>
+        </li>
       </ul>
     </div>
 
     <div class="footer__col">
-      <h4 class="footer__col-title">{{ 'HEADER.SERVICES' | translate }}</h4>
+      <h4 class="footer__col-title">{{ 'FOOTER.SOLUTIONS' | translate }}</h4>
       <ul class="footer__links">
+        <li><a [routerLink]="[currentLang, 'products']">{{ 'PRODUCTS_LIST.ERP' | translate }}</a></li>
+        <li><a [routerLink]="[currentLang, 'products']">{{ 'PRODUCTS_LIST.POS' | translate }}</a></li>
         <li><a [routerLink]="[currentLang, 'solutions']">{{ 'SERVICES_LIST.WEB' | translate }}</a></li>
         <li><a [routerLink]="[currentLang, 'solutions']">{{ 'SERVICES_LIST.MOBILE' | translate }}</a></li>
-        <li><a [routerLink]="[currentLang, 'solutions']">{{ 'SERVICES_LIST.DESKTOP' | translate }}</a></li>
         <li><a [routerLink]="[currentLang, 'solutions']">{{ 'SERVICES_LIST.CLOUD' | translate }}</a></li>
       </ul>
     </div>
 
     <div class="footer__col">
-      <h4 class="footer__col-title">{{ 'FOOTER.COMPANY' | translate }}</h4>
+      <h4 class="footer__col-title">{{ 'FOOTER.RESOURCES' | translate }}</h4>
       <ul class="footer__links">
         <li><a [routerLink]="[currentLang, 'about-us']">{{ 'HEADER.ABOUT' | translate }}</a></li>
         <li><a [routerLink]="[currentLang, 'projects']">{{ 'HEADER.PROJECTS' | translate }}</a></li>
+        <li><a [routerLink]="[currentLang, 'blog']">{{ 'HEADER.BLOG' | translate }}</a></li>
         <li><a [routerLink]="[currentLang, 'contact']">{{ 'HEADER.CONTACT' | translate }}</a></li>
       </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 class="footer__col-title">{{ 'FOOTER.FOLLOW_US' | translate }}</h4>
+      <div class="footer__socials">
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social-link social-link--linkedin">
+          <lucide-icon name="Linkedin"></lucide-icon>
+        </a>
+        <a href="https://github.com/jsl-technology" target="_blank" aria-label="GitHub" class="social-link social-link--github">
+          <lucide-icon name="Github"></lucide-icon>
+        </a>
+        <a href="https://twitter.com/jsl_tech" target="_blank" aria-label="Twitter/X" class="social-link social-link--twitter">
+          <lucide-icon name="Twitter"></lucide-icon>
+        </a>
+        <a href="https://instagram.com/jsl_tech" target="_blank" aria-label="Instagram" class="social-link social-link--instagram">
+          <lucide-icon name="Instagram"></lucide-icon>
+        </a>
+        <a href="https://facebook.com/jsl_tech" target="_blank" aria-label="Facebook" class="social-link social-link--facebook">
+          <lucide-icon name="Facebook"></lucide-icon>
+        </a>
+      </div>
     </div>
 
   </div>

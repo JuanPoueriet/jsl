@@ -1,15 +1,15 @@
 <div class="page-container container">
-  <h1 class="page-title">{{ 'PROJECTS.TITLE' | translate }}</h1>
-  <p class="page-subtitle">{{ 'PROJECTS.SUBTITLE' | translate }}</p>
+  <h1 class="page-title" jslAnimateOnScroll>{{ 'PROJECTS.TITLE' | translate }}</h1>
+  <p class="page-subtitle" jslAnimateOnScroll>{{ 'PROJECTS.SUBTITLE' | translate }}</p>
 
-  <!-- Grid de Proyectos -->
   <div class="projects-grid">
     <jsl-card 
       *ngFor="let project of projects"
       [imageUrl]="project.imageUrl"
       [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
       [description]="'PROJECTS.' + project.key + '_DESC' | translate"
-      [link]="project.link">
+      [link]="['/', currentLang, 'projects', project.slug]"
+      jslAnimateOnScroll>
     </jsl-card>
   </div>
 </div>

@@ -4,6 +4,7 @@
     "SERVICES": "Solutions",
     "PRODUCTS": "Products",
     "PROJECTS": "Case Studies",
+    "BLOG": "Blog",
     "ABOUT": "About Us",
     "CONTACT": "Contact"
   },
@@ -22,6 +23,12 @@
   "FOOTER": {
     "SLOGAN": "Software solutions that power tomorrow's leaders.",
     "COMPANY": "Company",
+    "SOLUTIONS": "Solutions",
+    "RESOURCES": "Resources",
+    "CONTACT_INFO": "Contact Info",
+    "FOLLOW_US": "Follow Us",
+    "PHONE": "Phone",
+    "EMAIL": "Email",
     "COPYRIGHT": "All rights reserved."
   },
   "PRODUCTS_LIST": {
@@ -57,7 +64,17 @@
     "WELCOME_EYEBROW": "About JSL Technology",
     "WELCOME_TITLE": "Crafting Digital Excellence",
     "WELCOME_SUBTITLE": "Founded in 2023 in the Dominican Republic, JSL Technology transforms bold ideas into digital realities. We are architects of custom solutions and innovators of our own products, committed to excellence and the future of technology.",
-    "LOGOS_TITLE": "Companies that trust us to build the future",
+    "TESTIMONIALS_EYEBROW": "Client Voices",
+    "TESTIMONIALS_TITLE": "What They Say About Us",
+    "TESTIMONIAL_1_TEXT": "JSL Technology not only delivered the project on time, but their focus on scalable architecture saved us thousands in infrastructure costs. Their team is world-class.",
+    "TESTIMONIAL_1_NAME": "Elena Méndez",
+    "TESTIMONIAL_1_ROLE": "CTO, LogiTech Global",
+    "TESTIMONIAL_2_TEXT": "The JSL-POS transformed our retail operations. It's fast, intuitive, and the support has been impeccable. I 100% recommend their products.",
+    "TESTIMONIAL_2_NAME": "Carlos Herrera",
+    "TESTIMONIAL_2_ROLE": "Owner, Sol Retail Chain",
+    "TESTIMONIAL_3_TEXT": "The mobile application they developed exceeded our expectations. The JSL team's commitment to quality and user experience is evident on every screen.",
+    "TESTIMONIAL_3_NAME": "Sofía Núñez",
+    "TESTIMONIAL_3_ROLE": "Product Manager, AppMóvil",
     "SERVICES_EYEBROW": "Our Expertise",
     "SERVICES_TITLE": "Your All-In-One Tech Partner",
     "SERVICES_SUBTITLE": "We offer a full spectrum of development services to elevate your digital presence, from native mobile apps to robust desktop software.",
@@ -113,7 +130,10 @@
   },
   "COMMON": {
     "READ_MORE": "Read More",
-    "DEFAULT_DESCRIPTION": "JSL Technology: Custom software solutions, ERP, POS, and mobile development to power your business."
+    "DEFAULT_DESCRIPTION": "JSL Technology: Custom software solutions, ERP, POS, and mobile development to power your business.",
+    "BREADCRUMB_HOME": "Home",
+    "AUTHOR": "Author",
+    "PUBLISHED_DATE": "Published on"
   },
   "SOLUTIONS": {
     "TITLE": "Custom Software Solutions",
@@ -142,10 +162,22 @@
     "SUBTITLE": "We don't just build software; we build solutions that deliver tangible results. Explore how we've helped industry leaders digitally transform.",
     "CASE_ERP_TITLE": "ERP Implementation for Logistics",
     "CASE_ERP_DESC": "Complete supply chain optimization for a logistics client, reducing operational costs by 30% using our JSL-ERP.",
+    "CASE_ERP_DETAIL_CHALLENGE": "The client, a mid-sized logistics company, faced significant challenges with their outdated management system. Manual processes, lack of real-time inventory visibility, and billing errors were stifling their growth.",
+    "CASE_ERP_DETAIL_SOLUTION": "JSL Technology implemented a customized version of JSL-ERP. The project included data migration, integration with mobile scanning devices, and training for 60 employees. The new platform unified warehouse management, transportation, and accounting.",
+    "CASE_ERP_DETAIL_RESULT": "Within the first six months, the client achieved a 30% reduction in operational costs due to route optimization and error reduction. Inventory visibility reached 99.8%, improving end-customer satisfaction.",
     "CASE_ECOMMERCE_TITLE": "B2B E-Commerce Platform",
-    "CASE_ECOMMERCE_DESC": "Development of a custom B2B e-commerce solution, handling thousands of SKUs and complex transactions for a major distributor.",
+    "CASE_ECOMMERCE_DESC": "Development of a custom B2B e-commerce solution, handling thousands of SKUs and complex transactions for a distributor.",
+    "CASE_ECOMMERCE_DETAIL_CHALLENGE": "A leading industrial components distributor needed a B2B platform that could handle volume-based pricing, customer accounts with multiple authorization levels, and a catalog of over 50,000 SKUs.",
+    "CASE_ECOMMERCE_DETAIL_SOLUTION": "We built a headless web platform using Angular and a custom API. The solution included a high-speed search indexing system, direct integration with their existing ERP (for pricing and inventory), and an admin dashboard to manage corporate accounts.",
+    "CASE_ECOMMERCE_DETAIL_RESULT": "The new platform handled a 200% increase in online orders within the first year. Order processing time was reduced from 15 minutes to under 1 minute, and B2B sales increased by 45%.",
     "CASE_MOBILE_APP_TITLE": "Fleet Management Mobile App",
-    "CASE_MOBILE_APP_DESC": "Creation of a native mobile app for real-time fleet tracking and management, improving efficiency by 40%."
+    "CASE_MOBILE_APP_DESC": "Creation of a native mobile app for real-time fleet tracking and management, improving efficiency by 40%.",
+    "CASE_MOBILE_APP_DETAIL_CHALLENGE": "A regional transport company lacked real-time visibility of its 150-truck fleet. Dispatchers relied on phone calls, leading to route inefficiencies and high fuel costs.",
+    "CASE_MOBILE_APP_DETAIL_SOLUTION": "We developed native iOS and Android apps for drivers and a web dashboard for dispatchers. The apps use geolocation for live tracking, route optimization, and digitization of delivery orders.",
+    "CASE_MOBILE_APP_DETAIL_RESULT": "Fleet efficiency improved by 40%. Fuel costs were reduced by 18% thanks to route optimization. Customer service response time improved drastically with the ability to track deliveries in real-time.",
+    "DETAIL_CHALLENGE_TITLE": "The Challenge",
+    "DETAIL_SOLUTION_TITLE": "Our Solution",
+    "DETAIL_RESULT_TITLE": "The Result"
   },
   "ABOUT": {
     "TITLE": "About JSL Technology",
@@ -159,7 +191,31 @@
     "VISION_TITLE": "Our Vision",
     "VISION_DESC": "To be the leading software engineering and ERP products company in the region, recognized for our excellence, innovation, and commitment to client success.",
     "VALUES_TITLE": "Our Values",
-    "VALUES_DESC": "Integrity, Innovation, Quality, Customer Commitment, and Collaboration. These pillars guide every line of code we write and every project we undertake."
+    "VALUES_DESC": "Integrity, Innovation, Quality, Customer Commitment, and Collaboration. These pillars guide every line of code we write and every project we undertake.",
+    "TEAM_EYEBROW": "The Team",
+    "TEAM_TITLE": "The Architects of Your Success",
+    "TEAM_SUBTITLE": "Meet some of the key members of our team who combine creativity and technical expertise to bring your projects to life.",
+    "TEAM_MEMBER_1_NAME": "Javier S. Liranzo",
+    "TEAM_MEMBER_1_ROLE": "Founder & Chief Architect",
+    "TEAM_MEMBER_2_NAME": "Laura Fernández",
+    "TEAM_MEMBER_2_ROLE": "Product & UX Director",
+    "TEAM_MEMBER_3_NAME": "Marcos Reyes",
+    "TEAM_MEMBER_3_ROLE": "Principal Cloud Engineer",
+    "TEAM_MEMBER_4_NAME": "Daniel Gómez",
+    "TEAM_MEMBER_4_ROLE": "Mobile Development Lead"
+  },
+  "BLOG": {
+    "TITLE": "JSL Technology Blog",
+    "SUBTITLE": "Insights, tutorials, and news from our engineering team on the world of software development, cloud, and technology.",
+    "POST_1_TITLE": "The Future of Angular SSR: Why It's Faster Than Ever",
+    "POST_1_EXCERPT": "Angular 17+ has redefined Server-Side Rendering. We analyze the changes in hydration and how it's beating other frameworks in performance.",
+    "POST_1_CONTENT": "<p>Angular has come a long way. With the introduction of non-destructive hydration in Angular 17, Server-Side Rendering (SSR) performance has taken a quantum leap. In this article, we break down what this means for developers and why JSL Technology is betting heavily on this tech for our clients.</p><p>Hydration is the process of 'waking up' a server-rendered application on the client-side. Historically, Angular would 'wipe' and re-render the DOM, a costly process. Now, it 'walks' the existing DOM and simply attaches event listeners, resulting in an incredibly fast Time to Interactive (TTI).</p><h3>Key Benefits</h3><ul><li><strong>Better FCP and LCP:</strong> Google's Core Web Vitals love this.</li><li><strong>Improved SEO:</strong> Crawlers get full content instantly.</li><li><strong>Seamless User Experience:</strong> No more 'blinking' or 'flashing' on load.</li></ul>",
+    "POST_2_TITLE": "UX vs. UI: Why Confusing Them Is Costing Your Business Money",
+    "POST_2_EXCERPT": "Many people use UI (User Interface) and UX (User Experience) interchangeably. This is a costly mistake. We explain the crucial difference.",
+    "POST_2_CONTENT": "<p>In the world of software development, two terms constantly buzz around: UI and UX. They are often grouped together, but they are not the same. Confusing them can lead to products that look beautiful but are useless, or are functional but frustrating.</p><h3>What is UI (User Interface)?</h3><p>UI is the 'look and feel'. It's the visual part. It's about the buttons, the colors, the typography, and the layout. Good UI design is attractive, consistent, and aesthetic. It's the 'canvas' and the 'paint'.</p><h3>What is UX (User Experience)?</h3><p>UX is the 'feel' and 'efficiency'. It's the design process that ensures a product is logical, easy to use, and solves a real problem. It's the 'architecture' and 'engineering' behind the paint. At JSL, our 'Discovery & Strategy' process focuses heavily on UX before a single line of code is written.</p>",
+    "POST_3_TITLE": "5 Cloud Architecture Principles for True Scalability",
+    "POST_3_EXCERPT": "Your app works fine with 100 users, but what about 100,000? True scalability isn't magic, it's good architecture. Here are our 5 pillars.",
+    "POST_3_CONTENT": "<p>At JSL Technology, we don't just build apps; we build systems that grow. Cloud architecture is the foundation of any successful modern digital product. Here are the 5 principles we apply:</p><ol><li><strong>Design for Failure:</strong> Components will fail. Your system must be resilient and recover automatically.</li><li><strong>Decouple Everything:</strong> Use microservices, message queues (like SQS or RabbitMQ), and APIs. One component should not bring down another.</li><li><strong>Go Horizontal (Scale-Out):</strong> Don't make your server 'bigger' (Vertical); make more 'small' servers (Horizontal). Use load balancers and auto-scaling.</li><li><strong>Store State Externally:</strong> Your application instances should be 'stateless'. Store sessions, caches, and files in external services (like Redis, S3).</li><li><strong>Automation:</strong> From deployment (CI/CD) to scaling. Manual intervention is the enemy of scalability.</li></ol>"
   },
   "LEGAL": {
     "PRIVACY_TITLE": "Privacy Policy",

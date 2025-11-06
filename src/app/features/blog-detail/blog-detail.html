@@ -1,0 +1,42 @@
+<ng-container *ngIf="post; else notFound">
+  
+  <header class="detail-page-header">
+    <div class="container">
+      <div class="detail-page-breadcrumb" jslAnimateOnScroll>
+        <a [routerLink]="['/', currentLang, 'home']">{{ 'COMMON.BREADCRUMB_HOME' | translate }}</a>
+        <lucide-icon name="ChevronRight"></lucide-icon>
+        <a [routerLink]="['/', currentLang, 'blog']">{{ 'HEADER.BLOG' | translate }}</a>
+        <lucide-icon name="ChevronRight"></lucide-icon>
+        </div>
+      <h1 class="detail-page-title" jslAnimateOnScroll>{{ 'BLOG.' + post.key + '_TITLE' | translate }}</h1>
+      
+      <div class="detail-page-meta" jslAnimateOnScroll>
+        <div class="meta-item">
+          <lucide-icon name="User"></lucide-icon>
+          <span>{{ 'COMMON.AUTHOR' | translate }}: {{ post.authorKey | translate }}</span>
+        </div>
+        <div class="meta-item">
+          <lucide-icon name="Calendar"></lucide-icon>
+          <span>{{ 'COMMON.PUBLISHED_DATE' | translate }}: {{ post.date | date:'longDate' }}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <img [src]="post.imageUrl" [alt]="'BLOG.' + post.key + '_TITLE' | translate" class="detail-page-banner" jslAnimateOnScroll>
+
+    <main class="detail-page-content blog-content" 
+          jslAnimateOnScroll
+          [innerHTML]="'BLOG.' + post.key + '_CONTENT' | translate">
+      
+      </main>
+  </div>
+</ng-container>
+
+<ng-template #notFound>
+  <div class="page-container container">
+    <h1 class="page-title">Post no encontrado</h1>
+    <p class="page-subtitle">El artículo que buscas no existe. <a [routerLink]="['/', currentLang, 'blog']">Volver al Blog</a>.</p>
+  </div>
+</ng-template>

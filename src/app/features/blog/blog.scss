@@ -1,0 +1,25 @@
+/* src/app/features/blog/blog.scss */
+
+.page-title {
+  text-align: center;
+}
+.page-subtitle {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+}
+
+.blog-grid {
+  display: grid;
+  // Mismo grid que los proyectos
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

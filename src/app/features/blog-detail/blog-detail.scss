@@ -1,0 +1,55 @@
+/* src/app/features/blog-detail/blog-detail.scss */
+/* Estilos específicos para el contenido del blog */
+
+.blog-content {
+  // Estos estilos se aplican al contenido inyectado por [innerHTML]
+  // gracias a ViewEncapsulation.None
+  
+  h2, h3 {
+    color: var(--text-primary);
+  }
+  
+  p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.9;
+  }
+  
+  ul, ol {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    
+    li {
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+    }
+  }
+  
+  // Estilo moderno para listas
+  li::marker {
+    color: var(--accent-primary);
+    font-weight: 600;
+  }
+  
+  // Otros elementos
+  a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+    font-weight: 500;
+    
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+  
+  code {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-primary);
+  }
+}

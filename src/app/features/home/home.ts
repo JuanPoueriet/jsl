@@ -1,15 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, Inject } from '@angular/core'; // 1. Importar Inject
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core'; // 2. Importar TranslateService
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterLink } from '@angular/router';
 import { Card } from '../../shared/components/card/card';
 import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
 
+// Importar datos
+import { PROJECTS, TESTIMONIALS } from '../../core/data/mock-data';
+
 // Importar y registrar Swiper correctamente
 import { register } from 'swiper/element/bundle';
 import { SwiperOptions } from 'swiper/types';
-import { EffectFade, Autoplay, Pagination } from 'swiper/modules';
+import { EffectFade, Autoplay, Pagination, EffectCoverflow } from 'swiper/modules'; // Añadir EffectCoverflow
 
 // Registrar los elementos de Swiper
 register();
@@ -31,7 +34,8 @@ register();
 })
 export class Home implements OnInit {
 
-  public swiperConfig: SwiperOptions = {
+  // Configuración del Swiper del Hero
+  public heroSwiperConfig: SwiperOptions = {
     modules: [EffectFade, Autoplay, Pagination],
     effect: 'fade',
     fadeEffect: {
@@ -47,8 +51,44 @@ export class Home implements OnInit {
     loop: true,
   };
 
-  // 3. Propiedad para el idioma actual
+  // --- NUEVO: Configuración del Swiper de Testimonios ---
+  public testimonialSwiperConfig: SwiperOptions = {
+    modules: [Pagination, Autoplay, EffectCoverflow],
+    effect: 'coverflow',
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto', // Clave para que funcione bien en responsive
+    loop: true,
+    autoplay: {
+      delay: 7000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      clickable: true,
+    },
+    breakpoints: {
+      // En pantallas grandes, mostrar 3 slides (1 central, 2 laterales)
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      }
+    }
+  };
+
   public currentLang: string;
+
+  // Cargar datos desde el archivo mock
+  public testimonials = TESTIMONIALS;
+  public projects = PROJECTS;
 
   // Datos para la sección de soluciones destacadas
   solutions = [
@@ -86,22 +126,6 @@ export class Home implements OnInit {
     }
   ];
 
-  // Datos para la sección de proyectos destacados
-  projects = [
-    {
-      key: 'CASE_ERP',
-      imageUrl: 'https://images.unsplash.com/photo-1556761175-577380e25f2b?fit=crop&w=600&q=80',
-    },
-    {
-      key: 'CASE_ECOMMERCE',
-      imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?fit=crop&w=600&q=80',
-    },
-    {
-      key: 'CASE_MOBILE_APP',
-      imageUrl: 'https://images.unsplash.com/photo-1607936834114-0a300c3f0b24?fit=crop&w=600&q=80',
-    }
-  ];
-
   // Datos para la sección de proceso
   processSteps = [
     {
@@ -122,18 +146,20 @@ export class Home implements OnInit {
     }
   ];
 
-  // 4. Inyectar TranslateService
   constructor(
     @Inject(TranslateService) private translate: TranslateService
   ) {
-    // 5. Inicializar el idioma actual
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
   }
 
   ngOnInit() {
-    // 6. Escuchar cambios de idioma
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
     });
+  }
+
+  // --- NUEVO: Helper para generar un array de estrellas ---
+  getStars(count: number): any[] {
+    return new Array(count);
   }
 }

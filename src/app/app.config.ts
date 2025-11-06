@@ -26,7 +26,7 @@ import {
   ShoppingCart,
   ArrowRight,
   Mail,
-  Phone, // Dejado por si se usa en 'top-bar.ts' (aunque ahora lo quitamos)
+  Phone,
   MapPin,
   Target,
   Eye,
@@ -34,9 +34,17 @@ import {
   ChevronDown,
   Compass,
   TrendingUp,
-  Globe, // <-- AÑADIDO
-  Languages
-  // Briefcase, FileText, Building - Eliminados
+  Globe,
+  Languages,
+  // --- AÑADIDOS ---
+  Twitter,      // Para X/Twitter
+  Facebook,
+  Instagram,
+  Star,         // Para testimonios
+  ChevronRight, // Para breadcrumbs
+  User,         // Para autor del blog
+  Calendar,     // Para fecha del blog
+  // --- FIN AÑADIDOS ---
 } from 'lucide-angular';
 
 import { routes } from './app.routes';
@@ -81,7 +89,16 @@ export const appConfig: ApplicationConfig = {
         Compass,
         TrendingUp,
         Globe,
-        Languages
+        Languages,
+        // --- AÑADIDOS ---
+        Twitter,
+        Facebook,
+        Instagram,
+        Star,
+        ChevronRight,
+        User,
+        Calendar,
+        // --- FIN AÑADIDOS ---
       })
     ),
   ],

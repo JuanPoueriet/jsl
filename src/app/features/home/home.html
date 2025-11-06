@@ -1,5 +1,5 @@
 <section class="hero-slider">
-  <swiper-container [config]="swiperConfig" init="true">
+  <swiper-container [config]="heroSwiperConfig" init="true">
     
     <swiper-slide class="hero-slide" style="background-image: url('../../../assets/imgs/img-1.jpg');">
       <div class="hero-slide__overlay"></div>
@@ -62,28 +62,30 @@
   </div>
 </section>
 
-<section class="client-logos">
-  <div class="container">
-    <h3 class="client-logos__title" jslAnimateOnScroll>{{ 'HOME.LOGOS_TITLE' | translate }}</h3>
-    <div class="client-logos__ticker">
-      <div class="client-logos__track">
-        <img src="https://logodownload.org/wp-content/uploads/2014/09/google-logo-1-1.png" alt="Google">
-        <img src="https://logodownload.org/wp-content/uploads/2019/08/slack-logo.png" alt="Slack">
-        <img src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-1-2.png" alt="Facebook">
-        <img src="https://logodownload.org/wp-content/uploads/2019/08/notion-logo-1-2.png" alt="Notion">
-        <img src="https://logodownload.org/wp-content/uploads/2017/06/stripe-logo.png" alt="Stripe">
-        <img src="https://logodownload.org/wp-content/uploads/2015/05/uber-logo-7.png" alt="Uber">
-        <img src="https://logodownload.org/wp-content/uploads/2014/09/google-logo-1-1.png" alt="Google">
-        <img src="https://logodownload.org/wp-content/uploads/2019/08/slack-logo.png" alt="Slack">
-        <img src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-1-2.png" alt="Facebook">
-        <img src="https://logodownload.org/wp-content/uploads/2019/08/notion-logo-1-1.png" alt="Notion">
-        <img src="https://logodownload.org/wp-content/uploads/2017/06/stripe-logo.png" alt="Stripe">
-        <img src="https://logodownload.org/wp-content/uploads/2015/05/uber-logo-7.png" alt="Uber">
-      </div>
+<section class="testimonials-section">
+  <div class="container" jslAnimateOnScroll>
+    <div class="testimonials-header">
+      <span class="section-eyebrow">{{ 'HOME.TESTIMONIALS_EYEBROW' | translate }}</span>
+      <h2 class="section-title">{{ 'HOME.TESTIMONIALS_TITLE' | translate }}</h2>
     </div>
+
+    <swiper-container [config]="testimonialSwiperConfig" init="true" class="testimonial-slider">
+      <swiper-slide *ngFor="let testimonial of testimonials" class="testimonial-card">
+        <div class="testimonial-card__stars">
+          <lucide-icon name="Star" *ngFor="let star of getStars(5)"></lucide-icon>
+        </div>
+        <p class="testimonial-card__text">"{{ testimonial.textKey | translate }}"</p>
+        <div class="testimonial-card__author">
+          <img [src]="testimonial.imageUrl" [alt]="testimonial.nameKey | translate">
+          <div class="testimonial-card__author-info">
+            <span class="name">{{ testimonial.nameKey | translate }}</span>
+            <span class="role">{{ testimonial.roleKey | translate }}</span>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
   </div>
 </section>
-
 <section class="featured-services container">
   <div class="featured-services__header" jslAnimateOnScroll>
     <span class="section-eyebrow">{{ 'HOME.SERVICES_EYEBROW' | translate }}</span>
@@ -132,7 +134,7 @@
       [imageUrl]="project.imageUrl"
       [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
       [description]="'PROJECTS.' + project.key + '_DESC' | translate"
-      [link]="['/', currentLang, 'projects']"
+      [link]="['/', currentLang, 'projects', project.slug]"
       jslAnimateOnScroll>
     </jsl-card>
   </div>

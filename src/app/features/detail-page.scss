@@ -1,0 +1,178 @@
+/* src/app/features/detail-page.scss */
+/* Estilos compartidos para Blog-Detail y Project-Detail */
+
+.detail-page-header {
+  text-align: center;
+  padding: 6rem 0 4rem 0;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.detail-page-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+
+  a {
+    color: var(--text-secondary);
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  lucide-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.detail-page-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.detail-page-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  color: var(--text-secondary);
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    
+    lucide-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--accent-primary);
+    }
+  }
+}
+
+.detail-page-banner {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  margin-top: -80px; // Efecto "pull-up"
+  z-index: 10;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 768px) {
+    height: 250px;
+    margin-top: -40px;
+  }
+}
+
+.detail-page-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 800px;
+  margin: 4rem auto 0 auto;
+  
+  // --- Estilos de contenido (para project-detail y blog-detail) ---
+  // Estos estilos se aplican al [innerHTML]
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 2rem 0 1rem 0;
+  }
+
+  p, li {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+  
+  ul, ol {
+    padding-left: 2rem;
+  }
+  
+  li {
+    margin-bottom: 1rem;
+  }
+}
+
+// Estilos específicos para el detalle del proyecto
+.project-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr; // Sidebar | Contenido
+  gap: 4rem;
+  max-width: 1200px; // Más ancho
+  margin: 4rem auto 0 auto;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-detail-sidebar {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  align-self: start; // Se pega arriba
+  position: sticky;
+  top: 120px; // Debajo del header
+  
+  @media (max-width: 992px) {
+    position: static;
+  }
+
+  .sidebar-block {
+    margin-bottom: 2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 1rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    p, li {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+  }
+}

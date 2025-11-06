@@ -42,6 +42,14 @@
       </li>
       <li>
         <a
+          [routerLink]="[currentLang, 'blog']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.BLOG' | translate }}</a
+        >
+      </li>
+      <li>
+        <a
           [routerLink]="[currentLang, 'about-us']"
           routerLinkActive="active"
           (click)="closeMobileMenu()"
@@ -103,6 +111,14 @@
     </li>
     <li>
       <a
+        [routerLink]="[currentLang, 'blog']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'HEADER.BLOG' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
         [routerLink]="[currentLang, 'about-us']"
         routerLinkActive="active"
         (click)="closeMobileMenu()"
@@ -118,6 +134,5 @@
       >
     </li>
   </ul>
-
   }
 </header>

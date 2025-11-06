@@ -6,6 +6,8 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+// --- AÑADIDO: Importar los datos para el sitemap dinámico ---
+import { PROJECTS, BLOG_POSTS } from './app/core/data/mock-data';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -22,13 +24,13 @@ app.get('/', (req, res) => {
 
 // --- INICIO: Funciones para generar el Sitemap ---
 
-// Lista de rutas públicas (basada en tu app.routes.ts)
-// Usamos '' para 'home' porque tu seo.ts la trata como la raíz
-const publicRoutes = [
+// Lista de rutas públicas estáticas
+const staticRoutes = [
   '', // Para home
   'solutions',
   'products',
-  'projects',
+  'projects', // Página índice de proyectos
+  'blog',     // Página índice de blog
   'about-us',
   'contact',
   'privacy-policy',
@@ -37,7 +39,7 @@ const publicRoutes = [
 
 const domain = 'https://www.jsl.technology';
 const supportedLangs = ['es', 'en'];
-const defaultLang = 'es'; // Tu default según seo.ts
+const defaultLang = 'es';
 
 /**
  * Genera el XML del sitemap dinámicamente
@@ -46,30 +48,51 @@ function generateSitemap(): string {
   let xml = '<?xml version="1.0" encoding="UTF-8"?>';
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">';
 
-  // Por cada ruta, genera una entrada para cada idioma
-  publicRoutes.forEach(route => {
-    supportedLangs.forEach(lang => {
-      const url = `${domain}/${lang}${route ? '/' + route : ''}`;
+  // 1. Añadir rutas estáticas
+  staticRoutes.forEach(route => {
+    xml += generateUrlEntry(route);
+  });
 
-      xml += '<url>';
-      xml += `<loc>${url}</loc>`;
-
-      // Añadir las alternativas hreflang
-      supportedLangs.forEach(altLang => {
-        const altUrl = `${domain}/${altLang}${route ? '/' + route : ''}`;
-        xml += `<xhtml:link rel="alternate" hreflang="${altLang}" href="${altUrl}" />`;
-      });
-
-      // Añadir el x-default
-      const defaultUrl = `${domain}/${defaultLang}${route ? '/' + route : ''}`;
-      xml += `<xhtml:link rel="alternate" hreflang="x-default" href="${defaultUrl}" />`;
-
-      xml += '</url>';
-    });
+  // 2. Añadir rutas dinámicas de Proyectos
+  PROJECTS.forEach(project => {
+    xml += generateUrlEntry(`projects/${project.slug}`);
+  });
+  
+  // 3. Añadir rutas dinámicas de Blog
+  BLOG_POSTS.forEach(post => {
+    xml += generateUrlEntry(`blog/${post.slug}`);
   });
 
   xml += '</urlset>';
   return xml;
+}
+
+/**
+ * Helper para generar una entrada <url> con sus <xhtml:link>
+ */
+function generateUrlEntry(route: string): string {
+  let entryXml = '';
+  
+  supportedLangs.forEach(lang => {
+    const url = `${domain}/${lang}${route ? '/' + route : ''}`;
+
+    entryXml += '<url>';
+    entryXml += `<loc>${url}</loc>`;
+
+    // Añadir las alternativas hreflang
+    supportedLangs.forEach(altLang => {
+      const altUrl = `${domain}/${altLang}${route ? '/' + route : ''}`;
+      entryXml += `<xhtml:link rel="alternate" hreflang="${altLang}" href="${altUrl}" />`;
+    });
+
+    // Añadir el x-default
+    const defaultUrl = `${domain}/${defaultLang}${route ? '/' + route : ''}`;
+    entryXml += `<xhtml:link rel="alternate" hreflang="x-default" href="${defaultUrl}" />`;
+
+    entryXml += '</url>';
+  });
+  
+  return entryXml;
 }
 // --- FIN: Funciones para generar el Sitemap ---
 
@@ -87,7 +110,7 @@ function generateSitemap(): string {
  * Example:
  * ```ts
  * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
+ * // Handle API request
  * });
  * ```
  */

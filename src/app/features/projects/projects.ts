@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core'; // Importar OnInit e Inject
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-// Importamos nuestro Card reutilizable
+import { TranslateModule, TranslateService } from '@ngx-translate/core'; // Importar TranslateService
 import { Card } from '../../shared/components/card/card';
+import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll'; // Importar
+import { PROJECTS } from '../../core/data/mock-data'; // Importar datos
 
 @Component({
   selector: 'jsl-projects',
@@ -10,29 +11,28 @@ import { Card } from '../../shared/components/card/card';
   imports: [
     CommonModule,
     TranslateModule,
-    Card // Lo añadimos a los imports
+    Card,
+    AnimateOnScroll // Añadir
   ],
   templateUrl: './projects.html',
   styleUrl: './projects.scss'
 })
-export class Projects {
+export class Projects implements OnInit {
 
-  // Definimos la lista de nuestros casos de éxito
- projects = [
-    {
-      key: 'CASE_ERP',
-      imageUrl: 'https://images.unsplash.com/photo-1556761175-577380e25f2b?fit=crop&w=600&q=80',
-      link: '/projects' // Link a la misma página
-    },
-    {
-      key: 'CASE_ECOMMERCE',
-      imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?fit=crop&w=600&q=80',
-      link: '/projects' // Link a la misma página
-    },
-    {
-      key: 'CASE_MOBILE_APP',
-      imageUrl: 'https://images.unsplash.com/photo-1607936834114-0a300c3f0b24?fit=crop&w=600&q=80',
-      link: '/projects' // Link a la misma página
-    }
-  ];
+  public currentLang: string;
+  
+  // Cargar datos de proyectos desde el archivo mock
+  projects = PROJECTS;
+
+  constructor(
+    @Inject(TranslateService) private translate: TranslateService
+  ) {
+    this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
+  }
+
+  ngOnInit() {
+    this.translate.onLangChange.subscribe((event) => {
+      this.currentLang = event.lang;
+    });
+  }
 }

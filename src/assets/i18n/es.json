@@ -4,6 +4,7 @@
     "SERVICES": "Soluciones",
     "PRODUCTS": "Productos",
     "PROJECTS": "Casos de Éxito",
+    "BLOG": "Blog",
     "ABOUT": "Nosotros",
     "CONTACT": "Contacto"
   },
@@ -22,6 +23,12 @@
   "FOOTER": {
     "SLOGAN": "Soluciones de software que impulsan a los líderes del mañana.",
     "COMPANY": "Empresa",
+    "SOLUTIONS": "Soluciones",
+    "RESOURCES": "Recursos",
+    "CONTACT_INFO": "Información de Contacto",
+    "FOLLOW_US": "Síguenos",
+    "PHONE": "Teléfono",
+    "EMAIL": "Correo Electrónico",
     "COPYRIGHT": "Todos los derechos reservados."
   },
   "PRODUCTS_LIST": {
@@ -57,7 +64,17 @@
     "WELCOME_EYEBROW": "Sobre JSL Technology",
     "WELCOME_TITLE": "Creando Excelencia Digital",
     "WELCOME_SUBTITLE": "Fundada en 2023 en la República Dominicana, JSL Technology transforma ideas audaces en realidades digitales. Somos arquitectos de soluciones a medida e innovadores de nuestros propios productos, comprometidos con la excelencia y el futuro de la tecnología.",
-    "LOGOS_TITLE": "Empresas que confían en nosotros para construir el futuro",
+    "TESTIMONIALS_EYEBROW": "Voces de Clientes",
+    "TESTIMONIALS_TITLE": "Lo que dicen de nosotros",
+    "TESTIMONIAL_1_TEXT": "JSL Technology no solo entregó el proyecto a tiempo, sino que su enfoque en la arquitectura escalable nos ahorró miles en costos de infraestructura. Su equipo es de clase mundial.",
+    "TESTIMONIAL_1_NAME": "Elena Méndez",
+    "TESTIMONIAL_1_ROLE": "CTO, LogiTech Global",
+    "TESTIMONIAL_2_TEXT": "El JSL-POS transformó nuestras operaciones de retail. Es rápido, intuitivo y el soporte ha sido impecable. Recomiendo 100% sus productos.",
+    "TESTIMONIAL_2_NAME": "Carlos Herrera",
+    "TESTIMONIAL_2_ROLE": "Dueño, Cadena de Tiendas Sol",
+    "TESTIMONIAL_3_TEXT": "La aplicación móvil que desarrollaron superó nuestras expectativas. El compromiso del equipo de JSL con la calidad y la experiencia de usuario es evidente en cada pantalla.",
+    "TESTIMONIAL_3_NAME": "Sofía Núñez",
+    "TESTIMONIAL_3_ROLE": "Gerente de Producto, AppMóvil",
     "SERVICES_EYEBROW": "Nuestra Experiencia",
     "SERVICES_TITLE": "Un Socio Tecnológico Todo en Uno",
     "SERVICES_SUBTITLE": "Ofrecemos un espectro completo de servicios de desarrollo para elevar su presencia digital, desde aplicaciones móviles nativas hasta software de escritorio robusto.",
@@ -113,7 +130,10 @@
   },
   "COMMON": {
     "READ_MORE": "Leer Más",
-    "DEFAULT_DESCRIPTION": "JSL Technology: Soluciones de software a medida, ERP, POS y desarrollo móvil para impulsar tu negocio."
+    "DEFAULT_DESCRIPTION": "JSL Technology: Soluciones de software a medida, ERP, POS y desarrollo móvil para impulsar tu negocio.",
+    "BREADCRUMB_HOME": "Inicio",
+    "AUTHOR": "Autor",
+    "PUBLISHED_DATE": "Publicado el"
   },
   "SOLUTIONS": {
     "TITLE": "Soluciones de Software a Medida",
@@ -142,10 +162,22 @@
     "SUBTITLE": "No solo creamos software, construimos soluciones que generan resultados tangibles. Explora cómo hemos ayudado a empresas líderes a transformarse digitalmente.",
     "CASE_ERP_TITLE": "Implementación de ERP para Logística",
     "CASE_ERP_DESC": "Optimización completa de la cadena de suministro para un cliente de logística, reduciendo costos operativos en un 30% con nuestro JSL-ERP.",
+    "CASE_ERP_DETAIL_CHALLENGE": "El cliente, una empresa de logística de tamaño mediano, enfrentaba desafíos significativos con su sistema de gestión obsoleto. Los procesos manuales, la falta de visibilidad del inventario en tiempo real y los errores en la facturación estaban frenando su crecimiento.",
+    "CASE_ERP_DETAIL_SOLUTION": "JSL Technology implementó una versión personalizada de JSL-ERP. El proyecto incluyó la migración de datos, la integración con dispositivos de escaneo móvil y la capacitación de 60 empleados. La nueva plataforma unificó la gestión de almacenes, el transporte y la contabilidad.",
+    "CASE_ERP_DETAIL_RESULT": "Dentro de los primeros seis meses, el cliente logró una reducción del 30% en costos operativos gracias a la optimización de rutas y la reducción de errores. La visibilidad del inventario alcanzó el 99.8%, mejorando la satisfacción del cliente final.",
     "CASE_ECOMMERCE_TITLE": "Plataforma E-Commerce B2B",
     "CASE_ECOMMERCE_DESC": "Desarrollo de una solución de comercio electrónico B2B a medida, manejando miles de SKUs y transacciones complejas para un distribuidor.",
+    "CASE_ECOMMERCE_DETAIL_CHALLENGE": "Un distribuidor líder de componentes industriales necesitaba una plataforma B2B que pudiera manejar precios por volumen, cuentas de clientes con múltiples niveles de autorización y un catálogo de más de 50,000 SKUs.",
+    "CASE_ECOMMERCE_DETAIL_SOLUTION": "Construimos una plataforma web headless utilizando Angular y una API personalizada. La solución incluyó un sistema de indexación de búsqueda de alta velocidad, integración directa con su ERP existente (para precios e inventario) y un panel de administración para gestionar cuentas corporativas.",
+    "CASE_ECOMMERCE_DETAIL_RESULT": "La nueva plataforma manejó un aumento del 200% en pedidos en línea durante el primer año. El tiempo de procesamiento de pedidos se redujo de 15 minutos a menos de 1 minuto, y las ventas B2B aumentaron en un 45%.",
     "CASE_MOBILE_APP_TITLE": "App Móvil de Gestión de Flota",
-    "CASE_MOBILE_APP_DESC": "Creación de una aplicación móvil nativa para el seguimiento y gestión de flotas en tiempo real, mejorando la eficiencia en un 40%."
+    "CASE_MOBILE_APP_DESC": "Creación de una aplicación móvil nativa para el seguimiento y gestión de flotas en tiempo real, mejorando la eficiencia en un 40%.",
+    "CASE_MOBILE_APP_DETAIL_CHALLENGE": "Una empresa de transporte regional carecía de visibilidad en tiempo real de su flota de 150 camiones. Los despachadores dependían de llamadas telefónicas, lo que resultaba en ineficiencias de ruta y altos costos de combustible.",
+    "CASE_MOBILE_APP_DETAIL_SOLUTION": "Desarrollamos aplicaciones nativas para iOS y Android para los conductores, y un panel de control web para los despachadores. Las aplicaciones utilizan geolocalización para el seguimiento en vivo, optimización de rutas y digitalización de las órdenes de entrega.",
+    "CASE_MOBILE_APP_DETAIL_RESULT": "La eficiencia de la flota mejoró en un 40%. Los costos de combustible se redujeron en un 18% gracias a la optimización de rutas. El tiempo de respuesta del servicio al cliente mejoró drásticamente con la capacidad de rastrear entregas en tiempo real.",
+    "DETAIL_CHALLENGE_TITLE": "El Desafío",
+    "DETAIL_SOLUTION_TITLE": "Nuestra Solución",
+    "DETAIL_RESULT_TITLE": "El Resultado"
   },
   "ABOUT": {
     "TITLE": "Sobre JSL Technology",
@@ -159,7 +191,31 @@
     "VISION_TITLE": "Nuestra Visión",
     "VISION_DESC": "Ser la empresa líder en ingeniería de software y productos ERP en la región, reconocida por nuestra excelencia, innovación y compromiso con el éxito del cliente.",
     "VALUES_TITLE": "Nuestros Valores",
-    "VALUES_DESC": "Integridad, Innovación, Calidad, Compromiso con el Cliente y Colaboración. Estos pilares guían cada línea de código que escribimos y cada proyecto que emprendemos."
+    "VALUES_DESC": "Integridad, Innovación, Calidad, Compromiso con el Cliente y Colaboración. Estos pilares guían cada línea de código que escribimos y cada proyecto que emprendemos.",
+    "TEAM_EYEBROW": "El Equipo",
+    "TEAM_TITLE": "Los Arquitectos de tu Éxito",
+    "TEAM_SUBTITLE": "Conoce a algunos de los miembros clave de nuestro equipo que combinan creatividad y experiencia técnica para hacer realidad tus proyectos.",
+    "TEAM_MEMBER_1_NAME": "Javier S. Liranzo",
+    "TEAM_MEMBER_1_ROLE": "Fundador & Arquitecto Jefe",
+    "TEAM_MEMBER_2_NAME": "Laura Fernández",
+    "TEAM_MEMBER_2_ROLE": "Directora de Producto & UX",
+    "TEAM_MEMBER_3_NAME": "Marcos Reyes",
+    "TEAM_MEMBER_3_ROLE": "Ingeniero Principal de Cloud",
+    "TEAM_MEMBER_4_NAME": "Daniel Gómez",
+    "TEAM_MEMBER_4_ROLE": "Líder de Desarrollo Móvil"
+  },
+  "BLOG": {
+    "TITLE": "Blog de JSL Technology",
+    "SUBTITLE": "Ideas, tutoriales y noticias de nuestro equipo de ingenieros sobre el mundo del desarrollo de software, la nube y la tecnología.",
+    "POST_1_TITLE": "El Futuro del SSR en Angular: Por Qué es Más Rápido que Nunca",
+    "POST_1_EXCERPT": "Angular 17+ ha redefinido el Server-Side Rendering. Analizamos los cambios en el 'hydration' y cómo está superando a otras 'frameworks' en rendimiento.",
+    "POST_1_CONTENT": "<p>Angular ha recorrido un largo camino. Con la introducción de la 'hydration' no destructiva en Angular 17, el rendimiento del Server-Side Rendering (SSR) ha dado un salto cuántico. En este artículo, desglosamos qué significa esto para los desarrolladores y por qué JSL Technology está apostando fuerte por esta tecnología para nuestros clientes.</p><p>La 'hydration' es el proceso de 'despertar' una aplicación renderizada en el servidor en el lado del cliente. Históricamente, Angular 'borraba' y volvía a renderizar el DOM, un proceso costoso. Ahora, 'camina' por el DOM existente y simplemente adjunta los 'listeners' de eventos, resultando en un 'Time to Interactive' (TTI) increíblemente rápido.</p><h3>Los Beneficios Clave</h3><ul><li><strong>Mejor FCP y LCP:</strong> Los 'Core Web Vitals' de Google aman esto.</li><li><strong>SEO Mejorado:</strong> Los 'crawlers' obtienen contenido completo al instante.</li><li><strong>Experiencia de Usuario Fluida:</strong> No más 'parpadeos' de carga.</li></ul>",
+    "POST_2_TITLE": "UX vs. UI: Por Qué Confundirlos le Cuesta Dinero a tu Empresa",
+    "POST_2_EXCERPT": "Mucha gente usa UI (Interfaz de Usuario) y UX (Experiencia de Usuario) indistintamente. Este es un error costoso. Te explicamos la diferencia crucial.",
+    "POST_2_CONTENT": "<p>En el mundo del desarrollo de software, dos términos resuenan constantemente: UI y UX. A menudo se agrupan, pero no son lo mismo. Confundirlos puede llevar a productos que se ven bonitos pero son inútiles, o funcionales pero frustrantes.</p><h3>¿Qué es UI (Interfaz de Usuario)?</h3><p>La UI es el 'look and feel'. Es la parte visual. Se trata de los botones, los colores, la tipografía y la disposición. Un buen diseño de UI es atractivo, coherente y estético. Es el 'lienzo' y la 'pintura'.</p><h3>¿Qué es UX (Experiencia de Usuario)?</h3><p>La UX es la 'sensación' y la 'eficiencia'. Es el proceso de diseño que asegura que el producto sea lógico, fácil de usar y resuelva un problema real. Es la 'arquitectura' y la 'ingeniería' detrás de la pintura. En JSL, nuestro proceso de 'Descubrimiento y Estrategia' se centra intensamente en la UX antes de escribir una sola línea de código.</p>",
+    "POST_3_TITLE": "5 Principios de Arquitectura Cloud para una Escalabilidad Real",
+    "POST_3_EXCERPT": "Tu aplicación funciona bien con 100 usuarios, ¿pero qué pasará con 100,000? La verdadera escalabilidad no es magia, es buena arquitectura. Aquí están nuestros 5 pilares.",
+    "POST_3_CONTENT": "<p>En JSL Technology, no solo construimos aplicaciones; construimos sistemas que crecen. La arquitectura en la nube es la base de cualquier producto digital moderno exitoso. Aquí están los 5 principios que aplicamos:</p><ol><li><strong>Diseñar para el Fracaso:</strong> Los componentes fallarán. Tu sistema debe ser resiliente y recuperarse automáticamente.</li><li><strong>Desacoplamiento Total:</strong> Usar microservicios, colas de mensajes (como SQS o RabbitMQ) y APIs. Un componente no debe 'derribar' a otro.</li><li><strong>Horizontalidad (Scale-Out):</strong> No hagas tu servidor más 'grande' (Vertical); haz más servidores 'pequeños' (Horizontal). Utiliza balanceadores de carga y auto-scaling.</li><li><strong>Almacenamiento de Estado Externo:</strong> Las instancias de tu aplicación deben ser 'stateless' (sin estado). Guarda las sesiones, cachés y archivos en servicios externos (como Redis, S3).</li><li><strong>Automatización:</strong> Desde el 'deploy' (CI/CD) hasta el 'escalado'. La intervención manual es el enemigo de la escalabilidad.</li></ol>"
   },
   "LEGAL": {
     "PRIVACY_TITLE": "Política de Privacidad",

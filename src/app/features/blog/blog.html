@@ -1,0 +1,15 @@
+<div class="page-container container">
+  <h1 class="page-title" jslAnimateOnScroll>{{ 'BLOG.TITLE' | translate }}</h1>
+  <p class="page-subtitle" jslAnimateOnScroll>{{ 'BLOG.SUBTITLE' | translate }}</p>
+
+  <div class="blog-grid">
+    <jsl-card 
+      *ngFor="let post of blogPosts"
+      [imageUrl]="post.imageUrl"
+      [title]="'BLOG.' + post.key + '_TITLE' | translate"
+      [description]="'BLOG.' + post.key + '_EXCERPT' | translate"
+      [link]="['/', currentLang, 'blog', post.slug]"
+      jslAnimateOnScroll>
+    </jsl-card>
+  </div>
+</div>
