@@ -44,7 +44,36 @@
     </div>
 
     <div class="footer__col">
-      <h2 class="footer__col-title">{{ 'FOOTER.FOLLOW_US' | translate }}</h2>
+      <h2 class="footer__col-title">{{ 'FOOTER.NEWSLETTER_TITLE' | translate }}</h2>
+      <p class="footer__newsletter-subtitle">{{ 'FOOTER.NEWSLETTER_SUBTITLE' | translate }}</p>
+      
+      <form class="footer__newsletter-form" [formGroup]="newsletterForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input 
+            type="email" 
+            class="form-control" 
+            [placeholder]="'FOOTER.NEWSLETTER_PLACEHOLDER' | translate" 
+            formControlName="email"
+            [class.is-invalid]="nf['email'].invalid && (nf['email'].dirty || nf['email'].touched)">
+          <button type="submit" class="submit-btn" [disabled]="isSubmitting || newsletterForm.invalid">
+            <lucide-icon *ngIf="!isSubmitting" name="Send"></lucide-icon>
+            <span *ngIf="isSubmitting" class="spinner"></span>
+          </button>
+        </div>
+        
+        <div *ngIf="nf['email'].invalid && (nf['email'].dirty || nf['email'].touched)" class="form-error">
+          <span *ngIf="nf['email'].errors?.['required']">{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
+          <span *ngIf="nf['email'].errors?.['email']">{{ 'FOOTER.NEWSLETTER_EMAIL_INVALID' | translate }}</span>
+        </div>
+
+        <div *ngIf="submitSuccess" class="submit-success">
+          {{ 'FOOTER.NEWSLETTER_SUCCESS' | translate }}
+        </div>
+        <div *ngIf="submitError" class="submit-error">
+          {{ 'FOOTER.NEWSLETTER_ERROR' | translate }}
+        </div>
+      </form>
+      <h2 class="footer__col-title footer__col-title--follow">{{ 'FOOTER.FOLLOW_US' | translate }}</h2>
       <div class="footer__socials">
         <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social-link social-link--linkedin">
           <lucide-icon name="Linkedin"></lucide-icon>

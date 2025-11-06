@@ -29,7 +29,14 @@
     "FOLLOW_US": "Follow Us",
     "PHONE": "Phone",
     "EMAIL": "Email",
-    "COPYRIGHT": "All rights reserved."
+    "COPYRIGHT": "All rights reserved.",
+    "NEWSLETTER_TITLE": "Subscribe to our Newsletter",
+    "NEWSLETTER_SUBTITLE": "Get tech news and articles.",
+    "NEWSLETTER_PLACEHOLDER": "Your email address",
+    "NEWSLETTER_SUBMIT": "Subscribe",
+    "NEWSLETTER_SUCCESS": "Thanks for subscribing!",
+    "NEWSLETTER_ERROR": "Error subscribing. Please try again.",
+    "NEWSLETTER_EMAIL_INVALID": "Please enter a valid email."
   },
   "PRODUCTS_LIST": {
     "ERP": "ERP System",

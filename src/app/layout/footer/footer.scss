@@ -86,6 +86,11 @@
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
+
+  // --- AÑADIDO: Espacio para el título de "Síguenos" ---
+  &.footer__col-title--follow {
+    margin-top: 1rem;
+  }
 }
 
 .footer__links {
@@ -162,6 +167,135 @@
   }
 }
 
+// --- INICIO: ESTILOS PARA NEWSLETTER ---
+.footer__newsletter-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.footer__newsletter-form {
+  width: 100%;
+  
+  // Usamos el .form-group del formulario de contacto
+  .form-group {
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: flex; // Para alinear input y botón
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 0.9rem;
+      font-family: var(--font-family-base);
+      color: var(--text-primary);
+      background-color: var(--bg-primary); // Más oscuro
+      border: 1px solid var(--border-color);
+      // Bordes redondeados solo a la izquierda
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+      transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  
+      &:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px rgba(255, 75, 43, 0.2);
+        z-index: 2;
+      }
+  
+      &.is-invalid {
+        border-color: #e74c3c; // Color de error
+      }
+  
+      &::placeholder {
+        color: var(--text-secondary);
+      }
+    }
+    
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0; // Evita que se encoja
+      padding: 0.8rem 1.25rem;
+      font-size: 1rem;
+      color: #fff;
+      background: var(--accent-gradient);
+      border: 1px solid var(--accent-primary); // Borde para alinear con input
+      // Bordes redondeados solo a la derecha
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      cursor: pointer;
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+      margin-left: -1px; // Solapamiento para unir el borde
+      z-index: 1;
+
+      lucide-icon {
+        width: 18px;
+      }
+  
+      &:hover:not(:disabled) {
+        transform: none; // Sin hover en footer
+        box-shadow: 0 5px 15px rgba(255, 65, 108, 0.2);
+      }
+  
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  // Estilos de mensajes (más pequeños para el footer)
+  .form-error,
+  .submit-success,
+  .submit-error {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  .form-error {
+    color: #e74c3c;
+    text-align: left;
+    padding: 0;
+  }
+  
+  .submit-success, .submit-error {
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .submit-success {
+    background-color: rgba(46, 204, 113, 0.1);
+    border: 1px solid #2ecc71;
+    color: #2ecc71;
+  }
+  
+  .submit-error {
+    background-color: rgba(231, 76, 60, 0.1);
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+  }
+
+  // Spinner de carga
+  .spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+}
+// --- FIN: ESTILOS PARA NEWSLETTER ---
+
+
 @media (max-width: 768px) {
   .footer__bottom {
     justify-content: center; // Centrar en móvil
@@ -182,5 +316,11 @@
   }
   .footer__socials {
     justify-content: center;
+  }
+
+  // --- AÑADIDO: Centrar newsletter en móvil ---
+  .footer__newsletter-subtitle {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
