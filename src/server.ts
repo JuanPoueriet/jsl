@@ -6,58 +6,13 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
-// --- 1. Importar 'crypto' para generar el nonce ---
-import { randomBytes } from 'node:crypto';
-// --- FIN AÑADIDO ---
+// --- AÑADIDO: Importar los datos para el sitemap dinámico ---
 import { PROJECTS, BLOG_POSTS } from './app/core/data/mock-data';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
-
-
-// --- INICIO: Middleware de Cabeceras de Seguridad (MODIFICADO) ---
-app.use((req, res, next) => {
-  // --- 2. Generar un nonce único para esta petición ---
-  const nonce = randomBytes(16).toString('base64');
-  // Guardamos el nonce en 'res.locals' para que esté disponible
-  // en el siguiente middleware (el que maneja Angular).
-  res.locals['nonce'] = nonce;
-  // --- FIN AÑADIDO ---
-
-  // Define los dominios permitidos para imágenes, fuentes, etc.
-  const cspPolicies = [
-    "default-src 'self'",
-    // --- 3. MODIFICADO: Añadir 'unsafe-inline' ---
-    // El 'nonce' asegura las etiquetas <script> de Angular.
-    // 'unsafe-inline' es necesario para los "inline event handlers" (ej. onclick)
-    // que bibliotecas de terceros como Swiper.js pueden añadir.
-    `script-src 'self' 'nonce-${nonce}' 'unsafe-inline'`,
-    // --- FIN MODIFICADO ---
-    "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'", // 'unsafe-inline' es necesario para los estilos de componentes de Angular
-    "font-src 'self' https://fonts.gstatic.com",
-    // Dominios de imágenes permitidos (basado en mock-data.ts y home.html)
-    "img-src 'self' https://images.unsplash.com https://media.geeksforgeeks.org https://zaibatsutechnology.co.uk data:",
-    "connect-src 'self'", // Permite cargar /assets/i18n/es.json, etc.
-    "frame-ancestors 'none'" // Previene clickjacking
-  ];
-
-  // 1. Content Security Policy (CSP)
-  res.setHeader('Content-Security-Policy', cspPolicies.join('; '));
-  
-  // 2. HTTP Strict Transport Security (HSTS)
-  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-  
-  // 3. X-Content-Type-Options
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  
-  // 4. Referrer-Policy
-  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  
-  next();
-});
-// --- FIN: Middleware de Cabeceras de Seguridad ---
 
 
 app.get('/', (req, res) => {
@@ -181,15 +136,10 @@ app.use(
 
 /**
  * Handle all other requests by rendering the Angular application.
- * --- 4. MODIFICADO: Pasar el nonce a Angular ---
  */
 app.use((req, res, next) => {
-  // Recuperamos el nonce que generamos en el middleware de seguridad
-  const { nonce } = res.locals;
-
   angularApp
-    // Se lo pasamos a la configuración de renderizado de Angular
-    .handle(req, { nonce }) // <-- AQUÍ LA MAGIA
+    .handle(req)
     .then((response) =>
       response ? writeResponseToNodeResponse(response, res) : next(),
     )
