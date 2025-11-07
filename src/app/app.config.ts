@@ -9,6 +9,8 @@ import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { LucideAngularModule } from 'lucide-angular';
 
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
 // Importar la lista completa de iconos que usamos en todo el sitio
 import {
   ArrowLeft,
@@ -71,6 +73,8 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideHttpClient(withFetch()),
+
+    provideAnimationsAsync(),
     
     // Configuración de ngx-translate con el loader personalizado
     provideTranslateService({

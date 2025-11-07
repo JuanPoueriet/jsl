@@ -1,0 +1,11 @@
+<div class="page-container container not-found-page">
+  <div class="not-found-content" jslAnimateOnScroll>
+    <lucide-icon name="Compass"></lucide-icon>
+    <h1>{{ 'NOT_FOUND.TITLE' | translate }}</h1>
+    <p>{{ 'NOT_FOUND.SUBTITLE' | translate }}</p>
+    <a [routerLink]="['/', currentLang, 'home']" class="hero-slide__cta">
+      <span>{{ 'NOT_FOUND.CTA' | translate }}</span>
+      <lucide-icon name="Home"></lucide-icon>
+    </a>
+  </div>
+</div>

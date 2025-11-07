@@ -2,25 +2,35 @@
   <h1 class="page-title" jslAnimateOnScroll>{{ 'TECH_STACK.TITLE' | translate }}</h1>
   <p class="page-subtitle" jslAnimateOnScroll>{{ 'TECH_STACK.SUBTITLE' | translate }}</p>
 
-  <ng-container *ngIf="techCategories$ | async as categories">
-    <section class="tech-category" *ngFor="let category of categories" jslAnimateOnScroll>
-      
-      <div class="category-header">
+  <nav class="tech-tabs" jslAnimateOnScroll>
+    @for (category of categories(); track category.key) {
+      <button 
+        (click)="selectCategory(category)" 
+        [class.active]="category === selectedCategory()">
         <lucide-icon [name]="category.icon"></lucide-icon>
-        <h2>{{ 'TECH_STACK.' + category.key + '_TITLE' | translate }}</h2>
-      </div>
-      <p class="category-subtitle">{{ 'TECH_STACK.' + category.key + '_DESC' | translate }}</p>
-      
-      <div class="tech-grid">
-        <jsl-logo-card 
-          *ngFor="let tech of category.technologies"
-          [imageUrl]="tech.imageUrl"
-          [name]="tech.name">
-        </jsl-logo-card>
-      </div>
+        <span>{{ 'TECH_STACK.' + category.key + '_TITLE' | translate }}</span>
+      </button>
+    }
+  </nav>
 
-    </section>
-  </ng-container>
+  <section class="tech-content-area">
+    @if (selectedCategory(); as selected) {
+      <div [class]="selected.key">
+        <div class="category-header">
+          <p class="category-subtitle">{{ 'TECH_STACK.' + selected.key + '_DESC' | translate }}</p>
+        </div>
+        
+        <div class="tech-grid">
+          @for (tech of selected.technologies; track tech.name) {
+            <jsl-logo-card
+              [imageUrl]="tech.imageUrl"
+              [name]="tech.name">
+            </jsl-logo-card>
+          }
+        </div>
+      </div>
+    }
+  </section>
 
 </div>
 

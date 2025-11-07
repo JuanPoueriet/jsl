@@ -8,8 +8,13 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem;
-  background-color: var(--bg-secondary);
+  padding: 1.5rem 1rem; // Un poco más de padding
+  // 1. Fondo sutil con gradiente radial para un look moderno
+  background: radial-gradient(
+    circle at 50% 0%, 
+    rgba(255, 255, 255, 0.04), 
+    transparent 70%
+  ), var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   height: 100%;
@@ -19,32 +24,38 @@
 
   &:hover {
     transform: translateY(-5px);
-    border-color: var(--text-secondary);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    // 2. Usamos el color de acento para el borde y un "glow"
+    border-color: rgba(var(--accent-primary-rgb), 0.5);
+    box-shadow: 0 0 20px rgba(var(--accent-primary-rgb), 0.2);
   }
 }
 
 .logo-card__image-wrapper {
-  width: 80px;
-  height: 80px;
+  // 3. Hacemos el wrapper un círculo para enmarcar el logo
+  width: 72px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  transition: border-color var(--transition-speed) ease;
   
   img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; // 'contain' es mejor para logos
-    // Filtro para que los logos (especialmente los de color)
-    // se vean bien en tema oscuro.
-    filter: brightness(0.9) grayscale(1) contrast(1.5);
-    opacity: 0.8;
-    transition: filter var(--transition-speed) ease, 
-                opacity var(--transition-speed) ease;
-
-    .logo-card:hover & {
-      filter: none; // Mostrar color original en hover
-      opacity: 1;
+    width: 64px;  // El tamaño que definimos en el HTML
+    height: 64px;
+    object-fit: contain;
+    // 4. ¡Quitamos el grayscale! La página será colorida por defecto.
+    // filter: brightness(0.9) grayscale(1) contrast(1.5); (ELIMINADO)
+    // opacity: 0.8; (ELIMINADO)
+    transition: transform var(--transition-speed) ease;
+  }
+  
+  .logo-card:hover & {
+    border-color: rgba(var(--accent-primary-rgb), 0.3);
+    img {
+      transform: scale(1.05); // Sutil zoom al logo
     }
   }
 }

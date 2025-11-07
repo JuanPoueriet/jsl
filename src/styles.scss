@@ -26,6 +26,29 @@
   --top-bar-height: 40px;  // <-- AÑADIR
   --header-height: 75px;
   --border-radius: 8px;
+
+
+
+
+
+
+
+
+
+  --accent-primary: #FF4B2B;
+  --accent-primary-rgb: 255, 75, 43; // <-- AÑADE ESTA LÍNEA
+  --accent-secondary: #FF416C;
+  --accent-gradient: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+
+--font-family-base: 'Poppins', sans-serif;
+
+  // Acentos
+  --accent-primary: #FF4B2B;
+  --accent-primary-rgb: 255, 75, 43;
+  --accent-secondary: #FF416C;
+  --accent-secondary-rgb: 255, 65, 108; // <-- AÑADE ESTA LÍNEA
+  --accent-gradient: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+
 }
 
 // 3. Reseteo Básico y Estilos Globales

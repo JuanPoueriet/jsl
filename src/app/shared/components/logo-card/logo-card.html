@@ -1,6 +1,10 @@
-<div classa="logo-card">
+<div class="logo-card">
   <div class="logo-card__image-wrapper">
-    <img [src]="imageUrl" [alt]="nameKey ? (nameKey | translate) : name" loading="lazy">
+    <img 
+      [ngSrc]="imageUrl" 
+      [alt]="nameKey ? (nameKey | translate) : name" 
+      width="64" 
+      height="64" />
   </div>
   <p class="logo-card__name">
     {{ nameKey ? (nameKey | translate) : name }}
