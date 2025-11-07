@@ -8,7 +8,7 @@ import {
   PLATFORM_ID,
   ElementRef,
   ViewChild,
-  effect, // <-- 1. IMPORTAR effect
+  effect,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -62,6 +62,7 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
   private proactiveTimer: any = null;
   private previewTimer: any = null;
   private readonly isBrowser: boolean;
+  private hasInteracted = false; // Flag para desbloquear el audio
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -69,9 +70,8 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
-    // 2. CORRECCIÓN: Usar effect() para reaccionar a cambios en `messages`
+    // Reaccionar a cambios en los mensajes para hacer scroll
     effect(() => {
-      // Al leer this.messages() aquí, el efecto se suscribirá a sus cambios.
       if (this.messages() && this.isBrowser) {
         this.scrollToBottom();
       }
@@ -80,6 +80,11 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (this.isBrowser) {
+      // Inicializar el audio
+      this.audio = new Audio('assets/sounds/chat-notification.mp3');
+      this.audio.load();
+
+      // Cargar el mensaje de bienvenida (sin sonido)
       this.translate
         .get('CHAT.GREETING')
         .subscribe((greeting: string) => {
@@ -92,6 +97,7 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
           ]);
         });
 
+      // Iniciar el temporizador para el mensaje proactivo
       this.initializeProactiveChat();
     }
   }
@@ -104,9 +110,6 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
   }
 
   private initializeProactiveChat(): void {
-    this.audio = new Audio('assets/sounds/chat-notification.mp3');
-    this.audio.load();
-
     this.proactiveTimer = setTimeout(() => {
       this.triggerProactiveMessage();
     }, 7000);
@@ -126,6 +129,7 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
           ]);
           this.proactiveMessageSent.set(true);
 
+          // ¡Reproducir sonido aquí!
           this.playNotificationSound();
 
           this.previewTimer = setTimeout(() => {
@@ -135,17 +139,49 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Intenta "desbloquear" el audio reproduciendo y pausando
+   * un sonido silencioso en la primera interacción del usuario.
+   */
+  private unlockAudio(): void {
+    if (this.isBrowser && this.audio && !this.hasInteracted) {
+      this.audio.play().then(() => {
+          // Éxito: el audio está desbloqueado
+          this.audio?.pause();
+          this.audio!.currentTime = 0;
+          this.hasInteracted = true;
+        }).catch(() => {
+          // El navegador sigue bloqueando, se necesitará otra interacción
+        });
+    }
+  }
+
+  /**
+   * Reproduce el sonido de notificación.
+   */
   private playNotificationSound(): void {
-    this.audio?.play().catch((e) => {
-      console.warn('La reproducción de sonido del chat fue bloqueada por el navegador.', e);
+    if (!this.audio) return; // Si el audio no se ha cargado
+
+    // Reiniciar el audio por si se está reproduciendo
+    this.audio.currentTime = 0;
+
+    // Intentar reproducir
+    this.audio.play().catch((e) => {
+      if (!this.hasInteracted) {
+        // Esto es normal si el usuario no ha interactuado con la página.
+        console.warn('Audio bloqueado. Esperando interacción del usuario para desbloquear.');
+      } else {
+        // Si ya interactuó pero falló, es un error real.
+        console.error('Error al reproducir sonido:', e);
+      }
     });
   }
 
   /**
-   * 3. CORRECCIÓN: Aceptar un 'Event' genérico y comprobar el tipo.
+   * Maneja el evento keydown para enviar con Enter
    */
   onEnterPress(event: Event): void {
-    // Comprobar si es un KeyboardEvent antes de acceder a sus propiedades
+    // Comprobar si es un KeyboardEvent
     if (
       event instanceof KeyboardEvent &&
       event.key === 'Enter' &&
@@ -156,7 +192,11 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Lógica para enviar un mensaje del usuario
+   */
   sendMessage(): void {
+    this.unlockAudio(); // Primera vez que se envía, desbloquea el audio
     if (this.chatInput.invalid) return;
 
     const text = this.chatInput.value.trim();
@@ -167,10 +207,14 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
       ]);
       this.chatInput.reset('');
 
+      // Simular la respuesta del operador
       this.simulateOperatorReply();
     }
   }
 
+  /**
+   * Simula una respuesta automática del "bot"
+   */
   private simulateOperatorReply(): void {
     setTimeout(() => {
       this.translate
@@ -180,35 +224,49 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
             ...msgs,
             { text: reply, sender: 'operator', timestamp: Date.now() },
           ]);
+          // ¡Reproducir sonido aquí!
           this.playNotificationSound();
-          // No es necesario llamar a scrollToBottom() aquí, el 'effect' lo hará.
         });
     }, 1500);
   }
 
+  /**
+   * Alterna la visibilidad de la ventana de chat
+   */
   toggleChat(): void {
     this.isOpen.update((open) => !open);
 
     if (this.isOpen()) {
+      this.unlockAudio(); // Primera vez que se abre, desbloquea el audio
+      
+      // Ocultar previsualización y limpiar temporizadores
       this.showPreview.set(false);
       clearTimeout(this.proactiveTimer);
       clearTimeout(this.previewTimer);
-      this.scrollToBottom(true); // Forzar scroll al abrir por primera vez
+
+      // Forzar scroll al fondo al abrir
+      this.scrollToBottom(true);
     }
   }
 
+  /**
+   * Mueve el scroll del chat al último mensaje
+   */
   private scrollToBottom(force: boolean = false): void {
     if (this.isBrowser && this.chatBody) {
       setTimeout(() => {
         if (this.chatBody) {
           const el = this.chatBody.nativeElement;
+          // Comprobar si el usuario está cerca del final
           const isScrolledToBottom =
             el.scrollHeight - el.clientHeight <= el.scrollTop + 100;
+
+          // Forzar scroll si se acaba de abrir o si el usuario ya estaba abajo
           if (isScrolledToBottom || force) {
             el.scrollTop = el.scrollHeight;
           }
         }
-      }, 0);
+      }, 0); // 0ms de espera para que se renderice el DOM
     }
   }
 }
