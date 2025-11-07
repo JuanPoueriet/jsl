@@ -365,5 +365,16 @@
     "CTA_EYEBROW": "¿Tienes más preguntas?",
     "CTA_TITLE": "Estamos Aquí para Ayudarte",
     "CTA_SUBTITLE": "Si no encontraste tu respuesta, nuestro equipo de expertos está listo para conversar contigo."
+  },
+"CHAT": {
+    "TITLE": "Chatea con nosotros",
+    "STATUS_ONLINE": "En línea",
+    "GREETING": "¡Hola! ¿Cómo podemos ayudarte hoy?",
+    "PREVIEW_GREETING": "¡Hola! 👋 ¿Tienes alguna pregunta?",
+    "OPERATOR_REPLY": "¡Gracias! Un agente estará contigo en breve.",
+    "PLACEHOLDER": "Escribe tu mensaje...",
+    "SEND": "Enviar",
+    "OPEN": "Abrir chat",
+    "CLOSE": "Cerrar chat"
   }
 }

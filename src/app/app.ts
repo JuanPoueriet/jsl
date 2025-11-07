@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
 import { Seo } from './core/services/seo';
+import { ChatBubbleComponent } from './shared/components/chat-bubble/chat-bubble';
 
 @Component({
   selector: 'jsl-root',
@@ -13,7 +14,8 @@ import { Seo } from './core/services/seo';
     CommonModule, // 4. Añadir CommonModule
     RouterOutlet, 
     Header,
-    Footer
+    Footer,
+    ChatBubbleComponent, // <-- AÑADIDO
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

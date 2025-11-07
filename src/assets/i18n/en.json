@@ -365,5 +365,14 @@
     "CTA_EYEBROW": "Have more questions?",
     "CTA_TITLE": "We're Here to Help",
     "CTA_SUBTITLE": "If you didn't find your answer, our team of experts is ready to chat with you."
+  },
+  "CHAT": {
+    "TITLE": "Chat with us",
+    "GREETING": "Hello! How can we help you today?",
+    "PREVIEW_GREETING": "Hi! 👋 Do you have any questions?",
+    "PLACEHOLDER": "Type your message...",
+    "SEND": "Send",
+    "OPEN": "Open chat",
+    "CLOSE": "Close chat"
   }
 }

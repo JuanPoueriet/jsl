@@ -7,7 +7,7 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
-import { Brain, Clock, Laptop, LucideAngularModule, Network, Plane } from 'lucide-angular';
+import { Brain, Check, CheckCheck, Clock, Laptop, LucideAngularModule, MessageCircle, Network, Plane } from 'lucide-angular';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -132,7 +132,10 @@ export const appConfig: ApplicationConfig = {
         Network,
         Brain,
         Plane,
-        Clock
+        Clock,
+        MessageCircle,
+        Check, // <-- AÑADIDO
+        CheckCheck,
       })
     ),
   ],
