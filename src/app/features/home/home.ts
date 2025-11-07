@@ -14,6 +14,8 @@ import { PROJECTS, TESTIMONIALS } from '../../core/data/mock-data';
 import { register } from 'swiper/element/bundle';
 import { SwiperOptions } from 'swiper/types';
 import { EffectFade, Autoplay, Pagination, EffectCoverflow } from 'swiper/modules'; // Añadir EffectCoverflow
+import { Observable } from 'rxjs';
+import { Testimonial, Project, Solution, Product, ProcessStep, DataService } from '../../core/services/data.service';
 
 // Registrar los elementos de Swiper
 register();
@@ -88,68 +90,16 @@ export class Home implements OnInit {
 
   public currentLang: string;
 
-  // Cargar datos desde el archivo mock
-  public testimonials = TESTIMONIALS;
-  public projects = PROJECTS;
-
-  // Datos para la sección de soluciones destacadas
-  solutions = [
-    {
-      key: 'WEB',
-      icon: 'Monitor',
-    },
-    {
-      key: 'MOBILE',
-      icon: 'Smartphone',
-    },
-    {
-      key: 'DESKTOP',
-      icon: 'Server',
-    },
-    {
-      key: 'CLOUD',
-      icon: 'Cloud',
-    }
-  ];
-
-  // Datos para la sección de productos destacadps
-  products = [
-    {
-      key: 'ERP',
-      icon: 'Database',
-    },
-    {
-      key: 'POS',
-      icon: 'ShoppingCart',
-    },
-    {
-      key: 'MOBILE_APPS',
-      icon: 'Smartphone',
-    }
-  ];
-
-  // Datos para la sección de proceso
-  processSteps = [
-    {
-      key: 'STEP1',
-      icon: 'Compass'
-    },
-    {
-      key: 'STEP2',
-      icon: 'Code'
-    },
-    {
-      key: 'STEP3',
-      icon: 'Server'
-    },
-    {
-      key: 'STEP4',
-      icon: 'TrendingUp'
-    }
-  ];
+  // 4. Cambiar los arrays estáticos por Observables
+  public testimonials$!: Observable<Testimonial[]>;
+  public projects$!: Observable<Project[]>;
+  public solutions$!: Observable<Solution[]>;
+  public products$!: Observable<Product[]>;
+  public processSteps$!: Observable<ProcessStep[]>;
 
   constructor(
-    @Inject(TranslateService) private translate: TranslateService
+    @Inject(TranslateService) private translate: TranslateService,
+    private dataService: DataService // 5. Inyectar DataService
   ) {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
   }
@@ -158,9 +108,19 @@ export class Home implements OnInit {
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
     });
+
+    // 6. Cargar todos los datos desde el servicio
+    this.loadData();
   }
 
-  // --- NUEVO: Helper para generar un array de estrellas ---
+  private loadData(): void {
+    this.testimonials$ = this.dataService.getTestimonials();
+    this.projects$ = this.dataService.getProjects();
+    this.solutions$ = this.dataService.getSolutions();
+    this.products$ = this.dataService.getProducts();
+    this.processSteps$ = this.dataService.getProcessSteps();
+  }
+
   getStars(count: number): any[] {
     return new Array(count);
   }

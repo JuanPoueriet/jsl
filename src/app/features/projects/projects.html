@@ -3,13 +3,19 @@
   <p class="page-subtitle" jslAnimateOnScroll>{{ 'PROJECTS.SUBTITLE' | translate }}</p>
 
   <div class="projects-grid">
-    <jsl-card 
-      *ngFor="let project of projects"
-      [imageUrl]="project.imageUrl"
-      [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
-      [description]="'PROJECTS.' + project.key + '_DESC' | translate"
-      [link]="['/', currentLang, 'projects', project.slug]"
-      jslAnimateOnScroll>
-    </jsl-card>
+    <!-- 1. Usar | async pipe -->
+    <ng-container *ngIf="projects$ | async as projects">
+      <jsl-card 
+        *ngFor="let project of projects"
+        [imageUrl]="project.imageUrl"
+        [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
+        [description]="'PROJECTS.' + project.key + '_DESC' | translate"
+        [link]="['/', currentLang, 'projects', project.slug]"
+        jslAnimateOnScroll>
+      </jsl-card>
+    </ng-container>
   </div>
 </div>
+
+<!-- 2. Añadir CTA reutilizable -->
+<jsl-cta-section></jsl-cta-section>

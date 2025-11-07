@@ -85,34 +85,39 @@
   </div>
 </section>
 
+<!-- Testimonials (Refactorizado) -->
 <section class="testimonials-section">
   <div class="container" jslAnimateOnScroll>
     <div class="testimonials-header">
       <span class="section-eyebrow">{{ 'HOME.TESTIMONIALS_EYEBROW' | translate }}</span>
       <h2 class="section-title">{{ 'HOME.TESTIMONIALS_TITLE' | translate }}</h2>
     </div>
-
     <swiper-container [config]="testimonialSwiperConfig" init="true" class="testimonial-slider">
-      <swiper-slide *ngFor="let testimonial of testimonials" class="testimonial-card">
-        <div class="testimonial-card__stars">
-          <lucide-icon name="Star" *ngFor="let star of getStars(5)"></lucide-icon>
-        </div>
-        <p class="testimonial-card__text">"{{ testimonial.textKey | translate }}"</p>
-        <div class="testimonial-card__author">
-          <img
-            [src]="testimonial.imageUrl"
-            [alt]="testimonial.nameKey | translate"
-            loading="lazy"
-          />
-          <div class="testimonial-card__author-info">
-            <span class="name">{{ testimonial.nameKey | translate }}</span>
-            <span class="role">{{ testimonial.roleKey | translate }}</span>
+      <!-- 1. Usar | async pipe -->
+      <ng-container *ngIf="testimonials$ | async as testimonials">
+        <swiper-slide *ngFor="let testimonial of testimonials" class="testimonial-card">
+          <div class="testimonial-card__stars">
+            <lucide-icon name="Star" *ngFor="let star of getStars(5)"></lucide-icon>
           </div>
-        </div>
-      </swiper-slide>
+          <p class="testimonial-card__text">"{{ testimonial.textKey | translate }}"</p>
+          <div class="testimonial-card__author">
+            <img
+              [src]="testimonial.imageUrl"
+              [alt]="testimonial.nameKey | translate"
+              loading="lazy"
+            />
+            <div class="testimonial-card__author-info">
+              <span class="name">{{ testimonial.nameKey | translate }}</span>
+              <span class="role">{{ testimonial.roleKey | translate }}</span>
+            </div>
+          </div>
+        </swiper-slide>
+      </ng-container>
     </swiper-container>
   </div>
 </section>
+
+<!-- Featured Services (Refactorizado) -->
 <section class="featured-services container">
   <div class="featured-services__header" jslAnimateOnScroll>
     <span class="section-eyebrow">{{ 'HOME.SERVICES_EYEBROW' | translate }}</span>
@@ -120,18 +125,22 @@
     <p class="section-subtitle">{{ 'HOME.SERVICES_SUBTITLE' | translate }}</p>
   </div>
   <div class="solutions-grid">
-    <jsl-card
-      *ngFor="let solution of solutions"
-      [icon]="solution.icon"
-      [title]="'SOLUTIONS.' + solution.key + '_TITLE' | translate"
-      [description]="'SOLUTIONS.' + solution.key + '_DESC' | translate"
-      [link]="['/', currentLang, 'solutions']"
-      jslAnimateOnScroll
-    >
-    </jsl-card>
+    <!-- 2. Usar | async pipe y 'solution.slug' -->
+    <ng-container *ngIf="solutions$ | async as solutions">
+      <jsl-card
+        *ngFor="let solution of solutions"
+        [icon]="solution.icon"
+        [title]="'SOLUTIONS.' + solution.key + '_TITLE' | translate"
+        [description]="'SOLUTIONS.' + solution.key + '_DESC' | translate"
+        [link]="['/', currentLang, 'solutions', solution.slug]"
+        jslAnimateOnScroll
+      >
+      </jsl-card>
+    </ng-container>
   </div>
 </section>
 
+<!-- Featured Products (Refactorizado) -->
 <section class="featured-products container">
   <div class="featured-products__header" jslAnimateOnScroll>
     <span class="section-eyebrow">{{ 'HOME.PRODUCTS_EYEBROW' | translate }}</span>
@@ -139,18 +148,22 @@
     <p class="section-subtitle">{{ 'HOME.PRODUCTS_SUBTITLE' | translate }}</p>
   </div>
   <div class="products-grid">
-    <jsl-card
-      *ngFor="let product of products"
-      [icon]="product.icon"
-      [title]="'PRODUCTS.' + product.key + '_TITLE' | translate"
-      [description]="'PRODUCTS.' + product.key + '_DESC' | translate"
-      [link]="['/', currentLang, 'products']"
-      jslAnimateOnScroll
-    >
-    </jsl-card>
+    <!-- 3. Usar | async pipe y 'product.slug' -->
+    <ng-container *ngIf="products$ | async as products">
+      <jsl-card
+        *ngFor="let product of products"
+        [icon]="product.icon"
+        [title]="'PRODUCTS.' + product.key + '_TITLE' | translate"
+        [description]="'PRODUCTS.' + product.key + '_DESC' | translate"
+        [link]="['/', currentLang, 'products', product.slug]"
+        jslAnimateOnScroll
+      >
+      </jsl-card>
+    </ng-container>
   </div>
 </section>
 
+<!-- Featured Projects (Refactorizado) -->
 <section class="featured-projects container">
   <div class="featured-projects__header" jslAnimateOnScroll>
     <span class="section-eyebrow">{{ 'HOME.PROJECTS_EYEBROW' | translate }}</span>
@@ -158,18 +171,22 @@
     <p class="section-subtitle">{{ 'HOME.PROJECTS_SUBTITLE' | translate }}</p>
   </div>
   <div class="projects-grid">
-    <jsl-card
-      *ngFor="let project of projects"
-      [imageUrl]="project.imageUrl"
-      [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
-      [description]="'PROJECTS.' + project.key + '_DESC' | translate"
-      [link]="['/', currentLang, 'projects', project.slug]"
-      jslAnimateOnScroll
-    >
-    </jsl-card>
+    <!-- 4. Usar | async pipe (el enlace ya era correcto) -->
+    <ng-container *ngIf="projects$ | async as projects">
+      <jsl-card
+        *ngFor="let project of projects"
+        [imageUrl]="project.imageUrl"
+        [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
+        [description]="'PROJECTS.' + project.key + '_DESC' | translate"
+        [link]="['/', currentLang, 'projects', project.slug]"
+        jslAnimateOnScroll
+      >
+      </jsl-card>
+    </ng-container>
   </div>
 </section>
 
+<!-- Process Section (Refactorizado) -->
 <section class="process-section">
   <div class="container">
     <div class="process-header" jslAnimateOnScroll>
@@ -178,24 +195,19 @@
       <p class="section-subtitle">{{ 'HOME.PROCESS_SUBTITLE' | translate }}</p>
     </div>
     <div class="process-grid">
-      <div class="process-step" *ngFor="let step of processSteps" jslAnimateOnScroll>
-        <div class="process-step__icon">
-          <lucide-icon [name]="step.icon"></lucide-icon>
+      <!-- 5. Usar | async pipe -->
+      <ng-container *ngIf="processSteps$ | async as processSteps">
+        <div class="process-step" *ngFor="let step of processSteps" jslAnimateOnScroll>
+          <div class="process-step__icon">
+            <lucide-icon [name]="step.icon"></lucide-icon>
+          </div>
+          <h3 class="process-step__title">{{ 'HOME.PROCESS_' + step.key + '_TITLE' | translate }}</h3>
+          <p class="process-step__desc">{{ 'HOME.PROCESS_' + step.key + '_DESC' | translate }}</p>
         </div>
-        <h3 class="process-step__title">{{ 'HOME.PROCESS_' + step.key + '_TITLE' | translate }}</h3>
-        <p class="process-step__desc">{{ 'HOME.PROCESS_' + step.key + '_DESC' | translate }}</p>
-      </div>
+      </ng-container>
     </div>
   </div>
 </section>
 
-<section class="final-cta-section">
-  <div class="final-cta__content container" jslAnimateOnScroll>
-    <span class="section-eyebrow">{{ 'HOME.CTA_EYEBROW' | translate }}</span>
-    <h2 class="section-title">{{ 'HOME.CTA_TITLE' | translate }}</h2>
-    <p class="section-subtitle">{{ 'HOME.CTA_SUBTITLE' | translate }}</p>
-    <a [routerLink]="['/', currentLang, 'contact']" class="hero-slide__cta">{{
-      'HOME.CTA_BUTTON' | translate
-    }}</a>
-  </div>
-</section>
+<!-- 6. Reemplazar la sección CTA con el componente reutilizable -->
+<jsl-cta-section></jsl-cta-section>

@@ -1,9 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core'; // Importar OnInit e Inject
+import { Component, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core'; // Importar TranslateService
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Card } from '../../shared/components/card/card';
-import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll'; // Importar
-import { PROJECTS } from '../../core/data/mock-data'; // Importar datos
+import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
+import { DataService, Project } from '../../core/services/data.service'; // 1. Importar Servicio
+import { Observable } from 'rxjs'; // 2. Importar Observable
+import { CtaComponent } from '../../shared/components/cta/cta'; // 3. Importar CTA
 
 @Component({
   selector: 'jsl-projects',
@@ -12,7 +14,8 @@ import { PROJECTS } from '../../core/data/mock-data'; // Importar datos
     CommonModule,
     TranslateModule,
     Card,
-    AnimateOnScroll // Añadir
+    AnimateOnScroll,
+    CtaComponent // 4. Añadir CTA
   ],
   templateUrl: './projects.html',
   styleUrl: './projects.scss'
@@ -20,12 +23,11 @@ import { PROJECTS } from '../../core/data/mock-data'; // Importar datos
 export class Projects implements OnInit {
 
   public currentLang: string;
+  public projects$!: Observable<Project[]>; // 5. Usar Observable
   
-  // Cargar datos de proyectos desde el archivo mock
-  projects = PROJECTS;
-
   constructor(
-    @Inject(TranslateService) private translate: TranslateService
+    @Inject(TranslateService) private translate: TranslateService,
+    private dataService: DataService // 6. Inyectar Servicio
   ) {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
   }
@@ -34,5 +36,7 @@ export class Projects implements OnInit {
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
     });
+
+    this.projects$ = this.dataService.getProjects(); // 7. Cargar datos
   }
 }

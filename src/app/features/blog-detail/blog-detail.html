@@ -1,4 +1,5 @@
-<ng-container *ngIf="post; else notFound">
+<!-- 1. Usar | async pipe en el contenedor principal -->
+<ng-container *ngIf="post$ | async as post; else notFound">
   
   <header class="detail-page-header">
     <div class="container">
@@ -29,14 +30,24 @@
     <main class="detail-page-content blog-content" 
           jslAnimateOnScroll
           [innerHTML]="'BLOG.' + post.key + '_CONTENT' | translate">
-      
-      </main>
+    </main>
   </div>
 </ng-container>
 
+<!-- 2. Añadir CTA al final -->
+<jsl-cta-section 
+  eyebrowKey="BLOG.CTA_EYEBROW"
+  titleKey="BLOG.CTA_TITLE"
+  subtitleKey="BLOG.CTA_SUBTITLE">
+</jsl-cta-section>
+
+<!-- 3. Actualizar el template #notFound con las claves de i18n -->
 <ng-template #notFound>
   <div class="page-container container">
-    <h1 class="page-title">Post no encontrado</h1>
-    <p class="page-subtitle">El artículo que buscas no existe. <a [routerLink]="['/', currentLang, 'blog']">Volver al Blog</a>.</p>
+    <h1 class="page-title">{{ 'NOT_FOUND.BLOG_TITLE' | translate }}</h1>
+    <p class="page-subtitle">
+      {{ 'NOT_FOUND.BLOG_SUBTITLE' | translate }}
+      <a [routerLink]="['/', currentLang, 'blog']">{{ 'HEADER.BLOG' | translate }}</a>.
+    </p>
   </div>
 </ng-template>

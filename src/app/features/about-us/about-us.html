@@ -30,6 +30,7 @@
   </div>
 </section>
 
+<!-- Sección Team (Refactorizada) -->
 <section class="team-section container">
   <div class="team-header" jslAnimateOnScroll>
     <span class="section-eyebrow">{{ 'ABOUT.TEAM_EYEBROW' | translate }}</span>
@@ -38,14 +39,24 @@
   </div>
 
   <div class="team-grid">
-    <div class="team-member-card" *ngFor="let member of teamMembers" jslAnimateOnScroll>
-      <div class="team-member-card__image">
-        <img [src]="member.imageUrl" [alt]="member.nameKey | translate">
+    <!-- 1. Usar | async pipe -->
+    <ng-container *ngIf="teamMembers$ | async as teamMembers">
+      <div class="team-member-card" *ngFor="let member of teamMembers" jslAnimateOnScroll>
+        <div class="team-member-card__image">
+          <img [src]="member.imageUrl" [alt]="member.nameKey | translate">
+        </div>
+        <div class="team-member-card__info">
+          <h3 class="team-member-card__name">{{ member.nameKey | translate }}</h3>
+          <p class="team-member-card__role">{{ member.roleKey | translate }}</p>
+        </div>
       </div>
-      <div class="team-member-card__info">
-        <h3 class="team-member-card__name">{{ member.nameKey | translate }}</h3>
-        <p class="team-member-card__role">{{ member.roleKey | translate }}</p>
-      </div>
-    </div>
+    </ng-container>
   </div>
 </section>
+
+<!-- 2. Añadir CTA reutilizable al final -->
+<jsl-cta-section 
+  eyebrowKey="ABOUT.CTA_EYEBROW"
+  titleKey="ABOUT.CTA_TITLE"
+  subtitleKey="ABOUT.CTA_SUBTITLE">
+</jsl-cta-section>
