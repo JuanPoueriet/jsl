@@ -1,5 +1,8 @@
 /* src/app/features/about-us/about-us.scss */
 
+@use '../tech-stack/tech-stack.scss'; // Importar para el grid de logos
+
+
 .page-title {
   text-align: center;
 }
@@ -164,4 +167,30 @@
 .team-member-card__role {
   font-size: 0.9rem;
   color: var(--accent-primary); // Rol destacado
+}
+
+.clients-section-about {
+  padding: 6rem 0;
+  text-align: center;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.clients-header {
+  @extend .team-header; // Reutilizar estilos de header
+}
+
+.clients-grid {
+  @extend .tech-grid; // Reutilizar el grid de logos
+  
+  // Usar la versión con fondo de la logo-card
+  ::ng-deep jsl-logo-card .logo-card {
+    background-color: var(--bg-primary); // Fondo más oscuro
+    
+    &:hover {
+      border-color: var(--accent-primary); // Hover con acento
+      box-shadow: 0 0 20px rgba(var(--accent-primary-rgb), 0.2);
+    }
+  }
 }

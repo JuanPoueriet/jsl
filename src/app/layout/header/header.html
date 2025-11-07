@@ -6,6 +6,7 @@
       JSL Technology
     </a>
 
+    <!-- Menú Desktop -->
     <ul class="header__nav-links">
       <li>
         <a
@@ -42,6 +43,22 @@
       </li>
       <li>
         <a
+          [routerLink]="[currentLang, 'industries']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.INDUSTRIES' | translate }}</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="[currentLang, 'tech-stack']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.TECH_STACK' | translate }}</a
+        >
+      </li>
+      <li>
+        <a
           [routerLink]="[currentLang, 'blog']"
           routerLinkActive="active"
           (click)="closeMobileMenu()"
@@ -56,6 +73,24 @@
           >{{ 'HEADER.ABOUT' | translate }}</a
         >
       </li>
+      <!-- ¡NUEVOS ENLACES! -->
+      <li>
+        <a
+          [routerLink]="[currentLang, 'careers']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.CAREERS' | translate }}</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="[currentLang, 'faq']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+          >{{ 'HEADER.FAQ' | translate }}</a
+        >
+      </li>
+      <!-- Fin Nuevos Enlaces -->
       <li>
         <a
           [routerLink]="[currentLang, 'contact']"
@@ -65,74 +100,37 @@
         >
       </li>
     </ul>
+    
+    <!-- Botón de Menú Móvil -->
     @if(ifMobile()) {
     <div class="header__controls">
       <button class="header__mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle menu">
-        <lucide-icon *ngIf="!isMobileMenuOpen" name="Menu"></lucide-icon>
-        <lucide-icon *ngIf="isMobileMenuOpen" name="X"></lucide-icon>
+        @if (!isMobileMenuOpen) {
+          <lucide-icon name="Menu"></lucide-icon>
+        } @else {
+          <lucide-icon name="X"></lucide-icon>
+        }
       </button>
     </div>
     }
   </nav>
+
+  <!-- Panel de Menú Móvil -->
   @if(ifMobile()) {
   <ul class="header__nav-links-mobile" [class.open]="isMobileMenuOpen">
-    <li>
-      <a
-        [routerLink]="[currentLang, 'home']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.HOME' | translate }}</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="[currentLang, 'solutions']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.SERVICES' | translate }}</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="[currentLang, 'products']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.PRODUCTS' | translate }}</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="[currentLang, 'projects']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.PROJECTS' | translate }}</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="[currentLang, 'blog']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.BLOG' | translate }}</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="[currentLang, 'about-us']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.ABOUT' | translate }}</a
-      >
-    </li>
-    <li>
-      <a
-        [routerLink]="[currentLang, 'contact']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.CONTACT' | translate }}</a
-      >
-    </li>
+    <li><a [routerLink]="[currentLang, 'home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMobileMenu()">{{ 'HEADER.HOME' | translate }}</a></li>
+    <li><a [routerLink]="[currentLang, 'solutions']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.SERVICES' | translate }}</a></li>
+    <li><a [routerLink]="[currentLang, 'products']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.PRODUCTS' | translate }}</a></li>
+    <li><a [routerLink]="[currentLang, 'projects']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.PROJECTS' | translate }}</a></li>
+    <li><a [routerLink]="[currentLang, 'industries']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.INDUSTRIES' | translate }}</a></li>
+    <li><a [routerLink]="[currentLang, 'tech-stack']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.TECH_STACK' | translate }}</a></li>
+    <li><a [routerLink]="[currentLang, 'blog']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.BLOG' | translate }}</a></li>
+    <li><a [routerLink]="[currentLang, 'about-us']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.ABOUT' | translate }}</a></li>
+    <!-- ¡NUEVOS ENLACES! -->
+    <li><a [routerLink]="[currentLang, 'careers']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.CAREERS' | translate }}</a></li>
+    <li><a [routerLink]="[currentLang, 'faq']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.FAQ' | translate }}</a></li>
+    <!-- Fin Nuevos Enlaces -->
+    <li><a [routerLink]="[currentLang, 'contact']" routerLinkActive="active" (click)="closeMobileMenu()">{{ 'HEADER.CONTACT' | translate }}</a></li>
   </ul>
   }
 </header>

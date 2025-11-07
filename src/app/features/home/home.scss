@@ -9,6 +9,8 @@
 @use '../solutions/solutions.scss';
 @use '../products/products.scss';
 @use '../projects/projects.scss';
+@use '../tech-stack/tech-stack.scss'; // 1. Importar estilos de tech-stack para el logo-card grid
+
 
 // --- 1. Hero Slider ---
 .hero-slider {
@@ -571,5 +573,34 @@ swiper-container {
 
   .final-cta__content .section-title {
     font-size: 2rem;
+  }
+}
+
+
+// --- ¡NUEVOS ESTILOS PARA LA SECCIÓN DE CLIENTES! ---
+.clients-section {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.clients-header {
+  @extend .featured-services__header; // Reutilizar estilos de header
+  margin-bottom: 3rem; // Menos margen para logos
+}
+
+.clients-grid {
+  @extend .tech-grid; // Reutilizar el grid de logos
+  
+  // Sobrescribir el hover del logo-card
+  // para que sea más sutil en el Home
+  ::ng-deep jsl-logo-card .logo-card {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+
+    &:hover {
+      background-color: var(--bg-secondary);
+      transform: translateY(-5px);
+    }
   }
 }
