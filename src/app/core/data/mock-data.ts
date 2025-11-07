@@ -245,3 +245,41 @@ export const TECH_STACK = [
     ]
   }
 ];
+
+/**
+ * DATOS DE POSICIONES DE CARRERAS (NUEVO)
+ */
+export const CAREER_POSITIONS = [
+  {
+    key: 'POS_1',
+    locationKey: 'CAREERS.LOCATION_REMOTE',
+    typeKey: 'CAREERS.TYPE_FULLTIME'
+  },
+  {
+    key: 'POS_2',
+    locationKey: 'CAREERS.LOCATION_HYBRID',
+    typeKey: 'CAREERS.TYPE_FULLTIME'
+  }
+];
+
+/**
+ * DATOS DE PREGUNTAS FRECUENTES (FAQ) (NUEVO)
+ */
+export const FAQ_ITEMS = [
+  {
+    questionKey: 'FAQ.Q1_TITLE',
+    answerKey: 'FAQ.Q1_DESC'
+  },
+  {
+    questionKey: 'FAQ.Q2_TITLE',
+    answerKey: 'FAQ.Q2_DESC'
+  },
+  {
+    questionKey: 'FAQ.Q3_TITLE',
+    answerKey: 'FAQ.Q3_DESC'
+  },
+  {
+    questionKey: 'FAQ.Q4_TITLE',
+    answerKey: 'FAQ.Q4_DESC'
+  }
+];

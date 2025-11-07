@@ -10,7 +10,10 @@ import {
   TESTIMONIALS,
   PROJECTS,
   BLOG_POSTS,
-  TECH_STACK
+  TECH_STACK,
+  // --- AÑADIR NUEVOS DATOS ---
+  CAREER_POSITIONS,
+  FAQ_ITEMS
 } from '../data/mock-data';
 
 // --- DEFINICIÓN DE INTERFACES PARA TODO EL SITIO ---
@@ -79,6 +82,21 @@ export interface TechCategory {
   key: string;
   icon: string;
   technologies: Technology[];
+}
+
+// --- AÑADIR NUEVAS INTERFACES ---
+
+// Interface para Posiciones de Carrera
+export interface CareerPosition {
+  key: string;
+  locationKey: string;
+  typeKey: string;
+}
+
+// Interface para Items de FAQ
+export interface FaqItem {
+  questionKey: string;
+  answerKey: string;
 }
 
 
@@ -152,5 +170,17 @@ export class DataService {
   // --- Métodos de Stack Tecnológico ---
   getTechStack(): Observable<TechCategory[]> {
     return of(TECH_STACK);
+  }
+
+  // --- AÑADIR NUEVOS MÉTODOS ---
+
+  // --- Métodos de Carreras ---
+  getCareersPositions(): Observable<CareerPosition[]> {
+    return of(CAREER_POSITIONS);
+  }
+
+  // --- Métodos de FAQ ---
+  getFaqItems(): Observable<FaqItem[]> {
+    return of(FAQ_ITEMS);
   }
 }

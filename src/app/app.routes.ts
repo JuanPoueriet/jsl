@@ -149,6 +149,24 @@ const featureRoutes: Routes = [
       description: 'LEGAL.TERMS_SECTION_1_P1'
     }
   },
+  // --- INICIO DE NUEVAS RUTAS ---
+  {
+    path: 'careers', // Página de Carreras (Nueva)
+    loadComponent: () => import('./features/careers/careers').then(c => c.Careers),
+    data: { 
+      title: 'HEADER.CAREERS',
+      description: 'CAREERS.SUBTITLE'
+    }
+  },
+  {
+    path: 'faq', // Página de FAQ (Nueva)
+    loadComponent: () => import('./features/faq/faq').then(c => c.Faq),
+    data: { 
+      title: 'HEADER.FAQ',
+      description: 'FAQ.SUBTITLE'
+    }
+  },
+  // --- FIN DE NUEVAS RUTAS ---
   {
     path: '', // Redirige /es -> /es/home
     redirectTo: 'home',
