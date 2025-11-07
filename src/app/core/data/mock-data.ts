@@ -1,6 +1,78 @@
 // src/app/core/data/mock-data.ts
 
 /**
+ * DATOS DE SOLUCIONES
+ * Movido desde los componentes a este archivo central.
+ */
+export const SOLUTIONS = [
+  {
+    key: 'WEB',
+    slug: 'web-development', // slug para la URL
+    icon: 'Monitor',
+  },
+  {
+    key: 'MOBILE',
+    slug: 'mobile-apps',
+    icon: 'Smartphone',
+  },
+  {
+    key: 'DESKTOP',
+    slug: 'desktop-software',
+    icon: 'Server',
+  },
+  {
+    key: 'CLOUD',
+    slug: 'cloud-architecture',
+    icon: 'Cloud',
+  }
+];
+
+/**
+ * DATOS DE PRODUCTOS
+ * Movido desde los componentes a este archivo central.
+ */
+export const PRODUCTS = [
+  {
+    key: 'ERP',
+    slug: 'jsl-erp', // slug para la URL
+    icon: 'Database',
+  },
+  {
+    key: 'POS',
+    slug: 'jsl-pos', // slug para la URL
+    icon: 'ShoppingCart',
+  },
+  {
+    key: 'MOBILE_APPS',
+    slug: 'proprietary-apps', // slug para la URL
+    icon: 'Smartphone',
+  }
+];
+
+/**
+ * DATOS DEL PROCESO
+ * Movido desde home.component.ts y requerido por process.component.ts
+ */
+export const PROCESS_STEPS = [
+  {
+    key: 'STEP1',
+    icon: 'Compass'
+  },
+  {
+    key: 'STEP2',
+    icon: 'Code'
+  },
+  {
+    key: 'STEP3',
+    icon: 'Server'
+  },
+  {
+    key: 'STEP4',
+    icon: 'TrendingUp'
+  }
+];
+
+/**
  * Datos de los miembros del equipo para la página "Nosotros".
  */
 export const TEAM_MEMBERS = [
@@ -108,5 +180,68 @@ export const BLOG_POSTS = [
     imageUrl: 'https://images.unsplash.com/photo-1510915228340-01c85c1a1a8e?fit=crop&w=600&q=80',
     date: '2025-10-15',
     authorKey: 'ABOUT.TEAM_MEMBER_3_NAME',
+  }
+];
+
+/**
+ * DATOS DEL TECH STACK (NUEVO)
+ * Datos para la página de Tecnologías.
+ * NOTA: Debes agregar los logos en la carpeta 'src/assets/imgs/logos/'
+ */
+export const TECH_STACK = [
+  {
+    key: 'FRONTEND',
+    icon: 'Monitor', // Icono de Lucide
+    technologies: [
+      { name: 'Angular', imageUrl: 'assets/imgs/logos/angular.svg' },
+      { name: 'TypeScript', imageUrl: 'assets/imgs/logos/typescript.svg' },
+      { name: 'JavaScript', imageUrl: 'assets/imgs/logos/javascript.svg' },
+      { name: 'HTML5', imageUrl: 'assets/imgs/logos/html5.svg' },
+      { name: 'Sass (SCSS)', imageUrl: 'assets/imgs/logos/sass.svg' },
+      { name: 'RxJS', imageUrl: 'assets/imgs/logos/rxjs.svg' }
+    ]
+  },
+  {
+    key: 'BACKEND',
+    icon: 'Server',
+    technologies: [
+      { name: 'Node.js', imageUrl: 'assets/imgs/logos/nodejs.svg' },
+      { name: 'NestJS', imageUrl: 'assets/imgs/logos/nestjs.svg' },
+      { name: 'Express', imageUrl: 'assets/imgs/logos/express.svg' },
+      { name: 'C# / .NET', imageUrl: 'assets/imgs/logos/dotnet.svg' },
+      { name: 'Python', imageUrl: 'assets/imgs/logos/python.svg' }
+    ]
+  },
+  {
+    key: 'DATABASE',
+    icon: 'Database',
+    technologies: [
+      { name: 'PostgreSQL', imageUrl: 'assets/imgs/logos/postgresql.svg' },
+      { name: 'MySQL', imageUrl: 'assets/imgs/logos/mysql.svg' },
+      { name: 'MongoDB', imageUrl: 'assets/imgs/logos/mongodb.svg' },
+      { name: 'Redis', imageUrl: 'assets/imgs/logos/redis.svg' },
+      { name: 'SQL Server', imageUrl: 'assets/imgs/logos/sqlserver.svg' }
+    ]
+  },
+  {
+    key: 'CLOUD_DEVOPS',
+    icon: 'CloudCog',
+    technologies: [
+      { name: 'AWS', imageUrl: 'assets/imgs/logos/aws.svg' },
+      { name: 'Azure', imageUrl: 'assets/imgs/logos/azure.svg' },
+      { name: 'Docker', imageUrl: 'assets/imgs/logos/docker.svg' },
+      { name: 'Terraform', imageUrl: 'assets/imgs/logos/terraform.svg' },
+      { name: 'Git', imageUrl: 'assets/imgs/logos/git.svg' }
+    ]
+  },
+  {
+    key: 'MOBILE',
+    icon: 'Smartphone',
+    technologies: [
+      { name: 'Flutter', imageUrl: 'assets/imgs/logos/flutter.svg' },
+      { name: 'React Native', imageUrl: 'assets/imgs/logos/react.svg' },
+      { name: 'Swift (iOS)', imageUrl: 'assets/imgs/logos/swift.svg' },
+      { name: 'Kotlin (Android)', imageUrl: 'assets/imgs/logos/kotlin.svg' }
+    ]
   }
 ];

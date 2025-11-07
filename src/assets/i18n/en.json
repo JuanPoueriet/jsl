@@ -5,6 +5,9 @@
     "PRODUCTS": "Products",
     "PROJECTS": "Case Studies",
     "BLOG": "Blog",
+    "PROCESS": "Process",
+    "INDUSTRIES": "Industries",
+    "TECH_STACK": "Technologies",
     "ABOUT": "About Us",
     "CONTACT": "Contact"
   },
@@ -49,9 +52,13 @@
     "DESKTOP": "Desktop Software",
     "CLOUD": "Cloud Solutions"
   },
-  "LEGAL": {
-    "PRIVACY": "Privacy Policy",
-    "TERMS": "Terms of Service"
+  "COMMON": {
+    "READ_MORE": "Read More",
+    "DEFAULT_DESCRIPTION": "JSL Technology: Custom software solutions, ERP, POS, and mobile development to power your business.",
+    "BREADCRUMB_HOME": "Home",
+    "AUTHOR": "Author",
+    "PUBLISHED_DATE": "Published on",
+    "PLACEHOLDER_TITLE": "More Information Coming Soon"
   },
   "HOME": {
     "HERO1_TITLE": "Shaping The Future Of Digital Innovation",
@@ -107,9 +114,6 @@
     "CTA_SUBTITLE": "Our team of solution architects is ready to transform your vision into a functional, forward-thinking digital reality.",
     "CTA_BUTTON": "Contact Us Now"
   },
-  "PAGE": {
-    "PLACEHOLDER": "This page's content is coming soon."
-  },
   "CONTACT": {
     "TITLE": "Let's Talk About Your Project",
     "SUBTITLE": "Have an idea or a challenge? Our team of experts is ready to help you build the future of your business.",
@@ -135,34 +139,38 @@
       "ERROR": "There was an error sending your message. Please try again later."
     }
   },
-  "COMMON": {
-    "READ_MORE": "Read More",
-    "DEFAULT_DESCRIPTION": "JSL Technology: Custom software solutions, ERP, POS, and mobile development to power your business.",
-    "BREADCRUMB_HOME": "Home",
-    "AUTHOR": "Author",
-    "PUBLISHED_DATE": "Published on"
-  },
   "SOLUTIONS": {
     "TITLE": "Custom Software Solutions",
     "SUBTITLE": "We build precise digital tools tailored to your needs. From complex web applications to scalable cloud solutions, our engineering team transforms your challenges into competitive advantages.",
     "WEB_TITLE": "Web Development",
     "WEB_DESC": "Robust, fast, and scalable web applications using the latest technologies. We build everything from SPAs to corporate portals.",
+    "WEB_DETAIL_CONTENT": "<p>Our <strong>Web Development</strong> service goes beyond creating pretty pages. We build high-performance, secure, and scalable web applications that become the core of your digital operation.</p><h3>Our Specialty</h3><ul><li>Custom Content Management Systems (CMS).</li><li>B2B and B2C E-Commerce Platforms.</li><li>Interactive Single Page Applications (SPAs) with Angular.</li><li>Integration with third-party APIs and cloud services.</li></ul><p>We use the most modern technologies, including <strong>Angular with SSR</strong> (like this site) for unmatched performance and SEO, Node.js for efficient backends, and serverless architectures for infinite scalability.</p>",
     "MOBILE_TITLE": "Mobile Applications",
     "MOBILE_DESC": "Native (iOS/Android) and hybrid development to create fluid mobile experiences that connect with your users.",
+    "MOBILE_DETAIL_CONTENT": "<p>Detailed content about <strong>Mobile Applications</strong>... Explain the process, technologies (Native, Flutter, React Native), and how it integrates with backends and the JSL-ERP.</p>",
     "DESKTOP_TITLE": "Desktop Software",
     "DESKTOP_DESC": "Powerful and secure software solutions for desktop environments, optimized for performance and data reliability.",
+    "DESKTOP_DETAIL_CONTENT": "<p>Detailed content about <strong>Desktop Software</strong>... Talk about Electron, .NET, and use cases like point-of-sale or factory systems that require high local speed.</p>",
     "CLOUD_TITLE": "Cloud Architecture",
-    "CLOUD_DESC": "We design and implement scalable, secure, and cost-effective cloud infrastructures (AWS, Azure, GCP)."
+    "CLOUD_DESC": "We design and implement scalable, secure, and cost-effective cloud infrastructures (AWS, Azure, GCP).",
+    "CLOUD_DETAIL_CONTENT": "<p>Detailed content about <strong>Cloud Architecture</strong>... Explain AWS services (EC2, S3, RDS, Lambda), DevOps strategies, CI/CD, and how you ensure the scalability mentioned in the blog.</p>"
   },
   "PRODUCTS": {
     "TITLE": "Our Proprietary Software",
     "SUBTITLE": "Years of engineering experience have allowed us to build a robust ecosystem of products, designed for maximum efficiency and scalability.",
     "ERP_TITLE": "JSL-ERP (ERP System)",
     "ERP_DESC": "A comprehensive enterprise resource planning solution. Manage finances, inventory, logistics, and more, all from one unified platform.",
+    "ERP_DETAIL_CONTENT": "<p>Detailed content about <strong>JSL-ERP</strong>... This is the description living in the corporate 'hub', explaining its core modules and the value it provides.</p><p>This page serves as a summary. To learn about all features, demos, and pricing, please visit our dedicated product page.</p>",
+    "ERP_MARKETING_URL": "https://jsl.technology",
     "POS_TITLE": "JSL-POS (POS Software)",
     "POS_DESC": "Fast, reliable, and intuitive Point of Sale (POS) software. Perfect for retail and restaurants, with real-time inventory management.",
+    "POS_DETAIL_CONTENT": "<p>Detailed content about <strong>JSL-POS</strong>... This is the description living in the corporate 'hub', highlighting its ease of use and integration.</p><p>This page serves as a summary. To learn about all features, demos, and pricing, please visit our dedicated product page.</p>",
+    "POS_MARKETING_URL": "https://jsl.technology",
     "MOBILE_APPS_TITLE": "Proprietary Mobile Apps",
-    "MOBILE_APPS_DESC": "A suite of mobile applications designed to enhance productivity and team management on the go, fully integrated with our ERP."
+    "MOBILE_APPS_DESC": "A suite of mobile applications designed to enhance productivity and team management on the go, fully integrated with our ERP.",
+    "MOBILE_APPS_DETAIL_CONTENT": "<p>Detailed content about our <strong>Proprietary Mobile Apps</strong>... Describing the apps and their benefits.</p><p>This page serves as a summary. To learn about all features, demos, and pricing, please visit our dedicated product page.</p>",
+    "MOBILE_APPS_MARKETING_URL": "https://jsl.technology",
+    "VIEW_DEDICATED_PAGE": "Visit Product Page"
   },
   "PROJECTS": {
     "TITLE": "Case Studies",
@@ -241,5 +249,60 @@
     "TERMS_SECTION_2_P1": "You agree not to use the website for any unlawful purpose or any purpose prohibited by these terms. You may not use the website in any manner that could damage, disable, or overburden the site.",
     "TERMS_SECTION_3_TITLE": "Intellectual Property",
     "TERMS_SECTION_3_P1": "All content present on this site, including text, graphics, logos, and images, is the property of JSL Technology and is protected by copyright laws."
+  },
+  "NOT_FOUND": {
+    "TITLE": "Page Not Found (404)",
+    "SUBTITLE": "The page you are looking for does not exist or has been moved. Let's get you back to a safe place.",
+    "CTA": "Go Home",
+    "SOLUTION_TITLE": "Solution Not Found",
+    "SOLUTION_SUBTITLE": "We couldn't find the service you're looking for. You can see all our solutions on the",
+    "PRODUCT_TITLE": "Product Not Found",
+    "PRODUCT_SUBTITLE": "We couldn't find the product you're looking for. You can see all our products on the",
+    "PROJECT_TITLE": "Case Study Not Found",
+    "PROJECT_SUBTITLE": "We couldn't find the project you're looking for. You can see all our case studies on the",
+    "BLOG_TITLE": "Article Not Found",
+    "BLOG_SUBTITLE": "We couldn't find the article you're looking for. You can return to the"
+  },
+  "PROCESS": {
+    "TITLE": "Our Process: From Idea to Impact",
+    "SUBTITLE": "We believe in transparency and collaboration. Our 4-phase process is designed to ensure quality, meet deadlines, and perfectly align the technology solution with your business goals.",
+    "STEP1_DETAIL": "All great software starts with a great strategy. In this phase, our solution architects and product engineers work with you to define the 'what', the 'why', and the 'how'. We conduct workshops, analyze users, and define the technical architecture. The deliverable is a clear roadmap and an initial prototype.",
+    "STEP2_DETAIL": "This is where the vision comes to life. Working in agile sprints, our UI/UX designers create intuitive interfaces while our full-stack engineers build the application's core. You will have access to weekly builds and participate in constant reviews to ensure the product aligns with your expectations.",
+    "STEP3_DETAIL": "Quality is non-negotiable. Our QA (Quality Assurance) team performs exhaustive integration, performance, and security testing. In parallel, we set up the cloud infrastructure (on AWS, Azure, or GCP) and automate the deployment process (CI/CD) for smooth, frictionless launches.",
+    "STEP4_DETAIL": "Our work doesn't end at launch. We offer continuous support plans, 24/7 monitoring, and retainers for evolutionary improvements. We analyze usage metrics and propose new features to ensure your technology investment continues to generate long-term value."
+  },
+  "INDUSTRIES": {
+    "TITLE": "Solutions by Industry",
+    "SUBTITLE": "We understand that every industry has unique challenges. We apply our technical expertise and our products to solve your sector's specific problems.",
+    "RELATED_LINKS": "Related Links",
+    "CONTACT_SOLUTION": "Custom Solution",
+    "RETAIL_TITLE": "Retail & E-Commerce",
+    "RETAIL_DESC": "Optimize your sales, inventory, and customer experience with our lightning-fast POS software and custom e-commerce solutions.",
+    "LOGISTICS_TITLE": "Logistics & Distribution",
+    "LOGISTICS_DESC": "Manage your supply chain, fleets, and warehouses with full visibility and efficiency through our robust JSL-ERP.",
+    "FINTECH_TITLE": "Finance & Banking",
+    "FINTECH_DESC": "We build secure, scalable, and compliant platforms for Fintech startups and established financial institutions.",
+    "HEALTH_TITLE": "HealthTech",
+    "HEALTH_DESC": "We develop HIPAA-compliant mobile apps and management software to improve patient care and optimize clinical data.",
+    "CTA_EYEBROW": "Don't see your industry?",
+    "CTA_TITLE": "We Build Solutions for Unique Challenges",
+    "CTA_SUBTITLE": "If you have a complex software challenge, our custom engineering team is your best ally. Let's talk."
+  },
+  "TECH_STACK": {
+    "TITLE": "Our Technology Stack",
+    "SUBTITLE": "We use a set of modern, robust, and scalable technologies to build world-class solutions, from the frontend to the cloud.",
+    "FRONTEND_TITLE": "Frontend",
+    "FRONTEND_DESC": "Interactive, fast web applications with excellent SEO.",
+    "BACKEND_TITLE": "Backend",
+    "BACKEND_DESC": "Robust APIs, microservices, and secure business logic.",
+    "DATABASE_TITLE": "Databases",
+    "DATABASE_DESC": "Optimized, relational, and NoSQL data storage.",
+    "CLOUD_DEVOPS_TITLE": "Cloud & DevOps",
+    "CLOUD_DEVOPS_DESC": "Scalable, automated, and secure infrastructure.",
+    "MOBILE_TITLE": "Mobile",
+    "MOBILE_DESC": "Native and hybrid experiences for iOS and Android.",
+    "CTA_EYEBROW": "Ready to build?",
+    "CTA_TITLE": "Let's use the right tool for your project",
+    "CTA_SUBTITLE": "Our stack is flexible. We adapt to your project's requirements to ensure the best performance and scalability."
   }
 }

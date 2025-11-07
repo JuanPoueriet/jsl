@@ -1,0 +1,8 @@
+<div classa="logo-card">
+  <div class="logo-card__image-wrapper">
+    <img [src]="imageUrl" [alt]="nameKey ? (nameKey | translate) : name" loading="lazy">
+  </div>
+  <p class="logo-card__name">
+    {{ nameKey ? (nameKey | translate) : name }}
+  </p>
+</div>

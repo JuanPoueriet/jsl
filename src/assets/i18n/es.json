@@ -5,6 +5,9 @@
     "PRODUCTS": "Productos",
     "PROJECTS": "Casos de Éxito",
     "BLOG": "Blog",
+    "PROCESS": "Proceso",
+    "INDUSTRIES": "Industrias",
+    "TECH_STACK": "Tecnologías",
     "ABOUT": "Nosotros",
     "CONTACT": "Contacto"
   },
@@ -49,9 +52,13 @@
     "DESKTOP": "Software de Escritorio",
     "CLOUD": "Soluciones Cloud"
   },
-  "LEGAL": {
-    "PRIVACY": "Política de Privacidad",
-    "TERMS": "Términos de Servicio"
+  "COMMON": {
+    "READ_MORE": "Leer Más",
+    "DEFAULT_DESCRIPTION": "JSL Technology: Soluciones de software a medida, ERP, POS y desarrollo móvil para impulsar tu negocio.",
+    "BREADCRUMB_HOME": "Inicio",
+    "AUTHOR": "Autor",
+    "PUBLISHED_DATE": "Publicado el",
+    "PLACEHOLDER_TITLE": "Más Información Próximamente"
   },
   "HOME": {
     "HERO1_TITLE": "Moldeando el Futuro de la Innovación Digital",
@@ -107,9 +114,6 @@
     "CTA_SUBTITLE": "Nuestro equipo de arquitectos de soluciones está listo para transformar tu visión en una realidad digital funcional y vanguardista.",
     "CTA_BUTTON": "Contactar Ahora"
   },
-  "PAGE": {
-    "PLACEHOLDER": "El contenido de esta página estará disponible próximamente."
-  },
   "CONTACT": {
     "TITLE": "Hablemos de tu Proyecto",
     "SUBTITLE": "¿Tienes una idea o un desafío? Nuestro equipo de expertos está listo para ayudarte a construir el futuro de tu negocio.",
@@ -135,34 +139,38 @@
       "ERROR": "Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde."
     }
   },
-  "COMMON": {
-    "READ_MORE": "Leer Más",
-    "DEFAULT_DESCRIPTION": "JSL Technology: Soluciones de software a medida, ERP, POS y desarrollo móvil para impulsar tu negocio.",
-    "BREADCRUMB_HOME": "Inicio",
-    "AUTHOR": "Autor",
-    "PUBLISHED_DATE": "Publicado el"
-  },
   "SOLUTIONS": {
     "TITLE": "Soluciones de Software a Medida",
     "SUBTITLE": "Creamos herramientas digitales precisas que se adaptan a tus necesidades. Desde aplicaciones web complejas hasta soluciones en la nube escalables, nuestro equipo de ingeniería transforma tus desafíos en ventajas competitivas.",
     "WEB_TITLE": "Desarrollo Web",
     "WEB_DESC": "Aplicaciones web robustas, rápidas y escalables utilizando las últimas tecnologías. Creamos desde SPAs hasta portales corporativos.",
+    "WEB_DETAIL_CONTENT": "<p>Nuestro servicio de <strong>Desarrollo Web</strong> va más allá de crear páginas bonitas. Construimos aplicaciones web de alto rendimiento, seguras y escalables que se convierten en el núcleo de tu operación digital.</p><h3>Nuestra Especialidad</h3><ul><li>Sistemas de gestión de contenido (CMS) a medida.</li><li>Plataformas de E-Commerce B2B y B2C.</li><li>Aplicaciones de una sola página (SPAs) interactivas con Angular.</li><li>Integración con APIs de terceros y servicios en la nube.</li></ul><p>Utilizamos las tecnologías más modernas, incluyendo <strong>Angular con SSR</strong> (como este sitio) para un rendimiento y SEO incomparables, Node.js para backends eficientes y arquitecturas serverless para una escalabilidad infinita.</p>",
     "MOBILE_TITLE": "Aplicaciones Móviles",
     "MOBILE_DESC": "Desarrollo nativo (iOS/Android) e híbrido para crear experiencias móviles fluidas que conectan con tus usuarios.",
+    "MOBILE_DETAIL_CONTENT": "<p>Contenido detallado sobre <strong>Aplicaciones Móviles</strong>... Explicar el proceso, las tecnologías (Nativo, Flutter, React Native) y cómo se integra con los backends y el JSL-ERP.</p>",
     "DESKTOP_TITLE": "Software de Escritorio",
     "DESKTOP_DESC": "Soluciones de software potentes y seguras para entornos de escritorio, optimizadas para el rendimiento y la fiesta de datos.",
+    "DESKTOP_DETAIL_CONTENT": "<p>Contenido detallado sobre <strong>Software de Escritorio</strong>... Hablar de Electron, .NET, y los casos de uso como puntos de venta o sistemas de fábrica que requieren alta velocidad local.</p>",
     "CLOUD_TITLE": "Arquitectura Cloud",
-    "CLOUD_DESC": "Diseñamos e implementamos infraestructuras en la nube (AWS, Azure, GCP) que son escalables, seguras y rentables."
+    "CLOUD_DESC": "Diseñamos e implementamos infraestructuras en la nube (AWS, Azure, GCP) que son escalables, seguras y rentables.",
+    "CLOUD_DETAIL_CONTENT": "<p>Contenido detallado sobre <strong>Arquitectura Cloud</strong>... Explicar servicios de AWS (EC2, S3, RDS, Lambda), estrategias de DevOps, CI/CD y cómo se asegura la escalabilidad que se menciona en el blog.</p>"
   },
   "PRODUCTS": {
     "TITLE": "Nuestro Software Propietario",
     "SUBTITLE": "Años de experiencia en ingeniería nos han permitido construir un ecosistema de productos robustos, diseñados para la máxima eficiencia y escalabilidad.",
     "ERP_TITLE": "JSL-ERP (Sistema ERP)",
     "ERP_DESC": "Una solución integral de planificación de recursos empresariales. Gestiona finanzas, inventario, logística y más, todo desde una plataforma unificada.",
+    "ERP_DETAIL_CONTENT": "<p>Contenido detallado sobre <strong>JSL-ERP</strong>... Esta es la descripción que vive en el 'hub' corporativo, explicando sus módulos principales y el valor que aporta.</p><p>Esta página sirve como un resumen. Para conocer a fondo todas las funcionalidades, demostraciones y precios, visite nuestra página de producto dedicada.</p>",
+    "ERP_MARKETING_URL": "https://jsl.technology",
     "POS_TITLE": "JSL-POS (Software POS)",
     "POS_DESC": "Software de Punto de Venta (POS) rápido, confiable e intuitivo. Perfecto para retail y restaurantes, con gestión de inventario en tiempo real.",
+    "POS_DETAIL_CONTENT": "<p>Contenido detallado sobre <strong>JSL-POS</strong>... Esta es la descripción que vive en el 'hub' corporativo, destacando su facilidad de uso e integración.</p><p>Esta página sirve como un resumen. Para conocer a fondo todas las funcionalidades, demostraciones y precios, visite nuestra página de producto dedicada.</p>",
+    "POS_MARKETING_URL": "https://jsl.technology",
     "MOBILE_APPS_TITLE": "Aplicaciones Móviles Propias",
-    "MOBILE_APPS_DESC": "Un conjunto de aplicaciones móviles diseñadas para potenciar la productividad y la gestión de equipos en movimiento, integradas con nuestro ERP."
+    "MOBILE_APPS_DESC": "Un conjunto de aplicaciones móviles diseñadas para potenciar la productividad y la gestión de equipos en movimiento, integradas con nuestro ERP.",
+    "MOBILE_APPS_DETAIL_CONTENT": "<p>Contenido detallado sobre nuestras <strong>Aplicaciones Móviles Propias</strong>... Describir las apps y sus beneficios.</p><p>Esta página sirve como un resumen. Para conocer a fondo todas las funcionalidades, demostraciones y precios, visite nuestra página de producto dedicada.</p>",
+    "MOBILE_APPS_MARKETING_URL": "https://jsl.technology",
+    "VIEW_DEDICATED_PAGE": "Visitar Página del Producto"
   },
   "PROJECTS": {
     "TITLE": "Casos de Éxito",
@@ -241,5 +249,60 @@
     "TERMS_SECTION_2_P1": "Usted se compromete a no utilizar el sitio web para ningún propósito ilegal o prohibido por estos términos. No puede utilizar el sitio web de ninguna manera que pueda dañar, deshabilitar o sobrecargar el sitio.",
     "TERMS_SECTION_3_TITLE": "Propiedad Intelectual",
     "TERMS_SECTION_3_P1": "Todo el contenido presente en este sitio, incluyendo texto, gráficos, logotipos e imágenes, es propiedad de JSL Technology y está protegido por las leyes de derechos de autor."
+  },
+  "NOT_FOUND": {
+    "TITLE": "Página No Encontrada (404)",
+    "SUBTITLE": "La página que estás buscando no existe o ha sido movida. Volvamos a un lugar seguro.",
+    "CTA": "Ir al Inicio",
+    "SOLUTION_TITLE": "Solución no encontrada",
+    "SOLUTION_SUBTITLE": "No pudimos encontrar el servicio que buscas. Puedes ver todas nuestras soluciones en la página de",
+    "PRODUCT_TITLE": "Producto no encontrado",
+    "PRODUCT_SUBTITLE": "No pudimos encontrar el producto que buscas. Puedes ver todos nuestros productos en la página de",
+    "PROJECT_TITLE": "Caso de Éxito no encontrado",
+    "PROJECT_SUBTITLE": "No pudimos encontrar el proyecto que buscas. Puedes ver todos nuestros casos de éxito en la página de",
+    "BLOG_TITLE": "Artículo no encontrado",
+    "BLOG_SUBTITLE": "No pudimos encontrar el artículo que buscas. Puedes volver al"
+  },
+  "PROCESS": {
+    "TITLE": "Nuestro Proceso: De la Idea al Impacto",
+    "SUBTITLE": "Creemos en la transparencia y la colaboración. Nuestro proceso de 4 fases está diseñado para garantizar la calidad, cumplir con los plazos y alinear perfectamente la solución tecnológica con tus objetivos de negocio.",
+    "STEP1_DETAIL": "Todo gran software comienza con una gran estrategia. En esta fase, nuestros arquitectos de soluciones e ingenieros de producto trabajan contigo para definir el 'qué', el 'por qué' y el 'cómo'. Realizamos talleres, analizamos a los usuarios y definimos la arquitectura técnica. El entregable es una hoja de ruta clara y un prototipo inicial.",
+    "STEP2_DETAIL": "Aquí es donde la visión cobra vida. Trabajando en 'sprints' ágiles, nuestros diseñadores UI/UX crean interfaces intuitivas mientras nuestros ingenieros 'full-stack' construyen el núcleo de la aplicación. Tendrás acceso a 'builds' semanales y participarás en revisiones constantes para asegurar que el producto se alinee con tus expectativas.",
+    "STEP3_DETAIL": "La calidad es innegociable. Nuestro equipo de QA (Control de Calidad) realiza pruebas exhaustivas de integración, rendimiento y seguridad. Paralelamente, configuramos la infraestructura 'cloud' (en AWS, Azure o GCP) y automatizamos el proceso de despliegue (CI/CD) para lanzamientos fluidos y sin fricción.",
+    "STEP4_DETAIL": "Nuestro trabajo no termina con el lanzamiento. Ofrecemos planes de soporte continuo, monitoreo 24/7 y bolsas de horas para mejoras evolutivas. Analizamos las métricas de uso y te proponemos nuevas funcionalidades para asegurar que tu inversión tecnológica siga generando valor a largo plazo."
+  },
+  "INDUSTRIES": {
+    "TITLE": "Soluciones por Industria",
+    "SUBTITLE": "Entendemos que cada industria tiene desafíos únicos. Aplicamos nuestra experiencia tecnológica y nuestros productos para resolver los problemas específicos de tu sector.",
+    "RELATED_LINKS": "Enlaces Relacionados",
+    "CONTACT_SOLUTION": "Solución a Medida",
+    "RETAIL_TITLE": "Retail y Comercio",
+    "RETAIL_DESC": "Optimice sus ventas, inventario y experiencia del cliente con nuestro software POS ultrarrápido y soluciones de e-commerce a medida.",
+    "LOGISTICS_TITLE": "Logística y Distribución",
+    "LOGISTICS_DESC": "Gestione su cadena de suministro, flotas y almacenes con total visibilidad y eficiencia a través de nuestro robusto JSL-ERP.",
+    "FINTECH_TITLE": "Finanzas y Banca",
+    "FINTECH_DESC": "Construimos plataformas seguras, escalables y que cumplen con las normativas para 'startups' Fintech e instituciones financieras.",
+    "HEALTH_TITLE": "Salud (HealthTech)",
+    "HEALTH_DESC": "Desarrollamos aplicaciones móviles y software de gestión que cumplen con HIPAA para mejorar la atención al paciente y optimizar la data clínica.",
+    "CTA_EYEBROW": "¿Tu industria no está en la lista?",
+    "CTA_TITLE": "Creamos Soluciones para Desafíos Únicos",
+    "CTA_SUBTITLE": "Si tienes un desafío de software complejo, nuestro equipo de ingeniería a medida es tu mejor aliado. Hablemos."
+  },
+  "TECH_STACK": {
+    "TITLE": "Nuestro Stack Tecnológico",
+    "SUBTITLE": "Usamos un conjunto de tecnologías modernas, robustas y escalables para construir soluciones de clase mundial, desde el frontend hasta la nube.",
+    "FRONTEND_TITLE": "Frontend",
+    "FRONTEND_DESC": "Aplicaciones web interactivas, rápidas y con excelente SEO.",
+    "BACKEND_TITLE": "Backend",
+    "BACKEND_DESC": "APIs robustas, microservicios y lógica de negocio segura.",
+    "DATABASE_TITLE": "Bases de Datos",
+    "DATABASE_DESC": "Almacenamiento de datos optimizado, relacional y NoSQL.",
+    "CLOUD_DEVOPS_TITLE": "Cloud & DevOps",
+    "CLOUD_DEVOPS_DESC": "Infraestructura escalable, automatizada y segura.",
+    "MOBILE_TITLE": "Móvil",
+    "MOBILE_DESC": "Experiencias nativas e híbridas para iOS y Android.",
+    "CTA_EYEBROW": "¿Listo para construir?",
+    "CTA_TITLE": "Usemos la herramienta correcta para tu proyecto",
+    "CTA_SUBTITLE": "Nuestro stack es flexible. Nos adaptamos a los requerimientos de tu proyecto para garantizar el mejor rendimiento y escalabilidad."
   }
 }
