@@ -177,7 +177,7 @@ export const BLOG_POSTS = [
   {
     key: 'POST_3',
     slug: 'cloud-architecture-scalability',
-    imageUrl: 'https://images.unsplash.com/photo-1510915228340-01c85c1a1a8e?fit=crop&w=600&q=80',
+    imageUrl: 'https://www.muycomputerpro.com/wp-content/uploads/2018/07/arquitecto-cloud.jpg',
     date: '2025-10-15',
     authorKey: 'ABOUT.TEAM_MEMBER_3_NAME',
   }

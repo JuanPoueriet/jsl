@@ -17,7 +17,10 @@
     "PORTFOLIO": "Portafolio",
     "GET_QUOTE": "Cotizar",
     "PRODUCTS": "Nuestros Productos",
-    "CONTACT": "Contáctanos"
+    "CONTACT": "Contáctanos",
+    "CAREERS": "Carreras",
+    "FAQ": "FAQ",
+    "BLOG": "Blog"
   },
   "LANG": {
     "ES": "Español",
@@ -28,7 +31,7 @@
   "FOOTER": {
     "SLOGAN": "Soluciones de software que impulsan a los líderes del mañana.",
     "COMPANY": "Empresa",
-    "SOLUTIONS": "Soluciones",
+    "SOLUTIONS": "Oferta",
     "RESOURCES": "Recursos",
     "CONTACT_INFO": "Información de Contacto",
     "FOLLOW_US": "Síguenos",

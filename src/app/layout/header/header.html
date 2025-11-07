@@ -7,7 +7,7 @@
     </a>
 
     <!-- Menú Desktop -->
-    <ul class="header__nav-links">
+     <ul class="header__nav-links">
       <li>
         <a
           [routerLink]="[currentLang, 'home']"
@@ -43,54 +43,12 @@
       </li>
       <li>
         <a
-          [routerLink]="[currentLang, 'industries']"
-          routerLinkActive="active"
-          (click)="closeMobileMenu()"
-          >{{ 'HEADER.INDUSTRIES' | translate }}</a
-        >
-      </li>
-      <li>
-        <a
-          [routerLink]="[currentLang, 'tech-stack']"
-          routerLinkActive="active"
-          (click)="closeMobileMenu()"
-          >{{ 'HEADER.TECH_STACK' | translate }}</a
-        >
-      </li>
-      <li>
-        <a
-          [routerLink]="[currentLang, 'blog']"
-          routerLinkActive="active"
-          (click)="closeMobileMenu()"
-          >{{ 'HEADER.BLOG' | translate }}</a
-        >
-      </li>
-      <li>
-        <a
           [routerLink]="[currentLang, 'about-us']"
           routerLinkActive="active"
           (click)="closeMobileMenu()"
           >{{ 'HEADER.ABOUT' | translate }}</a
         >
       </li>
-      <!-- ¡NUEVOS ENLACES! -->
-      <li>
-        <a
-          [routerLink]="[currentLang, 'careers']"
-          routerLinkActive="active"
-          (click)="closeMobileMenu()"
-          >{{ 'HEADER.CAREERS' | translate }}</a
-        >
-      </li>
-      <li>
-        <a
-          [routerLink]="[currentLang, 'faq']"
-          routerLinkActive="active"
-          (click)="closeMobileMenu()"
-          >{{ 'HEADER.FAQ' | translate }}</a
-        >
-      </li>
-      <!-- Fin Nuevos Enlaces -->
       <li>
         <a
           [routerLink]="[currentLang, 'contact']"
@@ -99,7 +57,7 @@
           >{{ 'HEADER.CONTACT' | translate }}</a
         >
       </li>
-    </ul>
+      </ul>
     
     <!-- Botón de Menú Móvil -->
     @if(ifMobile()) {

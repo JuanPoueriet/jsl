@@ -21,12 +21,11 @@ import { LanguageSwitcher } from '../language-switcher/language-switcher'; // Im
 export class TopBar {
   public currentLang: string;
 
-  // Definimos los enlaces de la barra superior (sin iconos)
+  // --- CAMBIO: Enlaces de navegación secundaria (Meta) ---
   topLinks = [
-    { key: 'PORTFOLIO', route: 'projects' },
-    { key: 'GET_QUOTE', route: 'contact' },
-    { key: 'PRODUCTS', route: 'products' },
-    { key: 'CONTACT', route: 'contact' }
+    { key: 'CAREERS', route: 'careers' },
+    { key: 'FAQ', route: 'faq' },
+    { key: 'BLOG', route: 'blog' }
   ];
 
   constructor(private translate: TranslateService) {

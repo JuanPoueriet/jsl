@@ -17,7 +17,10 @@
     "PORTFOLIO": "Portfolio",
     "GET_QUOTE": "Get a Quote",
     "PRODUCTS": "Our Products",
-    "CONTACT": "Contact Us"
+    "CONTACT": "Contact Us",
+    "CAREERS": "Careers",
+    "FAQ": "FAQ",
+    "BLOG": "Blog"
   },
   "LANG": {
     "ES": "Spanish",
@@ -28,7 +31,7 @@
   "FOOTER": {
     "SLOGAN": "Software solutions that power tomorrow's leaders.",
     "COMPANY": "Company",
-    "SOLUTIONS": "Solutions",
+    "SOLUTIONS": "Offerings",
     "RESOURCES": "Resources",
     "CONTACT_INFO": "Contact Info",
     "FOLLOW_US": "Follow Us",
