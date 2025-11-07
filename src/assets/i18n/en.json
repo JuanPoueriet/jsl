@@ -9,7 +9,9 @@
     "INDUSTRIES": "Industries",
     "TECH_STACK": "Technologies",
     "ABOUT": "About Us",
-    "CONTACT": "Contact"
+    "CONTACT": "Contact",
+    "CAREERS": "Careers",
+    "FAQ": "FAQ"
   },
   "TOP_BAR": {
     "PORTFOLIO": "Portfolio",
@@ -192,7 +194,10 @@
     "CASE_MOBILE_APP_DETAIL_RESULT": "Fleet efficiency improved by 40%. Fuel costs were reduced by 18% thanks to route optimization. Customer service response time improved drastically with the ability to track deliveries in real-time.",
     "DETAIL_CHALLENGE_TITLE": "The Challenge",
     "DETAIL_SOLUTION_TITLE": "Our Solution",
-    "DETAIL_RESULT_TITLE": "The Result"
+    "DETAIL_RESULT_TITLE": "The Result",
+    "CTA_EYEBROW": "Ready to be our next success story?",
+    "CTA_TITLE": "Let's Transform Your Business",
+    "CTA_SUBTITLE": "Explore how our custom solutions have empowered other companies, and let's discuss how we can do the same for you."
   },
   "ABOUT": {
     "TITLE": "About JSL Technology",
@@ -217,7 +222,10 @@
     "TEAM_MEMBER_3_NAME": "Marcos Reyes",
     "TEAM_MEMBER_3_ROLE": "Principal Cloud Engineer",
     "TEAM_MEMBER_4_NAME": "Daniel Gómez",
-    "TEAM_MEMBER_4_ROLE": "Mobile Development Lead"
+    "TEAM_MEMBER_4_ROLE": "Mobile Development Lead",
+    "CTA_EYEBROW": "Want to know us better?",
+    "CTA_TITLE": "We Are Your Strategic Partner",
+    "CTA_SUBTITLE": "Our team is ready to collaborate with you and take your vision to the next level."
   },
   "BLOG": {
     "TITLE": "JSL Technology Blog",
@@ -230,7 +238,10 @@
     "POST_2_CONTENT": "<p>In the world of software development, two terms constantly buzz around: UI and UX. They are often grouped together, but they are not the same. Confusing them can lead to products that look beautiful but are useless, or are functional but frustrating.</p><h3>What is UI (User Interface)?</h3><p>UI is the 'look and feel'. It's the visual part. It's about the buttons, the colors, the typography, and the layout. Good UI design is attractive, consistent, and aesthetic. It's the 'canvas' and the 'paint'.</p><h3>What is UX (User Experience)?</h3><p>UX is the 'feel' and 'efficiency'. It's the design process that ensures a product is logical, easy to use, and solves a real problem. It's the 'architecture' and 'engineering' behind the paint. At JSL, our 'Discovery & Strategy' process focuses heavily on UX before a single line of code is written.</p>",
     "POST_3_TITLE": "5 Cloud Architecture Principles for True Scalability",
     "POST_3_EXCERPT": "Your app works fine with 100 users, but what about 100,000? True scalability isn't magic, it's good architecture. Here are our 5 pillars.",
-    "POST_3_CONTENT": "<p>At JSL Technology, we don't just build apps; we build systems that grow. Cloud architecture is the foundation of any successful modern digital product. Here are the 5 principles we apply:</p><ol><li><strong>Design for Failure:</strong> Components will fail. Your system must be resilient and recover automatically.</li><li><strong>Decouple Everything:</strong> Use microservices, message queues (like SQS or RabbitMQ), and APIs. One component should not bring down another.</li><li><strong>Go Horizontal (Scale-Out):</strong> Don't make your server 'bigger' (Vertical); make more 'small' servers (Horizontal). Use load balancers and auto-scaling.</li><li><strong>Store State Externally:</strong> Your application instances should be 'stateless'. Store sessions, caches, and files in external services (like Redis, S3).</li><li><strong>Automation:</strong> From deployment (CI/CD) to scaling. Manual intervention is the enemy of scalability.</li></ol>"
+    "POST_3_CONTENT": "<p>At JSL Technology, we don't just build apps; we build systems that grow. Cloud architecture is the foundation of any successful modern digital product. Here are the 5 principles we apply:</p><ol><li><strong>Design for Failure:</strong> Components will fail. Your system must be resilient and recover automatically.</li><li><strong>Decouple Everything:</strong> Use microservices, message queues (like SQS or RabbitMQ), and APIs. One component should not bring down another.</li><li><strong>Go Horizontal (Scale-Out):</strong> Don't make your server 'bigger' (Vertical); make more 'small' servers (Horizontal). Use load balancers and auto-scaling.</li><li><strong>Store State Externally:</strong> Your application instances should be 'stateless'. Store sessions, caches, and files in external services (like Redis, S3).</li><li><strong>Automation:</strong> From deployment (CI/CD) to scaling. Manual intervention is the enemy of scalability.</li></ol>",
+    "CTA_EYEBROW": "Interested in more insights?",
+    "CTA_TITLE": "Let's Talk Technology",
+    "CTA_SUBTITLE": "Our team is always exploring new ideas. Contact us if you'd like to discuss how technology can power your business."
   },
   "LEGAL": {
     "PRIVACY_TITLE": "Privacy Policy",
@@ -304,5 +315,52 @@
     "CTA_EYEBROW": "Ready to build?",
     "CTA_TITLE": "Let's use the right tool for your project",
     "CTA_SUBTITLE": "Our stack is flexible. We adapt to your project's requirements to ensure the best performance and scalability."
+  },
+  "CAREERS": {
+    "TITLE": "Opportunities at JSL",
+    "SUBTITLE": "Join a team of innovators building the future of technology in the region.",
+    "WHY_US_EYEBROW": "Why JSL?",
+    "WHY_US_TITLE": "More Than a Job, a Mission",
+    "WHY_US_DESC_1": "At JSL Technology, we don't just build software; we solve complex problems. We foster a culture of continuous learning, radical collaboration, and engineering excellence.",
+    "WHY_US_DESC_2": "We offer an environment where you can grow, lead, and make a real impact on world-class projects.",
+    "BENEFIT_1_TITLE": "Flexible Work",
+    "BENEFIT_1_DESC": "We offer remote and hybrid options to balance your life and your work.",
+    "BENEFIT_2_TITLE": "Learning Culture",
+    "BENEFIT_2_DESC": "Access to courses, certifications, and constant mentorship.",
+    "BENEFIT_3_TITLE": "Challenging Projects",
+    "BENEFIT_3_DESC": "Work on mission-critical software for leading industries.",
+    "BENEFIT_4_TITLE": "Compensation",
+    "BENEFIT_4_DESC": "Competitive salaries, performance bonuses, and health coverage.",
+    "OPENINGS_EYEBROW": "Open Positions",
+    "OPENINGS_TITLE": "Find Your Fit",
+    "OPENINGS_SUBTITLE": "We are looking for passionate, curious, and quality-driven people. Check our open positions.",
+    "POS_1_TITLE": "Sr. Software Engineer (Backend)",
+    "POS_1_DESC": "Experience in Node.js, NestJS, and microservice architecture. A passion for clean, scalable code.",
+    "POS_2_TITLE": "Sr. Angular Developer (Frontend)",
+    "POS_2_DESC": "Expert in Angular, RxJS, and SSR. Strong focus on performance and user experience (UX).",
+    "LOCATION_REMOTE": "Remote (Global)",
+    "LOCATION_HYBRID": "Hybrid (Santo Domingo)",
+    "TYPE_FULLTIME": "Full-Time",
+    "APPLY_SUBJECT": "Application for position:",
+    "APPLY_NOW": "Apply Now",
+    "NO_OPENINGS": "We don't have any open positions right now, but we're always looking for talent. Send us your resume!",
+    "CTA_EYEBROW": "Don't see your ideal role?",
+    "CTA_TITLE": "We're Always Looking for Talent",
+    "CTA_SUBTITLE": "We believe in talent over positions. If you are passionate about technology, we want to meet you."
+  },
+  "FAQ": {
+    "TITLE": "Frequently Asked Questions",
+    "SUBTITLE": "Have questions? We've answered the most common ones about our services, products, and process here.",
+    "Q1_TITLE": "What kind of software solutions do you develop?",
+    "Q1_DESC": "We specialize in three main areas: <strong>Custom Development</strong> (Web, Mobile, Cloud), <strong>Enterprise Software</strong> (our JSL-ERP and JSL-POS), and <strong>Cloud Engineering</strong> (DevOps, Architecture on AWS & Azure).",
+    "Q2_TITLE": "What is your development process like?",
+    "Q2_DESC": "We use an agile 4-phase process: <strong>1. Discovery & Strategy</strong>, <strong>2. UI/UX Design & Engineering</strong>, <strong>3. Deployment & Quality</strong>, and <strong>4. Support & Growth</strong>. You can see more details on our <a href='/en/process'>Process page</a>.",
+    "Q3_TITLE": "Do you work with startups as well as large enterprises?",
+    "Q3_DESC": "Yes! Our architecture is designed to scale. We help startups build their Minimum Viable Product (MVP) robustly and assist established companies in modernizing legacy systems and optimizing operations.",
+    "Q4_TITLE": "Do you offer support after the project is launched?",
+    "Q4_DESC": "Absolutely. Launch is just the beginning. We offer ongoing support plans, 24/7 monitoring, and retainers for evolutionary improvements to ensure your software is always performing optimally.",
+    "CTA_EYEBROW": "Have more questions?",
+    "CTA_TITLE": "We're Here to Help",
+    "CTA_SUBTITLE": "If you didn't find your answer, our team of experts is ready to chat with you."
   }
 }

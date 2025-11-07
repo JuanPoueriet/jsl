@@ -9,7 +9,9 @@
     "INDUSTRIES": "Industrias",
     "TECH_STACK": "Tecnologías",
     "ABOUT": "Nosotros",
-    "CONTACT": "Contacto"
+    "CONTACT": "Contacto",
+    "CAREERS": "Carreras",
+    "FAQ": "FAQ"
   },
   "TOP_BAR": {
     "PORTFOLIO": "Portafolio",
@@ -192,7 +194,10 @@
     "CASE_MOBILE_APP_DETAIL_RESULT": "La eficiencia de la flota mejoró en un 40%. Los costos de combustible se redujeron en un 18% gracias a la optimización de rutas. El tiempo de respuesta del servicio al cliente mejoró drásticamente con la capacidad de rastrear entregas en tiempo real.",
     "DETAIL_CHALLENGE_TITLE": "El Desafío",
     "DETAIL_SOLUTION_TITLE": "Nuestra Solución",
-    "DETAIL_RESULT_TITLE": "El Resultado"
+    "DETAIL_RESULT_TITLE": "El Resultado",
+    "CTA_EYEBROW": "¿Listo para ser nuestro próximo caso de éxito?",
+    "CTA_TITLE": "Transformemos tu Negocio",
+    "CTA_SUBTITLE": "Explora cómo nuestras soluciones a medida han impulsado a otras empresas y hablemos de cómo podemos hacerlo por ti."
   },
   "ABOUT": {
     "TITLE": "Sobre JSL Technology",
@@ -217,7 +222,10 @@
     "TEAM_MEMBER_3_NAME": "Marcos Reyes",
     "TEAM_MEMBER_3_ROLE": "Ingeniero Principal de Cloud",
     "TEAM_MEMBER_4_NAME": "Daniel Gómez",
-    "TEAM_MEMBER_4_ROLE": "Líder de Desarrollo Móvil"
+    "TEAM_MEMBER_4_ROLE": "Líder de Desarrollo Móvil",
+    "CTA_EYEBROW": "¿Quieres conocernos mejor?",
+    "CTA_TITLE": "Somos tu Socio Estratégico",
+    "CTA_SUBTITLE": "Nuestro equipo está listo para colaborar contigo y llevar tu visión al siguiente nivel."
   },
   "BLOG": {
     "TITLE": "Blog de JSL Technology",
@@ -230,7 +238,10 @@
     "POST_2_CONTENT": "<p>En el mundo del desarrollo de software, dos términos resuenan constantemente: UI y UX. A menudo se agrupan, pero no son lo mismo. Confundirlos puede llevar a productos que se ven bonitos pero son inútiles, o funcionales pero frustrantes.</p><h3>¿Qué es UI (Interfaz de Usuario)?</h3><p>La UI es el 'look and feel'. Es la parte visual. Se trata de los botones, los colores, la tipografía y la disposición. Un buen diseño de UI es atractivo, coherente y estético. Es el 'lienzo' y la 'pintura'.</p><h3>¿Qué es UX (Experiencia de Usuario)?</h3><p>La UX es la 'sensación' y la 'eficiencia'. Es el proceso de diseño que asegura que el producto sea lógico, fácil de usar y resuelva un problema real. Es la 'arquitectura' y la 'ingeniería' detrás de la pintura. En JSL, nuestro proceso de 'Descubrimiento y Estrategia' se centra intensamente en la UX antes de escribir una sola línea de código.</p>",
     "POST_3_TITLE": "5 Principios de Arquitectura Cloud para una Escalabilidad Real",
     "POST_3_EXCERPT": "Tu aplicación funciona bien con 100 usuarios, ¿pero qué pasará con 100,000? La verdadera escalabilidad no es magia, es buena arquitectura. Aquí están nuestros 5 pilares.",
-    "POST_3_CONTENT": "<p>En JSL Technology, no solo construimos aplicaciones; construimos sistemas que crecen. La arquitectura en la nube es la base de cualquier producto digital moderno exitoso. Aquí están los 5 principios que aplicamos:</p><ol><li><strong>Diseñar para el Fracaso:</strong> Los componentes fallarán. Tu sistema debe ser resiliente y recuperarse automáticamente.</li><li><strong>Desacoplamiento Total:</strong> Usar microservicios, colas de mensajes (como SQS o RabbitMQ) y APIs. Un componente no debe 'derribar' a otro.</li><li><strong>Horizontalidad (Scale-Out):</strong> No hagas tu servidor más 'grande' (Vertical); haz más servidores 'pequeños' (Horizontal). Utiliza balanceadores de carga y auto-scaling.</li><li><strong>Almacenamiento de Estado Externo:</strong> Las instancias de tu aplicación deben ser 'stateless' (sin estado). Guarda las sesiones, cachés y archivos en servicios externos (como Redis, S3).</li><li><strong>Automatización:</strong> Desde el 'deploy' (CI/CD) hasta el 'escalado'. La intervención manual es el enemigo de la escalabilidad.</li></ol>"
+    "POST_3_CONTENT": "<p>En JSL Technology, no solo construimos aplicaciones; construimos sistemas que crecen. La arquitectura en la nube es la base de cualquier producto digital moderno exitoso. Aquí están los 5 principios que aplicamos:</p><ol><li><strong>Diseñar para el Fracaso:</strong> Los componentes fallarán. Tu sistema debe ser resiliente y recuperarse automáticamente.</li><li><strong>Desacoplamiento Total:</strong> Usar microservicios, colas de mensajes (como SQS o RabbitMQ) y APIs. Un componente no debe 'derribar' a otro.</li><li><strong>Horizontalidad (Scale-Out):</strong> No hagas tu servidor más 'grande' (Vertical); haz más servidores 'pequeños' (Horizontal). Utiliza balanceadores de carga y auto-scaling.</li><li><strong>Almacenamiento de Estado Externo:</strong> Las instancias de tu aplicación deben ser 'stateless' (sin estado). Guarda las sesiones, cachés y archivos en servicios externos (como Redis, S3).</li><li><strong>Automatización:</strong> Desde el 'deploy' (CI/CD) hasta el 'escalado'. La intervención manual es el enemigo de la escalabilidad.</li></ol>",
+    "CTA_EYEBROW": "¿Interesado en más 'insights'?",
+    "CTA_TITLE": "Hablemos de Tecnología",
+    "CTA_SUBTITLE": "Nuestro equipo siempre está explorando nuevas ideas. Contáctanos si quieres discutir cómo la tecnología puede impulsar tu negocio."
   },
   "LEGAL": {
     "PRIVACY_TITLE": "Política de Privacidad",
@@ -304,5 +315,52 @@
     "CTA_EYEBROW": "¿Listo para construir?",
     "CTA_TITLE": "Usemos la herramienta correcta para tu proyecto",
     "CTA_SUBTITLE": "Nuestro stack es flexible. Nos adaptamos a los requerimientos de tu proyecto para garantizar el mejor rendimiento y escalabilidad."
+  },
+  "CAREERS": {
+    "TITLE": "Oportunidades en JSL",
+    "SUBTITLE": "Únete a un equipo de innovadores que están construyendo el futuro de la tecnología en la región.",
+    "WHY_US_EYEBROW": "¿Por qué JSL?",
+    "WHY_US_TITLE": "Más que un Trabajo, una Misión",
+    "WHY_US_DESC_1": "En JSL Technology, no solo creamos software, resolvemos problemas complejos. Fomentamos una cultura de aprendizaje continuo, colaboración radical y excelencia en ingeniería.",
+    "WHY_US_DESC_2": "Ofrecemos un ambiente donde puedes crecer, liderar y tener un impacto real en proyectos de clase mundial.",
+    "BENEFIT_1_TITLE": "Trabajo Flexible",
+    "BENEFIT_1_DESC": "Ofrecemos opciones remotas e híbridas para balancear tu vida y tu trabajo.",
+    "BENEFIT_2_TITLE": "Cultura de Aprendizaje",
+    "BENEFIT_2_DESC": "Acceso a cursos, certificaciones y mentoría constante.",
+    "BENEFIT_3_TITLE": "Proyectos Retadores",
+    "BENEFIT_3_DESC": "Trabaja en software de misión crítica para industrias líderes.",
+    "BENEFIT_4_TITLE": "Compensación",
+    "BENEFIT_4_DESC": "Salarios competitivos, bonos por desempeño y cobertura de salud.",
+    "OPENINGS_EYEBROW": "Posiciones Abiertas",
+    "OPENINGS_TITLE": "Encuentra tu Lugar",
+    "OPENINGS_SUBTITLE": "Buscamos personas apasionadas, curiosas y comprometidas con la calidad. Revisa nuestras posiciones abiertas.",
+    "POS_1_TITLE": "Ingeniero de Software Sr. (Backend)",
+    "POS_1_DESC": "Experiencia en Node.js, NestJS y arquitectura de microservicios. Pasión por el código limpio y escalable.",
+    "POS_2_TITLE": "Desarrollador Angular Sr. (Frontend)",
+    "POS_2_DESC": "Experto en Angular, RxJS y SSR. Fuerte enfoque en rendimiento y experiencia de usuario (UX).",
+    "LOCATION_REMOTE": "Remoto (Global)",
+    "LOCATION_HYBRID": "Híbrido (Santo Domingo)",
+    "TYPE_FULLTIME": "Tiempo Completo",
+    "APPLY_SUBJECT": "Aplicación para la vacante:",
+    "APPLY_NOW": "Aplica Ahora",
+    "NO_OPENINGS": "Actualmente no tenemos posiciones abiertas, pero siempre estamos buscando talento. ¡Envíanos tu CV!",
+    "CTA_EYEBROW": "¿No ves tu rol ideal?",
+    "CTA_TITLE": "Siempre Estamos Buscando Talento",
+    "CTA_SUBTITLE": "Creemos en el talento por encima de las posiciones. Si eres un apasionado de la tecnología, queremos conocerte."
+  },
+  "FAQ": {
+    "TITLE": "Preguntas Frecuentes",
+    "SUBTITLE": "¿Tienes dudas? Aquí respondemos las preguntas más comunes sobre nuestros servicios, productos y procesos.",
+    "Q1_TITLE": "¿Qué tipo de soluciones de software desarrollan?",
+    "Q1_DESC": "Nos especializamos en tres áreas principales: <strong>Desarrollo a Medida</strong> (Web, Móvil, Cloud), <strong>Software Empresarial</strong> (nuestro JSL-ERP y JSL-POS) e <strong>Ingeniería de Nube</strong> (DevOps, Arquitectura en AWS y Azure).",
+    "Q2_TITLE": "¿Cuál es su proceso de desarrollo?",
+    "Q2_DESC": "Usamos un proceso ágil de 4 fases: <strong>1. Descubrimiento y Estrategia</strong>, <strong>2. Diseño UI/UX e Ingeniería</strong>, <strong>3. Despliegue y Calidad</strong>, y <strong>4. Soporte y Crecimiento</strong>. Puedes ver más detalles en nuestra <a href='/es/process'>página de Proceso</a>.",
+    "Q3_TITLE": "¿Trabajan con 'startups' y también con empresas grandes?",
+    "Q3_DESC": "¡Sí! Nuestra arquitectura está diseñada para escalar. Ayudamos a 'startups' a construir su Producto Mínimo Viable (MVP) de forma robusta y asistimos a empresas establecidas a modernizar sistemas 'legacy' y optimizar operaciones.",
+    "Q4_TITLE": "¿Ofrecen soporte después de que el proyecto es lanzado?",
+    "Q4_DESC": "Absolutamente. El lanzamiento es solo el comienzo. Ofrecemos planes de soporte continuo, monitoreo 24/7 y bolsas de horas para mejoras evolutivas, asegurando que tu software siempre funcione de manera óptima.",
+    "CTA_EYEBROW": "¿Tienes más preguntas?",
+    "CTA_TITLE": "Estamos Aquí para Ayudarte",
+    "CTA_SUBTITLE": "Si no encontraste tu respuesta, nuestro equipo de expertos está listo para conversar contigo."
   }
 }
