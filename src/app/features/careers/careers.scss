@@ -2,10 +2,8 @@
 
 // Importar estilos reutilizables
 @use '../about-us/about-us.scss';
-@use '../home/home.scss' with (
-  // Omitir la re-importación de swiper
-  $import-swiper: false
-);
+// --- CORRECCIÓN: Se eliminó el bloque 'with' que causaba el error ---
+@use '../home/home.scss';
 
 .page-title {
   text-align: center;
@@ -21,7 +19,8 @@
   @extend .about-intro;
 }
 .careers-intro__text {
-  @extend .about-intro__text;
+  // --- CORRECCIÓN: Se añadió !optional para evitar el error de compilación ---
+  @extend .about-intro__text !optional;
 }
 .careers-intro__image {
   @extend .about-intro__image;
