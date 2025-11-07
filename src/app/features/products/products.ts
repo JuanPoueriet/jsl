@@ -1,38 +1,43 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { Component, OnInit, Inject } from '@angular/core'; // Importar OnInit e Inject
+import { CommonModule } from '@angular/common'; // Importar para *ngIf y | async
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 // Importamos nuestro CardComponent reutilizable
 import { Card } from '../../shared/components/card/card';
+import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll'; // Importar
+import { DataService, Product } from '../../core/services/data.service'; // Importar el servicio y la interfaz
+import { Observable } from 'rxjs'; // Importar Observable
 
 @Component({
   selector: 'jsl-products',
   standalone: true,
   imports: [
-    CommonModule,
+    CommonModule, // Añadir CommonModule
     TranslateModule,
-    Card // Lo añadimos a los imports
+    Card, // Lo añadimos a los imports
+    AnimateOnScroll // Añadir AnimateOnScroll
   ],
   templateUrl: './products.html',
   styleUrl: './products.scss'
 })
-export class Products {
+export class Products implements OnInit { // Implementar OnInit
 
-  // Definimos la lista de nuestros productos propietarios
-  products = [
-    {
-      key: 'ERP',
-      icon: 'Database', // Ícono relevante para un ERP
-      link: '/products/erp' // (Ruta futura para el detalle del producto)
-    },
-    {
-      key: 'POS',
-      icon: 'ShoppingCart', // Usaremos 'ShoppingCart', pero debemos añadirlo
-      link: '/products/pos'
-    },
-    {
-      key: 'MOBILE_APPS',
-      icon: 'Smartphone',
-      link: '/products/mobile-apps'
-    }
-  ];
+  public currentLang: string;
+  public products$!: Observable<Product[]>; // Usar un Observable para los datos
+  
+  constructor(
+    @Inject(TranslateService) private translate: TranslateService,
+    private dataService: DataService // Inyectar el DataService
+  ) {
+    this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
+  }
+
+  ngOnInit() {
+    // Escuchar cambios de idioma para actualizar los enlaces del template
+    this.translate.onLangChange.subscribe((event) => {
+      this.currentLang = event.lang;
+    });
+
+    // Cargar los datos desde el DataService
+    this.products$ = this.dataService.getProducts();
+  }
 }

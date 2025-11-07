@@ -4,13 +4,18 @@
 
   <!-- Grid de Soluciones -->
   <div class="solutions-grid">
-    <jsl-card 
-      *ngFor="let solution of solutions"
-      [icon]="solution.icon"
-      [title]="'SOLUTIONS.' + solution.key + '_TITLE' | translate"
-      [description]="'SOLUTIONS.' + solution.key + '_DESC' | translate"
-      [link]="solution.link"
-      jslAnimateOnScroll> <!-- Añadir aquí (se aplicará a cada tarjeta) -->
-    </jsl-card>
+    
+    <!-- Usamos un ng-container con el pipe | async para manejar el Observable -->
+    <ng-container *ngIf="solutions$ | async as solutions">
+      <jsl-card 
+        *ngFor="let solution of solutions"
+        [icon]="solution.icon"
+        [title]="'SOLUTIONS.' + solution.key + '_TITLE' | translate"
+        [description]="'SOLUTIONS.' + solution.key + '_DESC' | translate"
+        [link]="['/', currentLang, 'solutions', solution.slug]"
+        jslAnimateOnScroll> <!-- Añadir aquí (se aplicará a cada tarjeta) -->
+      </jsl-card>
+    </ng-container>
+
   </div>
 </div>

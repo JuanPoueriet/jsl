@@ -27,14 +27,14 @@ const featureRoutes: Routes = [
         path: '', // La ruta /:lang/solutions (lista)
         loadComponent: () => import('./features/solutions/solutions').then(c => c.Solutions),
       },
-      // {
-      //   path: ':slug', // La ruta /:lang/solutions/web-development (detalle)
-      //   loadComponent: () => import('./features/solution-detail/solution-detail').then(c => c.SolutionDetail),
-      //   data: { 
-      //     // El título se establece dinámicamente en el componente
-      //     description: 'SOLUTIONS.SUBTITLE' 
-      //   }
-      // }
+      {
+        path: ':slug', // La ruta /:lang/solutions/web-development (detalle)
+        loadComponent: () => import('./features/solution-detail/solution-detail').then(c => c.SolutionDetail),
+        data: { 
+          // El título se establece dinámicamente en el componente
+          description: 'SOLUTIONS.SUBTITLE' 
+        }
+      }
     ]
   },
   {
@@ -48,13 +48,13 @@ const featureRoutes: Routes = [
         path: '', // La ruta /:lang/products (lista)
         loadComponent: () => import('./features/products/products').then(c => c.Products),
       },
-      // {
-      //   path: ':slug', // La ruta /:lang/products/jsl-erp (detalle)
-      //   loadComponent: () => import('./features/product-detail/product-detail').then(c => c.ProductDetail),
-      //   data: { 
-      //     description: 'PRODUCTS.SUBTITLE' 
-      //   }
-      // }
+      {
+        path: ':slug', // La ruta /:lang/products/jsl-erp (detalle)
+        loadComponent: () => import('./features/product-detail/product-detail').then(c => c.ProductDetail),
+        data: { 
+          description: 'PRODUCTS.SUBTITLE' 
+        }
+      }
     ]
   },
   {
@@ -93,22 +93,22 @@ const featureRoutes: Routes = [
       }
     ]
   },
-  // {
-  //   path: 'process', // Página de Proceso (Fase 2)
-  //   loadComponent: () => import('./features/process/process').then(c => c.Process),
-  //   data: { 
-  //     title: 'HEADER.PROCESS',
-  //     description: 'PROCESS.SUBTITLE'
-  //   }
-  // },
-  // {
-  //   path: 'industries', // Página de Industrias (Fase 2)
-  //   loadComponent: () => import('./features/industries/industries').then(c => c.Industries),
-  //   data: { 
-  //     title: 'HEADER.INDUSTRIES',
-  //     description: 'INDUSTRIES.SUBTITLE'
-  //   }
-  // },
+  {
+    path: 'process', // Página de Proceso (Fase 2)
+    loadComponent: () => import('./features/process/process').then(c => c.Process),
+    data: { 
+      title: 'HEADER.PROCESS',
+      description: 'PROCESS.SUBTITLE'
+    }
+  },
+  {
+    path: 'industries', // Página de Industrias (Fase 2)
+    loadComponent: () => import('./features/industries/industries').then(c => c.Industries),
+    data: { 
+      title: 'HEADER.INDUSTRIES',
+      description: 'INDUSTRIES.SUBTITLE'
+    }
+  },
   {
     path: 'tech-stack', // Página de Tecnologías (Fase 3)
     loadComponent: () => import('./features/tech-stack/tech-stack').then(c => c.TechStack),
