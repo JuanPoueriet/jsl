@@ -26,28 +26,80 @@
           <a
             [routerLink]="[currentLang, 'solutions']"
             routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
             (click)="closeMobileMenu()"
-            >{{ 'HEADER.SERVICES' | translate }}</a
+            >{{ 'HEADER.VIEW_ALL_SERVICES' | translate }}</a
           >
+          <a
+            [routerLink]="[currentLang, 'solutions', 'web-development']"
+            routerLinkActive="active"
+            (click)="closeMobileMenu()"
+            >{{ 'SERVICES_LIST.WEB' | translate }}</a
+          >
+          <a
+            [routerLink]="[currentLang, 'solutions', 'mobile-apps']"
+            routerLinkActive="active"
+            (click)="closeMobileMenu()"
+            >{{ 'SERVICES_LIST.MOBILE' | translate }}</a
+          >
+          <a
+            [routerLink]="[currentLang, 'solutions', 'desktop-software']"
+            routerLinkActive="active"
+            (click)="closeMobileMenu()"
+            >{{ 'SERVICES_LIST.DESKTOP' | translate }}</a
+          >
+          <a
+            [routerLink]="[currentLang, 'solutions', 'cloud-architecture']"
+            routerLinkActive="active"
+            (click)="closeMobileMenu()"
+            >{{ 'SERVICES_LIST.CLOUD' | translate }}</a
+          >
+        </div>
+      </li>
+      
+      <li class="dropdown" [class.open]="openDropdown === 'products'">
+        <button class="dropdown-toggle" (click)="toggleDropdown('products', $event)">
+          {{ 'HEADER.PRODUCTS' | translate }}
+          <lucide-icon name="ChevronDown"></lucide-icon>
+        </button>
+        <div class="dropdown-menu" [class.open]="openDropdown === 'products'">
           <a
             [routerLink]="[currentLang, 'products']"
             routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
             (click)="closeMobileMenu()"
-            >{{ 'HEADER.PRODUCTS' | translate }}</a
+            >{{ 'HEADER.VIEW_ALL_PRODUCTS' | translate }}</a
           >
           <a
-            [routerLink]="[currentLang, 'projects']"
+            [routerLink]="[currentLang, 'products', 'jsl-erp']"
             routerLinkActive="active"
             (click)="closeMobileMenu()"
-            >{{ 'HEADER.PROJECTS' | translate }}</a
+            >{{ 'PRODUCTS_LIST.ERP' | translate }}</a
           >
           <a
-            [routerLink]="[currentLang, 'industries']"
+            [routerLink]="[currentLang, 'products', 'jsl-pos']"
             routerLinkActive="active"
             (click)="closeMobileMenu()"
-            >{{ 'HEADER.INDUSTRIES' | translate }}</a
+            >{{ 'PRODUCTS_LIST.POS' | translate }}</a
+          >
+          <a
+            [routerLink]="[currentLang, 'products', 'proprietary-apps']"
+            routerLinkActive="active"
+            (click)="closeMobileMenu()"
+            >{{ 'PRODUCTS_LIST.MOBILE' | translate }}</a
           >
         </div>
+      </li>
+
+      <li>
+        <a
+          [routerLink]="[currentLang, 'projects']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMobileMenu()"
+        >
+          {{ 'HEADER.PROJECTS' | translate }}
+        </a>
       </li>
 
       <li class="dropdown" [class.open]="openDropdown === 'company'">
@@ -74,6 +126,12 @@
             (click)="closeMobileMenu()"
             >{{ 'HEADER.TECH_STACK' | translate }}</a
           >
+          <a
+            [routerLink]="[currentLang, 'careers']"
+            routerLinkActive="active"
+            (click)="closeMobileMenu()"
+            >{{ 'HEADER.CAREERS' | translate }}</a
+          >
         </div>
       </li>
 
@@ -98,28 +156,16 @@
         </div>
       </li>
 
-      <li class="dropdown" [class.open]="openDropdown === 'contact'">
-        <button class="dropdown-toggle" (click)="toggleDropdown('contact', $event)">
+      <li class="header__nav-cta">
+        <a
+          [routerLink]="[currentLang, 'contact']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+        >
           {{ 'HEADER.CONTACT' | translate }}
-          <lucide-icon name="ChevronDown"></lucide-icon>
-        </button>
-        <div class="dropdown-menu" [class.open]="openDropdown === 'contact'">
-          <a
-            [routerLink]="[currentLang, 'contact']"
-            routerLinkActive="active"
-            (click)="closeMobileMenu()"
-            >{{ 'HEADER.CONTACT' | translate }}</a
-          >
-          <a
-            [routerLink]="[currentLang, 'careers']"
-            routerLinkActive="active"
-            (click)="closeMobileMenu()"
-            >{{ 'HEADER.CAREERS' | translate }}</a
-          >
-        </div>
+        </a>
       </li>
     </ul>
-
     <div class="header__controls">
       <jsl-language-switcher class="header__mobile-lang-switcher"></jsl-language-switcher>
       <button class="header__mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle menu">
@@ -149,18 +195,80 @@
       <a
         [routerLink]="[currentLang, 'solutions']"
         routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
         (click)="closeMobileMenu()"
-        >{{ 'HEADER.SERVICES' | translate }}</a
+        >{{ 'HEADER.VIEW_ALL_SERVICES' | translate }}</a
       >
     </li>
     <li>
       <a
-        [routerLink]="[currentLang, 'products']"
+        [routerLink]="[currentLang, 'solutions', 'web-development']"
         routerLinkActive="active"
         (click)="closeMobileMenu()"
-        >{{ 'HEADER.PRODUCTS' | translate }}</a
+        >{{ 'SERVICES_LIST.WEB' | translate }}</a
       >
     </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'solutions', 'mobile-apps']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'SERVICES_LIST.MOBILE' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'solutions', 'desktop-software']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'SERVICES_LIST.DESKTOP' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'solutions', 'cloud-architecture']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'SERVICES_LIST.CLOUD' | translate }}</a
+      >
+    </li>
+
+    <li class="mobile-menu-header">{{ 'HEADER.PRODUCTS' | translate }}</li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'products']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="closeMobileMenu()"
+        >{{ 'HEADER.VIEW_ALL_PRODUCTS' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'products', 'jsl-erp']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'PRODUCTS_LIST.ERP' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'products', 'jsl-pos']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'PRODUCTS_LIST.POS' | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'products', 'proprietary-apps']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'PRODUCTS_LIST.MOBILE' | translate }}</a
+      >
+    </li>
+
+    <li class="mobile-menu-header">{{ 'HEADER.PROJECTS' | translate }}</li>
     <li>
       <a
         [routerLink]="[currentLang, 'projects']"
@@ -169,15 +277,7 @@
         >{{ 'HEADER.PROJECTS' | translate }}</a
       >
     </li>
-    <li>
-      <a
-        [routerLink]="[currentLang, 'industries']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.INDUSTRIES' | translate }}</a
-      >
-    </li>
-
+    
     <li class="mobile-menu-header">{{ 'HEADER.ABOUT' | translate }}</li>
     <li>
       <a
@@ -203,6 +303,14 @@
         >{{ 'HEADER.TECH_STACK' | translate }}</a
       >
     </li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'careers']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'HEADER.CAREERS' | translate }}</a
+      >
+    </li>
 
     <li class="mobile-menu-header">{{ 'FOOTER.RESOURCES' | translate }}</li>
     <li>
@@ -225,14 +333,6 @@
         >{{ 'HEADER.CONTACT' | translate }}</a
       >
     </li>
-    <li>
-      <a
-        [routerLink]="[currentLang, 'careers']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.CAREERS' | translate }}</a
-      >
-    </li>
   </ul>
   }
-</header>
+  </header>

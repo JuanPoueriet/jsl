@@ -6,7 +6,6 @@
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  // padding: 2rem 1.5rem; // Eliminamos el padding superior
   height: 100%;
   text-decoration: none;
   color: var(--text-primary);
@@ -17,9 +16,84 @@
 
   &:hover {
     transform: translateY(-5px);
-    border-color: var(--accent-primary);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
+
+  // --- INICIO DE REFINAMIENTO DE UI ---
+
+  // Estilo 1: Tarjetas de Artículos/Proyectos (Informativas)
+  &.card--article {
+    &:hover {
+      // El borde se mantiene sutil
+      border-color: var(--border-color); 
+    }
+
+    .card__link {
+      // Estilo de "Leer más" sutil
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary); // Color sutil
+      margin-top: auto; 
+      
+      lucide-icon {
+        width: 16px;
+        transition: transform var(--transition-speed) ease;
+        color: var(--accent-primary); // Icono de acento
+      }
+
+      .card:hover & {
+        color: var(--accent-primary); // Color de acento al hacer hover
+        
+        lucide-icon {
+          transform: translateX(4px);
+        }
+      }
+    }
+  }
+
+  // Estilo 2: Tarjetas de Servicios/Productos (Accionables)
+  &.card--service {
+    &:hover {
+      // Borde de acento claro para indicar "acción"
+      border-color: var(--accent-primary); 
+    }
+
+    .card__link {
+      // Estilo de "pill" o "ghost button"
+      display: inline-flex;
+      align-items: center;
+      justify-content: center; // Centrar texto e icono
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: auto; // Asegura que el enlace esté al final
+      padding: 0.6rem 1rem; // Padding de botón
+      border-radius: 99px; // Forma de "pill"
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-primary); // Fondo sutil
+      color: var(--text-primary);
+      transition: all var(--transition-speed) ease;
+      
+      lucide-icon {
+        width: 16px;
+        transition: transform var(--transition-speed) ease;
+      }
+
+      .card:hover & {
+        background: var(--accent-gradient);
+        color: #fff;
+        border-color: var(--accent-primary);
+        
+        lucide-icon {
+          transform: translateX(4px);
+        }
+      }
+    }
+  }
+  // --- FIN DE REFINAMIENTO DE UI ---
 }
 
 .card__image {
@@ -69,6 +143,7 @@
   margin-bottom: 1.5rem;
 }
 
+// Estilo de enlace base (sobrescrito por las clases de variante)
 .card__link {
   display: inline-flex;
   align-items: center;

@@ -79,8 +79,9 @@
   display: flex;
   justify-content: center; // Centra los enlaces
   flex-grow: 1; // Ocupa el espacio restante
-  gap: 1.5rem; // Espacio entre elementos principales
+  gap: 1.25rem; // --- MODIFICADO: Espacio reducido para 7 elementos
   list-style: none;
+  align-items: center; // --- AÑADIDO: Para centrar el botón CTA verticalmente
 
   // Estilo base para enlaces y botones de dropdown
   a,
@@ -137,6 +138,34 @@
       margin-left: 0.25rem;
     }
   }
+
+  // --- INICIO: NUEVO ESTILO PARA EL BOTÓN CTA "CONTACTO" ---
+  li.header__nav-cta {
+    a {
+      background: var(--accent-gradient);
+      color: #fff;
+      padding: 0.5rem 1.25rem; // Padding del botón
+      border-radius: var(--border-radius);
+      transition: all var(--transition-speed) ease;
+
+      &::after {
+        display: none; // Sin subrayado
+      }
+
+      &:hover {
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(var(--accent-primary-rgb), 0.3);
+      }
+
+      &.active {
+        // Estilo activo para el botón
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(var(--accent-primary-rgb), 0.3);
+      }
+    }
+  }
+  // --- FIN: NUEVO ESTILO ---
 }
 
 // Contenedor del Dropdown (li)
@@ -155,7 +184,12 @@ li.dropdown {
   top: calc(100% + 15px); // 15px por debajo del header
   left: 50%;
   transform: translateX(-50%) translateY(10px); // Centrado y listo para animar
-  width: 220px;
+  
+  // --- INICIO: MODIFICACIÓN DE ANCHO ---
+  min-width: 220px; // Ancho mínimo
+  width: auto;      // Ancho automático según contenido
+  // --- FIN: MODIFICACIÓN DE ANCHO ---
+
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
@@ -184,6 +218,7 @@ li.dropdown {
     padding: 0.75rem 1rem; // Padding generoso
     border-radius: 6px; // Bordes redondeados internos
     transition: all var(--transition-speed) ease;
+    white-space: nowrap; // --- AÑADIDO: Evita que los enlaces se partan
 
     &::after {
       display: none; // Sin subrayado en el dropdown
