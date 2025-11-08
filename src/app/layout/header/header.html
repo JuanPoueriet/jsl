@@ -6,17 +6,6 @@
     </a>
 
     <ul class="header__nav-links">
-      <li>
-        <a
-          [routerLink]="[currentLang, 'home']"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          (click)="closeMobileMenu()"
-        >
-          {{ 'HEADER.HOME' | translate }}
-        </a>
-      </li>
-
       <li class="dropdown" [class.open]="openDropdown === 'solutions'">
         <button class="dropdown-toggle" (click)="toggleDropdown('solutions', $event)">
           {{ 'HEADER.SERVICES' | translate }}
@@ -91,20 +80,9 @@
         </div>
       </li>
 
-      <li>
-        <a
-          [routerLink]="[currentLang, 'projects']"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          (click)="closeMobileMenu()"
-        >
-          {{ 'HEADER.PROJECTS' | translate }}
-        </a>
-      </li>
-
       <li class="dropdown" [class.open]="openDropdown === 'company'">
         <button class="dropdown-toggle" (click)="toggleDropdown('company', $event)">
-          {{ 'HEADER.ABOUT' | translate }}
+          {{ 'FOOTER.COMPANY' | translate }}
           <lucide-icon name="ChevronDown"></lucide-icon>
         </button>
         <div class="dropdown-menu" [class.open]="openDropdown === 'company'">
@@ -141,6 +119,14 @@
           <lucide-icon name="ChevronDown"></lucide-icon>
         </button>
         <div class="dropdown-menu" [class.open]="openDropdown === 'resources'">
+          <a
+            [routerLink]="[currentLang, 'projects']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMobileMenu()"
+          >
+            {{ 'HEADER.PROJECTS' | translate }}
+          </a>
           <a
             [routerLink]="[currentLang, 'blog']"
             routerLinkActive="active"
@@ -180,16 +166,6 @@
 
   @if (isMobileMenuOpen) {
   <ul class="header__nav-links-mobile" [class.open]="isMobileMenuOpen">
-    <li>
-      <a
-        [routerLink]="[currentLang, 'home']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.HOME' | translate }}</a
-      >
-    </li>
-
     <li class="mobile-menu-header">{{ 'HEADER.SERVICES' | translate }}</li>
     <li>
       <a
@@ -268,17 +244,7 @@
       >
     </li>
 
-    <li class="mobile-menu-header">{{ 'HEADER.PROJECTS' | translate }}</li>
-    <li>
-      <a
-        [routerLink]="[currentLang, 'projects']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.PROJECTS' | translate }}</a
-      >
-    </li>
-    
-    <li class="mobile-menu-header">{{ 'HEADER.ABOUT' | translate }}</li>
+    <li class="mobile-menu-header">{{ 'FOOTER.COMPANY' | translate }}</li>
     <li>
       <a
         [routerLink]="[currentLang, 'about-us']"
@@ -313,6 +279,14 @@
     </li>
 
     <li class="mobile-menu-header">{{ 'FOOTER.RESOURCES' | translate }}</li>
+    <li>
+      <a
+        [routerLink]="[currentLang, 'projects']"
+        routerLinkActive="active"
+        (click)="closeMobileMenu()"
+        >{{ 'HEADER.PROJECTS' | translate }}</a
+      >
+    </li>
     <li>
       <a [routerLink]="[currentLang, 'blog']" routerLinkActive="active" (click)="closeMobileMenu()">{{
         'HEADER.BLOG' | translate
