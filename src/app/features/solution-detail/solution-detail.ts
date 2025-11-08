@@ -1,6 +1,6 @@
 // src/app/features/solution-detail/solution-detail.ts
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { CommonModule, Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common'; // --- CAMBIO: Location se eliminará ---
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
@@ -8,6 +8,7 @@ import { Subscription, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { DataService, Solution } from '../../core/services/data.service'; // Usar DataService
 import { Title } from '@angular/platform-browser';
+import { CtaComponent } from '../../shared/components/cta/cta'; // --- CAMBIO: Importar CTA ---
 
 @Component({
   selector: 'jsl-solution-detail',
@@ -16,7 +17,8 @@ import { Title } from '@angular/platform-browser';
     CommonModule,
     TranslateModule,
     RouterLink,
-    LucideAngularModule
+    LucideAngularModule,
+    CtaComponent // --- CAMBIO: Añadir CTA ---
   ],
   templateUrl: './solution-detail.html',
   styleUrl: '../detail-page.scss' // Reutilizamos los estilos de detalle
@@ -33,8 +35,8 @@ export class SolutionDetail implements OnInit, OnDestroy {
     @Inject(TranslateService) private translate: TranslateService,
     private route: ActivatedRoute,
     private dataService: DataService, // Inyectar DataService
-    private titleService: Title,
-    private location: Location
+    private titleService: Title
+    // --- CAMBIO: 'Location' eliminado del constructor ---
   ) {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
   }
@@ -80,10 +82,5 @@ export class SolutionDetail implements OnInit, OnDestroy {
     }
   }
 
-  /**
-   * Vuelve a la página anterior
-   */
-  goBack(): void {
-    this.location.back();
-  }
+  // --- CAMBIO: Método 'goBack()' eliminado ---
 }

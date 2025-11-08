@@ -11,7 +11,9 @@
     "ABOUT": "About Us",
     "CONTACT": "Contact",
     "CAREERS": "Careers",
-    "FAQ": "FAQ"
+    "FAQ": "FAQ",
+    "VIEW_ALL_SERVICES": "View All Solutions",
+    "VIEW_ALL_PRODUCTS": "View All Products"
   },
   "TOP_BAR": {
     "PORTFOLIO": "Portfolio",
@@ -195,7 +197,7 @@
     "CASE_MOBILE_APP_DETAIL_CHALLENGE": "A regional transport company lacked real-time visibility of its 150-truck fleet. Dispatchers relied on phone calls, leading to route inefficiencies and high fuel costs.",
     "CASE_MOBILE_APP_DETAIL_SOLUTION": "We developed native iOS and Android apps for drivers and a web dashboard for dispatchers. The apps use geolocation for live tracking, route optimization, and digitization of delivery orders.",
     "CASE_MOBILE_APP_DETAIL_RESULT": "Fleet efficiency improved by 40%. Fuel costs were reduced by 18% thanks to route optimization. Customer service response time improved drastically with the ability to track deliveries in real-time.",
-    "DETAIL_CHALLENGE_TITLE": "The Challenge",
+    "DETAIL_CHALLENGE_TITLE": "The Problem",
     "DETAIL_SOLUTION_TITLE": "Our Solution",
     "DETAIL_RESULT_TITLE": "The Result",
     "CTA_EYEBROW": "Ready to be our next success story?",

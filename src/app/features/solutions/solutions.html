@@ -2,10 +2,8 @@
   <h1 class="page-title" jslAnimateOnScroll>{{ 'SOLUTIONS.TITLE' | translate }}</h1>
   <p class="page-subtitle" jslAnimateOnScroll>{{ 'SOLUTIONS.SUBTITLE' | translate }}</p>
 
-  <!-- Grid de Soluciones -->
   <div class="solutions-grid">
     
-    <!-- Usamos un ng-container con el pipe | async para manejar el Observable -->
     <ng-container *ngIf="solutions$ | async as solutions">
       <jsl-card 
         *ngFor="let solution of solutions"
@@ -13,9 +11,10 @@
         [title]="'SOLUTIONS.' + solution.key + '_TITLE' | translate"
         [description]="'SOLUTIONS.' + solution.key + '_DESC' | translate"
         [link]="['/', currentLang, 'solutions', solution.slug]"
-        jslAnimateOnScroll> <!-- Añadir aquí (se aplicará a cada tarjeta) -->
-      </jsl-card>
+        jslAnimateOnScroll> </jsl-card>
     </ng-container>
 
   </div>
 </div>
+
+<jsl-cta-section></jsl-cta-section>

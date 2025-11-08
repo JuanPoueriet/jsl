@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { CommonModule, Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common'; // --- CAMBIO: Location se eliminará ---
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { Subscription, Observable, of } from 'rxjs'; // 1. Importar Observable, of
-import { switchMap } from 'rxjs/operators'; // 2. Importar switchMap
-import { DataService, Project } from '../../core/services/data.service'; // 3. Importar Servicio
+import { Subscription, Observable, of } from 'rxjs'; 
+import { switchMap } from 'rxjs/operators'; 
+import { DataService, Project } from '../../core/services/data.service'; 
 import { Title } from '@angular/platform-browser';
-import { CtaComponent } from '../../shared/components/cta/cta'; // 4. Importar CTA
+import { CtaComponent } from '../../shared/components/cta/cta'; 
 
 @Component({
   selector: 'jsl-project-detail',
@@ -17,7 +17,7 @@ import { CtaComponent } from '../../shared/components/cta/cta'; // 4. Importar C
     TranslateModule,
     RouterLink,
     LucideAngularModule,
-    CtaComponent // 5. Añadir CTA
+    CtaComponent 
   ],
   templateUrl: './project-detail.html',
   styleUrl: '../detail-page.scss'
@@ -25,26 +25,25 @@ import { CtaComponent } from '../../shared/components/cta/cta'; // 4. Importar C
 export class ProjectDetail implements OnInit, OnDestroy {
   
   public currentLang: string = 'es';
-  public project$: Observable<Project | undefined>; // 6. Usar Observable
+  public project$: Observable<Project | undefined>; 
   
   private langSub: Subscription | undefined;
-  private projectData: Project | undefined; // Para guardar el dato para el título
+  private projectData: Project | undefined; 
 
   constructor(
     @Inject(TranslateService) private translate: TranslateService,
     private route: ActivatedRoute,
-    private dataService: DataService, // 7. Inyectar Servicio
-    private titleService: Title,
-    private location: Location
+    private dataService: DataService, 
+    private titleService: Title
+    // --- CAMBIO: 'Location' eliminado del constructor ---
   ) {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
 
-    // 8. Cargar datos en el constructor
     this.project$ = this.route.paramMap.pipe(
       switchMap(params => {
         const slug = params.get('slug');
         if (slug) {
-          return this.dataService.getProjectBySlug(slug); // Usar servicio
+          return this.dataService.getProjectBySlug(slug); 
         }
         return of(undefined);
       })
@@ -52,13 +51,11 @@ export class ProjectDetail implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Escuchar cambios de idioma
     this.langSub = this.translate.onLangChange.subscribe(event => {
       this.currentLang = event.lang;
       this.updateTitle();
     });
 
-    // Suscribirse para actualizar el título
     this.project$.subscribe(project => {
       this.projectData = project;
       this.updateTitle();
@@ -78,7 +75,5 @@ export class ProjectDetail implements OnInit, OnDestroy {
     }
   }
 
-  goBack(): void {
-    this.location.back();
-  }
+  // --- CAMBIO: Método 'goBack()' eliminado ---
 }

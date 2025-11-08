@@ -1,4 +1,8 @@
-<a *ngIf="link" [routerLink]="link" class="card">
+<a *ngIf="link" 
+   [routerLink]="link" 
+   class="card"
+   [class.card--service]="!imageUrl && icon"
+   [class.card--article]="imageUrl">
   <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ title }}" class="card__image" loading="lazy">
   
   <div *ngIf="!imageUrl && icon" class="card__icon">
@@ -14,7 +18,10 @@
   </div>
 </a>
 
-<div *ngIf="!link" class="card">
+<div *ngIf="!link" 
+     class="card"
+     [class.card--service]="!imageUrl && icon"
+     [class.card--article]="imageUrl">
   <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ title }}" class="card__image" loading="lazy">
   
   <div *ngIf="!imageUrl && icon" class="card__icon">
