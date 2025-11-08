@@ -36,6 +36,13 @@ swiper-container {
   display: flex;
   align-items: center;
 
+  // --- INICIO DE CORRECCIÓN DE ASPECT RATIO ---
+  img {
+    object-fit: cover; // Asegura que la imagen cubra el slide sin distorsionarse
+    object-position: center;
+  }
+  // --- FIN DE CORRECCIÓN DE ASPECT RATIO ---
+
   &__overlay {
     position: absolute;
     top: 0;
@@ -286,10 +293,21 @@ swiper-container {
 @keyframes scroll { ... }
 */
 
-// --- 3. NUEVO: Testimonials Section ---
+// --- 3. NUEVO: Testimonials Section (Estilos Mejorados) ---
 .testimonials-section {
   padding: 6rem 0;
-  background-color: var(--bg-secondary); // Fondo diferente
+  // 1. Fondo con gradiente sutil para un look más premium
+  background: radial-gradient(
+      circle at 0% 100%,
+      rgba(var(--accent-primary-rgb), 0.1),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 100% 50%,
+      rgba(var(--accent-secondary-rgb), 0.1),
+      transparent 40%
+    ),
+    var(--bg-secondary);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   overflow: hidden; // Para el slider
@@ -314,7 +332,22 @@ swiper-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  
+  position: relative; // 2. Necesario para los pseudo-elementos
+  overflow: hidden; // 3. Necesario para el glow
+
+  // 4. Icono de comillas gigante como fondo (sutil)
+  &::before {
+    content: '“';
+    position: absolute;
+    top: -20px;
+    left: 1rem;
+    font-size: 150px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.03);
+    z-index: 1;
+    line-height: 1;
+  }
+
   // Estilos del slide de coverflow
   width: 100%;
   max-width: 400px; // Ancho máximo de la tarjeta
@@ -323,11 +356,13 @@ swiper-container {
   // Sombra y efecto 3D
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 2; // 5. Asegurar que la tarjeta esté sobre el glow
 
   .swiper-slide-active & {
     // La tarjeta del centro
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    transform: scale(1.05);
+    transform: scale(1.05); // 6. Hacer la activa un poco más grande
+    border-color: rgba(var(--accent-primary-rgb), 0.5);
   }
 }
 
@@ -335,6 +370,7 @@ swiper-container {
   display: flex;
   gap: 0.25rem;
   color: #f39c12; // Amarillo estrella
+  z-index: 3; // Sobre el icono de comillas
   lucide-icon {
     width: 20px;
     height: 20px;
@@ -344,11 +380,13 @@ swiper-container {
 }
 
 .testimonial-card__text {
-  font-size: 1.1rem;
+  font-size: 1.15rem; // 7. Un poco más grande
   font-style: italic;
+  font-weight: 400; // 8. Más legible
   color: var(--text-primary);
   line-height: 1.7;
   flex-grow: 1; // Para alinear al autor abajo
+  z-index: 3; // Sobre el icono de comillas
 }
 
 .testimonial-card__author {
@@ -356,6 +394,7 @@ swiper-container {
   align-items: center;
   gap: 1rem;
   margin-top: auto;
+  z-index: 3; // Sobre el icono de comillas
   
   img {
     width: 50px;
