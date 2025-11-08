@@ -55,7 +55,8 @@ export class Home implements OnInit {
     loop: true,
   };
 
-  // --- NUEVO: Configuración del Swiper de Testimonios ---
+  // --- INICIO DE LA MODIFICACIÓN ---
+  // --- Configuración del Swiper de Testimonios ---
   public testimonialSwiperConfig: SwiperOptions = {
     modules: [Pagination, Autoplay, EffectCoverflow],
     effect: 'coverflow',
@@ -66,6 +67,7 @@ export class Home implements OnInit {
       modifier: 1,
       slideShadows: true,
     },
+    spaceBetween: 30, // <-- AÑADIDO: Esto añade separación entre tarjetas
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto', // Clave para que funcione bien en responsive
@@ -77,16 +79,9 @@ export class Home implements OnInit {
     pagination: {
       clickable: true,
     },
-    breakpoints: {
-      // En pantallas grandes, mostrar 3 slides (1 central, 2 laterales)
-      768: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      }
-    }
+    // --- ELIMINADOS Breakpoints: 'auto' + 'spaceBetween' es una mejor combinación ---
   };
+  // --- FIN DE LA MODIFICACIÓN ---
 
   public currentLang: string;
 

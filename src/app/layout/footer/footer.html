@@ -71,8 +71,13 @@
             [placeholder]="'FOOTER.NEWSLETTER_PLACEHOLDER' | translate" 
             formControlName="email"
             [class.is-invalid]="nf['email'].invalid && (nf['email'].dirty || nf['email'].touched)">
-          <button type="submit" class="submit-btn" [disabled]="isSubmitting() || newsletterForm.invalid">
-            @if (!isSubmitting()) {
+          
+          <button 
+            type="submit" 
+            class="submit-btn" 
+            [disabled]="isSubmitting() || newsletterForm.invalid"
+            [attr.aria-label]="'FOOTER.NEWSLETTER_SUBMIT' | translate">
+          @if (!isSubmitting()) {
               <lucide-icon name="Send"></lucide-icon>
             } @else {
               <span class="spinner"></span>
