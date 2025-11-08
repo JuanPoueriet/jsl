@@ -6,6 +6,7 @@ import { Card } from '../../shared/components/card/card';
 import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll'; // Importar
 import { DataService, Product } from '../../core/services/data.service'; // Importar el servicio y la interfaz
 import { Observable } from 'rxjs'; // Importar Observable
+import { CtaComponent } from '../../shared/components/cta/cta';
 
 @Component({
   selector: 'jsl-products',
@@ -14,7 +15,8 @@ import { Observable } from 'rxjs'; // Importar Observable
     CommonModule, // Añadir CommonModule
     TranslateModule,
     Card, // Lo añadimos a los imports
-    AnimateOnScroll // Añadir AnimateOnScroll
+    AnimateOnScroll,
+    CtaComponent
   ],
   templateUrl: './products.html',
   styleUrl: './products.scss'

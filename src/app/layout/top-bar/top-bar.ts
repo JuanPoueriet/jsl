@@ -21,12 +21,7 @@ import { LanguageSwitcher } from '../language-switcher/language-switcher'; // Im
 export class TopBar {
   public currentLang: string;
 
-  // --- CAMBIO: Enlaces de navegación secundaria (Meta) ---
-  topLinks = [
-    { key: 'CAREERS', route: 'careers' },
-    { key: 'FAQ', route: 'faq' },
-    { key: 'BLOG', route: 'blog' }
-  ];
+  // --- ELIMINADO: 'topLinks' ya no se gestiona aquí ---
 
   constructor(private translate: TranslateService) {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';

@@ -1,7 +1,6 @@
 <section class="hero-slider">
   <swiper-container [config]="heroSwiperConfig" init="true">
     <swiper-slide class="hero-slide">
-      <!-- <img ngSrc="assets/imgs/img-1.jpg" fill priority alt="Shaping the future of digital innovation"> -->
       <img
         ngSrc="assets/imgs/img-1.avif"
         fill
@@ -20,7 +19,6 @@
     </swiper-slide>
 
     <swiper-slide class="hero-slide">
-      <!-- <img ngSrc="https://images.unsplash.com/photo-1587620962725-abab7fe55159?fit=crop&w=1920&q=80"  -->
       <img ngSrc="assets/imgs/photo-1587620962725-abab7fe55159.avif" fill alt="ERP Software" />
 
       <div class="hero-slide__overlay"></div>
@@ -34,7 +32,6 @@
     </swiper-slide>
 
     <swiper-slide class="hero-slide">
-      <!-- <img ngSrc="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?fit=crop&w=1920&q=80"  -->
       <img ngSrc="assets/imgs/photo-1517694712202-14dd9538aa97.avif" fill alt="Custom Solutions" />
 
       <div class="hero-slide__overlay"></div>
@@ -70,14 +67,12 @@
     <span class="section-eyebrow">{{ 'HOME.WELCOME_EYEBROW' | translate }}</span>
     <h2 class="section-title">{{ 'HOME.WELCOME_TITLE' | translate }}</h2>
     <p class="section-subtitle">{{ 'HOME.WELCOME_SUBTITLE' | translate }}</p>
-    <a [routerLink]="['/', currentLang, 'projects']" class="welcome-section__cta">
-      <span>{{ 'HEADER.PROJECTS' | translate }}</span>
+    <a [routerLink]="['/', currentLang, 'about-us']" class="welcome-section__cta">
+      <span>{{ 'HEADER.ABOUT' | translate }}</span>
       <lucide-icon name="ArrowRight"></lucide-icon>
     </a>
   </div>
   <div class="welcome-section__image">
-    <!-- <img
-      src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?fit=crop&w=600&q=80" -->
     <img
       src="assets/imgs/photo-1542744173-8e7e53415bb0.avif"
       alt="Equipo trabajando en JSL Technology"
@@ -85,7 +80,6 @@
   </div>
 </section>
 
-<!-- Testimonials (Refactorizado) -->
 <section class="testimonials-section">
   <div class="container" jslAnimateOnScroll>
     <div class="testimonials-header">
@@ -93,7 +87,6 @@
       <h2 class="section-title">{{ 'HOME.TESTIMONIALS_TITLE' | translate }}</h2>
     </div>
     <swiper-container [config]="testimonialSwiperConfig" init="true" class="testimonial-slider">
-      <!-- 1. Usar | async pipe -->
       <ng-container *ngIf="testimonials$ | async as testimonials">
         <swiper-slide *ngFor="let testimonial of testimonials" class="testimonial-card">
           <div class="testimonial-card__stars">
@@ -117,7 +110,6 @@
   </div>
 </section>
 
-<!-- Featured Services (Refactorizado) -->
 <section class="featured-services container">
   <div class="featured-services__header" jslAnimateOnScroll>
     <span class="section-eyebrow">{{ 'HOME.SERVICES_EYEBROW' | translate }}</span>
@@ -125,7 +117,6 @@
     <p class="section-subtitle">{{ 'HOME.SERVICES_SUBTITLE' | translate }}</p>
   </div>
   <div class="solutions-grid">
-    <!-- 2. Usar | async pipe y 'solution.slug' -->
     <ng-container *ngIf="solutions$ | async as solutions">
       <jsl-card
         *ngFor="let solution of solutions"
@@ -140,7 +131,6 @@
   </div>
 </section>
 
-<!-- Featured Products (Refactorizado) -->
 <section class="featured-products container">
   <div class="featured-products__header" jslAnimateOnScroll>
     <span class="section-eyebrow">{{ 'HOME.PRODUCTS_EYEBROW' | translate }}</span>
@@ -148,7 +138,6 @@
     <p class="section-subtitle">{{ 'HOME.PRODUCTS_SUBTITLE' | translate }}</p>
   </div>
   <div class="products-grid">
-    <!-- 3. Usar | async pipe y 'product.slug' -->
     <ng-container *ngIf="products$ | async as products">
       <jsl-card
         *ngFor="let product of products"
@@ -163,7 +152,6 @@
   </div>
 </section>
 
-<!-- Featured Projects (Refactorizado) -->
 <section class="featured-projects container">
   <div class="featured-projects__header" jslAnimateOnScroll>
     <span class="section-eyebrow">{{ 'HOME.PROJECTS_EYEBROW' | translate }}</span>
@@ -171,7 +159,6 @@
     <p class="section-subtitle">{{ 'HOME.PROJECTS_SUBTITLE' | translate }}</p>
   </div>
   <div class="projects-grid">
-    <!-- 4. Usar | async pipe (el enlace ya era correcto) -->
     <ng-container *ngIf="projects$ | async as projects">
       <jsl-card
         *ngFor="let project of projects"
@@ -186,7 +173,6 @@
   </div>
 </section>
 
-<!-- Process Section (Refactorizado) -->
 <section class="process-section">
   <div class="container">
     <div class="process-header" jslAnimateOnScroll>
@@ -195,7 +181,6 @@
       <p class="section-subtitle">{{ 'HOME.PROCESS_SUBTITLE' | translate }}</p>
     </div>
     <div class="process-grid">
-      <!-- 5. Usar | async pipe -->
       <ng-container *ngIf="processSteps$ | async as processSteps">
         <div class="process-step" *ngFor="let step of processSteps" jslAnimateOnScroll>
           <div class="process-step__icon">
@@ -206,8 +191,14 @@
         </div>
       </ng-container>
     </div>
+
+    <div class="process-section__cta" jslAnimateOnScroll>
+      <a [routerLink]="['/', currentLang, 'process']" class="welcome-section__cta">
+        <span>{{ 'HEADER.PROCESS' | translate }}</span>
+        <lucide-icon name="ArrowRight"></lucide-icon>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- 6. Reemplazar la sección CTA con el componente reutilizable -->
 <jsl-cta-section></jsl-cta-section>
