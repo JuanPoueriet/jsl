@@ -11,7 +11,9 @@
     "ABOUT": "Nosotros",
     "CONTACT": "Contacto",
     "CAREERS": "Carreras",
-    "FAQ": "FAQ"
+    "FAQ": "FAQ",
+    "VIEW_ALL_SERVICES": "Ver Todas las Soluciones",
+    "VIEW_ALL_PRODUCTS": "Ver Todos los Productos"
   },
   "TOP_BAR": {
     "PORTFOLIO": "Portafolio",
@@ -195,7 +197,7 @@
     "CASE_MOBILE_APP_DETAIL_CHALLENGE": "Una empresa de transporte regional carecía de visibilidad en tiempo real de su flota de 150 camiones. Los despachadores dependían de llamadas telefónicas, lo que resultaba en ineficiencias de ruta y altos costos de combustible.",
     "CASE_MOBILE_APP_DETAIL_SOLUTION": "Desarrollamos aplicaciones nativas para iOS y Android para los conductores, y un panel de control web para los despachadores. Las aplicaciones utilizan geolocalización para el seguimiento en vivo, optimización de rutas y digitalización de las órdenes de entrega.",
     "CASE_MOBILE_APP_DETAIL_RESULT": "La eficiencia de la flota mejoró en un 40%. Los costos de combustible se redujeron en un 18% gracias a la optimización de rutas. El tiempo de respuesta del servicio al cliente mejoró drásticamente con la capacidad de rastrear entregas en tiempo real.",
-    "DETAIL_CHALLENGE_TITLE": "El Desafío",
+    "DETAIL_CHALLENGE_TITLE": "El Problema",
     "DETAIL_SOLUTION_TITLE": "Nuestra Solución",
     "DETAIL_RESULT_TITLE": "El Resultado",
     "CTA_EYEBROW": "¿Listo para ser nuestro próximo caso de éxito?",

@@ -9,8 +9,7 @@
 @use '../solutions/solutions.scss';
 @use '../products/products.scss';
 @use '../projects/projects.scss';
-@use '../tech-stack/tech-stack.scss'; // 1. Importar estilos de tech-stack para el logo-card grid
-
+// --- CAMBIO: Eliminado @use '../tech-stack/tech-stack.scss'; ---
 
 // --- 1. Hero Slider ---
 .hero-slider {
@@ -284,16 +283,7 @@ swiper-container {
   }
 }
 
-// --- 3. Client Logos Section (ELIMINADA) ---
-/*
-.client-logos { ... }
-.client-logos__title { ... }
-.client-logos__ticker { ... }
-.client-logos__track { ... }
-@keyframes scroll { ... }
-*/
-
-// --- 3. NUEVO: Testimonials Section (Estilos Mejorados) ---
+// --- 3. NUEVO: Testimonials Section ---
 .testimonials-section {
   padding: 6rem 0;
   // 1. Fondo con gradiente sutil para un look más premium
@@ -511,6 +501,12 @@ swiper-container {
   z-index: 1;
 }
 
+// --- CAMBIO: Nuevo estilo para el CTA de Proceso ---
+.process-section__cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
 // --- 6. Final CTA Section ---
 .final-cta-section {
   padding: 6rem 0;
@@ -615,31 +611,4 @@ swiper-container {
   }
 }
 
-
-// --- ¡NUEVOS ESTILOS PARA LA SECCIÓN DE CLIENTES! ---
-.clients-section {
-  padding: 6rem 0;
-  text-align: center;
-}
-
-.clients-header {
-  @extend .featured-services__header; // Reutilizar estilos de header
-  margin-bottom: 3rem; // Menos margen para logos
-}
-
-.clients-grid {
-  @extend .tech-grid; // Reutilizar el grid de logos
-  
-  // Sobrescribir el hover del logo-card
-  // para que sea más sutil en el Home
-  ::ng-deep jsl-logo-card .logo-card {
-    background: transparent;
-    border-color: transparent;
-    box-shadow: none;
-
-    &:hover {
-      background-color: var(--bg-secondary);
-      transform: translateY(-5px);
-    }
-  }
-}
+// --- CAMBIO: Estilos .clients-section eliminados ---

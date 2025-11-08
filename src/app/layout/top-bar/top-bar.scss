@@ -1,21 +1,13 @@
 :host {
   width: 100%;
-  // height: var(--top-bar-height); // La altura la controla el .top-bar
 }
 
 .top-bar {
-  // --- ESTADO INICIAL ---
   height: var(--top-bar-height);
-  // background-color: var(--bg-primary); 
-  // border-bottom: 1px solid var(--border-color);
-  padding-top: 0; // Añadido para animar
-  padding-bottom: 0; // Añadido para animar
+  padding-top: 0; 
+  padding-bottom: 0; 
   opacity: 1;
-  // overflow: hidden; // Prevenir cualquier desbordamiento
 
-  // --- TRANSICIONES (La clave para la animación) ---
-  // Añadimos transiciones para que responda suavemente
-  // a los cambios desde header.scss
   transition: height 0.3s ease-out, 
               opacity 0.3s ease-out,
               padding-top 0.3s ease-out,
@@ -25,41 +17,15 @@
 
 .top-bar__container {
   display: flex;
-  justify-content: flex-end; // <-- ALINEAR TODO A LA DERECHA
+  justify-content: flex-end; // <-- Alinea el selector de idioma a la derecha
   align-items: center;
   height: 100%;
-  gap: 1.5rem; // Espacio entre los enlaces y el selector de idioma
+  gap: 1.5rem; 
 }
 
-.top-bar__links {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem; // Espacio entre enlaces y separadores
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    transition: color var(--transition-speed) ease;
-
-    &:hover {
-      color: var(--text-primary);
-    }
-  }
-}
-
-// Estilo para el separador "|"
-.top-bar__separator {
-  font-size: 0.9rem;
-  color: var(--border-color);
-  user-select: none; // Evita que el usuario seleccione la barra
-}
-
-// Ocultar enlaces en móvil, solo mostrar selector de idioma
+// Ocultar en móvil (ya estaba)
 @media (max-width: 992px) {
-  .top-bar__links {
+  .top-bar__container {
     display: none;
   }
 }

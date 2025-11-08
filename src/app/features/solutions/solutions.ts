@@ -6,6 +6,7 @@ import { Card } from '../../shared/components/card/card';
 import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
 import { DataService, Solution } from '../../core/services/data.service'; // Importar el servicio y la interfaz
 import { Observable } from 'rxjs'; // Importar Observable
+import { CtaComponent } from '../../shared/components/cta/cta';
 
 @Component({
   selector: 'jsl-solutions',
@@ -14,12 +15,14 @@ import { Observable } from 'rxjs'; // Importar Observable
     CommonModule, // Añadir CommonModule
     TranslateModule,
     Card, // Lo añadimos a los imports
-    AnimateOnScroll
+    AnimateOnScroll,
+    CtaComponent,
   ],
   templateUrl: './solutions.html',
-  styleUrl: './solutions.scss'
+  styleUrl: './solutions.scss',
 })
-export class Solutions implements OnInit { // Implementar OnInit
+export class Solutions implements OnInit {
+  // Implementar OnInit
 
   public currentLang: string;
   public solutions$!: Observable<Solution[]>; // Usar un Observable para los datos
@@ -36,7 +39,7 @@ export class Solutions implements OnInit { // Implementar OnInit
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
     });
-    
+
     // Cargar los datos desde el DataService
     this.solutions$ = this.dataService.getSolutions();
   }
