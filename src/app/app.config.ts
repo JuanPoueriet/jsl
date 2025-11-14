@@ -7,53 +7,9 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
-import { Brain, Check, CheckCheck, Clock, Laptop, LucideAngularModule, MessageCircle, Network, Plane } from 'lucide-angular';
-
+import { LucideAngularModule } from 'lucide-angular';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
-// Importar la lista completa de iconos que usamos en todo el sitio
-import {
-  ArrowLeft,
-  ArrowRight,
-  Calendar,
-  ChevronDown,
-  ChevronRight,
-  Cloud,
-  CloudCog, // Para Tech Stack
-  Code,
-  Compass,
-  Database,
-  Eye,
-  ExternalLink, // Para Product Detail
-  Facebook,
-  Gem,
-  Github,
-  Globe,
-  HeartPulse, // Para Industrias
-  Home,
-  Info,
-  Instagram,
-  Landmark, // Para Industrias
-  Languages,
-  Linkedin,
-  Mail,
-  MapPin,
-  Menu,
-  Monitor,
-  Phone,
-  Send,
-  Server,
-  Settings,
-  ShoppingCart,
-  Smartphone,
-  Star,
-  Target,
-  TrendingUp,
-  Truck, // Para Industrias
-  Twitter,
-  User,
-  X,
-} from 'lucide-angular';
+import { ALL_ICONS } from './core/constants/icons';
 
 import { routes } from './app.routes';
 
@@ -85,58 +41,6 @@ export const appConfig: ApplicationConfig = {
       },
     }),
 
-    // Importación de todos los iconos de Lucide
-    importProvidersFrom(
-      LucideAngularModule.pick({
-        Home,
-        Settings,
-        Smartphone,
-        Monitor,
-        Server,
-        Cloud,
-        Database,
-        Code,
-        Send,
-        Menu,
-        X,
-        Linkedin,
-        Github,
-        Info,
-        ShoppingCart,
-        ArrowRight,
-        ArrowLeft, // Añadido
-        Mail,
-        Phone,
-        MapPin,
-        Target,
-        Eye,
-        Gem,
-        ChevronDown,
-        ChevronRight, // Añadido
-        Compass,
-        TrendingUp,
-        Globe,
-        Languages,
-        Twitter,
-        Facebook,
-        Instagram,
-        Star,
-        User,
-        Calendar,
-        Truck, // Añadido
-        Landmark, // Añadido
-        HeartPulse, // Añadido
-        ExternalLink, // Añadido
-        CloudCog, // Añadido
-        Laptop,
-        Network,
-        Brain,
-        Plane,
-        Clock,
-        MessageCircle,
-        Check, // <-- AÑADIDO
-        CheckCheck,
-      })
-    ),
+    importProvidersFrom(LucideAngularModule.pick(ALL_ICONS)),
   ],
 };

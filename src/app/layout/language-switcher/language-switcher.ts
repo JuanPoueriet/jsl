@@ -1,21 +1,23 @@
 // src/app/layout/language-switcher/language-switcher.ts
 
-import { Component, Inject, OnInit, OnDestroy, HostListener, ElementRef } from '@angular/core'; // 1. Importar HostListener y ElementRef
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, NavigationEnd } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { ClickOutsideDirective } from '../../shared/directives/click-outside';
 
 @Component({
   selector: 'jsl-language-switcher',
   standalone: true,
   imports: [
-    CommonModule, 
-    TranslateModule, 
+    CommonModule,
+    TranslateModule,
     RouterLink,
-    LucideAngularModule
+    LucideAngularModule,
+    ClickOutsideDirective,
   ],
   templateUrl: './language-switcher.html',
   styleUrl: './language-switcher.scss',
@@ -23,7 +25,7 @@ import { filter } from 'rxjs/operators';
 export class LanguageSwitcher implements OnInit, OnDestroy {
   public currentLang: string = 'es';
   public isDropdownOpen = false;
-  
+
   public esRoute: string[] = ['/es'];
   public enRoute: string[] = ['/en'];
 
@@ -31,32 +33,21 @@ export class LanguageSwitcher implements OnInit, OnDestroy {
 
   constructor(
     @Inject(TranslateService) public translate: TranslateService,
-    private router: Router,
-    private el: ElementRef // 2. Inyectar ElementRef
+    private router: Router
   ) {
-    this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
-  }
-
-  // 3. Añadir HostListener para 'click outside'
-  @HostListener('document:click', ['$event'])
-  onClickOutside(event: MouseEvent) {
-    // Si el clic (event.target) NO está contenido en el elemento nativo del componente (this.el.nativeElement)
-    // Y el dropdown está abierto
-    if (!this.el.nativeElement.contains(event.target) && this.isDropdownOpen) {
-      this.closeDropdown();
-    }
+    this.currentLang =
+      this.translate.currentLang || this.translate.defaultLang || 'es';
   }
 
   ngOnInit(): void {
-    this.routerSubscription = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: any) => {
-      
-      this.currentLang = this.translate.currentLang || 'es';
-      
-      this.updateRoutes(event.urlAfterRedirects);
-      this.closeDropdown(); // Esto ya cierra el dropdown al navegar
-    });
+    this.routerSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        this.currentLang = this.translate.currentLang || 'es';
+
+        this.updateRoutes(event.urlAfterRedirects);
+        this.closeDropdown();
+      });
 
     this.updateRoutes(this.router.url);
   }

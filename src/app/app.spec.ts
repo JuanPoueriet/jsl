@@ -7,13 +7,13 @@ import { provideRouter } from '@angular/router';
 
 // Mock del SeoService
 const mockSeoService = {
-  init: jest.fn() // Usamos jest.fn() para espiar la llamada
+  init: jasmine.createSpy('init'), // Usamos jasmine.createSpy()
 };
 
 describe('App', () => {
   beforeEach(async () => {
     // Limpiamos el mock antes de cada prueba
-    mockSeoService.init.mockClear();
+    mockSeoService.init.calls.reset();
 
     await TestBed.configureTestingModule({
       imports: [App],

@@ -22,10 +22,7 @@ import { CtaComponent } from '../../shared/components/cta/cta'; // 4. Importar C
     CtaComponent // 5. Añadir CTA
   ],
   templateUrl: './blog-detail.html',
-  styleUrls: [
-    '../detail-page.scss',
-    './blog-detail.scss'
-  ],
+  styleUrl: './blog-detail.scss',
   encapsulation: ViewEncapsulation.None
 })
 export class BlogDetail implements OnInit, OnDestroy {

@@ -20,8 +20,7 @@ import { CtaComponent } from '../../shared/components/cta/cta'; // --- CAMBIO: I
     LucideAngularModule,
     CtaComponent // --- CAMBIO: Añadir CTA ---
   ],
-  templateUrl: './product-detail.html',
-  styleUrl: '../detail-page.scss' // Reutilizamos los estilos de detalle
+  templateUrl: './product-detail.html'
 })
 export class ProductDetail implements OnInit, OnDestroy {
   
