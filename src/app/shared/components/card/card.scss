@@ -1,5 +1,3 @@
-/* src/app/shared/components/card/card.component.scss */
-
 .card {
   display: flex;
   flex-direction: column;
@@ -9,7 +7,7 @@
   height: 100%;
   text-decoration: none;
   color: var(--text-primary);
-  overflow: hidden; // Para contener la imagen
+  overflow: hidden;
   transition: transform var(--transition-speed) ease, 
               border-color var(--transition-speed) ease,
               box-shadow var(--transition-speed) ease;
@@ -19,33 +17,28 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 
-  // --- INICIO DE REFINAMIENTO DE UI ---
-
-  // Estilo 1: Tarjetas de Artículos/Proyectos (Informativas)
   &.card--article {
     &:hover {
-      // El borde se mantiene sutil
       border-color: var(--border-color); 
     }
 
     .card__link {
-      // Estilo de "Leer más" sutil
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       font-size: 0.9rem;
       font-weight: 600;
-      color: var(--text-secondary); // Color sutil
+      color: var(--text-secondary);
       margin-top: auto; 
       
       lucide-icon {
         width: 16px;
         transition: transform var(--transition-speed) ease;
-        color: var(--accent-primary); // Icono de acento
+        color: var(--accent-primary);
       }
 
       .card:hover & {
-        color: var(--accent-primary); // Color de acento al hacer hover
+        color: var(--accent-primary);
         
         lucide-icon {
           transform: translateX(4px);
@@ -54,26 +47,23 @@
     }
   }
 
-  // Estilo 2: Tarjetas de Servicios/Productos (Accionables)
   &.card--service {
     &:hover {
-      // Borde de acento claro para indicar "acción"
       border-color: var(--accent-primary); 
     }
 
     .card__link {
-      // Estilo de "pill" o "ghost button"
       display: inline-flex;
       align-items: center;
-      justify-content: center; // Centrar texto e icono
+      justify-content: center;
       gap: 0.5rem;
       font-size: 0.9rem;
       font-weight: 600;
-      margin-top: auto; // Asegura que el enlace esté al final
-      padding: 0.6rem 1rem; // Padding de botón
-      border-radius: 99px; // Forma de "pill"
+      margin-top: auto;
+      padding: 0.6rem 1rem;
+      border-radius: 99px;
       border: 1px solid var(--border-color);
-      background-color: var(--bg-primary); // Fondo sutil
+      background-color: var(--bg-primary);
       color: var(--text-primary);
       transition: all var(--transition-speed) ease;
       
@@ -93,13 +83,12 @@
       }
     }
   }
-  // --- FIN DE REFINAMIENTO DE UI ---
 }
 
 .card__image {
   width: 100%;
-  height: 200px; // Altura fija para la imagen del portafolio
-  object-fit: cover; // Asegura que la imagen cubra el espacio
+  height: 200px;
+  object-fit: cover;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -112,7 +101,7 @@
   border-radius: 50%;
   background: var(--accent-gradient);
   color: #fff;
-  margin: 1.5rem; // Añadimos margen para compensar el padding eliminado
+  margin: 1.5rem;
   flex-shrink: 0;
 
   lucide-icon {
@@ -121,12 +110,11 @@
   }
 }
 
-// ¡NUEVO! Contenedor para el texto
 .card__content {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; // Para que el contenido ocupe el espacio
+  flex-grow: 1;
 }
 
 .card__title {
@@ -139,7 +127,7 @@
   font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.7;
-  flex-grow: 1; // Empuja el 'read more' hacia abajo
+  flex-grow: 1;
   margin-bottom: 1.5rem;
 }
 

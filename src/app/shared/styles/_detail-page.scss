@@ -88,32 +88,25 @@
 }
 
 .detail-page-content {
-  // --- INICIO DE MODIFICACIONES ---
-  display: block; // Cambiado de 'grid' a 'block'
-  grid-template-columns: 1fr; // (Ya no es necesario, pero se queda por si se usa en blog)
-  gap: 0; // El espaciado se manejará por .content-block
-  max-width: 800px; // Ancho de lectura cómodo
+  display: block;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 800px;
   margin: 4rem auto 0 auto;
-  // --- FIN DE MODIFICACIONES ---
 
-  // --- NUEVO: Clase para los bloques de contenido ---
   .content-block {
     margin-bottom: 3rem;
   }
   
-  // --- Estilos de contenido (para project-detail y blog-detail) ---
-  // Estos estilos se aplican al [innerHTML]
   h2 {
     font-size: 2rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
-    margin-top: 0; // Eliminado el margen superior
+    margin-top: 0;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
 
-    // El primer h2 no necesita margen superior
-    // (Ajustado para que funcione sin :first-child)
     .content-block + .content-block h2,
     h2 + h2 {
       margin-top: 2.5rem;
@@ -142,7 +135,3 @@
     margin-bottom: 1rem;
   }
 }
-
-// --- ESTILOS ELIMINADOS ---
-// .project-detail-grid { ... }
-// .project-detail-sidebar { ... }

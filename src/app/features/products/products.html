@@ -3,14 +3,14 @@
   <p class="page-subtitle" jslAnimateOnScroll>{{ 'PRODUCTS.SUBTITLE' | translate }}</p>
 
   <div class="products-grid">
-    <ng-container *ngIf="products$ | async as products">
+    @for (product of products(); track product.key) {
       <jsl-card 
-        *ngFor="let product of products"
         [icon]="product.icon"
         [title]="'PRODUCTS.' + product.key + '_TITLE' | translate"
         [description]="'PRODUCTS.' + product.key + '_DESC' | translate"
-        [link]="['/', currentLang, 'products', product.slug]"> </jsl-card>
-    </ng-container>
+        [link]="['/', currentLang, 'products', product.slug]">
+      </jsl-card>
+    }
   </div>
 </div>
 

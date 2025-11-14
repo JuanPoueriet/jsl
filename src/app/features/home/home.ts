@@ -1,23 +1,16 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, Inject } from '@angular/core';
-// --- CAMBIO: Añadir NgOptimizedImage ---
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, Inject, signal } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterLink } from '@angular/router';
 import { Card } from '../../shared/components/card/card';
 import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
-
-// --- CAMBIO: Imports estáticos eliminados (ya se usa DataService) ---
-// import { PROJECTS, TESTIMONIALS } from '../../core/data/mock-data';
-
-// Importar y registrar Swiper correctamente
 import { register } from 'swiper/element/bundle';
 import { SwiperOptions } from 'swiper/types';
-import { EffectFade, Autoplay, Pagination, EffectCoverflow } from 'swiper/modules'; // Añadir EffectCoverflow
-import { Observable } from 'rxjs';
+import { EffectFade, Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import { Testimonial, Project, Solution, Product, ProcessStep, DataService } from '../../core/services/data.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
-// Registrar los elementos de Swiper
 register();
 
 @Component({
@@ -25,7 +18,7 @@ register();
   standalone: true,
   imports: [
     CommonModule,
-    NgOptimizedImage, // <-- AÑADIDO
+    NgOptimizedImage,
     TranslateModule,
     LucideAngularModule,
     RouterLink,
@@ -38,7 +31,6 @@ register();
 })
 export class Home implements OnInit {
 
-  // Configuración del Swiper del Hero
   public heroSwiperConfig: SwiperOptions = {
     modules: [EffectFade, Autoplay, Pagination],
     effect: 'fade',
@@ -55,8 +47,6 @@ export class Home implements OnInit {
     loop: true,
   };
 
-  // --- INICIO DE LA MODIFICACIÓN ---
-  // --- Configuración del Swiper de Testimonios ---
   public testimonialSwiperConfig: SwiperOptions = {
     modules: [Pagination, Autoplay, EffectCoverflow],
     effect: 'coverflow',
@@ -67,10 +57,10 @@ export class Home implements OnInit {
       modifier: 1,
       slideShadows: true,
     },
-    spaceBetween: 30, // <-- AÑADIDO: Esto añade separación entre tarjetas
+    spaceBetween: 30,
     grabCursor: true,
     centeredSlides: true,
-    slidesPerView: 'auto', // Clave para que funcione bien en responsive
+    slidesPerView: 'auto',
     loop: true,
     autoplay: {
       delay: 7000,
@@ -79,22 +69,19 @@ export class Home implements OnInit {
     pagination: {
       clickable: true,
     },
-    // --- ELIMINADOS Breakpoints: 'auto' + 'spaceBetween' es una mejor combinación ---
   };
-  // --- FIN DE LA MODIFICACIÓN ---
 
   public currentLang: string;
 
-  // 4. Cambiar los arrays estáticos por Observables
-  public testimonials$!: Observable<Testimonial[]>;
-  public projects$!: Observable<Project[]>;
-  public solutions$!: Observable<Solution[]>;
-  public products$!: Observable<Product[]>;
-  public processSteps$!: Observable<ProcessStep[]>;
+  public testimonials = toSignal(this.dataService.getTestimonials(), { initialValue: [] });
+  public projects = toSignal(this.dataService.getProjects(), { initialValue: [] });
+  public solutions = toSignal(this.dataService.getSolutions(), { initialValue: [] });
+  public products = toSignal(this.dataService.getProducts(), { initialValue: [] });
+  public processSteps = toSignal(this.dataService.getProcessSteps(), { initialValue: [] });
 
   constructor(
     @Inject(TranslateService) private translate: TranslateService,
-    private dataService: DataService // 5. Inyectar DataService
+    private dataService: DataService
   ) {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
   }
@@ -103,17 +90,6 @@ export class Home implements OnInit {
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
     });
-
-    // 6. Cargar todos los datos desde el servicio
-    this.loadData();
-  }
-
-  private loadData(): void {
-    this.testimonials$ = this.dataService.getTestimonials();
-    this.projects$ = this.dataService.getProjects();
-    this.solutions$ = this.dataService.getSolutions();
-    this.products$ = this.dataService.getProducts();
-    this.processSteps$ = this.dataService.getProcessSteps();
   }
 
   getStars(count: number): any[] {

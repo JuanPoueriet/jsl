@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Card } from '../../shared/components/card/card';
 import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
-import { DataService, BlogPost } from '../../core/services/data.service'; // 1. Importar Servicio
-import { Observable } from 'rxjs'; // 2. Importar Observable
-import { CtaComponent } from '../../shared/components/cta/cta'; // 3. Importar CTA
+import { DataService } from '../../core/services/data.service';
+import { CtaComponent } from '../../shared/components/cta/cta';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'jsl-blog',
@@ -15,7 +15,7 @@ import { CtaComponent } from '../../shared/components/cta/cta'; // 3. Importar C
     TranslateModule,
     Card,
     AnimateOnScroll,
-    CtaComponent // 4. Añadir CTA
+    CtaComponent
   ],
   templateUrl: './blog.html',
   styleUrl: './blog.scss'
@@ -23,11 +23,11 @@ import { CtaComponent } from '../../shared/components/cta/cta'; // 3. Importar C
 export class Blog implements OnInit {
 
   public currentLang: string;
-  public blogPosts$!: Observable<BlogPost[]>; // 5. Usar Observable
+  public blogPosts = toSignal(this.dataService.getBlogPosts(), { initialValue: [] });
 
   constructor(
     @Inject(TranslateService) private translate: TranslateService,
-    private dataService: DataService // 6. Inyectar Servicio
+    private dataService: DataService
   ) {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
   }
@@ -36,7 +36,5 @@ export class Blog implements OnInit {
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
     });
-
-    this.blogPosts$ = this.dataService.getBlogPosts(); // 7. Cargar datos
   }
 }

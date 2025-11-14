@@ -20,7 +20,6 @@ import {
   Validators,
 } from '@angular/forms';
 
-// Interfaz para el objeto de mensaje
 interface ChatMessage {
   text: string;
   sender: 'user' | 'operator';
@@ -44,25 +43,22 @@ interface ChatMessage {
 export class ChatBubbleComponent implements OnInit, OnDestroy {
   @ViewChild('chatBody') private chatBody: ElementRef<HTMLDivElement> | undefined;
 
-  // --- SEÑALES DE ESTADO ---
   public isOpen = signal(false);
   public showPreview = signal(false);
   public previewTeaser = signal('');
   public messages = signal<ChatMessage[]>([]);
   public proactiveMessageSent = signal(false);
 
-  // --- FORMULARIO ---
   public chatInput = new FormControl('', {
     nonNullable: true,
     validators: [Validators.required],
   });
 
-  // --- PROPIEDADES PRIVADAS ---
   private audio: HTMLAudioElement | null = null;
   private proactiveTimer: any = null;
   private previewTimer: any = null;
   private readonly isBrowser: boolean;
-  private hasInteracted = false; // Flag para desbloquear el audio
+  private hasInteracted = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -70,7 +66,6 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
-    // Reaccionar a cambios en los mensajes para hacer scroll
     effect(() => {
       if (this.messages() && this.isBrowser) {
         this.scrollToBottom();
@@ -80,11 +75,9 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (this.isBrowser) {
-      // Inicializar el audio
       this.audio = new Audio('assets/sounds/chat-notification.mp3');
       this.audio.load();
 
-      // Cargar el mensaje de bienvenida (sin sonido)
       this.translate
         .get('CHAT.GREETING')
         .subscribe((greeting: string) => {
@@ -97,7 +90,6 @@ export class ChatBubbleComponent implements OnInit, OnDestroy {
           ]);
         });
 
-      // Iniciar el temporizador para el mensaje proactivo
       this.initializeProactiveChat();
     }
   }
