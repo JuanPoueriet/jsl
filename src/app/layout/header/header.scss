@@ -6,8 +6,12 @@
   left: 0;
   width: 100%;
   z-index: 1000;
+
+  // Transición para el fondo y el borde
   transition: background-color 0.3s ease-out, backdrop-filter 0.3s ease-out,
     border-color 0.3s ease-out;
+
+  // Borde inferior transparente por defecto
   border-bottom: 1px solid transparent;
 }
 
@@ -29,6 +33,7 @@
     height: 60px;
   }
 
+  // 4. Ocultar la línea separadora (ya tenemos el borde del :host)
   .header__nav::after {
     opacity: 0;
   }
@@ -55,7 +60,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 100%; // 100% del .container (este era el fix)
     height: 1px;
     background: var(--border-color);
     opacity: 1;
@@ -65,14 +70,24 @@
 
 .header__logo {
   font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -1px;
-  flex-shrink: 0; // Evita que el logo se encoja
+  // font-weight: 700;
+  // color: var(--text-primary);
+  // letter-spacing: -1px;
 
-  &::first-letter {
-    color: var(--accent-primary);
-  }
+  // &::first-letter {
+  //   color: var(--accent-primary);
+  // }
+
+  // font-size: 1.5rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.72px;
+  font-family: Montserrat;
+  background-image: linear-gradient(45deg, #365899 0%, #992a09 35%, #a76c51 85%, #a76c51 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  color: #fff;
+  padding-right: 5px;
 }
 
 .header__nav-links {
@@ -249,12 +264,11 @@ li.dropdown {
 }
 
 .header__mobile-toggle {
-  display: none; // Oculto en desktop
+  display: none;
   background: none;
   border: none;
   color: var(--text-primary);
   cursor: pointer;
-  z-index: 1011; // Encima del menú móvil
 
   lucide-icon {
     width: 28px;
@@ -263,21 +277,17 @@ li.dropdown {
 }
 
 .header__nav-links-mobile {
-  display: none; // Oculto en desktop
+  display: none;
 }
 
 // --- Media Query para Responsividad ---
 @media (max-width: 992px) {
   .header__nav-links {
-    display: none; // Ocultar menú de escritorio
-  }
-
-  .header__mobile-lang-switcher {
-    display: block; // Mostrar selector de idioma móvil
+    display: none;
   }
 
   .header__mobile-toggle {
-    display: block; // Mostrar botón de hamburguesa
+    display: block;
   }
 
   .header__nav-links-mobile {
@@ -293,9 +303,8 @@ li.dropdown {
     background: var(--bg-secondary);
     padding: calc(var(--header-height) + var(--top-bar-height) + 2rem) 2rem 2rem 2rem;
     border-bottom: 1px solid var(--border-color);
-    overflow-y: auto; // Permitir scroll si hay muchos enlaces
 
-    transform: translateY(-100%); // Oculto arriba
+    transform: translateY(-120%);
     opacity: 0;
     transition: transform 0.4s ease, opacity 0.4s ease;
 
