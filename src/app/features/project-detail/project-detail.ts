@@ -19,8 +19,7 @@ import { CtaComponent } from '../../shared/components/cta/cta';
     LucideAngularModule,
     CtaComponent 
   ],
-  templateUrl: './project-detail.html',
-  styleUrl: '../detail-page.scss'
+  templateUrl: './project-detail.html'
 })
 export class ProjectDetail implements OnInit, OnDestroy {
   
