@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Card } from '../../shared/components/card/card';
@@ -22,13 +22,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class Blog implements OnInit {
 
+  private translate = inject(TranslateService);
+  private dataService = inject(DataService);
+
   public currentLang: string;
   public blogPosts = toSignal(this.dataService.getBlogPosts(), { initialValue: [] });
 
-  constructor(
-    @Inject(TranslateService) private translate: TranslateService,
-    private dataService: DataService
-  ) {
+  constructor() {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
@@ -22,6 +22,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class AboutUs {
   
+  private dataService = inject(DataService);
   public teamMembers = toSignal(this.dataService.getTeamMembers(), { initialValue: [] });
 
   coreValues = [
@@ -30,5 +31,5 @@ export class AboutUs {
     { key: 'VALUES', icon: 'Gem' }
   ];
 
-  constructor(private dataService: DataService) {}
+  constructor() {}
 }
