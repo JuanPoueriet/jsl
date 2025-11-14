@@ -1,6 +1,4 @@
-<!-- 1. Usar | async pipe en el contenedor principal -->
-<ng-container *ngIf="post$ | async as post; else notFound">
-  
+@if (post$ | async; as post) {
   <header class="detail-page-header">
     <div class="container">
       <div class="detail-page-breadcrumb" jslAnimateOnScroll>
@@ -8,7 +6,7 @@
         <lucide-icon name="ChevronRight"></lucide-icon>
         <a [routerLink]="['/', currentLang, 'blog']">{{ 'HEADER.BLOG' | translate }}</a>
         <lucide-icon name="ChevronRight"></lucide-icon>
-        </div>
+      </div>
       <h1 class="detail-page-title" jslAnimateOnScroll>{{ 'BLOG.' + post.key + '_TITLE' | translate }}</h1>
       
       <div class="detail-page-meta" jslAnimateOnScroll>
@@ -32,17 +30,13 @@
           [innerHTML]="'BLOG.' + post.key + '_CONTENT' | translate">
     </main>
   </div>
-</ng-container>
 
-<!-- 2. Añadir CTA al final -->
-<jsl-cta-section 
-  eyebrowKey="BLOG.CTA_EYEBROW"
-  titleKey="BLOG.CTA_TITLE"
-  subtitleKey="BLOG.CTA_SUBTITLE">
-</jsl-cta-section>
-
-<!-- 3. Actualizar el template #notFound con las claves de i18n -->
-<ng-template #notFound>
+  <jsl-cta-section
+    eyebrowKey="BLOG.CTA_EYEBROW"
+    titleKey="BLOG.CTA_TITLE"
+    subtitleKey="BLOG.CTA_SUBTITLE">
+  </jsl-cta-section>
+} @else {
   <div class="page-container container">
     <h1 class="page-title">{{ 'NOT_FOUND.BLOG_TITLE' | translate }}</h1>
     <p class="page-subtitle">
@@ -50,4 +44,4 @@
       <a [routerLink]="['/', currentLang, 'blog']">{{ 'HEADER.BLOG' | translate }}</a>.
     </p>
   </div>
-</ng-template>
+}

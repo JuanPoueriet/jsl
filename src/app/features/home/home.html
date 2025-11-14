@@ -89,10 +89,12 @@
       <h2 class="section-title">{{ 'HOME.TESTIMONIALS_TITLE' | translate }}</h2>
     </div>
     <swiper-container [config]="testimonialSwiperConfig" init="true" class="testimonial-slider">
-      <ng-container *ngIf="testimonials$ | async as testimonials">
-        <swiper-slide *ngFor="let testimonial of testimonials" class="testimonial-card">
+      @for (testimonial of testimonials(); track testimonial.nameKey) {
+        <swiper-slide class="testimonial-card">
           <div class="testimonial-card__stars">
-            <lucide-icon name="Star" *ngFor="let star of getStars(5)"></lucide-icon>
+            @for (star of getStars(5); track $index) {
+              <lucide-icon name="Star"></lucide-icon>
+            }
           </div>
           <p class="testimonial-card__text">"{{ testimonial.textKey | translate }}"</p>
           <div class="testimonial-card__author">
@@ -107,7 +109,7 @@
             </div>
           </div>
         </swiper-slide>
-      </ng-container>
+      }
     </swiper-container>
   </div>
 </section>
@@ -119,9 +121,8 @@
     <p class="section-subtitle">{{ 'HOME.SERVICES_SUBTITLE' | translate }}</p>
   </div>
   <div class="solutions-grid">
-    <ng-container *ngIf="solutions$ | async as solutions">
+    @for (solution of solutions(); track solution.key) {
       <jsl-card
-        *ngFor="let solution of solutions"
         [icon]="solution.icon"
         [title]="'SOLUTIONS.' + solution.key + '_TITLE' | translate"
         [description]="'SOLUTIONS.' + solution.key + '_DESC' | translate"
@@ -129,7 +130,7 @@
         jslAnimateOnScroll
       >
       </jsl-card>
-    </ng-container>
+    }
   </div>
 </section>
 
@@ -140,9 +141,8 @@
     <p class="section-subtitle">{{ 'HOME.PRODUCTS_SUBTITLE' | translate }}</p>
   </div>
   <div class="products-grid">
-    <ng-container *ngIf="products$ | async as products">
+    @for (product of products(); track product.key) {
       <jsl-card
-        *ngFor="let product of products"
         [icon]="product.icon"
         [title]="'PRODUCTS.' + product.key + '_TITLE' | translate"
         [description]="'PRODUCTS.' + product.key + '_DESC' | translate"
@@ -150,7 +150,7 @@
         jslAnimateOnScroll
       >
       </jsl-card>
-    </ng-container>
+    }
   </div>
 </section>
 
@@ -161,9 +161,8 @@
     <p class="section-subtitle">{{ 'HOME.PROJECTS_SUBTITLE' | translate }}</p>
   </div>
   <div class="projects-grid">
-    <ng-container *ngIf="projects$ | async as projects">
+    @for (project of projects(); track project.key) {
       <jsl-card
-        *ngFor="let project of projects"
         [imageUrl]="project.imageUrl"
         [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
         [description]="'PROJECTS.' + project.key + '_DESC' | translate"
@@ -171,7 +170,7 @@
         jslAnimateOnScroll
       >
       </jsl-card>
-    </ng-container>
+    }
   </div>
 </section>
 
@@ -183,15 +182,15 @@
       <p class="section-subtitle">{{ 'HOME.PROCESS_SUBTITLE' | translate }}</p>
     </div>
     <div class="process-grid">
-      <ng-container *ngIf="processSteps$ | async as processSteps">
-        <div class="process-step" *ngFor="let step of processSteps" jslAnimateOnScroll>
+      @for (step of processSteps(); track step.key) {
+        <div class="process-step" jslAnimateOnScroll>
           <div class="process-step__icon">
             <lucide-icon [name]="step.icon"></lucide-icon>
           </div>
           <h3 class="process-step__title">{{ 'HOME.PROCESS_' + step.key + '_TITLE' | translate }}</h3>
           <p class="process-step__desc">{{ 'HOME.PROCESS_' + step.key + '_DESC' | translate }}</p>
         </div>
-      </ng-container>
+      }
     </div>
 
     <div class="process-section__cta" jslAnimateOnScroll>

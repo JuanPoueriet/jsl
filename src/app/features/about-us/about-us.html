@@ -19,13 +19,15 @@
 <section class="core-values-section">
   <div class="container">
     <div class="core-values-grid">
-      <div class="core-value-card" *ngFor="let value of coreValues" jslAnimateOnScroll>
-        <div class="core-value-card__icon">
-          <lucide-icon [name]="value.icon"></lucide-icon>
+      @for (value of coreValues; track value.key) {
+        <div class="core-value-card" jslAnimateOnScroll>
+          <div class="core-value-card__icon">
+            <lucide-icon [name]="value.icon"></lucide-icon>
+          </div>
+          <h3 class="core-value-card__title">{{ 'ABOUT.' + value.key + '_TITLE' | translate }}</h3>
+          <p class="core-value-card__desc">{{ 'ABOUT.' + value.key + '_DESC' | translate }}</p>
         </div>
-        <h3 class="core-value-card__title">{{ 'ABOUT.' + value.key + '_TITLE' | translate }}</h3>
-        <p class="core-value-card__desc">{{ 'ABOUT.' + value.key + '_DESC' | translate }}</p>
-      </div>
+      }
     </div>
   </div>
 </section>
@@ -39,9 +41,8 @@
   </div>
 
   <div class="team-grid">
-    <!-- 1. Usar | async pipe -->
-    <ng-container *ngIf="teamMembers$ | async as teamMembers">
-      <div class="team-member-card" *ngFor="let member of teamMembers" jslAnimateOnScroll>
+    @for (member of teamMembers(); track member.nameKey) {
+      <div class="team-member-card" jslAnimateOnScroll>
         <div class="team-member-card__image">
           <img [src]="member.imageUrl" [alt]="member.nameKey | translate">
         </div>
@@ -50,7 +51,7 @@
           <p class="team-member-card__role">{{ member.roleKey | translate }}</p>
         </div>
       </div>
-    </ng-container>
+    }
   </div>
 </section>
 

@@ -1,5 +1,4 @@
-<ng-container *ngIf="solution$ | async as solution; else notFound">
-  
+@if (solution$ | async; as solution) {
   <header class="detail-page-header">
     <div class="container">
       <div class="detail-page-breadcrumb">
@@ -21,13 +20,11 @@
       <h2>{{ 'COMMON.PLACEHOLDER_TITLE' | translate }}</h2>
       <p [innerHTML]="'SOLUTIONS.' + solution.key + '_DETAIL_CONTENT' | translate"></p>
       
-      </main>
+    </main>
   </div>
-</ng-container>
 
-<jsl-cta-section></jsl-cta-section>
-
-<ng-template #notFound>
+  <jsl-cta-section></jsl-cta-section>
+} @else {
   <div class="page-container container">
     <h1 class="page-title">{{ 'NOT_FOUND.SOLUTION_TITLE' | translate }}</h1>
     <p class="page-subtitle">
@@ -35,4 +32,4 @@
       <a [routerLink]="['/', currentLang, 'solutions']">{{ 'HEADER.SERVICES' | translate }}</a>.
     </p>
   </div>
-</ng-template>
+}

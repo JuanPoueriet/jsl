@@ -40,10 +40,16 @@
         <label for="name">{{ 'CONTACT.FORM.NAME' | translate }}</label>
         <input type="text" id="name" class="form-control" formControlName="name" 
                [class.is-invalid]="f['name'].invalid && (f['name'].dirty || f['name'].touched)">
-        <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="form-error">
-          <span *ngIf="f['name'].errors?.['required']">{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
-          <span *ngIf="f['name'].errors?.['minlength']">{{ 'CONTACT.FORM.ERRORS.MINLENGTH' | translate:{'value': 3} }}</span>
-        </div>
+        @if (f['name'].invalid && (f['name'].dirty || f['name'].touched)) {
+          <div class="form-error">
+            @if (f['name'].errors?.['required']) {
+              <span>{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
+            }
+            @if (f['name'].errors?.['minlength']) {
+              <span>{{ 'CONTACT.FORM.ERRORS.MINLENGTH' | translate:{'value': 3} }}</span>
+            }
+          </div>
+        }
       </div>
 
       <!-- Campo Email -->
@@ -51,10 +57,16 @@
         <label for="email">{{ 'CONTACT.FORM.EMAIL' | translate }}</label>
         <input type="email" id="email" class="form-control" formControlName="email"
                [class.is-invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
-        <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="form-error">
-          <span *ngIf="f['email'].errors?.['required']">{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
-          <span *ngIf="f['email'].errors?.['email']">{{ 'CONTACT.FORM.ERRORS.EMAIL' | translate }}</span>
-        </div>
+        @if (f['email'].invalid && (f['email'].dirty || f['email'].touched)) {
+          <div class="form-error">
+            @if (f['email'].errors?.['required']) {
+              <span>{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
+            }
+            @if (f['email'].errors?.['email']) {
+              <span>{{ 'CONTACT.FORM.ERRORS.EMAIL' | translate }}</span>
+            }
+          </div>
+        }
       </div>
 
       <!-- Campo Servicio -->
@@ -69,9 +81,13 @@
           <option value="mobile_dev">{{ 'SERVICES_LIST.MOBILE' | translate }}</option>
           <option value="other">{{ 'CONTACT.FORM.SERVICE_OTHER' | translate }}</option>
         </select>
-        <div *ngIf="f['service'].invalid && (f['service'].dirty || f['service'].touched)" class="form-error">
-          <span *ngIf="f['service'].errors?.['required']">{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
-        </div>
+        @if (f['service'].invalid && (f['service'].dirty || f['service'].touched)) {
+          <div class="form-error">
+            @if (f['service'].errors?.['required']) {
+              <span>{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
+            }
+          </div>
+        }
       </div>
 
       <!-- Campo Mensaje -->
@@ -79,28 +95,44 @@
         <label for="message">{{ 'CONTACT.FORM.MESSAGE' | translate }}</label>
         <textarea id="message" class="form-control" rows="6" formControlName="message"
                   [class.is-invalid]="f['message'].invalid && (f['message'].dirty || f['message'].touched)"></textarea>
-        <div *ngIf="f['message'].invalid && (f['message'].dirty || f['message'].touched)" class="form-error">
-          <span *ngIf="f['message'].errors?.['required']">{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
-          <span *ngIf="f['message'].errors?.['minlength']">{{ 'CONTACT.FORM.ERRORS.MINLENGTH' | translate:{'value': 10} }}</span>
-        </div>
+        @if (f['message'].invalid && (f['message'].dirty || f['message'].touched)) {
+          <div class="form-error">
+            @if (f['message'].errors?.['required']) {
+              <span>{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
+            }
+            @if (f['message'].errors?.['minlength']) {
+              <span>{{ 'CONTACT.FORM.ERRORS.MINLENGTH' | translate:{'value': 10} }}</span>
+            }
+          </div>
+        }
       </div>
 
       <!-- Botón de Envío -->
       <div class="form-group">
         <button type="submit" class="submit-btn" [disabled]="isSubmitting || contactForm.invalid">
-          <span *ngIf="!isSubmitting">{{ 'CONTACT.FORM.SUBMIT' | translate }}</span>
-          <span *ngIf="isSubmitting" class="spinner"></span> <!-- (Estilizaremos el spinner) -->
-          <lucide-icon name="Send" *ngIf="!isSubmitting"></lucide-icon>
+          @if (!isSubmitting) {
+            <span>{{ 'CONTACT.FORM.SUBMIT' | translate }}</span>
+          }
+          @if (isSubmitting) {
+            <span class="spinner"></span> <!-- (Estilizaremos el spinner) -->
+          }
+          @if (!isSubmitting) {
+            <lucide-icon name="Send"></lucide-icon>
+          }
         </button>
       </div>
 
       <!-- Mensajes de Estado -->
-      <div *ngIf="submitSuccess" class="submit-success">
-        {{ 'CONTACT.FORM.SUCCESS' | translate }}
-      </div>
-      <div *ngIf="submitError" class="submit-error">
-        {{ 'CONTACT.FORM.ERROR' | translate }}
-      </div>
+      @if (submitSuccess) {
+        <div class="submit-success">
+          {{ 'CONTACT.FORM.SUCCESS' | translate }}
+        </div>
+      }
+      @if (submitError) {
+        <div class="submit-error">
+          {{ 'CONTACT.FORM.ERROR' | translate }}
+        </div>
+      }
     </form>
 
   </div>

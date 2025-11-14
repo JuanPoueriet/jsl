@@ -1,4 +1,3 @@
-// src/app/shared/components/logo-card/logo-card.scss
 :host {
   display: block;
 }
@@ -8,8 +7,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem 1rem; // Un poco más de padding
-  // 1. Fondo sutil con gradiente radial para un look moderno
+  padding: 1.5rem 1rem;
   background: radial-gradient(
     circle at 50% 0%, 
     rgba(255, 255, 255, 0.04), 
@@ -24,14 +22,12 @@
 
   &:hover {
     transform: translateY(-5px);
-    // 2. Usamos el color de acento para el borde y un "glow"
     border-color: rgba(var(--accent-primary-rgb), 0.5);
     box-shadow: 0 0 20px rgba(var(--accent-primary-rgb), 0.2);
   }
 }
 
 .logo-card__image-wrapper {
-  // 3. Hacemos el wrapper un círculo para enmarcar el logo
   width: 72px;
   height: 72px;
   display: flex;
@@ -43,19 +39,16 @@
   transition: border-color var(--transition-speed) ease;
   
   img {
-    width: 64px;  // El tamaño que definimos en el HTML
+    width: 64px;
     height: 64px;
     object-fit: contain;
-    // 4. ¡Quitamos el grayscale! La página será colorida por defecto.
-    // filter: brightness(0.9) grayscale(1) contrast(1.5); (ELIMINADO)
-    // opacity: 0.8; (ELIMINADO)
     transition: transform var(--transition-speed) ease;
   }
   
   .logo-card:hover & {
     border-color: rgba(var(--accent-primary-rgb), 0.3);
     img {
-      transform: scale(1.05); // Sutil zoom al logo
+      transform: scale(1.05);
     }
   }
 }

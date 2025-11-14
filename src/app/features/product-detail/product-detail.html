@@ -1,5 +1,4 @@
-<ng-container *ngIf="product$ | async as product; else notFound">
-  
+@if (product$ | async; as product) {
   <header class="detail-page-header">
     <div class="container">
       <div class="detail-page-breadcrumb">
@@ -29,13 +28,11 @@
         <span>{{ 'PRODUCTS.VIEW_DEDICATED_PAGE' | translate }}</span>
       </a>
 
-      </main>
+    </main>
   </div>
-</ng-container>
 
-<jsl-cta-section></jsl-cta-section>
-
-<ng-template #notFound>
+  <jsl-cta-section></jsl-cta-section>
+} @else {
   <div class="page-container container">
     <h1 class="page-title">{{ 'NOT_FOUND.PRODUCT_TITLE' | translate }}</h1>
     <p class="page-subtitle">
@@ -43,4 +40,4 @@
       <a [routerLink]="['/', currentLang, 'products']">{{ 'HEADER.PRODUCTS' | translate }}</a>.
     </p>
   </div>
-</ng-template>
+}

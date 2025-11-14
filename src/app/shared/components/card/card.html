@@ -1,35 +1,45 @@
-<a *ngIf="link" 
-   [routerLink]="link" 
-   class="card"
-   [class.card--service]="!imageUrl && icon"
-   [class.card--article]="imageUrl">
-  <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ title }}" class="card__image" loading="lazy">
-  
-  <div *ngIf="!imageUrl && icon" class="card__icon">
-    <lucide-icon [name]="icon"></lucide-icon>
-  </div>
-
-  <div class="card__content">
-    <h3 class="card__title">{{ title }}</h3>
-    <p class="card__description">{{ description }}</p>
-    <span class="card__link">
-      {{ 'COMMON.READ_MORE' | translate }} <lucide-icon name="ArrowRight"></lucide-icon>
-    </span>
-  </div>
-</a>
-
-<div *ngIf="!link" 
+@if (link) {
+  <a [routerLink]="link"
      class="card"
      [class.card--service]="!imageUrl && icon"
      [class.card--article]="imageUrl">
-  <img *ngIf="imageUrl" [src]="imageUrl" alt="{{ title }}" class="card__image" loading="lazy">
-  
-  <div *ngIf="!imageUrl && icon" class="card__icon">
-    <lucide-icon [name]="icon"></lucide-icon>
-  </div>
 
-  <div class="card__content">
-    <h3 class="card__title">{{ title }}</h3>
-    <p class="card__description">{{ description }}</p>
+    @if (imageUrl) {
+      <img [src]="imageUrl" alt="{{ title }}" class="card__image" loading="lazy">
+    }
+
+    @if (!imageUrl && icon) {
+      <div class="card__icon">
+        <lucide-icon [name]="icon"></lucide-icon>
+      </div>
+    }
+
+    <div class="card__content">
+      <h3 class="card__title">{{ title }}</h3>
+      <p class="card__description">{{ description }}</p>
+      <span class="card__link">
+        {{ 'COMMON.READ_MORE' | translate }} <lucide-icon name="ArrowRight"></lucide-icon>
+      </span>
+    </div>
+  </a>
+} @else {
+  <div class="card"
+       [class.card--service]="!imageUrl && icon"
+       [class.card--article]="imageUrl">
+
+    @if (imageUrl) {
+      <img [src]="imageUrl" alt="{{ title }}" class="card__image" loading="lazy">
+    }
+
+    @if (!imageUrl && icon) {
+      <div class="card__icon">
+        <lucide-icon [name]="icon"></lucide-icon>
+      </div>
+    }
+
+    <div class="card__content">
+      <h3 class="card__title">{{ title }}</h3>
+      <p class="card__description">{{ description }}</p>
+    </div>
   </div>
-</div>
+}

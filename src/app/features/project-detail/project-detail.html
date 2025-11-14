@@ -1,5 +1,4 @@
-<ng-container *ngIf="project$ | async as project; else notFound">
-  
+@if (project$ | async; as project) {
   <header class="detail-page-header">
     <div class="container">
       <div class="detail-page-breadcrumb">
@@ -34,16 +33,14 @@
       </section>
 
     </main>
-    </div>
-</ng-container>
+  </div>
 
-<jsl-cta-section 
-  eyebrowKey="PROJECTS.CTA_EYEBROW"
-  titleKey="PROJECTS.CTA_TITLE"
-  subtitleKey="PROJECTS.CTA_SUBTITLE">
-</jsl-cta-section>
-
-<ng-template #notFound>
+  <jsl-cta-section
+    eyebrowKey="PROJECTS.CTA_EYEBROW"
+    titleKey="PROJECTS.CTA_TITLE"
+    subtitleKey="PROJECTS.CTA_SUBTITLE">
+  </jsl-cta-section>
+} @else {
   <div class="page-container container">
     <h1 class="page-title">{{ 'NOT_FOUND.PROJECT_TITLE' | translate }}</h1>
     <p class="page-subtitle">
@@ -51,4 +48,4 @@
       <a [routerLink]="['/', currentLang, 'projects']">{{ 'HEADER.PROJECTS' | translate }}</a>.
     </p>
   </div>
-</ng-template>
+}

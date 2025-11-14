@@ -1,11 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core'; // 1. Añadir OnInit, Inject
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
-import { DataService, TeamMember } from '../../core/services/data.service'; // 2. Importar Servicio
-import { Observable } from 'rxjs'; // 3. Importar Observable
-import { CtaComponent } from '../../shared/components/cta/cta'; // 4. Importar CTA
+import { DataService } from '../../core/services/data.service';
+import { CtaComponent } from '../../shared/components/cta/cta';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'jsl-about-us',
@@ -15,25 +15,20 @@ import { CtaComponent } from '../../shared/components/cta/cta'; // 4. Importar C
     TranslateModule,
     LucideAngularModule,
     AnimateOnScroll,
-    CtaComponent // 5. Añadir CTA a imports
+    CtaComponent
   ],
   templateUrl: './about-us.html',
   styleUrl: './about-us.scss'
 })
-export class AboutUs implements OnInit { // 6. Implementar OnInit
+export class AboutUs {
   
-  public teamMembers$!: Observable<TeamMember[]>; // 7. Usar Observable
+  public teamMembers = toSignal(this.dataService.getTeamMembers(), { initialValue: [] });
 
-  // Contenido de Misión, Visión, Valores (puede quedar estático)
   coreValues = [
     { key: 'MISSION', icon: 'Target' },
     { key: 'VISION', icon: 'Eye' },
     { key: 'VALUES', icon: 'Gem' }
   ];
 
-  constructor(private dataService: DataService) {} // 8. Inyectar Servicio
-
-  ngOnInit() {
-    this.teamMembers$ = this.dataService.getTeamMembers(); // 9. Cargar datos
-  }
+  constructor(private dataService: DataService) {}
 }

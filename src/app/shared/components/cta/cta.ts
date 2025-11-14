@@ -20,12 +20,11 @@ import { AnimateOnScroll } from '../../directives/animate-on-scroll';
   styleUrl: './cta.scss'
 })
 export class CtaComponent {
-  // Entradas para hacerlo reutilizable
   @Input() eyebrowKey: string = 'HOME.CTA_EYEBROW';
   @Input() titleKey: string = 'HOME.CTA_TITLE';
   @Input() subtitleKey: string = 'HOME.CTA_SUBTITLE';
   @Input() ctaTextKey: string = 'HOME.CTA_BUTTON';
-  @Input() ctaLink: string[] = ['/', 'es', 'contact']; // Valor por defecto
+  @Input() ctaLink: string[] = ['/', 'es', 'contact'];
 
   public currentLang: string;
 
@@ -33,10 +32,8 @@ export class CtaComponent {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
     this.translate.onLangChange.subscribe(event => {
       this.currentLang = event.lang;
-      // Actualizar el enlace con el idioma correcto
       this.ctaLink[1] = this.currentLang;
     });
-    // Actualizar el enlace inicial
     this.ctaLink[1] = this.currentLang;
   }
 }

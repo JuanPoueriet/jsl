@@ -17,7 +17,5 @@ export class Card {
   @Input() title: string = 'Card Title';
   @Input() description: string = 'Card description goes here.';
   
-  // --- AQUI ESTA EL CAMBIO ---
-  // Debe poder aceptar un array para el binding de [routerLink]
   @Input() link: any[] | string | null = null; 
 }

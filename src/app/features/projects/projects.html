@@ -3,16 +3,15 @@
   <p class="page-subtitle" jslAnimateOnScroll>{{ 'PROJECTS.SUBTITLE' | translate }}</p>
 
   <div class="projects-grid">
-    <ng-container *ngIf="projects$ | async as projects">
+    @for (project of projects(); track project.key) {
       <jsl-card 
-        *ngFor="let project of projects"
         [imageUrl]="project.imageUrl"
         [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
         [description]="'PROJECTS.' + project.key + '_DESC' | translate"
         [link]="['/', currentLang, 'projects', project.slug]"
         jslAnimateOnScroll>
       </jsl-card>
-    </ng-container>
+    }
   </div>
 </div>
 
