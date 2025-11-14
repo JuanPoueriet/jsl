@@ -7,8 +7,8 @@ import { RouterLink } from '@angular/router';
 import { Card } from '../../shared/components/card/card';
 import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
 
-// Importar datos
-import { PROJECTS, TESTIMONIALS } from '../../core/data/mock-data';
+// --- CAMBIO: Imports estáticos eliminados (ya se usa DataService) ---
+// import { PROJECTS, TESTIMONIALS } from '../../core/data/mock-data';
 
 // Importar y registrar Swiper correctamente
 import { register } from 'swiper/element/bundle';

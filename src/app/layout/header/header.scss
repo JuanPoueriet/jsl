@@ -1,89 +1,84 @@
 /* src/app/layout/header/header.scss */
 
-// --- ESTADO BASE (:host) ---
 :host {
-  // :host es el <jsl-header>
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
+<<<<<<< HEAD
 
   // Transición para el fondo y el borde
   transition: background-color 0.3s ease-out, backdrop-filter 0.3s ease-out,
     border-color 0.3s ease-out;
 
   // Borde inferior transparente por defecto
+=======
+  transition: background-color 0.3s ease-out, backdrop-filter 0.3s ease-out,
+    border-color 0.3s ease-out;
+>>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
   border-bottom: 1px solid transparent;
 }
 
-// --- ESTADO CON SCROLL (:host.is-scrolled) ---
 :host(.is-scrolled) {
-  // 1. Aplicar el fondo con blur
-  background-color: rgba(13, 13, 13, 0.85); // Fondo semitransparente
-  backdrop-filter: blur(10px); // Efecto "vidrio"
-  border-bottom-color: var(--border-color); // Borde sólido al scrollear
+  background-color: rgba(13, 13, 13, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom-color: var(--border-color);
 
-  // 2. Ocultar la Top-Bar (animará gracias a top-bar.scss)
-  // Seleccionamos el componente hijo <jsl-top-bar>
+  // Ocultar la Top-Bar (animará gracias a top-bar.scss)
   ::ng-deep jsl-top-bar .top-bar {
     height: 0;
     opacity: 0;
     padding-top: 0;
     padding-bottom: 0;
-    border: none; // Ocultar su borde
+    border: none;
   }
 
-  // 3. Encoger la barra de navegación principal
   .header__nav {
-    height: 60px; // Altura encogida (de 75px)
+    height: 60px;
   }
 
+<<<<<<< HEAD
   // 4. Ocultar la línea separadora (ya tenemos el borde del :host)
+=======
+>>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
   .header__nav::after {
     opacity: 0;
   }
 }
 
-// --- ENVOLTORIO INTERNO .header ---
-// (Ya no necesita estados de scroll, es solo un contenedor)
 .header {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; // Centra el .container
+  align-items: center;
 }
 
-// --- BARRA DE NAVEGACIÓN .header__nav ---
-// Esta clase también tiene la clase .container (desde app.html)
 .header__nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%; // El .container se encarga del ancho (90% / max-width)
-  height: var(--header-height); // Altura inicial
+  width: 100%;
+  height: var(--header-height);
   position: relative;
-
-  // Transición suave para la altura
   transition: height 0.3s ease-out;
 
-  // --- LA LÍNEA INFERIOR (CORREGIDA) ---
   &::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
+<<<<<<< HEAD
     width: 100%; // 100% del .container (este era el fix)
+=======
+    width: 100%;
+>>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
     height: 1px;
     background: var(--border-color);
     opacity: 1;
-    // Transición para ocultarla suavemente
     transition: opacity 0.3s ease-out;
   }
 }
-
-// --- RESTO DE ESTILOS ---
-// (sin cambios, tu lógica de logo, links y menú móvil es correcta)
 
 .header__logo {
   font-size: 1.75rem;
@@ -97,6 +92,7 @@
 
   // font-size: 1.5rem;
   font-weight: 700;
+<<<<<<< HEAD
   line-height: normal;
   letter-spacing: -0.72px;
   font-family: Montserrat;
@@ -105,21 +101,49 @@
   -webkit-background-clip: text;
   color: #fff;
   padding-right: 5px;
+=======
+  color: var(--text-primary);
+  letter-spacing: -1px;
+  flex-shrink: 0; // Evita que el logo se encoja
+
+  &::first-letter {
+    color: var(--accent-primary);
+  }
+>>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
 }
 
 .header__nav-links {
   display: flex;
-  gap: 2rem;
+  justify-content: center; // Centra los enlaces
+  flex-grow: 1; // Ocupa el espacio restante
+  gap: 1.25rem; // --- MODIFICADO: Espacio reducido para 7 elementos
   list-style: none;
+  align-items: center; // --- AÑADIDO: Para centrar el botón CTA verticalmente
 
-  a {
+  // Estilo base para enlaces y botones de dropdown
+  a,
+  .dropdown-toggle {
     font-size: 1rem;
     font-weight: 500;
     color: var(--text-secondary);
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0.25rem; // Padding horizontal ligero
     transition: color var(--transition-speed) ease;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-family: var(--font-family-base);
+    display: inline-flex; // Para alinear el ícono
+    align-items: center;
+    gap: 0.25rem;
 
+    lucide-icon {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    // Efecto de subrayado (solo para enlaces directos)
     &::after {
       content: '';
       position: absolute;
@@ -136,8 +160,116 @@
       color: var(--text-primary);
     }
 
-    &.active::after {
+    // Solo enlaces <a> directos (no botones)
+    &.active:not(button)::after {
       width: 100%;
+    }
+  }
+
+  // Estilos específicos del botón dropdown-toggle
+  .dropdown-toggle {
+    &.active {
+      color: var(--accent-primary); // Botón activo cuando el dropdown está abierto
+    }
+    lucide-icon {
+      margin-left: 0.25rem;
+    }
+  }
+
+  // --- INICIO: NUEVO ESTILO PARA EL BOTÓN CTA "CONTACTO" ---
+  li.header__nav-cta {
+    a {
+      background: var(--accent-gradient);
+      color: #fff;
+      padding: 0.5rem 1.25rem; // Padding del botón
+      border-radius: var(--border-radius);
+      transition: all var(--transition-speed) ease;
+
+      &::after {
+        display: none; // Sin subrayado
+      }
+
+      &:hover {
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(var(--accent-primary-rgb), 0.3);
+      }
+
+      &.active {
+        // Estilo activo para el botón
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(var(--accent-primary-rgb), 0.3);
+      }
+    }
+  }
+  // --- FIN: NUEVO ESTILO ---
+}
+
+// Contenedor del Dropdown (li)
+li.dropdown {
+  position: relative;
+
+  // Girar el chevron cuando está abierto
+  &.open .dropdown-toggle lucide-icon {
+    transform: rotate(180deg);
+  }
+}
+
+// Menú Dropdown (el panel flotante)
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 15px); // 15px por debajo del header
+  left: 50%;
+  transform: translateX(-50%) translateY(10px); // Centrado y listo para animar
+  
+  // --- INICIO: MODIFICACIÓN DE ANCHO ---
+  min-width: 220px; // Ancho mínimo
+  width: auto;      // Ancho automático según contenido
+  // --- FIN: MODIFICACIÓN DE ANCHO ---
+
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1010;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem; // Espacio interno
+
+  // Animación
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.open {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  // Enlaces dentro del dropdown
+  a {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    padding: 0.75rem 1rem; // Padding generoso
+    border-radius: 6px; // Bordes redondeados internos
+    transition: all var(--transition-speed) ease;
+    white-space: nowrap; // --- AÑADIDO: Evita que los enlaces se partan
+
+    &::after {
+      display: none; // Sin subrayado en el dropdown
+    }
+
+    &:hover {
+      background-color: var(--border-color);
+      color: var(--text-primary);
+    }
+
+    &.active {
+      color: var(--accent-primary);
+      font-weight: 600;
+      background-color: rgba(var(--accent-primary-rgb), 0.1);
     }
   }
 }
@@ -145,15 +277,28 @@
 .header__controls {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem; // Espacio entre idioma y botón de menú
+}
+
+// El selector de idioma para móvil (oculto en desktop)
+.header__mobile-lang-switcher {
+  display: none;
 }
 
 .header__mobile-toggle {
+<<<<<<< HEAD
   display: none;
+=======
+  display: none; // Oculto en desktop
+>>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
   background: none;
   border: none;
   color: var(--text-primary);
   cursor: pointer;
+<<<<<<< HEAD
+=======
+  z-index: 1011; // Encima del menú móvil
+>>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
 
   lucide-icon {
     width: 28px;
@@ -162,33 +307,56 @@
 }
 
 .header__nav-links-mobile {
+<<<<<<< HEAD
   display: none;
+=======
+  display: none; // Oculto en desktop
+>>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
 }
 
 // --- Media Query para Responsividad ---
 @media (max-width: 992px) {
   .header__nav-links {
+<<<<<<< HEAD
     display: none;
   }
 
   .header__mobile-toggle {
     display: block;
+=======
+    display: none; // Ocultar menú de escritorio
+  }
+
+  .header__mobile-lang-switcher {
+    display: block; // Mostrar selector de idioma móvil
+  }
+
+  .header__mobile-toggle {
+    display: block; // Mostrar botón de hamburguesa
+>>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
   }
 
   .header__nav-links-mobile {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 0.5rem; // Espacio reducido entre enlaces
     list-style: none;
-    position: absolute;
-    top: 60px; // Coincidir con la altura encogida
+    position: fixed; // Fijo a la pantalla
+    top: 0; // Desde la parte superior
     left: 0;
     width: 100%;
+    height: 100vh; // Pantalla completa
     background: var(--bg-secondary);
-    padding: 2rem;
+    padding: calc(var(--header-height) + var(--top-bar-height) + 2rem) 2rem 2rem 2rem;
     border-bottom: 1px solid var(--border-color);
+<<<<<<< HEAD
 
     transform: translateY(-120%);
+=======
+    overflow-y: auto; // Permitir scroll si hay muchos enlaces
+
+    transform: translateY(-100%); // Oculto arriba
+>>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
     opacity: 0;
     transition: transform 0.4s ease, opacity 0.4s ease;
 
@@ -197,24 +365,48 @@
       opacity: 1;
     }
 
+    // Estilo para enlaces
     a {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 500;
       color: var(--text-secondary);
+      display: block; // Ocupar todo el ancho
+      padding: 0.75rem 1rem; // Padding
+      border-radius: 6px;
 
       &.active,
       &:hover {
         color: var(--text-primary);
+        background-color: var(--border-color);
+      }
+    }
+
+    // Cabecera de sección en el menú móvil
+    .mobile-menu-header {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 1.5rem 1rem 0.5rem 1rem;
+      border-top: 1px solid var(--border-color);
+      margin-top: 1rem;
+
+      &:first-of-type {
+        margin-top: 0;
+        border-top: none;
       }
     }
   }
 
   // Ajuste para el estado de scroll en móvil
   :host(.is-scrolled) .header__nav-links-mobile {
-    top: 60px; // Asegurar que se alinee con la altura encogida
+    // La altura del padding superior se reduce cuando hay scroll
+    padding-top: calc(60px + 2rem);
   }
 
   :host(:not(.is-scrolled)) .header__nav-links-mobile {
-    top: var(--header-height); // Altura normal
+    // La altura del padding superior es la normal
+    padding-top: calc(var(--header-height) + var(--top-bar-height) + 2rem);
   }
 }

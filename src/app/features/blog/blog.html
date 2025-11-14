@@ -3,7 +3,6 @@
   <p class="page-subtitle" jslAnimateOnScroll>{{ 'BLOG.SUBTITLE' | translate }}</p>
 
   <div class="blog-grid">
-    <!-- 1. Usar | async pipe -->
     <ng-container *ngIf="blogPosts$ | async as blogPosts">
       <jsl-card 
         *ngFor="let post of blogPosts"
@@ -17,5 +16,9 @@
   </div>
 </div>
 
-<!-- 2. Añadir CTA reutilizable -->
-<jsl-cta-section></jsl-cta-section>
+<jsl-cta-section 
+  eyebrowKey="PROJECTS.CTA_EYEBROW"
+  titleKey="PROJECTS.CTA_TITLE"
+  subtitleKey="PROJECTS.CTA_SUBTITLE"
+  [ctaLink]="['/', currentLang, 'projects']">
+</jsl-cta-section>
