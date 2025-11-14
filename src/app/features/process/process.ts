@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
@@ -22,7 +22,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class Process {
   
+  private dataService = inject(DataService);
   public processSteps = toSignal(this.dataService.getProcessSteps(), { initialValue: [] });
 
-  constructor(private dataService: DataService) {}
+  constructor() {}
 }

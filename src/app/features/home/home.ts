@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, Inject, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
@@ -8,7 +8,7 @@ import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
 import { register } from 'swiper/element/bundle';
 import { SwiperOptions } from 'swiper/types';
 import { EffectFade, Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
-import { Testimonial, Project, Solution, Product, ProcessStep, DataService } from '../../core/services/data.service';
+import { DataService } from '../../core/services/data.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 register();
@@ -73,16 +73,16 @@ export class Home implements OnInit {
 
   public currentLang: string;
 
+  private translate = inject(TranslateService);
+  private dataService = inject(DataService);
+
   public testimonials = toSignal(this.dataService.getTestimonials(), { initialValue: [] });
   public projects = toSignal(this.dataService.getProjects(), { initialValue: [] });
   public solutions = toSignal(this.dataService.getSolutions(), { initialValue: [] });
   public products = toSignal(this.dataService.getProducts(), { initialValue: [] });
   public processSteps = toSignal(this.dataService.getProcessSteps(), { initialValue: [] });
 
-  constructor(
-    @Inject(TranslateService) private translate: TranslateService,
-    private dataService: DataService
-  ) {
+  constructor() {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
   }
 
