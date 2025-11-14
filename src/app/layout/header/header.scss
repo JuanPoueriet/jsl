@@ -6,17 +6,12 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-<<<<<<< HEAD
 
   // Transición para el fondo y el borde
   transition: background-color 0.3s ease-out, backdrop-filter 0.3s ease-out,
     border-color 0.3s ease-out;
 
   // Borde inferior transparente por defecto
-=======
-  transition: background-color 0.3s ease-out, backdrop-filter 0.3s ease-out,
-    border-color 0.3s ease-out;
->>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
   border-bottom: 1px solid transparent;
 }
 
@@ -38,10 +33,7 @@
     height: 60px;
   }
 
-<<<<<<< HEAD
   // 4. Ocultar la línea separadora (ya tenemos el borde del :host)
-=======
->>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
   .header__nav::after {
     opacity: 0;
   }
@@ -68,11 +60,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
-<<<<<<< HEAD
     width: 100%; // 100% del .container (este era el fix)
-=======
-    width: 100%;
->>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
     height: 1px;
     background: var(--border-color);
     opacity: 1;
@@ -92,7 +80,6 @@
 
   // font-size: 1.5rem;
   font-weight: 700;
-<<<<<<< HEAD
   line-height: normal;
   letter-spacing: -0.72px;
   font-family: Montserrat;
@@ -101,15 +88,6 @@
   -webkit-background-clip: text;
   color: #fff;
   padding-right: 5px;
-=======
-  color: var(--text-primary);
-  letter-spacing: -1px;
-  flex-shrink: 0; // Evita que el logo se encoja
-
-  &::first-letter {
-    color: var(--accent-primary);
-  }
->>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
 }
 
 .header__nav-links {
@@ -286,19 +264,11 @@ li.dropdown {
 }
 
 .header__mobile-toggle {
-<<<<<<< HEAD
   display: none;
-=======
-  display: none; // Oculto en desktop
->>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
   background: none;
   border: none;
   color: var(--text-primary);
   cursor: pointer;
-<<<<<<< HEAD
-=======
-  z-index: 1011; // Encima del menú móvil
->>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
 
   lucide-icon {
     width: 28px;
@@ -307,33 +277,17 @@ li.dropdown {
 }
 
 .header__nav-links-mobile {
-<<<<<<< HEAD
   display: none;
-=======
-  display: none; // Oculto en desktop
->>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
 }
 
 // --- Media Query para Responsividad ---
 @media (max-width: 992px) {
   .header__nav-links {
-<<<<<<< HEAD
     display: none;
   }
 
   .header__mobile-toggle {
     display: block;
-=======
-    display: none; // Ocultar menú de escritorio
-  }
-
-  .header__mobile-lang-switcher {
-    display: block; // Mostrar selector de idioma móvil
-  }
-
-  .header__mobile-toggle {
-    display: block; // Mostrar botón de hamburguesa
->>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
   }
 
   .header__nav-links-mobile {
@@ -349,14 +303,8 @@ li.dropdown {
     background: var(--bg-secondary);
     padding: calc(var(--header-height) + var(--top-bar-height) + 2rem) 2rem 2rem 2rem;
     border-bottom: 1px solid var(--border-color);
-<<<<<<< HEAD
 
     transform: translateY(-120%);
-=======
-    overflow-y: auto; // Permitir scroll si hay muchos enlaces
-
-    transform: translateY(-100%); // Oculto arriba
->>>>>>> 59ef1dfd85ab05fd7558c4850d1846055871da22
     opacity: 0;
     transition: transform 0.4s ease, opacity 0.4s ease;
 
