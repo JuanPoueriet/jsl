@@ -235,6 +235,7 @@
   "BLOG": {
     "TITLE": "Blog de JSL Technology",
     "SUBTITLE": "Ideas, tutoriales y noticias de nuestro equipo de ingenieros sobre el mundo del desarrollo de software, la nube y la tecnología.",
+    "RELATED_POSTS": "Artículos Relacionados",
     "POST_1_TITLE": "El Futuro del SSR en Angular: Por Qué es Más Rápido que Nunca",
     "POST_1_EXCERPT": "Angular 17+ ha redefinido el Server-Side Rendering. Analizamos los cambios en el 'hydration' y cómo está superando a otras 'frameworks' en rendimiento.",
     "POST_1_CONTENT": "<p>Angular ha recorrido un largo camino. Con la introducción de la 'hydration' no destructiva en Angular 17, el rendimiento del Server-Side Rendering (SSR) ha dado un salto cuántico. En este artículo, desglosamos qué significa esto para los desarrolladores y por qué JSL Technology está apostando fuerte por esta tecnología para nuestros clientes.</p><p>La 'hydration' es el proceso de 'despertar' una aplicación renderizada en el servidor en el lado del cliente. Históricamente, Angular 'borraba' y volvía a renderizar el DOM, un proceso costoso. Ahora, 'camina' por el DOM existente y simplemente adjunta los 'listeners' de eventos, resultando en un 'Time to Interactive' (TTI) increíblemente rápido.</p><h3>Los Beneficios Clave</h3><ul><li><strong>Mejor FCP y LCP:</strong> Los 'Core Web Vitals' de Google aman esto.</li><li><strong>SEO Mejorado:</strong> Los 'crawlers' obtienen contenido completo al instante.</li><li><strong>Experiencia de Usuario Fluida:</strong> No más 'parpadeos' de carga.</li></ul>",
@@ -244,6 +245,15 @@
     "POST_3_TITLE": "5 Principios de Arquitectura Cloud para una Escalabilidad Real",
     "POST_3_EXCERPT": "Tu aplicación funciona bien con 100 usuarios, ¿pero qué pasará con 100,000? La verdadera escalabilidad no es magia, es buena arquitectura. Aquí están nuestros 5 pilares.",
     "POST_3_CONTENT": "<p>En JSL Technology, no solo construimos aplicaciones; construimos sistemas que crecen. La arquitectura en la nube es la base de cualquier producto digital moderno exitoso. Aquí están los 5 principios que aplicamos:</p><ol><li><strong>Diseñar para el Fracaso:</strong> Los componentes fallarán. Tu sistema debe ser resiliente y recuperarse automáticamente.</li><li><strong>Desacoplamiento Total:</strong> Usar microservicios, colas de mensajes (como SQS o RabbitMQ) y APIs. Un componente no debe 'derribar' a otro.</li><li><strong>Horizontalidad (Scale-Out):</strong> No hagas tu servidor más 'grande' (Vertical); haz más servidores 'pequeños' (Horizontal). Utiliza balanceadores de carga y auto-scaling.</li><li><strong>Almacenamiento de Estado Externo:</strong> Las instancias de tu aplicación deben ser 'stateless' (sin estado). Guarda las sesiones, cachés y archivos en servicios externos (como Redis, S3).</li><li><strong>Automatización:</strong> Desde el 'deploy' (CI/CD) hasta el 'escalado'. La intervención manual es el enemigo de la escalabilidad.</li></ol>",
+    "POST_4_TITLE": "Iniciando con React y Vite",
+    "POST_4_EXCERPT": "Una guía rápida para configurar un nuevo proyecto de React con Vite, la moderna herramienta de 'frontend'. Exploramos sus beneficios sobre Create React App.",
+    "POST_4_CONTENT": "<p>Aunque Angular es nuestra herramienta principal para aplicaciones empresariales, React, especialmente combinado con Vite, ofrece una velocidad de desarrollo increíble para prototipos y aplicaciones más pequeñas. En este post, vemos cómo iniciar un proyecto en minutos.</p><h3>Ventajas de Vite</h3><ul><li><strong>Velocidad Extrema:</strong> Utiliza 'hot module replacement' (HMR) nativo que es casi instantáneo.</li><li><strong>Configuración Mínima:</strong> Funciona de maravilla sin necesidad de archivos de configuración complejos.</li><li><strong>Optimizado:</strong> Usa Rollup por debajo para 'builds' de producción eficientes.</li></ul>",
+    "POST_5_TITLE": "De 'Wireframe' a 'Hi-Fi' en Figma",
+    "POST_5_EXCERPT": "El diseño es un proceso. Mostramos nuestro flujo de trabajo para convertir ideas iniciales en prototipos interactivos de alta fidelidad usando Figma.",
+    "POST_5_CONTENT": "<p>En JSL, la fase de 'Descubrimiento y Estrategia' vive en Figma. Antes de escribir código, creamos 'wireframes' de baja fidelidad para validar el flujo de usuario (UX). Una vez aprobado, nuestro equipo de UI lo transforma en un prototipo de alta fidelidad ('hi-fi') que se ve y se siente como el producto final.</p><blockquote>Este paso es crucial, ya que ahorra cientos de horas de desarrollo al permitirnos iterar en el diseño, no en el código.</blockquote>",
+    "POST_6_TITLE": "El Poder de 'Serverless': AWS Lambda",
+    "POST_6_EXCERPT": "¿Por qué pagar por un servidor que está inactivo el 90% del tiempo? Exploramos los beneficios y casos de uso de las funciones 'serverless' con AWS Lambda.",
+    "POST_6_CONTENT": "<p>La arquitectura 'serverless' no significa 'sin servidores', significa 'sin preocuparse por los servidores'. AWS Lambda nos permite ejecutar código en respuesta a eventos (como una subida de imagen a S3 o una llamada a una API) sin provisionar o gestionar un servidor.</p><h3>Beneficios Clave</h3><ol><li><strong>Costo Eficiente:</strong> Pagas solo por los milisegundos que tu código se ejecuta.</li><li><strong>Escalabilidad Automática:</strong> AWS maneja el escalado de miles de peticiones en paralelo.</li><li><strong>Mantenimiento Reducido:</strong> No más parches de seguridad en el S.O.</li></ol><p>Es una pieza clave de nuestra estrategia de 'Arquitectura Cloud' para muchos clientes.</p>",
     "CTA_EYEBROW": "¿Interesado en más 'insights'?",
     "CTA_TITLE": "Hablemos de Tecnología",
     "CTA_SUBTITLE": "Nuestro equipo siempre está explorando nuevas ideas. Contáctanos si quieres discutir cómo la tecnología puede impulsar tu negocio."
@@ -368,7 +378,7 @@
     "CTA_TITLE": "Estamos Aquí para Ayudarte",
     "CTA_SUBTITLE": "Si no encontraste tu respuesta, nuestro equipo de expertos está listo para conversar contigo."
   },
-"CHAT": {
+  "CHAT": {
     "TITLE": "Chatea con nosotros",
     "STATUS_ONLINE": "En línea",
     "GREETING": "¡Hola! ¿Cómo podemos ayudarte hoy?",

@@ -234,6 +234,7 @@
   },
   "BLOG": {
     "TITLE": "JSL Technology Blog",
+    "RELATED_POSTS": "Related Articles",
     "SUBTITLE": "Insights, tutorials, and news from our engineering team on the world of software development, cloud, and technology.",
     "POST_1_TITLE": "The Future of Angular SSR: Why It's Faster Than Ever",
     "POST_1_EXCERPT": "Angular 17+ has redefined Server-Side Rendering. We analyze the changes in hydration and how it's beating other frameworks in performance.",
@@ -244,6 +245,15 @@
     "POST_3_TITLE": "5 Cloud Architecture Principles for True Scalability",
     "POST_3_EXCERPT": "Your app works fine with 100 users, but what about 100,000? True scalability isn't magic, it's good architecture. Here are our 5 pillars.",
     "POST_3_CONTENT": "<p>At JSL Technology, we don't just build apps; we build systems that grow. Cloud architecture is the foundation of any successful modern digital product. Here are the 5 principles we apply:</p><ol><li><strong>Design for Failure:</strong> Components will fail. Your system must be resilient and recover automatically.</li><li><strong>Decouple Everything:</strong> Use microservices, message queues (like SQS or RabbitMQ), and APIs. One component should not bring down another.</li><li><strong>Go Horizontal (Scale-Out):</strong> Don't make your server 'bigger' (Vertical); make more 'small' servers (Horizontal). Use load balancers and auto-scaling.</li><li><strong>Store State Externally:</strong> Your application instances should be 'stateless'. Store sessions, caches, and files in external services (like Redis, S3).</li><li><strong>Automation:</strong> From deployment (CI/CD) to scaling. Manual intervention is the enemy of scalability.</li></ol>",
+    "POST_4_TITLE": "Getting Started with React and Vite",
+    "POST_4_EXCERPT": "A quick guide to setting up a new React project with Vite, the modern frontend tool. We explore the benefits over Create React App.",
+    "POST_4_CONTENT": "<p>While Angular is our go-to for enterprise apps, React—especially paired with Vite—offers incredible development speed for prototypes and smaller applications. In this post, we explore how to get a project running in minutes.</p><h3>Vite Advantages</h3><ul><li><strong>Extreme Speed:</strong> Uses native hot module replacement (HMR) that is nearly instantaneous.</li><li><strong>Minimal Config:</strong> Works out-of-the-box without complex config files.</li><li><strong>Optimized:</strong> Uses Rollup underneath for efficient production builds.</li></ul>",
+    "POST_5_TITLE": "From Wireframe to Hi-Fi in Figma",
+    "POST_5_EXCERPT": "Design is a process. We show our workflow for turning initial ideas into high-fidelity, interactive prototypes using Figma.",
+    "POST_5_CONTENT": "<p>At JSL, our 'Discovery & Strategy' phase lives in Figma. Before writing code, we create low-fidelity wireframes to validate user flow (UX). Once approved, our UI team transforms it into a high-fidelity ('hi-fi') prototype that looks and feels like the final product.</p><blockquote>This step is crucial as it saves hundreds of development hours by allowing us to iterate on the design, not the code.</blockquote>",
+    "POST_6_TITLE": "The Power of Serverless: AWS Lambda",
+    "POST_6_EXCERPT": "Why pay for a server that's idle 90% of the time? We explore the benefits and use cases for serverless functions with AWS Lambda.",
+    "POST_6_CONTENT": "<p>Serverless architecture doesn't mean 'no servers'; it means 'not worrying about servers'. AWS Lambda allows us to run code in response to events (like an image upload to S3 or an API call) without provisioning or managing a server.</p><h3>Key Benefits</h3><ol><li><strong>Cost-Effective:</strong> You pay only for the milliseconds your code runs.</li><li><strong>Automatic Scaling:</strong> AWS handles scaling to thousands of requests in parallel.</li><li><strong>Reduced Maintenance:</strong> No more OS security patches.</li></ol><p>It's a key piece of our 'Cloud Architecture' strategy for many clients.</p>",
     "CTA_EYEBROW": "Interested in more insights?",
     "CTA_TITLE": "Let's Talk Technology",
     "CTA_SUBTITLE": "Our team is always exploring new ideas. Contact us if you'd like to discuss how technology can power your business."
