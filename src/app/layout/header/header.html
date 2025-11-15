@@ -1,5 +1,7 @@
 <header class="header">
+  @if (isDesktop) {
   <jsl-top-bar></jsl-top-bar>
+  }
   <nav class="header__nav container">
     <a [routerLink]="[currentLang, 'home']" class="header__logo" (click)="closeMobileMenu()">
       JSL Technology
