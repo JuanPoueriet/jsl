@@ -9,6 +9,7 @@
         <a [routerLink]="['/', currentLang, 'blog']">{{ 'HEADER.BLOG' | translate }}</a>
         <lucide-icon name="ChevronRight"></lucide-icon>
       </div>
+
       <h1 class="detail-page-title" jslAnimateOnScroll>
         {{ 'BLOG.' + post.key + '_TITLE' | translate }}
       </h1>
@@ -21,14 +22,14 @@
         <div class="meta-item">
           <lucide-icon name="Calendar"></lucide-icon>
           <span>
-            {{ 'COMMON.PUBLISHED_DATE' | translate }}: {{ post.date | date : 'longDate' }}
+            {{ 'COMMON.PUBLISHED_DATE' | translate }}: {{ post.date | date: 'longDate' }}
           </span>
         </div>
         <div class="meta-item meta-item--read-time">
           <lucide-icon name="Clock"></lucide-icon>
           <span>{{ post.readTime }} {{ 'min de lectura' | translate }}</span>
         </div>
-        </div>
+      </div>
     </div>
   </header>
 
@@ -46,7 +47,7 @@
       [innerHTML]="'BLOG.' + post.key + '_CONTENT' | translate"
     ></main>
 
-    <div classs="social-share" jslAnimateOnScroll>
+    <div class="social-share" jslAnimateOnScroll>
       <h3>{{ 'Compartir' | translate }}</h3>
       <div class="social-share__links">
         <a
@@ -54,30 +55,30 @@
           target="_blank"
           rel="noopener"
           class="social-link social-link--linkedin"
-          aria-label="Compartir en LinkedIn"
         >
           <lucide-icon name="Linkedin"></lucide-icon>
         </a>
+
         <a
           href="https://twitter.com/intent/tweet?url={{ 'https://www.jsl.technology/' + currentLang + '/blog/' + post.slug }}&text={{ 'BLOG.' + post.key + '_TITLE' | translate }}"
           target="_blank"
           rel="noopener"
           class="social-link social-link--twitter"
-          aria-label="Compartir en Twitter/X"
         >
           <lucide-icon name="Twitter"></lucide-icon>
         </a>
+
         <a
           href="https://api.whatsapp.com/send?text={{ 'BLOG.' + post.key + '_TITLE' | translate }} {{ 'https://www.jsl.technology/' + currentLang + '/blog/' + post.slug }}"
           target="_blank"
           rel="noopener"
           class="social-link social-link--whatsapp"
-          aria-label="Compartir en WhatsApp"
         >
           <lucide-icon name="MessageCircle"></lucide-icon>
         </a>
       </div>
     </div>
+
     @if (author$ | async; as author) {
       <div class="author-card" jslAnimateOnScroll>
         <div class="author-card__image">
@@ -87,10 +88,10 @@
           <span class="author-card__eyebrow">{{ 'Escrito por' | translate }}</span>
           <h3 class="author-card__name">{{ author.nameKey | translate }}</h3>
           <p class="author-card__role">{{ author.roleKey | translate }}</p>
-          </div>
+        </div>
       </div>
     }
-    </div>
+  </div>
 
   <section class="related-posts-section">
     <div class="container">
@@ -98,9 +99,9 @@
         @if (relatedPosts.length > 0) {
           <h2 jslAnimateOnScroll>{{ 'BLOG.RELATED_POSTS' | translate }}</h2>
 
+          <!-- Swiper Web Component (NO CONFIG) -->
           <swiper-container
-            [config]="relatedPostsSliderConfig"
-            init="true"
+            init="false"
             class="related-posts-slider"
             jslAnimateOnScroll
           >
@@ -111,12 +112,11 @@
                   [title]="'BLOG.' + relatedPost.key + '_TITLE' | translate"
                   [description]="'BLOG.' + relatedPost.key + '_EXCERPT' | translate"
                   [link]="['/', currentLang, 'blog', relatedPost.slug]"
-                >
-                </jsl-card>
+                ></jsl-card>
               </swiper-slide>
             }
           </swiper-container>
-          }
+        }
       }
     </div>
   </section>
@@ -125,8 +125,7 @@
     eyebrowKey="BLOG.CTA_EYEBROW"
     titleKey="BLOG.CTA_TITLE"
     subtitleKey="BLOG.CTA_SUBTITLE"
-  >
-  </jsl-cta-section>
+  ></jsl-cta-section>
 } @else {
   <div class="page-container container">
     <h1 class="page-title">{{ 'NOT_FOUND.BLOG_TITLE' | translate }}</h1>
