@@ -2,13 +2,17 @@
   <header class="detail-page-header">
     <div class="container">
       <div class="detail-page-breadcrumb" jslAnimateOnScroll>
-        <a [routerLink]="['/', currentLang, 'home']">{{ 'COMMON.BREADCRUMB_HOME' | translate }}</a>
+        <a [routerLink]="['/', currentLang, 'home']">{{
+          'COMMON.BREADCRUMB_HOME' | translate
+        }}</a>
         <lucide-icon name="ChevronRight"></lucide-icon>
         <a [routerLink]="['/', currentLang, 'blog']">{{ 'HEADER.BLOG' | translate }}</a>
         <lucide-icon name="ChevronRight"></lucide-icon>
       </div>
-      <h1 class="detail-page-title" jslAnimateOnScroll>{{ 'BLOG.' + post.key + '_TITLE' | translate }}</h1>
-      
+      <h1 class="detail-page-title" jslAnimateOnScroll>
+        {{ 'BLOG.' + post.key + '_TITLE' | translate }}
+      </h1>
+
       <div class="detail-page-meta" jslAnimateOnScroll>
         <div class="meta-item">
           <lucide-icon name="User"></lucide-icon>
@@ -16,25 +20,112 @@
         </div>
         <div class="meta-item">
           <lucide-icon name="Calendar"></lucide-icon>
-          <span>{{ 'COMMON.PUBLISHED_DATE' | translate }}: {{ post.date | date:'longDate' }}</span>
+          <span>
+            {{ 'COMMON.PUBLISHED_DATE' | translate }}: {{ post.date | date : 'longDate' }}
+          </span>
         </div>
-      </div>
+        <div class="meta-item meta-item--read-time">
+          <lucide-icon name="Clock"></lucide-icon>
+          <span>{{ post.readTime }} {{ 'min de lectura' | translate }}</span>
+        </div>
+        </div>
     </div>
   </header>
 
   <div class="container">
-    <img [src]="post.imageUrl" [alt]="'BLOG.' + post.key + '_TITLE' | translate" class="detail-page-banner" jslAnimateOnScroll>
+    <img
+      [src]="post.imageUrl"
+      [alt]="'BLOG.' + post.key + '_TITLE' | translate"
+      class="detail-page-banner"
+      jslAnimateOnScroll
+    />
 
-    <main class="detail-page-content blog-content" 
-          jslAnimateOnScroll
-          [innerHTML]="'BLOG.' + post.key + '_CONTENT' | translate">
-    </main>
-  </div>
+    <main
+      class="detail-page-content blog-content"
+      jslAnimateOnScroll
+      [innerHTML]="'BLOG.' + post.key + '_CONTENT' | translate"
+    ></main>
+
+    <div classs="social-share" jslAnimateOnScroll>
+      <h3>{{ 'Compartir' | translate }}</h3>
+      <div class="social-share__links">
+        <a
+          href="https://www.linkedin.com/sharing/share-offsite/?url={{ 'https://www.jsl.technology/' + currentLang + '/blog/' + post.slug }}"
+          target="_blank"
+          rel="noopener"
+          class="social-link social-link--linkedin"
+          aria-label="Compartir en LinkedIn"
+        >
+          <lucide-icon name="Linkedin"></lucide-icon>
+        </a>
+        <a
+          href="https://twitter.com/intent/tweet?url={{ 'https://www.jsl.technology/' + currentLang + '/blog/' + post.slug }}&text={{ 'BLOG.' + post.key + '_TITLE' | translate }}"
+          target="_blank"
+          rel="noopener"
+          class="social-link social-link--twitter"
+          aria-label="Compartir en Twitter/X"
+        >
+          <lucide-icon name="Twitter"></lucide-icon>
+        </a>
+        <a
+          href="https://api.whatsapp.com/send?text={{ 'BLOG.' + post.key + '_TITLE' | translate }} {{ 'https://www.jsl.technology/' + currentLang + '/blog/' + post.slug }}"
+          target="_blank"
+          rel="noopener"
+          class="social-link social-link--whatsapp"
+          aria-label="Compartir en WhatsApp"
+        >
+          <lucide-icon name="MessageCircle"></lucide-icon>
+        </a>
+      </div>
+    </div>
+    @if (author$ | async; as author) {
+      <div class="author-card" jslAnimateOnScroll>
+        <div class="author-card__image">
+          <img [src]="author.imageUrl" [alt]="author.nameKey | translate" />
+        </div>
+        <div class="author-card__info">
+          <span class="author-card__eyebrow">{{ 'Escrito por' | translate }}</span>
+          <h3 class="author-card__name">{{ author.nameKey | translate }}</h3>
+          <p class="author-card__role">{{ author.roleKey | translate }}</p>
+          </div>
+      </div>
+    }
+    </div>
+
+  <section class="related-posts-section">
+    <div class="container">
+      @if (relatedPosts$ | async; as relatedPosts) {
+        @if (relatedPosts.length > 0) {
+          <h2 jslAnimateOnScroll>{{ 'BLOG.RELATED_POSTS' | translate }}</h2>
+
+          <swiper-container
+            [config]="relatedPostsSliderConfig"
+            init="true"
+            class="related-posts-slider"
+            jslAnimateOnScroll
+          >
+            @for (relatedPost of relatedPosts; track trackBySlug($index, relatedPost)) {
+              <swiper-slide class="related-post-slide">
+                <jsl-card
+                  [imageUrl]="relatedPost.imageUrl"
+                  [title]="'BLOG.' + relatedPost.key + '_TITLE' | translate"
+                  [description]="'BLOG.' + relatedPost.key + '_EXCERPT' | translate"
+                  [link]="['/', currentLang, 'blog', relatedPost.slug]"
+                >
+                </jsl-card>
+              </swiper-slide>
+            }
+          </swiper-container>
+          }
+      }
+    </div>
+  </section>
 
   <jsl-cta-section
     eyebrowKey="BLOG.CTA_EYEBROW"
     titleKey="BLOG.CTA_TITLE"
-    subtitleKey="BLOG.CTA_SUBTITLE">
+    subtitleKey="BLOG.CTA_SUBTITLE"
+  >
   </jsl-cta-section>
 } @else {
   <div class="page-container container">

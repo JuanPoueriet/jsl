@@ -1,1 +1,210 @@
+// src/app/features/blog-detail/blog-detail.scss
 @use '../../shared/styles/detail-page';
+@use '../blog/blog.scss'; // Para reutilizar .blog-grid (aunque ahora usamos slider)
+
+// --- 1. IMPORTAR TEMA DE PRISM ---
+// Elige un tema oscuro que combine. "Okaidia" es popular.
+// (Asegúrate de que 'prismjs' está en tu node_modules)
+@import 'prismjs/themes/prism-okaidia.css';
+
+// --- 2. MEJORAS DE LEGIBILIDAD ---
+.blog-content {
+  // Párrafos y listas más angostos para facilitar la lectura
+  p,
+  ul,
+  ol,
+  li {
+    color: var(--text-secondary);
+    @media (min-width: 768px) {
+      max-width: 720px; // Límite de ancho de línea
+    }
+  }
+
+  // Estilo elegante para citas
+  blockquote {
+    border-left: 4px solid var(--accent-primary);
+    margin: 2rem 0 2rem 0; // Sin margen izquierdo
+    padding-left: 1.5rem;
+    font-style: italic;
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    padding: 1.5rem;
+
+    @media (min-width: 768px) {
+      margin-left: 1.5rem;
+    }
+
+    p {
+      color: var(--text-primary);
+      margin-bottom: 0;
+      max-width: 100%; // Cita ocupa el ancho del contenedor
+    }
+  }
+
+  // --- 3. ESTILOS DE PRISM (SOBREESCRITURAS) ---
+  // Ajustes para que Prism se integre con nuestro tema
+  pre[class*='language-'] {
+    background: #272822; // Color base de Okaidia (o el que elijas)
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  // Código 'inline'
+  :not(pre) > code[class*='language-'] {
+    background: var(--border-color);
+    color: var(--accent-primary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+}
+
+// --- 4. NUEVOS ESTILOS: BOTONES DE COMPARTIR ---
+.social-share {
+  margin: 3rem 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  max-width: 800px; // Coincidir con el .detail-page-content
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+.social-share__links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+
+    lucide-icon {
+      width: 22px;
+      height: 22px;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      color: #fff;
+    }
+
+    &--linkedin:hover {
+      background-color: #0a66c2;
+      border-color: #0a66c2;
+    }
+    &--twitter:hover {
+      background-color: #1da1f2;
+      border-color: #1da1f2;
+    }
+    &--whatsapp:hover {
+      background-color: #25d366;
+      border-color: #25d366;
+    }
+  }
+}
+
+// --- 5. NUEVOS ESTILOS: TARJETA DE AUTOR ---
+.author-card {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin: 3rem 0;
+  max-width: 800px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.author-card__image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border-color);
+  margin: 0 auto; // Centrar en móvil
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.author-card__eyebrow {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.author-card__name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0.25rem 0 0.25rem 0;
+}
+
+.author-card__role {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent-primary);
+}
+
+// --- 6. NUEVOS ESTILOS: SLIDER DE POSTS RELACIONADOS ---
+.related-posts-section {
+  padding: 4rem 0 0 0;
+  margin-top: 5rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-secondary); // Fondo sutil para la sección
+  overflow: hidden; // Evitar desbordamiento del slider
+
+  h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+}
+
+.related-posts-slider {
+  width: 100%;
+  padding-bottom: 4rem; // Espacio para la paginación
+
+  // Estilos de paginación (similares a home.scss)
+  --swiper-pagination-color: var(--accent-primary);
+  --swiper-pagination-bullet-inactive-color: var(--border-color);
+  --swiper-pagination-bullet-inactive-opacity: 1;
+}
+
+.related-post-slide {
+  height: auto; // Permitir que la tarjeta defina la altura
+  padding-bottom: 1px; // Pequeño hack para que se vean las sombras
+}
