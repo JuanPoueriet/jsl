@@ -28,8 +28,8 @@ import { CtaComponent } from '../../shared/components/cta/cta';
 import { Card } from '../../shared/components/card/card';
 import { Seo } from '../../core/services/seo'; // <--- 1. IMPORTAR SEO SERVICE
 
-// Prism
-import * as Prism from 'prismjs';
+// --- CORRECCIÓN: Se elimina la importación estática de PrismJS ---
+// import * as Prism from 'prismjs';
 
 // Swiper Web Components
 import { Pagination, Autoplay } from 'swiper/modules';
@@ -186,18 +186,26 @@ export class BlogDetail
     }, 0);
   }
 
+  // --- INICIO: Corrección de warning PrismJS ---
   // Prism code highlighting
   ngAfterViewChecked(): void {
     if (isPlatformBrowser(this.platformId) && !this.highlighted) {
       const hasContent = this.el.nativeElement.querySelector('.blog-content p');
       if (hasContent) {
-        setTimeout(() => {
-          Prism.highlightAll();
-          this.highlighted = true;
-        }, 500);
+        // Usamos import() dinámico para cargar prismjs solo en el navegador
+        // y evitar el warning de ESM (Módulo no ES).
+        import('prismjs').then(Prism => {
+          setTimeout(() => {
+            // Se asume que Prism tiene un export 'default' o es un CJS
+            const prismModule = (Prism as any).default || Prism;
+            prismModule.highlightAll();
+            this.highlighted = true;
+          }, 500); // Mantenemos el timeout por si el contenido se renderiza tarde
+        }).catch(err => console.error('Error loading PrismJS', err));
       }
     }
   }
+  // --- FIN: Corrección de warning PrismJS ---
 
   ngOnInit(): void {
     this.langSub = this.translate.onLangChange.subscribe((event) => {
