@@ -12,7 +12,7 @@ export class Seo {
   private baseTitle = 'JSL Technology';
   private siteName = 'JSL Technology'; // Para Open Graph
   // --- 1. URL base de tu sitio (¡IMPORTANTE: cambia esto en producción!) ---
-  private baseUrl = 'https.www.jsl.technology'; // Necesitamos la URL absoluta
+  private baseUrl = 'https://www.jsl.technology'; // <-- ¡CORREGIDO! Antes era 'https.www...'
   // --- 2. Imagen por defecto para redes sociales (Open Graph) ---
   // Debes crear esta imagen y colocarla en 'assets'
   private defaultImageUrl = `${this.baseUrl}/assets/imgs/jsl-social-default.jpg`; 
