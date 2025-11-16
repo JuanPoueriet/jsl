@@ -229,8 +229,23 @@ export class BlogDetail
     const excerptKey = `BLOG.${this.postData.key}_EXCERPT`; // <-- Usaremos el excerpt como descripción
 
     // URLs
-    const postUrl = `${this.seoService.getBaseUrl()}/${this.currentLang}/blog/${this.postData.slug}`;
-    const imageUrl = this.postData.imageUrl; // <-- La imagen específica del post
+    const baseUrl = this.seoService.getBaseUrl();
+    const postUrl = `${baseUrl}/${this.currentLang}/blog/${this.postData.slug}`;
+
+    // --- INICIO: Corrección de URL de Imagen ---
+    let imageUrl = this.postData.imageUrl;
+    
+    if (imageUrl && !imageUrl.startsWith('http')) {
+      // Si la URL es relativa (p.ej., "../../../../assets/imgs/...")
+      // buscamos la parte 'assets/' y la volvemos absoluta.
+      const assetsIndex = imageUrl.indexOf('assets/');
+      if (assetsIndex > -1) {
+        const relativePath = imageUrl.substring(assetsIndex);
+        imageUrl = `${baseUrl}/${relativePath}`;
+      }
+    }
+    // --- FIN: Corrección de URL de Imagen ---
+
 
     // Traducir título y descripción
     this.translate.get([titleKey, excerptKey]).subscribe(translations => {
@@ -248,7 +263,7 @@ export class BlogDetail
         translatedTitle,
         translatedDesc,
         postUrl,
-        imageUrl, // <-- Usar la imagen específica del post
+        imageUrl, // <-- Usar la imagen específica (y ahora absoluta)
         'article' // <-- Indicar que esto es un 'artículo'
       );
     });
