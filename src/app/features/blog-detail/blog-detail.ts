@@ -26,6 +26,7 @@ import { Title } from '@angular/platform-browser';
 import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
 import { CtaComponent } from '../../shared/components/cta/cta';
 import { Card } from '../../shared/components/card/card';
+import { Seo } from '../../core/services/seo'; // <--- 1. IMPORTAR SEO SERVICE
 
 // Prism
 import * as Prism from 'prismjs';
@@ -62,6 +63,7 @@ export class BlogDetail
   private titleService = inject(Title);
   private el = inject(ElementRef);
   @Inject(PLATFORM_ID) private platformId = inject(PLATFORM_ID);
+  private seoService = inject(Seo); // <--- 2. INYECTAR SEO SERVICE
 
   @ViewChild('copyTooltip') copyTooltip!: ElementRef;
   @ViewChild('bannerImage') bannerImage!: ElementRef;
@@ -200,12 +202,12 @@ export class BlogDetail
   ngOnInit(): void {
     this.langSub = this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
-      this.updateTitle();
+      this.updateMetadata(); // <--- 3. CAMBIO
     });
 
     this.post$.subscribe((post) => {
       this.postData = post;
-      this.updateTitle();
+      this.updateMetadata(); // <--- 4. CAMBIO
     });
 
     // Initialize scroll progress
@@ -218,13 +220,37 @@ export class BlogDetail
     this.langSub?.unsubscribe();
   }
 
-  private updateTitle(): void {
+  // --- 5. CAMBIO: Renombrar y expandir esta función ---
+  private updateMetadata(): void {
     if (!this.postData) return;
 
+    // Claves para la traducción
     const titleKey = `BLOG.${this.postData.key}_TITLE`;
+    const excerptKey = `BLOG.${this.postData.key}_EXCERPT`; // <-- Usaremos el excerpt como descripción
 
-    this.translate.get(titleKey).subscribe((translatedTitle) => {
+    // URLs
+    const postUrl = `${this.seoService.getBaseUrl()}/${this.currentLang}/blog/${this.postData.slug}`;
+    const imageUrl = this.postData.imageUrl; // <-- La imagen específica del post
+
+    // Traducir título y descripción
+    this.translate.get([titleKey, excerptKey]).subscribe(translations => {
+      const translatedTitle = translations[titleKey] || 'Artículo de JSL Technology';
+      const translatedDesc = translations[excerptKey] || 'Lee este artículo en JSL Technology';
+
+      // 1. Setear el <title> de la página (como antes)
       this.titleService.setTitle(`${translatedTitle} | JSL Technology Blog`);
+
+      // 2. Setear la etiqueta canónica (importante para SEO)
+      this.seoService.updateCanonicalTag(postUrl);
+
+      // 3. Setear todas las etiquetas sociales (OG y Twitter)
+      this.seoService.updateSocialTags(
+        translatedTitle,
+        translatedDesc,
+        postUrl,
+        imageUrl, // <-- Usar la imagen específica del post
+        'article' // <-- Indicar que esto es un 'artículo'
+      );
     });
   }
 

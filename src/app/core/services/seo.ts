@@ -12,7 +12,7 @@ export class Seo {
   private baseTitle = 'JSL Technology';
   private siteName = 'JSL Technology'; // Para Open Graph
   // --- 1. URL base de tu sitio (¡IMPORTANTE: cambia esto en producción!) ---
-  private baseUrl = 'https://www.jsl.technology'; // Necesitamos la URL absoluta
+  private baseUrl = 'https.www.jsl.technology'; // Necesitamos la URL absoluta
   // --- 2. Imagen por defecto para redes sociales (Open Graph) ---
   // Debes crear esta imagen y colocarla en 'assets'
   private defaultImageUrl = `${this.baseUrl}/assets/imgs/jsl-social-default.jpg`; 
@@ -27,6 +27,13 @@ export class Seo {
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
+
+  /**
+   * Devuelve la URL base del sitio.
+   */
+  public getBaseUrl(): string {
+    return this.baseUrl;
+  }
 
   init(): void {
     this.router.events.pipe(
@@ -75,7 +82,8 @@ export class Seo {
         title, 
         translatedDesc, 
         canonicalUrl, 
-        this.defaultImageUrl
+        this.defaultImageUrl,
+        'website' // Añadimos el tipo por defecto
       );
 
       // --- F. Actualizar Etiquetas Hreflang (¡MODIFICADO!) ---
@@ -98,7 +106,7 @@ export class Seo {
   /**
    * 3. ¡NUEVO! Actualiza la etiqueta <link rel="canonical">.
    */
-  private updateCanonicalTag(url: string): void {
+  public updateCanonicalTag(url: string): void {
     // En el navegador, primero eliminamos la etiqueta canónica anterior
     // para evitar duplicados durante la navegación SPA.
     if (isPlatformBrowser(this.platformId)) {
@@ -118,14 +126,14 @@ export class Seo {
   /**
    * 4. ¡NUEVO! Actualiza las etiquetas Meta de Open Graph y Twitter.
    */
-  private updateSocialTags(title: string, description: string, url: string, imageUrl: string): void {
+  public updateSocialTags(title: string, description: string, url: string, imageUrl: string, ogType: string = 'website'): void {
     // Open Graph (Facebook, LinkedIn, etc.)
     this.metaService.updateTag({ property: 'og:title', content: title });
     this.metaService.updateTag({ property: 'og:description', content: description });
     this.metaService.updateTag({ property: 'og:url', content: url });
     this.metaService.updateTag({ property: 'og:image', content: imageUrl });
     this.metaService.updateTag({ property: 'og:site_name', content: this.siteName });
-    this.metaService.updateTag({ property: 'og:type', content: 'website' });
+    this.metaService.updateTag({ property: 'og:type', content: ogType });
 
     // Twitter Cards
     this.metaService.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
