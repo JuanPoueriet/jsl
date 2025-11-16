@@ -47,7 +47,12 @@ import {
   Twitter,
   User,
   X,
-  Search
+  Search,
+  Tag,
+  Image,
+  Bookmark,
+  Share2,
+  Link
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
@@ -69,7 +74,12 @@ export const ICON_LIST = {
     MapPin,
     Languages,
     Globe,
-    Search
+    Search,
+    Tag,
+    Image,
+    Bookmark,
+    Share2,
+    Link
   },
   // Redes sociales
   Social: {

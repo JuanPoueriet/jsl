@@ -1,7 +1,8 @@
+// data.service.ts
 // src/app/core/services/data.service.ts
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators'; // <-- Asegúrate de que 'map' esté importado
+import { map } from 'rxjs/operators';
 
 // Importamos TODA nuestra data mock centralizada
 import {
@@ -13,7 +14,6 @@ import {
   PROJECTS,
   BLOG_POSTS,
   TECH_STACK,
-  // --- AÑADIR NUEVOS DATOS ---
   CAREER_POSITIONS,
   FAQ_ITEMS,
 } from '../data/mock-data';
@@ -49,9 +49,8 @@ export interface BlogPost {
   date: string;
   authorKey: string;
   tags: string[];
-  // --- CAMPOS AÑADIDOS ---
-  readTime: number; // Tiempo de lectura en minutos
-  featured?: boolean; // Opcional, para destacar un post
+  readTime: number;
+  featured?: boolean;
 }
 
 // Interface para Miembros del Equipo
@@ -59,7 +58,10 @@ export interface TeamMember {
   key: string;
   nameKey: string;
   roleKey: string;
+  bioKey?: string;
   imageUrl: string;
+  linkedIn?: string;
+  twitter?: string;
 }
 
 // Interface para Testimonios
@@ -90,8 +92,6 @@ export interface TechCategory {
   technologies: Technology[];
 }
 
-// --- AÑADIR NUEVAS INTERFACES ---
-
 // Interface para Posiciones de Carrera
 export interface CareerPosition {
   key: string;
@@ -107,8 +107,6 @@ export interface FaqItem {
 
 /**
  * Servicio centralizado para proveer toda la data (mock) de la aplicación.
- * Entrega los datos como Observables (usando 'of()') para simular
- * una llamada a una API asíncrona.
  */
 @Injectable({
   providedIn: 'root',
@@ -161,8 +159,6 @@ export class DataService {
     return of(TEAM_MEMBERS);
   }
 
-  // --- NUEVO: Método para buscar un miembro de equipo por su Key ---
-  // Lo usaremos para la tarjeta de autor en el blog
   getTeamMemberByKey(key: string): Observable<TeamMember | undefined> {
     const member = TEAM_MEMBERS.find((m) => m.key === key);
     return of(member);
@@ -183,8 +179,6 @@ export class DataService {
     return of(TECH_STACK);
   }
 
-  // --- AÑADIR NUEVOS MÉTODOS ---
-
   // --- Métodos de Carreras ---
   getCareersPositions(): Observable<CareerPosition[]> {
     return of(CAREER_POSITIONS);
@@ -195,23 +189,17 @@ export class DataService {
     return of(FAQ_ITEMS);
   }
 
-  // --- MÉTODO CORREGIDO ---
-  /**
-   * Obtiene una lista de artículos de blog relacionados basados en etiquetas.
-   * @param currentSlug El slug del artículo actual, para excluirlo de la lista.
-   * @param tags Las etiquetas del artículo actual.
-   * @returns Un Observable con un array de hasta 3 BlogPosts relacionados.
-   */
+  // --- Método para posts relacionados ---
   getRelatedPosts(currentSlug: string, tags: string[]): Observable<BlogPost[]> {
     return of(BLOG_POSTS).pipe(
       map((posts) =>
         posts
           .filter(
             (post) =>
-              post.slug !== currentSlug && // Excluir el post actual
-              post.tags.some((tag: string) => tags.includes(tag)), // <-- CORREGIDO: (tag: string)
+              post.slug !== currentSlug &&
+              post.tags.some((tag: string) => tags.includes(tag)),
           )
-          .slice(0, 3), // Limitar a 3 resultados
+          .slice(0, 3),
       ),
     );
   }
