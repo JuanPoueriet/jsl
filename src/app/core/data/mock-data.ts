@@ -1,7 +1,7 @@
+// mock-data.ts
 // src/app/core/data/mock-data.ts
 
-// --- AÑADIDO: Importar la interfaz para type-safety ---
-import { BlogPost } from '../services/data.service';
+import { BlogPost, TeamMember } from '../services/data.service';
 
 /**
  * DATOS DE SOLUCIONES
@@ -10,7 +10,7 @@ import { BlogPost } from '../services/data.service';
 export const SOLUTIONS = [
   {
     key: 'WEB',
-    slug: 'web-development', // slug para la URL
+    slug: 'web-development',
     icon: 'Monitor',
   },
   {
@@ -37,17 +37,17 @@ export const SOLUTIONS = [
 export const PRODUCTS = [
   {
     key: 'ERP',
-    slug: 'jsl-erp', // slug para la URL
+    slug: 'jsl-erp',
     icon: 'Database',
   },
   {
     key: 'POS',
-    slug: 'jsl-pos', // slug para la URL
+    slug: 'jsl-pos',
     icon: 'ShoppingCart',
   },
   {
     key: 'MOBILE_APPS',
-    slug: 'proprietary-apps', // slug para la URL
+    slug: 'proprietary-apps',
     icon: 'Smartphone',
   },
 ];
@@ -78,30 +78,42 @@ export const PROCESS_STEPS = [
 /**
  * Datos de los miembros del equipo para la página "Nosotros".
  */
-export const TEAM_MEMBERS = [
+export const TEAM_MEMBERS: TeamMember[] = [
   {
     key: 'MEMBER_1',
     nameKey: 'ABOUT.TEAM_MEMBER_1_NAME',
     roleKey: 'ABOUT.TEAM_MEMBER_1_ROLE',
+    bioKey: 'ABOUT.TEAM_MEMBER_1_BIO',
     imageUrl: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?fit=crop&w=300&q=80',
+    linkedIn: 'https://linkedin.com/in/member1',
+    twitter: 'https://twitter.com/member1',
   },
   {
     key: 'MEMBER_2',
     nameKey: 'ABOUT.TEAM_MEMBER_2_NAME',
     roleKey: 'ABOUT.TEAM_MEMBER_2_ROLE',
+    bioKey: 'ABOUT.TEAM_MEMBER_2_BIO',
     imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=300&q=80',
+    linkedIn: 'https://linkedin.com/in/member2',
+    twitter: 'https://twitter.com/member2',
   },
   {
     key: 'MEMBER_3',
     nameKey: 'ABOUT.TEAM_MEMBER_3_NAME',
     roleKey: 'ABOUT.TEAM_MEMBER_3_ROLE',
+    bioKey: 'ABOUT.TEAM_MEMBER_3_BIO',
     imageUrl: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?fit=crop&w=300&q=80',
+    linkedIn: 'https://linkedin.com/in/member3',
+    twitter: 'https://twitter.com/member3',
   },
   {
     key: 'MEMBER_4',
     nameKey: 'ABOUT.TEAM_MEMBER_4_NAME',
     roleKey: 'ABOUT.TEAM_MEMBER_4_ROLE',
+    bioKey: 'ABOUT.TEAM_MEMBER_4_BIO',
     imageUrl: 'https://images.unsplash.com/photo-1507003211162-080c3e30NThl?fit=crop&w=300&q=80',
+    linkedIn: 'https://linkedin.com/in/member4',
+    twitter: 'https://twitter.com/member4',
   },
 ];
 
@@ -125,10 +137,9 @@ export const TESTIMONIALS = [
   },
   {
     key: 'TESTIMONIAL_3',
-    textKey: 'HOME.TESTIMONial_3_TEXT',
+    textKey: 'HOME.TESTIMONIAL_3_TEXT',
     nameKey: 'HOME.TESTIMONIAL_3_NAME',
     roleKey: 'HOME.TESTIMONIAL_3_ROLE',
-    // imageUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?fit=crop&w=100&q=80',
     imageUrl: 'assets/imgs/photo-1580489944761-15a19d654956.avif',
   },
 ];
@@ -165,7 +176,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: 'future-of-angular-ssr',
     imageUrl: 'https://media.geeksforgeeks.org/wp-content/uploads/20240214151845/The-Future-of-Angular-JS-Top-Trends-&-Predictions.png',
     date: '2025-10-28',
-    authorKey: 'MEMBER_1', // <-- Cambiado a Key
+    authorKey: 'MEMBER_1',
     tags: ['angular', 'ssr', 'frontend', 'performance'],
     readTime: 5,
     featured: true,
@@ -175,7 +186,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: 'ux-vs-ui-what-matters-most',
     imageUrl: 'https://zaibatsutechnology.co.uk/wp-content/uploads/2021/05/UI-vs-UX.png',
     date: '2025-10-22',
-    authorKey: 'MEMBER_2', // <-- Cambiado a Key
+    authorKey: 'MEMBER_2',
     tags: ['ux', 'ui', 'design', 'frontend'],
     readTime: 3,
   },
@@ -184,7 +195,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: 'cloud-architecture-scalability',
     imageUrl: 'https://www.muycomputerpro.com/wp-content/uploads/2018/07/arquitecto-cloud.jpg',
     date: '2025-10-15',
-    authorKey: 'MEMBER_3', // <-- Cambiado a Key
+    authorKey: 'MEMBER_3',
     tags: ['cloud', 'architecture', 'devops', 'scalability'],
     readTime: 4,
   },
@@ -193,7 +204,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: 'getting-started-with-react-vite',
     imageUrl: 'https://blog.openreplay.com/images/vite-create-react-app/images/hero.png',
     date: '2025-10-10',
-    authorKey: 'MEMBER_4', // <-- Cambiado a Key
+    authorKey: 'MEMBER_4',
     tags: ['react', 'frontend', 'performance', 'tools'],
     readTime: 3,
   },
@@ -202,7 +213,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: 'from-wireframe-to-hifi-in-figma',
     imageUrl: 'https://assets.website-files.com/608843c52d273a201c18337a/632c7003666b222c83c07a3c_Cover.jpg',
     date: '2025-10-05',
-    authorKey: 'MEMBER_2', // <-- Cambiado a Key
+    authorKey: 'MEMBER_2',
     tags: ['design', 'ui', 'tools', 'ux'],
     readTime: 2,
   },
@@ -211,21 +222,20 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: 'power-of-serverless-aws-lambda',
     imageUrl: 'https://images.prismic.io/serverless/2529b3c4-023a-48b0-a53c-0955e0d4c88a_serverless-framework-aws-lambda-guide.png',
     date: '2025-10-01',
-    authorKey: 'MEMBER_3', // <-- Cambiado a Key
+    authorKey: 'MEMBER_3',
     tags: ['cloud', 'devops', 'serverless', 'aws'],
     readTime: 3,
   },
 ];
 
 /**
- * DATOS DEL TECH STACK (NUEVO)
+ * DATOS DEL TECH STACK
  * Datos para la página de Tecnologías.
- * NOTA: Debes agregar los logos en la carpeta 'src/assets/imgs/logos/'
  */
 export const TECH_STACK = [
   {
     key: 'FRONTEND',
-    icon: 'Monitor', // Icono de Lucide
+    icon: 'Monitor',
     technologies: [
       { name: 'Angular', imageUrl: 'assets/imgs/logos/angular.svg' },
       { name: 'TypeScript', imageUrl: 'assets/imgs/logos/typescript.svg' },
@@ -281,7 +291,7 @@ export const TECH_STACK = [
 ];
 
 /**
- * DATOS DE POSICIONES DE CARRERAS (NUEVO)
+ * DATOS DE POSICIONES DE CARRERAS
  */
 export const CAREER_POSITIONS = [
   {
@@ -297,7 +307,7 @@ export const CAREER_POSITIONS = [
 ];
 
 /**
- * DATOS DE PREGUNTAS FRECUENTES (FAQ) (NUEVO)
+ * DATOS DE PREGUNTAS FRECUENTES (FAQ)
  */
 export const FAQ_ITEMS = [
   {
