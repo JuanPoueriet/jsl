@@ -915,6 +915,12 @@
   --swiper-pagination-bullet-inactive-color: var(--border-color);
   --swiper-pagination-bullet-inactive-opacity: 1;
   
+  // --- INICIO: Corrección Paginación ---
+  // 1. Colocar los puntos LO MÁS ABAJO POSIBLE (pero visibles)
+  //    Un valor positivo pequeño los sitúa cerca del borde inferior.
+  --swiper-pagination-bottom: 0.5rem; // <-- Ajustado a 0.5rem
+  // --- FIN: Corrección Paginación ---
+
   swiper-slide {
     height: auto;
     opacity: 0.7;
@@ -923,9 +929,19 @@
     // Definimos el ancho de las slides
     width: 290px;
     
+    // --- INICIO: Corrección Hover "Corte" ---
+    // 2. Añadir espacio para que la jsl-card interna pueda "subir"
+    padding-top: 0.5rem; 
+    // --- FIN: Corrección Hover "Corte" ---
+    
+    // --- INICIO: "Respiro" inferior ---
+    // 3. Añadir espacio "de respiro" en la parte inferior del slide
+    padding-bottom: 2rem;
+    // --- FIN: "Respiro" inferior ---
+
     &:hover {
       opacity: 1;
-      transform: translateY(-5px);
+      // No se necesita transform aquí, la card interna lo hace.
     }
   }
 }

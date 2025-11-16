@@ -52,7 +52,8 @@ import {
   Image,
   Bookmark,
   Share2,
-  Link
+  Link,
+  FileText
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
@@ -79,7 +80,8 @@ export const ICON_LIST = {
     Image,
     Bookmark,
     Share2,
-    Link
+    Link,
+    FileText
   },
   // Redes sociales
   Social: {
