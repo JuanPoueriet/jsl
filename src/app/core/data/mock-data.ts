@@ -211,7 +211,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     key: 'POST_5',
     slug: 'from-wireframe-to-hifi-in-figma',
-    imageUrl: 'https://assets.website-files.com/608843c52d273a201c18337a/632c7003666b222c83c07a3c_Cover.jpg',
+    imageUrl: '../../../../assets/imgs/PRD-–-How-To-Guide-–-high-fidelity-wireframes-Suren-Karapetyan-featured-image-792x446.jpg',
     date: '2025-10-05',
     authorKey: 'MEMBER_2',
     tags: ['design', 'ui', 'tools', 'ux'],
@@ -220,7 +220,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     key: 'POST_6',
     slug: 'power-of-serverless-aws-lambda',
-    imageUrl: 'https://images.prismic.io/serverless/2529b3c4-023a-48b0-a53c-0955e0d4c88a_serverless-framework-aws-lambda-guide.png',
+    imageUrl: 'https://www.prolim.com/wp-content/uploads/2023/07/power-of-serverless-computing.jpg',
     date: '2025-10-01',
     authorKey: 'MEMBER_3',
     tags: ['cloud', 'devops', 'serverless', 'aws'],

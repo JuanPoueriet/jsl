@@ -159,18 +159,18 @@ export class BlogDetail
       if (swiperEl) {
         Object.assign(swiperEl, {
           modules: [Pagination, Autoplay],
-          spaceBetween: 30,
-          slidesPerView: 1.25,
+          spaceBetween: 15,
+          slidesPerView: 1.4,
           centeredSlides: true,
           grabCursor: true,
           pagination: {
             clickable: true,
             dynamicBullets: true,
           },
-          autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-          },
+          // autoplay: {
+          //   delay: 5000,
+          //   disableOnInteraction: false,
+          // },
           breakpoints: {
             640: { slidesPerView: 1.5 },
             768: { slidesPerView: 2 },

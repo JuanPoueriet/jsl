@@ -28,10 +28,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, 
-      rgba(var(--accent-primary-rgb), 0.1) 0%,
-      rgba(var(--accent-secondary-rgb), 0.05) 50%,
-      transparent 100%);
+    // background: linear-gradient(135deg, 
+    //   rgba(var(--accent-primary-rgb), 0.1) 0%,
+    //   rgba(var(--accent-secondary-rgb), 0.05) 50%,
+    //   transparent 100%);
     
     .gradient-overlay {
       position: absolute;
@@ -797,10 +797,10 @@
   position: relative;
   padding: 6rem 0;
   margin-top: 4rem;
-  background: linear-gradient(180deg, 
-    var(--bg-primary) 0%,
-    rgba(var(--accent-primary-rgb), 0.03) 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  // background: linear-gradient(180deg, 
+  //   var(--bg-primary) 0%,
+  //   rgba(var(--accent-primary-rgb), 0.03) 100%);
+  // border-top: 1px solid rgba(255, 255, 255, 0.1);
 
   .section-background {
     position: absolute;
@@ -808,13 +808,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(ellipse at 20% 50%, 
-        rgba(var(--accent-primary-rgb), 0.05) 0%,
-        transparent 50%),
-      radial-gradient(ellipse at 80% 50%, 
-        rgba(var(--accent-secondary-rgb), 0.05) 0%,
-        transparent 50%);
+    // background: 
+    //   radial-gradient(ellipse at 20% 50%, 
+    //     rgba(var(--accent-primary-rgb), 0.05) 0%,
+    //     transparent 50%),
+    //   radial-gradient(ellipse at 80% 50%, 
+    //     rgba(var(--accent-secondary-rgb), 0.05) 0%,
+    //     transparent 50%);
     pointer-events: none;
   }
 
@@ -853,9 +853,63 @@
   }
 }
 
+// --- INICIO: NUEVOS ESTILOS PARA SLIDER 100VW Y FADE ---
+.related-posts-slider-wrapper {
+  width: 100vw; // Ocupa el ancho completo
+  position: relative;
+  
+  // Efecto de "fade" en los bordes
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px; // Ancho del fade
+    z-index: 2; // Por encima de las slides
+    pointer-events: none; // No bloquear el mouse
+  }
+
+  // Fade izquierdo
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, 
+      var(--bg-primary) 20%, // Color de fondo de la sección
+      transparent 100%
+    );
+  }
+
+  // Fade derecho
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, 
+      var(--bg-primary) 20%, 
+      transparent 100%
+    );
+  }
+
+  @media (max-width: 768px) {
+    &::before,
+    &::after {
+      width: 60px;
+    }
+  }
+}
+
 .related-posts-slider {
-  width: 100%;
+  width: 100%; // El swiper ocupa el 100% de su nuevo wrapper (100vw)
   padding-bottom: 4rem;
+  
+  // Añadimos padding para que las slides no empiecen pegadas al borde
+  // Usamos 'max' para centrar el contenido en pantallas anchas (1200px container)
+  // padding-left: max(1rem, calc((100vw - 1200px) / 2));
+  // padding-right: max(1rem, calc((100vw - 1200px) / 2));
+  box-sizing: border-box; // Importante
+
+  @media (max-width: 1220px) { // 1200px + 1rem + 1rem
+    // padding-left: 1rem;
+    // padding-right: 1rem;
+  }
   
   --swiper-pagination-color: var(--accent-primary);
   --swiper-pagination-bullet-inactive-color: var(--border-color);
@@ -866,12 +920,16 @@
     opacity: 0.7;
     transition: all 0.3s ease;
     
+    // Definimos el ancho de las slides
+    width: 290px;
+    
     &:hover {
       opacity: 1;
       transform: translateY(-5px);
     }
   }
 }
+// --- FIN: NUEVOS ESTILOS ---
 
 // --- NOT FOUND STYLES ---
 .not-found-container {

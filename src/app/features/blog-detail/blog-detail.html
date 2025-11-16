@@ -1,4 +1,3 @@
-<!-- blog-detail.html -->
 @if (post$ | async; as post) {
   <div class="blog-detail-page">
     <header class="detail-page-header">
@@ -208,15 +207,17 @@
 
     <section class="related-posts-section">
       <div class="section-background"></div>
-      <div class="container">
-        @if (relatedPosts$ | async; as relatedPosts) {
-          @if (relatedPosts.length > 0) {
+      @if (relatedPosts$ | async; as relatedPosts) {
+        @if (relatedPosts.length > 0) {
+          <div class="container">
             <div class="section-header" jslAnimateOnScroll>
               <span class="section-eyebrow">{{ 'Te podría interesar' | translate }}</span>
               <h2>{{ 'BLOG.RELATED_POSTS' | translate }}</h2>
               <p class="section-subtitle">{{ 'Descubre más contenido relacionado' | translate }}</p>
             </div>
+          </div>
 
+          <div class="related-posts-slider-wrapper">
             <swiper-container
               init="false"
               class="related-posts-slider"
@@ -238,11 +239,10 @@
                 </swiper-slide>
               }
             </swiper-container>
-          }
+          </div>
         }
-      </div>
+      }
     </section>
-
     <jsl-cta-section
       eyebrowKey="BLOG.CTA_EYEBROW"
       titleKey="BLOG.CTA_TITLE"
