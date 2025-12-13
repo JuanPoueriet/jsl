@@ -14,8 +14,8 @@ import { ALL_ICONS } from './core/constants/icons';
 import { routes } from './app.routes';
 
 // Carga estática de traducciones para SSR
-import * as en from '../assets/i18n/en.json';
-import * as es from '../assets/i18n/es.json';
+import * as en from '@assets/i18n/en.json';
+import * as es from '@assets/i18n/es.json';
 
 class CustomTranslateLoader implements TranslateLoader {
   getTranslation(lang: string): Observable<any> {

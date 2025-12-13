@@ -16,7 +16,7 @@ import {
   TECH_STACK,
   CAREER_POSITIONS,
   FAQ_ITEMS,
-} from '../data/mock-data';
+} from '@core/data/mock-data';
 
 // --- DEFINICIÓN DE INTERFACES PARA TODO EL SITIO ---
 

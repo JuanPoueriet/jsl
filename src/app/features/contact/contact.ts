@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { ApiService } from '../../core/services/api.service'; // 2. Importar ApiService
+import { ApiService } from '@core/services/api.service'; // 2. Importar ApiService
 import { Subject } from 'rxjs';
 import { takeUntil, finalize } from 'rxjs/operators';
 

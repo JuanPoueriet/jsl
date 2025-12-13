@@ -5,9 +5,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { Subscription, Observable, of } from 'rxjs'; 
 import { switchMap } from 'rxjs/operators'; 
-import { DataService, Project } from '../../core/services/data.service'; 
+import { DataService, Project } from '@core/services/data.service';
+import { CtaComponent } from '@shared/components/cta/cta';
 import { Title } from '@angular/platform-browser';
-import { CtaComponent } from '../../shared/components/cta/cta'; 
 
 @Component({
   selector: 'jsl-project-detail',

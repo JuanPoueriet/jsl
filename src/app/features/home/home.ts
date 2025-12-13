@@ -3,13 +3,13 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterLink } from '@angular/router';
-import { Card } from '../../shared/components/card/card';
-import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
-import { register } from 'swiper/element/bundle';
+import { Card } from '@shared/components/card/card';
+import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
+import { DataService } from '@core/services/data.service';
 import { SwiperOptions } from 'swiper/types';
 import { EffectFade, Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
-import { DataService } from '../../core/services/data.service';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { register } from 'swiper/element/bundle';
 
 register();
 

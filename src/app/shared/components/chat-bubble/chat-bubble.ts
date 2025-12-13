@@ -13,7 +13,7 @@ import {
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { AnimateOnScroll } from '../../directives/animate-on-scroll';
+import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
 import {
   FormControl,
   ReactiveFormsModule,

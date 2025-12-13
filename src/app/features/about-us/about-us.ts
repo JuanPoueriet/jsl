@@ -2,9 +2,9 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
-import { DataService } from '../../core/services/data.service';
-import { CtaComponent } from '../../shared/components/cta/cta';
+import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
+import { DataService } from '@core/services/data.service';
+import { CtaComponent } from '@shared/components/cta/cta';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
