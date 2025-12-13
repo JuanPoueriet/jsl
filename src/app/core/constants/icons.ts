@@ -53,7 +53,12 @@ import {
   Bookmark,
   Share2,
   Link,
-  FileText
+  FileText,
+  Moon, // Added
+  Sun, // Added
+  Zap, // Added
+  ShieldCheck, // Added
+  CheckCircle, // Added
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
@@ -81,7 +86,9 @@ export const ICON_LIST = {
     Bookmark,
     Share2,
     Link,
-    FileText
+    FileText,
+    Moon, // Added
+    Sun, // Added
   },
   // Redes sociales
   Social: {
@@ -104,6 +111,9 @@ export const ICON_LIST = {
     Laptop,
     Network,
     Brain,
+    Zap, // Added
+    ShieldCheck, // Added
+    CheckCircle, // Added
   },
   // Blog y contenido
   Content: {

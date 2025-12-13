@@ -48,6 +48,16 @@
         </div>
       </li>
       
+      <li>
+        <a
+          [routerLink]="[currentLang, 'industries']"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+        >
+          {{ 'HEADER.INDUSTRIES' | translate }}
+        </a>
+      </li>
+
       <li class="dropdown" [class.open]="openDropdown === 'products'">
         <button class="dropdown-toggle" (click)="toggleDropdown('products', $event)">
           {{ 'HEADER.PRODUCTS' | translate }}
@@ -145,6 +155,9 @@
       </li>
 
       <li class="header__nav-cta">
+         <a href="https://app.jsl.technology/login" target="_blank" class="header__login-btn">
+          {{ 'HEADER.LOGIN' | translate }}
+        </a>
         <a
           [routerLink]="[currentLang, 'contact']"
           routerLinkActive="active"
@@ -152,6 +165,13 @@
         >
           {{ 'HEADER.CONTACT' | translate }}
         </a>
+        <button class="header__theme-toggle" (click)="toggleTheme()">
+            @if (isDarkMode) {
+                <lucide-icon name="Sun"></lucide-icon>
+            } @else {
+                <lucide-icon name="Moon"></lucide-icon>
+            }
+        </button>
       </li>
     </ul>
     <div class="header__controls">
@@ -209,6 +229,12 @@
         (click)="closeMobileMenu()"
         >{{ 'SERVICES_LIST.CLOUD' | translate }}</a
       >
+    </li>
+
+    <li>
+        <a [routerLink]="[currentLang, 'industries']" routerLinkActive="active" (click)="closeMobileMenu()">
+            {{ 'HEADER.INDUSTRIES' | translate }}
+        </a>
     </li>
 
     <li class="mobile-menu-header">{{ 'HEADER.PRODUCTS' | translate }}</li>
@@ -308,6 +334,20 @@
         (click)="closeMobileMenu()"
         >{{ 'HEADER.CONTACT' | translate }}</a
       >
+    </li>
+    <li>
+        <a href="https://app.jsl.technology/login" target="_blank" (click)="closeMobileMenu()">
+            {{ 'HEADER.LOGIN' | translate }}
+        </a>
+    </li>
+    <li>
+        <button (click)="toggleTheme(); closeMobileMenu()" style="background: none; border: none; font-size: 1rem; color: inherit; display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem;">
+             @if (isDarkMode) {
+                <lucide-icon name="Sun"></lucide-icon> Light Mode
+            } @else {
+                <lucide-icon name="Moon"></lucide-icon> Dark Mode
+            }
+        </button>
     </li>
   </ul>
   }

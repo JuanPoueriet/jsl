@@ -2,10 +2,11 @@ import { Component, HostListener, Inject, PLATFORM_ID, OnInit } from '@angular/c
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { Header } from './layout/header/header';
-import { Footer } from './layout/footer/footer';
-import { Seo } from './core/services/seo';
-import { ChatBubbleComponent } from './shared/components/chat-bubble/chat-bubble';
+import { Header } from '@app/layout/header/header';
+import { Footer } from '@app/layout/footer/footer';
+import { Seo } from '@core/services/seo';
+import { ChatBubbleComponent } from '@shared/components/chat-bubble/chat-bubble';
+import { CookieBannerComponent } from '@shared/components/cookie-banner/cookie-banner.component';
 
 @Component({
   selector: 'jsl-root',
@@ -16,6 +17,7 @@ import { ChatBubbleComponent } from './shared/components/chat-bubble/chat-bubble
     Header,
     Footer,
     ChatBubbleComponent,
+    CookieBannerComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -36,27 +38,20 @@ export class App implements OnInit {
 
   ngOnInit() {
     if (this.isBrowser) {
-      // Ejecutar al cargar la página
       this.updateScrollAndResize();
     }
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    // Ejecutar al hacer scroll
     this.updateScrollAndResize();
   }
 
   @HostListener('window:resize', [])
   onWindowResize() {
-    // Ejecutar al redimensionar la ventana
     this.updateScrollAndResize();
   }
 
-  /**
-   * Comprueba el estado del scroll y el tamaño de la ventana
-   * para decidir si se aplica la clase 'is-scrolled'.
-   */
   private updateScrollAndResize() {
     if (this.isBrowser) {
       const verticalOffset =
@@ -64,13 +59,11 @@ export class App implements OnInit {
         document.documentElement.scrollTop ||
         document.body.scrollTop ||
         0;
-      const isDesktop = window.innerWidth > 992; // El breakpoint de tu CSS
+      const isDesktop = window.innerWidth > 992;
 
       if (isDesktop) {
-        // Comportamiento para PC: aplicar clase solo al hacer scroll
         this.isScrolled = verticalOffset > 50;
       } else {
-        // Comportamiento para Móvil: nunca aplicar la clase
         this.isScrolled = false;
       }
     }

@@ -1,32 +1,83 @@
 @if (product$ | async; as product) {
-  <header class="detail-page-header">
-    <div class="container">
-      <div class="detail-page-breadcrumb">
-        <a [routerLink]="['/', currentLang, 'home']">{{ 'COMMON.BREADCRUMB_HOME' | translate }}</a>
-        <lucide-icon name="ChevronRight"></lucide-icon>
-        <a [routerLink]="['/', currentLang, 'products']">{{ 'HEADER.PRODUCTS' | translate }}</a>
-        <lucide-icon name="ChevronRight"></lucide-icon>
-        <span>{{ 'PRODUCTS.' + product.key + '_TITLE' | translate }}</span>
-      </div>
-      
-      <h1 class="detail-page-title">{{ 'PRODUCTS.' + product.key + '_TITLE' | translate }}</h1>
-      <p class="page-subtitle">{{ 'PRODUCTS.' + product.key + '_DESC' | translate }}</p>
+  <div class="product-hero">
+    <div class="product-hero__overlay"></div>
+    <div class="container product-hero__content">
+        <div class="detail-page-breadcrumb">
+            <a [routerLink]="['/', currentLang, 'home']">{{ 'COMMON.BREADCRUMB_HOME' | translate }}</a>
+            <lucide-icon name="ChevronRight"></lucide-icon>
+            <a [routerLink]="['/', currentLang, 'products']">{{ 'HEADER.PRODUCTS' | translate }}</a>
+            <lucide-icon name="ChevronRight"></lucide-icon>
+            <span>{{ 'PRODUCTS.' + product.key + '_TITLE' | translate }}</span>
+        </div>
+        <h1 class="product-hero__title">{{ 'PRODUCTS.' + product.key + '_TITLE' | translate }}</h1>
+        <p class="product-hero__subtitle">{{ 'PRODUCTS.' + product.key + '_DESC' | translate }}</p>
+        <div class="product-hero__actions">
+            <a [href]="'PRODUCTS.' + product.key + '_MARKETING_URL' | translate" target="_blank" class="btn btn--primary">
+                {{ 'PRODUCTS.VIEW_DEDICATED_PAGE' | translate }}
+            </a>
+            <button class="btn btn--secondary">Agendar Demo</button>
+        </div>
     </div>
-  </header>
+  </div>
 
   <div class="container">
-    <main class="detail-page-content" style="max-width: 900px; grid-template-columns: 1fr;">
+    <main class="detail-page-content" style="max-width: 100%; grid-template-columns: 1fr;">
       
-      <h2>{{ 'COMMON.PLACEHOLDER_TITLE' | translate }}</h2>
-      <p [innerHTML]="'PRODUCTS.' + product.key + '_DETAIL_CONTENT' | translate"></p>
+      <!-- Visual Element / Dashboard Preview -->
+      <section class="product-preview" style="margin: -3rem auto 3rem; position: relative; z-index: 2; max-width: 1000px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 12px; overflow: hidden;">
+        <!-- Replaced with existing image from home -->
+        <img src="assets/imgs/Avif/photo-1517694712202-14dd9538aa97.avif" alt="Dashboard Preview" style="width: 100%; height: auto; display: block;" />
+      </section>
+
+      <!-- Main Description -->
+      <section style="max-width: 800px; margin: 0 auto; margin-bottom: 4rem;">
+         <p [innerHTML]="'PRODUCTS.' + product.key + '_DETAIL_CONTENT' | translate" style="font-size: 1.125rem; line-height: 1.7; color: var(--text-color-secondary);"></p>
+      </section>
       
-      <a [href]="'PRODUCTS.' + product.key + '_MARKETING_URL' | translate" 
-         target="_blank" 
-         class="hero-slide__cta" 
-         style="margin-top: 2rem; margin-right: auto; background: var(--accent-gradient); gap: 0.5rem;">
-        <lucide-icon name="ExternalLink" style="width: 18px;"></lucide-icon>
-        <span>{{ 'PRODUCTS.VIEW_DEDICATED_PAGE' | translate }}</span>
-      </a>
+      <!-- Features Grid (Mocked structure for visual impact) -->
+      <section class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+        <div class="feature-card" style="padding: 2rem; background: var(--bg-color-secondary); border-radius: 8px;">
+            <lucide-icon name="Zap" style="color: var(--primary-color); margin-bottom: 1rem;"></lucide-icon>
+            <h3>High Performance</h3>
+            <p>Optimized for low latency and high concurrency environments.</p>
+        </div>
+        <div class="feature-card" style="padding: 2rem; background: var(--bg-color-secondary); border-radius: 8px;">
+            <lucide-icon name="ShieldCheck" style="color: var(--primary-color); margin-bottom: 1rem;"></lucide-icon>
+            <h3>Enterprise Security</h3>
+            <p>Role-based access control, data encryption, and audit logs.</p>
+        </div>
+        <div class="feature-card" style="padding: 2rem; background: var(--bg-color-secondary); border-radius: 8px;">
+            <lucide-icon name="Globe" style="color: var(--primary-color); margin-bottom: 1rem;"></lucide-icon>
+            <h3>Global Scale</h3>
+            <p>Multi-currency, multi-language, and timezone support built-in.</p>
+        </div>
+      </section>
+
+      <!-- Integration Ecosystem -->
+      <section class="integration-section" style="background: var(--bg-color-secondary); padding: 3rem; border-radius: 12px; margin-bottom: 4rem;">
+        <div style="max-width: 600px;">
+            <h2>{{ 'PRODUCTS.INTEGRATION_TITLE' | translate }}</h2>
+            <p>{{ 'PRODUCTS.INTEGRATION_DESC' | translate }}</p>
+            <ul style="margin-top: 1.5rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><lucide-icon name="CheckCircle" size="16"></lucide-icon> REST API</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><lucide-icon name="CheckCircle" size="16"></lucide-icon> Webhooks</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><lucide-icon name="CheckCircle" size="16"></lucide-icon> Custom Modules</li>
+                <li style="display: flex; align-items: center; gap: 0.5rem;"><lucide-icon name="CheckCircle" size="16"></lucide-icon> SSO Support</li>
+            </ul>
+        </div>
+      </section>
+
+      <!-- Trusted By -->
+      <section class="trusted-by" style="text-align: center; margin-bottom: 2rem;">
+        <p style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-color-muted); margin-bottom: 2rem;">Trusted by Industry Leaders</p>
+        <div style="display: flex; justify-content: center; gap: 3rem; opacity: 0.6; flex-wrap: wrap;">
+             <!-- Placeholders for logos -->
+             <span style="font-size: 1.5rem; font-weight: 700;">LOGITECH</span>
+             <span style="font-size: 1.5rem; font-weight: 700;">RETAIL CORP</span>
+             <span style="font-size: 1.5rem; font-weight: 700;">FINANCE GROUP</span>
+             <span style="font-size: 1.5rem; font-weight: 700;">HEALTH PLUS</span>
+        </div>
+      </section>
 
     </main>
   </div>

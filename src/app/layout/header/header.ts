@@ -1,4 +1,4 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common'; // <-- Importar isPlatformBrowser
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {
   Component,
   HostListener,
@@ -6,12 +6,13 @@ import {
   Inject,
   PLATFORM_ID,
   OnInit,
-} from '@angular/core'; // <-- Importar Inject, PLATFORM_ID, OnInit
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { TopBar } from '../top-bar/top-bar';
-import { LanguageSwitcher } from '../language-switcher/language-switcher';
+import { TopBar } from '@app/layout/top-bar/top-bar';
+import { LanguageSwitcher } from '@app/layout/language-switcher/language-switcher';
+import { ThemeService } from '@core/services/theme.service';
 
 @Component({
   selector: 'jsl-header',
@@ -29,31 +30,34 @@ import { LanguageSwitcher } from '../language-switcher/language-switcher';
   styleUrl: './header.scss',
 })
 export class Header implements OnInit {
-  // <-- Implementar OnInit
   isMobileMenuOpen = false;
   public currentLang: string;
   public openDropdown: string | null = null;
-
-  public isDesktop = false; // <-- 1. Añadir nueva propiedad pública
+  public isDesktop = false;
   private isBrowser: boolean;
+  public isDarkMode = false;
 
   constructor(
     private translate: TranslateService,
     private el: ElementRef,
-    @Inject(PLATFORM_ID) private platformId: Object // <-- 2. Inyectar PLATFORM_ID
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private themeService: ThemeService
   ) {
     this.currentLang = this.translate.getCurrentLang() || this.translate.defaultLang || 'es';
-    this.isBrowser = isPlatformBrowser(this.platformId); // <-- 3. Definir isBrowser
+    this.isBrowser = isPlatformBrowser(this.platformId);
 
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
     });
+
+    this.themeService.darkMode$.subscribe(isDark => {
+        this.isDarkMode = isDark;
+    });
   }
 
   ngOnInit() {
-    // <-- 4. Añadir ngOnInit
     if (this.isBrowser) {
-      this.updateDesktopStatus(); // Comprobar al cargar
+      this.updateDesktopStatus();
     }
   }
 
@@ -64,7 +68,7 @@ export class Header implements OnInit {
     }
   }
 
-  @HostListener('window:resize', []) // <-- 5. Añadir listener de resize
+  @HostListener('window:resize', [])
   onWindowResize() {
     if (this.isBrowser) {
       this.updateDesktopStatus();
@@ -72,7 +76,6 @@ export class Header implements OnInit {
   }
 
   private updateDesktopStatus() {
-    // <-- 6. Añadir método helper
     this.isDesktop = window.innerWidth > 992;
   }
 
@@ -95,7 +98,7 @@ export class Header implements OnInit {
     this.closeDropdowns();
   }
 
-  ifMobile() {
-    return false;
+  toggleTheme() {
+    this.themeService.toggleDarkMode();
   }
 }

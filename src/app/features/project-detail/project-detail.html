@@ -9,6 +9,7 @@
         <span>{{ 'PROJECTS.' + project.key + '_TITLE' | translate }}</span>
       </div>
       <h1 class="detail-page-title">{{ 'PROJECTS.' + project.key + '_TITLE' | translate }}</h1>
+      <p class="page-subtitle">{{ 'PROJECTS.' + project.key + '_DESC' | translate }}</p>
     </div>
   </header>
 
@@ -17,6 +18,21 @@
 
     <main class="detail-page-content">
       
+      <div class="project-meta-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem; padding: 2rem; background: var(--bg-color-secondary); border-radius: 8px;">
+        <div class="meta-item">
+            <h4 style="font-size: 0.875rem; color: var(--text-color-muted); margin-bottom: 0.5rem; text-transform: uppercase;">Industry</h4>
+            <p style="font-weight: 600;">Logistics & Transport</p>
+        </div>
+        <div class="meta-item">
+            <h4 style="font-size: 0.875rem; color: var(--text-color-muted); margin-bottom: 0.5rem; text-transform: uppercase;">Services</h4>
+            <p style="font-weight: 600;">Custom Development, Cloud</p>
+        </div>
+        <div class="meta-item">
+            <h4 style="font-size: 0.875rem; color: var(--text-color-muted); margin-bottom: 0.5rem; text-transform: uppercase;">Duration</h4>
+            <p style="font-weight: 600;">8 Months</p>
+        </div>
+      </div>
+
       <section class="content-block">
         <h2>{{ 'PROJECTS.DETAIL_CHALLENGE_TITLE' | translate }}</h2>
         <p>{{ 'PROJECTS.' + project.key + '_DETAIL_CHALLENGE' | translate }}</p>
@@ -26,6 +42,23 @@
         <h2>{{ 'PROJECTS.DETAIL_SOLUTION_TITLE' | translate }}</h2>
         <p [innerHTML]="'PROJECTS.' + project.key + '_DETAIL_SOLUTION' | translate"></p>
       </section>
+
+      <!-- Tech Stack Section (Dynamic) -->
+      @if (project.technologies) {
+          <section class="content-block tech-stack-section" style="margin: 3rem 0;">
+            <h3 style="margin-bottom: 1.5rem;">Technologies Used</h3>
+            <div class="tech-icons" style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                @for (tech of project.technologies; track tech.name) {
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                        <div style="width: 48px; height: 48px; background: #eee; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                            <lucide-icon [name]="tech.icon"></lucide-icon>
+                        </div>
+                        <span style="font-size: 0.875rem;">{{ tech.name }}</span>
+                    </div>
+                }
+            </div>
+          </section>
+      }
 
       <section class="content-block">
         <h2>{{ 'PROJECTS.DETAIL_RESULT_TITLE' | translate }}</h2>

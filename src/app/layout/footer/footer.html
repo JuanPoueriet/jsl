@@ -18,6 +18,10 @@
             <span>info@jsl.technology</span>
           </a>
         </li>
+        <li style="margin-top: 1rem; color: #4ade80; display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem;">
+            <div style="width: 8px; height: 8px; background-color: #4ade80; border-radius: 50%; box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);"></div>
+            <a href="https://status.jsl.technology" target="_blank" style="color: inherit; text-decoration: none;">{{ 'FOOTER.SYSTEM_STATUS' | translate }}: Operational</a>
+        </li>
       </ul>
 
       <h3 class="footer__col-title footer__col-title--follow">{{ 'FOOTER.FOLLOW_US' | translate }}</h3>
@@ -45,6 +49,7 @@
         <li><a [routerLink]="[currentLang(), 'solutions']">{{ 'SERVICES_LIST.WEB' | translate }}</a></li>
         <li><a [routerLink]="[currentLang(), 'solutions']">{{ 'SERVICES_LIST.MOBILE' | translate }}</a></li>
         <li><a [routerLink]="[currentLang(), 'solutions']">{{ 'SERVICES_LIST.CLOUD' | translate }}</a></li>
+        <li><a href="https://developers.jsl.technology" target="_blank">{{ 'FOOTER.DEVELOPER_HUB' | translate }}</a></li>
       </ul>
     </div>
 
@@ -56,6 +61,8 @@
         <li><a [routerLink]="[currentLang(), 'blog']">{{ 'HEADER.BLOG' | translate }}</a></li>
         <li><a [routerLink]="[currentLang(), 'contact']">{{ 'HEADER.CONTACT' | translate }}</a></li>
         <li><a [routerLink]="[currentLang(), 'tech-stack']">{{ 'HEADER.TECH_STACK' | translate }}</a></li>
+        <li><a href="#" style="opacity: 0.8;">{{ 'FOOTER.TRUST_CENTER' | translate }}</a></li>
+        <li><a href="#" style="opacity: 0.8;">{{ 'FOOTER.PRESS_ROOM' | translate }}</a></li>
       </ul>
     </div>
 

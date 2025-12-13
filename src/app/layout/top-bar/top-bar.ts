@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { LanguageSwitcher } from '../language-switcher/language-switcher'; // Importamos el selector de idioma
+import { LanguageSwitcher } from '@app/layout/language-switcher/language-switcher'; // Importamos el selector de idioma
 
 @Component({
   selector: 'jsl-top-bar',

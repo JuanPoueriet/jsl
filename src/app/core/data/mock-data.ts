@@ -153,16 +153,31 @@ export const PROJECTS = [
     key: 'CASE_ERP',
     slug: 'erp-logistics-optimization',
     imageUrl: 'https://images.unsplash.com/photo-1556761175-577380e25f2b?fit=crop&w=600&q=80',
+    technologies: [
+        { name: 'Angular', icon: 'Code' },
+        { name: 'Java Spring', icon: 'Server' },
+        { name: 'Oracle', icon: 'Database' }
+    ]
   },
   {
     key: 'CASE_ECOMMERCE',
     slug: 'b2b-ecommerce-platform',
     imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?fit=crop&w=600&q=80',
+    technologies: [
+        { name: 'React', icon: 'Code' },
+        { name: 'Node.js', icon: 'Server' },
+        { name: 'Redis', icon: 'Database' }
+    ]
   },
   {
     key: 'CASE_MOBILE_APP',
     slug: 'fleet-management-mobile-app',
     imageUrl: 'https://images.unsplash.com/photo-1607936834114-0a300c3f0b24?fit=crop&w=600&q=80',
+    technologies: [
+        { name: 'Swift', icon: 'Smartphone' },
+        { name: 'Kotlin', icon: 'Smartphone' },
+        { name: 'Google Maps API', icon: 'Globe' }
+    ]
   },
 ];
 
@@ -211,7 +226,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     key: 'POST_5',
     slug: 'from-wireframe-to-hifi-in-figma',
-    imageUrl: '../../../../assets/imgs/PRD-–-How-To-Guide-–-high-fidelity-wireframes-Suren-Karapetyan-featured-image-792x446.jpg',
+    imageUrl: 'assets/imgs/PRD-–-How-To-Guide-–-high-fidelity-wireframes-Suren-Karapetyan-featured-image-792x446.jpg',
     date: '2025-10-05',
     authorKey: 'MEMBER_2',
     tags: ['design', 'ui', 'tools', 'ux'],
