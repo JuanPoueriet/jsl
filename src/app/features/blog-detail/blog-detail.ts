@@ -21,12 +21,12 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { Subscription, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { DataService, BlogPost, TeamMember } from '../../core/services/data.service';
+import { DataService, BlogPost, TeamMember } from '@core/services/data.service';
 import { Title } from '@angular/platform-browser';
-import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
-import { CtaComponent } from '../../shared/components/cta/cta';
-import { Card } from '../../shared/components/card/card';
-import { Seo } from '../../core/services/seo'; // <--- 1. IMPORTAR SEO SERVICE
+import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
+import { CtaComponent } from '@shared/components/cta/cta';
+import { Card } from '@shared/components/card/card';
+import { Seo } from '@core/services/seo'; // <--- 1. IMPORTAR SEO SERVICE
 
 // --- CORRECCIÓN: Se elimina la importación estática de PrismJS ---
 // import * as Prism from 'prismjs';

@@ -7,7 +7,7 @@ import { Router, RouterLink, NavigationEnd } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ClickOutsideDirective } from '../../shared/directives/click-outside';
+import { ClickOutsideDirective } from '@shared/directives/click-outside';
 
 @Component({
   selector: 'jsl-language-switcher',

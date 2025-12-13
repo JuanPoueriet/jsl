@@ -5,7 +5,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ApiService } from '../../core/services/api.service'; // 1. Importar ApiService
+import { ApiService } from '@core/services/api.service'; // 1. Importar ApiService
 import { finalize } from 'rxjs/operators'; // 2. Importar finalize
 
 @Component({

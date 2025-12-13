@@ -5,7 +5,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
+import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
 
 @Component({
   selector: 'jsl-not-found',

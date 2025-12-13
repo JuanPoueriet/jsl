@@ -1,7 +1,7 @@
 // mock-data.ts
 // src/app/core/data/mock-data.ts
 
-import { BlogPost, TeamMember } from '../services/data.service';
+import { BlogPost, TeamMember } from '@core/services/data.service';
 
 /**
  * DATOS DE SOLUCIONES

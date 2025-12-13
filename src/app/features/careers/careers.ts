@@ -2,9 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/cor
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { AnimateOnScroll } from '../../shared/directives/animate-on-scroll';
-import { CtaComponent } from '../../shared/components/cta/cta';
-import { DataService, CareerPosition } from '../../core/services/data.service';
+import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
+import { CtaComponent } from '@shared/components/cta/cta';
+import { DataService, CareerPosition } from '@core/services/data.service';
 import { Observable } from 'rxjs';
 
 @Component({

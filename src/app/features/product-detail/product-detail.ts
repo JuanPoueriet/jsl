@@ -6,9 +6,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { Subscription, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { DataService, Product } from '../../core/services/data.service';
+import { DataService, Product } from '@core/services/data.service';
 import { Title } from '@angular/platform-browser';
-import { CtaComponent } from '../../shared/components/cta/cta'; // --- CAMBIO: Importar CTA ---
+import { CtaComponent } from '@shared/components/cta/cta'; // --- CAMBIO: Importar CTA ---
 
 @Component({
   selector: 'jsl-product-detail',
