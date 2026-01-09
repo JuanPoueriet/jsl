@@ -3,7 +3,7 @@ import {
   importProvidersFrom,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
@@ -27,7 +27,7 @@ class CustomTranslateLoader implements TranslateLoader {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZonelessChangeDetection(),
-    provideRouter(routes),
+    provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
     provideHttpClient(withFetch()),
 
     provideAnimationsAsync(),
