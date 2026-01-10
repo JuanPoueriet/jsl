@@ -396,8 +396,10 @@
   },
   "CHAT": {
     "TITLE": "Chatten Sie mit uns",
+    "STATUS_ONLINE": "Online",
     "GREETING": "Hallo! Wie können wir Ihnen heute helfen?",
     "PREVIEW_GREETING": "Hallo! 👋 Haben Sie Fragen?",
+    "OPERATOR_REPLY": "Danke! Ein Agent wird sich in Kürze bei Ihnen melden.",
     "PLACEHOLDER": "Geben Sie Ihre Nachricht ein...",
     "SEND": "Senden",
     "OPEN": "Chat öffnen",

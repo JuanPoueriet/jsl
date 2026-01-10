@@ -396,8 +396,10 @@
   },
   "CHAT": {
     "TITLE": "与我们聊天",
+    "STATUS_ONLINE": "在线",
     "GREETING": "您好！今天我们能为您提供什么帮助？",
     "PREVIEW_GREETING": "您好！👋有什么问题吗？",
+    "OPERATOR_REPLY": "谢谢！客服人员将很快与您联系。",
     "PLACEHOLDER": "输入您的消息...",
     "SEND": "发送",
     "OPEN": "打开聊天",

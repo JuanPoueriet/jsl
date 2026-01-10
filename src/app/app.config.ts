@@ -17,30 +17,30 @@ import { routes } from './app.routes';
 import * as en from '@assets/i18n/en.json';
 import * as es from '@assets/i18n/es.json';
 
-class CustomTranslateLoader implements TranslateLoader {
-  getTranslation(lang: string): Observable<any> {
-    // Devuelve el JSON importado directamente como un Observable
-    return of(lang === 'es' ? es : en);
-  }
+export function createTranslateLoader(): TranslateLoader {
+  return {
+    getTranslation: (lang: string): Observable<any> => {
+      return of(lang === 'es' ? es : en);
+    },
+  } as TranslateLoader;
 }
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZonelessChangeDetection(),
-    provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
+    provideRouter(
+      routes,
+      withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
+    ),
     provideHttpClient(withFetch()),
-
     provideAnimationsAsync(),
-    
-    // Configuración de ngx-translate con el loader personalizado
     provideTranslateService({
       fallbackLang: 'es',
       loader: {
         provide: TranslateLoader,
-        useClass: CustomTranslateLoader
+        useFactory: createTranslateLoader,
       },
     }),
-
     importProvidersFrom(LucideAngularModule.pick(ALL_ICONS)),
   ],
 };

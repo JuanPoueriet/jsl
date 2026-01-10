@@ -12,18 +12,12 @@
 
   <div class="lang-switcher__dropdown" [class.is-open]="isDropdownOpen">
     <a
-      [routerLink]="esRoute"
-      (click)="closeDropdown()"
-      [class.active]="currentLang === 'es'"
+      *ngFor="let lang of languages"
+      [routerLink]="getRouteForLang(lang.code)"
+      (click)="setLanguage(lang.code); closeDropdown()"
+      [class.active]="currentLang === lang.code"
     >
-      {{ 'LANG.ES_FULL' | translate }}
-    </a>
-    <a
-      [routerLink]="enRoute"
-      (click)="closeDropdown()"
-      [class.active]="currentLang === 'en'"
-    >
-      {{ 'LANG.EN_FULL' | translate }}
+      {{ lang.name | translate }}
     </a>
   </div>
 </div>

@@ -172,7 +172,7 @@
     "MOBILE_DESC": "Desarrollo nativo (iOS/Android) e híbrido para crear experiencias móviles fluidas que conectan con tus usuarios.",
     "MOBILE_DETAIL_CONTENT": "<p>Desde aplicaciones nativas para iOS (Swift) y Android (Kotlin) hasta soluciones multiplataforma con Flutter y React Native. Construimos experiencias móviles seguras, con capacidad 'offline' y totalmente integradas con su backend empresarial.</p>",
     "DESKTOP_TITLE": "Software de Escritorio",
-    "DESKTOP_DESC": "Soluciones de software potentes y seguras para entornos de escritorio, optimizadas para el rendimiento y la fiesta de datos.",
+    "DESKTOP_DESC": "Soluciones de software potentes y seguras para entornos de escritorio, optimizadas para el rendimiento y la fiabilidad de datos.",
     "DESKTOP_DETAIL_CONTENT": "<p>Aprovechamos tecnologías como Electron y .NET para construir aplicaciones de escritorio de alto rendimiento para Windows, macOS y Linux. Ideal para operaciones intensivas en hardware como Puntos de Venta (POS), sistemas de control industrial y estaciones de trabajo 'offline-first'.</p>",
     "CLOUD_TITLE": "Arquitectura Cloud",
     "CLOUD_DESC": "Diseñamos e implementamos infraestructuras en la nube (AWS, Azure, GCP) que son escalables, seguras y rentables.",

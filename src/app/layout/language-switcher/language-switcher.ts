@@ -25,42 +25,56 @@ import { ClickOutsideDirective } from '@shared/directives/click-outside';
 export class LanguageSwitcher implements OnInit, OnDestroy {
   public currentLang: string = 'es';
   public isDropdownOpen = false;
-
-  public esRoute: string[] = ['/es'];
-  public enRoute: string[] = ['/en'];
+  public languages: { code: string; name: string }[] = [];
 
   private routerSubscription: Subscription | undefined;
+  private currentRouteWithoutLang: string[] = [];
 
   constructor(
     @Inject(TranslateService) public translate: TranslateService,
-    private router: Router
+    private router: Router,
   ) {
     this.currentLang =
       this.translate.currentLang || this.translate.defaultLang || 'es';
   }
 
   ngOnInit(): void {
+    this.setupLanguages();
+
     this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         this.currentLang = this.translate.currentLang || 'es';
-
-        this.updateRoutes(event.urlAfterRedirects);
+        this.updateCurrentRoute(event.urlAfterRedirects);
         this.closeDropdown();
       });
 
-    this.updateRoutes(this.router.url);
+    this.updateCurrentRoute(this.router.url);
   }
 
   ngOnDestroy(): void {
     this.routerSubscription?.unsubscribe();
   }
 
-  private updateRoutes(currentUrl: string): void {
+  private setupLanguages(): void {
+    this.languages = this.translate.getLangs().map(lang => ({
+      code: lang,
+      name: `LANG.${lang.toUpperCase()}_FULL`,
+    }));
+  }
+
+  private updateCurrentRoute(currentUrl: string): void {
     const segments = currentUrl.split('/');
-    const routeWithoutLang = segments.slice(2);
-    this.esRoute = ['/es', ...routeWithoutLang];
-    this.enRoute = ['/en', ...routeWithoutLang];
+    this.currentRouteWithoutLang = segments.slice(2);
+  }
+
+  public getRouteForLang(langCode: string): string[] {
+    return [`/${langCode}`, ...this.currentRouteWithoutLang];
+  }
+
+  public setLanguage(langCode: string): void {
+    this.translate.use(langCode);
+    this.currentLang = langCode;
   }
 
   toggleDropdown(): void {

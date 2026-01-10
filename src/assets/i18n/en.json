@@ -27,8 +27,24 @@
   "LANG": {
     "ES": "Spanish",
     "EN": "English",
+    "PT": "Portuguese",
+    "FR": "French",
+    "DE": "German",
+    "AR": "Arabic",
+    "IT": "Italian",
+    "JA": "Japanese",
+    "KO": "Korean",
+    "ZH": "Chinese",
     "ES_FULL": "Español (ES)",
-    "EN_FULL": "English (EN)"
+    "EN_FULL": "English (EN)",
+    "PT_FULL": "Português (PT)",
+    "FR_FULL": "Français (FR)",
+    "DE_FULL": "Deutsch (DE)",
+    "AR_FULL": "العربية (AR)",
+    "IT_FULL": "Italiano (IT)",
+    "JA_FULL": "日本語 (JA)",
+    "KO_FULL": "한국어 (KO)",
+    "ZH_FULL": "中文 (ZH)"
   },
   "FOOTER": {
     "SLOGAN": "Software solutions that power tomorrow's leaders.",
@@ -380,8 +396,10 @@
   },
   "CHAT": {
     "TITLE": "Chat with us",
+    "STATUS_ONLINE": "Online",
     "GREETING": "Hello! How can we help you today?",
     "PREVIEW_GREETING": "Hi! 👋 Do you have any questions?",
+    "OPERATOR_REPLY": "Thanks! An agent will be with you shortly.",
     "PLACEHOLDER": "Type your message...",
     "SEND": "Send",
     "OPEN": "Open chat",
