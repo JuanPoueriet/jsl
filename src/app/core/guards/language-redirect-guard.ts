@@ -14,19 +14,24 @@ export class LanguageRedirectService {
   redirect(): boolean {
     if (isPlatformBrowser(this.platformId)) {
       const defaultLang = 'es';
-      const supportedLangs = ['es', 'en'];
+      const supportedLangs = this.translate.getLangs();
 
       // 1. Intentar obtener el idioma desde localStorage (visitas anteriores)
       let storedLang = localStorage.getItem('jsl_lang');
 
       // 2. Si no está, detectar el idioma del navegador
       if (!storedLang) {
-        const browserLang = this.translate.getBrowserLang();
-        storedLang = browserLang?.match(/es|en/) ? browserLang : defaultLang;
+        const browserLang = this.translate.getBrowserLang() || '';
+        storedLang = supportedLangs.includes(browserLang)
+          ? browserLang
+          : defaultLang;
       }
 
       // 3. Validar que el idioma esté soportado
-      const langToUse = supportedLangs.includes(storedLang) ? storedLang : defaultLang;
+      const langToUse =
+        storedLang && supportedLangs.includes(storedLang)
+          ? storedLang
+          : defaultLang;
 
       // Redirigir a la ruta con el idioma, manteniendo la URL limpia
       this.router.navigate([langToUse], { replaceUrl: true });

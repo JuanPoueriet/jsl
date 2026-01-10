@@ -16,7 +16,7 @@ export class LanguageInitService {
 
   initLanguage(route: ActivatedRouteSnapshot): boolean {
     const lang = route.params['lang'];
-    const supportedLangs = ['es', 'en'];
+    const supportedLangs = this.translate.getLangs();
 
     if (supportedLangs.includes(lang)) {
       // 1. Activar el idioma en ngx-translate (Se ejecuta en servidor y cliente)
