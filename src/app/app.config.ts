@@ -16,11 +16,40 @@ import { routes } from './app.routes';
 // Carga estática de traducciones para SSR
 import * as en from '@assets/i18n/en.json';
 import * as es from '@assets/i18n/es.json';
+import * as ar from '@assets/i18n/ar.json';
+import * as de from '@assets/i18n/de.json';
+import * as fr from '@assets/i18n/fr.json';
+import * as it from '@assets/i18n/it.json';
+import * as ja from '@assets/i18n/ja.json';
+import * as ko from '@assets/i18n/ko.json';
+import * as pt from '@assets/i18n/pt.json';
+import * as zh from '@assets/i18n/zh.json';
 
 export function createTranslateLoader(): TranslateLoader {
   return {
     getTranslation: (lang: string): Observable<any> => {
-      return of(lang === 'es' ? es : en);
+      switch (lang) {
+        case 'es':
+          return of(es);
+        case 'ar':
+          return of(ar);
+        case 'de':
+          return of(de);
+        case 'fr':
+          return of(fr);
+        case 'it':
+          return of(it);
+        case 'ja':
+          return of(ja);
+        case 'ko':
+          return of(ko);
+        case 'pt':
+          return of(pt);
+        case 'zh':
+          return of(zh);
+        default:
+          return of(en);
+      }
     },
   } as TranslateLoader;
 }
