@@ -35,6 +35,7 @@
     "@ngx-translate/core": "^17.0.0",
     "express": "^5.1.0",
     "lucide-angular": "^0.552.0",
+    "ngx-cookie-service": "~20.0.0",
     "prismjs": "^1.30.0",
     "rxjs": "~7.8.0",
     "swiper": "^12.0.3",

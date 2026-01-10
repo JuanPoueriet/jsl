@@ -9,6 +9,7 @@ import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { LucideAngularModule } from 'lucide-angular';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { CookieService } from 'ngx-cookie-service';
 import { ALL_ICONS } from './core/constants/icons';
 
 import { routes } from './app.routes';
@@ -71,5 +72,6 @@ export const appConfig: ApplicationConfig = {
       },
     }),
     importProvidersFrom(LucideAngularModule.pick(ALL_ICONS)),
+    CookieService,
   ],
 };

@@ -2,6 +2,7 @@ import { Component, HostListener, Inject, PLATFORM_ID, OnInit } from '@angular/c
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
 import { Seo } from './core/services/seo';
@@ -28,7 +29,8 @@ export class App implements OnInit {
   constructor(
     private translate: TranslateService,
     private seo: Seo,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private cookieService: CookieService,
   ) {
     this.seo.init();
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -36,9 +38,27 @@ export class App implements OnInit {
 
   ngOnInit() {
     if (this.isBrowser) {
+      this.initializeLanguage();
       // Ejecutar al cargar la página
       this.updateScrollAndResize();
     }
+  }
+
+  private initializeLanguage(): void {
+    const langCookie = this.cookieService.get('lang');
+    if (langCookie) {
+      this.translate.use(langCookie);
+      return;
+    }
+
+    const browserLang = navigator.language.split('-')[0];
+    const supportedLangs = this.translate.getLangs();
+    const finalLang = (supportedLangs.includes(browserLang)
+      ? browserLang
+      : this.translate.getDefaultLang()) || 'es'; // Ensure finalLang is always a string
+
+    this.cookieService.set('lang', finalLang, { expires: 365, path: '/' });
+    this.translate.use(finalLang);
   }
 
   @HostListener('window:scroll', [])
