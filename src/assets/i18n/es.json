@@ -27,8 +27,24 @@
   "LANG": {
     "ES": "Español",
     "EN": "Inglés",
+    "PT": "Portugués",
+    "FR": "Francés",
+    "DE": "Alemán",
+    "AR": "Árabe",
+    "IT": "Italiano",
+    "JA": "Japonés",
+    "KO": "Coreano",
+    "ZH": "Chino",
     "ES_FULL": "Español (ES)",
-    "EN_FULL": "English (EN)"
+    "EN_FULL": "English (EN)",
+    "PT_FULL": "Português (PT)",
+    "FR_FULL": "Français (FR)",
+    "DE_FULL": "Deutsch (DE)",
+    "AR_FULL": "العربية (AR)",
+    "IT_FULL": "Italiano (IT)",
+    "JA_FULL": "日本語 (JA)",
+    "KO_FULL": "한국어 (KO)",
+    "ZH_FULL": "中文 (ZH)"
   },
   "FOOTER": {
     "SLOGAN": "Soluciones de software que impulsan a los líderes del mañana.",

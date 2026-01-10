@@ -37,14 +37,14 @@
     "ZH": "الصينية",
     "ES_FULL": "Español (ES)",
     "EN_FULL": "English (EN)",
-    "PT_FULL": "Português (BR)",
+    "PT_FULL": "Português (PT)",
     "FR_FULL": "Français (FR)",
     "DE_FULL": "Deutsch (DE)",
     "AR_FULL": "العربية (AR)",
     "IT_FULL": "Italiano (IT)",
     "JA_FULL": "日本語 (JA)",
     "KO_FULL": "한국어 (KO)",
-    "ZH_FULL": "简体中文 (ZH)"
+    "ZH_FULL": "中文 (ZH)"
   },
   "FOOTER": {
     "SLOGAN": "حلول برمجية تدعم قادة المستقبل.",
@@ -213,7 +213,7 @@
     "CASE_MOBILE_APP_DETAIL_CHALLENGE": "كانت شركة نقل إقليمية تفتقر إلى رؤية في الوقت الفعلي لأسطولها المكون من 150 شاحنة. اعتمد المرسلون على المكالمات الهاتفية ، مما أدى إلى عدم كفاءة المسار وارتفاع تكاليف الوقود.",
     "CASE_MOBILE_APP_DETAIL_SOLUTION": "قمنا بتطوير تطبيقات iOS و Android أصلية للسائقين ولوحة معلومات ويب للمرسلين. تستخدم التطبيقات تحديد الموقع الجغرافي للتتبع المباشر وتحسين المسار ورقمنة أوامر التسليم.",
     "CASE_MOBILE_APP_DETAIL_RESULT": "تحسنت كفاءة الأسطول بنسبة 40٪. تم تخفيض تكاليف الوقود بنسبة 18٪ بفضل تحسين المسار. تحسن وقت استجابة خدمة العملاء بشكل كبير مع القدرة على تتبع عمليات التسليم في الوقت الفعلي.",
-    "DETAIL_CHALLENGE_TITLE": "المشكلة",
+    "DETAIL_CHallenge_TITLE": "المشكلة",
     "DETAIL_SOLUTION_TITLE": "حلنا",
     "DETAIL_RESULT_TITLE": "النتيجة",
     "CTA_EYEBROW": "هل أنت مستعد لتكون قصة نجاحنا التالية؟",
