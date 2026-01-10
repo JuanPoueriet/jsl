@@ -34,6 +34,7 @@ export class LanguageSwitcher implements OnInit, OnDestroy {
     @Inject(TranslateService) public translate: TranslateService,
     private router: Router,
   ) {
+    this.translate.addLangs(['en', 'es', 'it', 'ja', 'ko', 'zh', 'pt', 'fr', 'de', 'ar']);
     this.currentLang =
       this.translate.currentLang || this.translate.defaultLang || 'es';
   }
