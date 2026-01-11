@@ -34,6 +34,19 @@ export class App implements OnInit {
   ) {
     this.seo.init();
     this.isBrowser = isPlatformBrowser(this.platformId);
+    this.translate.addLangs([
+      'en',
+      'es',
+      'ar',
+      'de',
+      'fr',
+      'it',
+      'ja',
+      'ko',
+      'pt',
+      'zh',
+    ]);
+    this.translate.setDefaultLang('en');
   }
 
   ngOnInit() {
@@ -55,7 +68,7 @@ export class App implements OnInit {
     const supportedLangs = this.translate.getLangs();
     const finalLang = (supportedLangs.includes(browserLang)
       ? browserLang
-      : this.translate.getDefaultLang()) || 'es'; // Ensure finalLang is always a string
+      : this.translate.getDefaultLang()) || 'en';
 
     this.cookieService.set('lang', finalLang, { expires: 365, path: '/' });
     this.translate.use(finalLang);
