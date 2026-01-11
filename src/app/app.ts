@@ -46,7 +46,6 @@ export class App implements OnInit {
       'pt',
       'zh',
     ]);
-    this.translate.setDefaultLang('en');
   }
 
   ngOnInit() {
@@ -59,16 +58,17 @@ export class App implements OnInit {
 
   private initializeLanguage(): void {
     const langCookie = this.cookieService.get('lang');
-    if (langCookie) {
+    if (langCookie && this.translate.getLangs().includes(langCookie)) {
       this.translate.use(langCookie);
       return;
     }
 
-    const browserLang = navigator.language.split('-')[0];
+    const browserLang = this.translate.getBrowserLang();
     const supportedLangs = this.translate.getLangs();
-    const finalLang = (supportedLangs.includes(browserLang)
-      ? browserLang
-      : this.translate.getDefaultLang()) || 'en';
+    const finalLang =
+      browserLang && supportedLangs.includes(browserLang)
+        ? browserLang
+        : 'en';
 
     this.cookieService.set('lang', finalLang, { expires: 365, path: '/' });
     this.translate.use(finalLang);

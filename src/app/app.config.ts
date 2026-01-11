@@ -65,7 +65,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     provideAnimationsAsync(),
     provideTranslateService({
-      fallbackLang: 'es',
+      fallbackLang: 'en',
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,
