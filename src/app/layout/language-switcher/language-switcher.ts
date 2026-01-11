@@ -35,8 +35,13 @@ export class LanguageSwitcher implements OnInit, OnDestroy {
     private router: Router,
   ) {
     this.translate.addLangs(['en', 'es', 'it', 'ja', 'ko', 'zh', 'pt', 'fr', 'de', 'ar']);
-    this.currentLang =
-      this.translate.currentLang || this.translate.defaultLang || 'es';
+    const browserLang = this.translate.getBrowserLang();
+    const langToUse =
+      browserLang && this.translate.getLangs().includes(browserLang)
+        ? browserLang
+        : 'es';
+    this.translate.use(langToUse);
+    this.currentLang = langToUse;
   }
 
   ngOnInit(): void {
