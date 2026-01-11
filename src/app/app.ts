@@ -21,7 +21,7 @@ import { ChatBubbleComponent } from './shared/components/chat-bubble/chat-bubble
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App implements OnInit {
+export class App {
   title = 'jsl-technology-web';
   isScrolled = false;
   private isBrowser: boolean;
@@ -46,9 +46,7 @@ export class App implements OnInit {
       'pt',
       'zh',
     ]);
-  }
 
-  ngOnInit() {
     if (this.isBrowser) {
       this.initializeLanguage();
       // Ejecutar al cargar la página
