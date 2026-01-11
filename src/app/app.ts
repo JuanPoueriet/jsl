@@ -7,6 +7,7 @@ import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
 import { Seo } from './core/services/seo';
 import { ChatBubbleComponent } from './shared/components/chat-bubble/chat-bubble';
+import { SUPPORTED_LANGUAGES } from '@core/constants/languages';
 
 @Component({
   selector: 'jsl-root',
@@ -34,18 +35,7 @@ export class App {
   ) {
     this.seo.init();
     this.isBrowser = isPlatformBrowser(this.platformId);
-    this.translate.addLangs([
-      'en',
-      'es',
-      'ar',
-      'de',
-      'fr',
-      'it',
-      'ja',
-      'ko',
-      'pt',
-      'zh',
-    ]);
+    this.translate.addLangs(SUPPORTED_LANGUAGES);
 
     if (this.isBrowser) {
       this.initializeLanguage();

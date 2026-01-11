@@ -8,6 +8,7 @@ import express from 'express';
 import { join } from 'node:path';
 // --- AÑADIDO: Importar los datos para el sitemap dinámico ---
 import { PROJECTS, BLOG_POSTS } from './app/core/data/mock-data';
+import { SUPPORTED_LANGUAGES } from './app/core/constants/languages';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -16,8 +17,31 @@ const angularApp = new AngularNodeAppEngine();
 
 
 app.get('/', (req, res) => {
-  // 302 es una redirección temporal, lo cual es apropiado aquí.
-  res.redirect(302, '/es');
+  const supportedLangs = SUPPORTED_LANGUAGES;
+  const defaultLang = 'en';
+
+  const acceptLanguage = req.headers['accept-language'];
+  if (acceptLanguage) {
+    // Procesa el header 'Accept-Language' para encontrar el mejor idioma
+    const langs = acceptLanguage.split(',').map(lang => {
+      const parts = lang.trim().split(';');
+      return { code: parts[0].split('-')[0], q: parts[1] ? parseFloat(parts[1].split('=')[1]) : 1.0 };
+    });
+
+    // Ordena por 'quality value' (q)
+    langs.sort((a, b) => b.q - a.q);
+
+    // Encuentra el primer idioma soportado
+    for (const lang of langs) {
+      if (supportedLangs.includes(lang.code)) {
+        res.redirect(302, `/${lang.code}`);
+        return;
+      }
+    }
+  }
+
+  // Si no hay header o no hay coincidencia, redirige al idioma por defecto
+  res.redirect(302, `/${defaultLang}`);
 });
 
 
@@ -38,7 +62,7 @@ const staticRoutes = [
 ];
 
 const domain = 'https://www.jsl.technology';
-const supportedLangs = ['es', 'en'];
+const supportedLangs = SUPPORTED_LANGUAGES;
 const defaultLang = 'es';
 
 /**
