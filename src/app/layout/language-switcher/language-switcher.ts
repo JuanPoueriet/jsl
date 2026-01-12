@@ -77,10 +77,26 @@ export class LanguageSwitcher implements OnInit, OnDestroy {
   }
 
   toggleDropdown(): void {
+    // Calculate position before opening
+    if (!this.isDropdownOpen) {
+      this.calculateDropdownPosition();
+    }
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   closeDropdown(): void {
     this.isDropdownOpen = false;
+  }
+
+  private calculateDropdownPosition(): void {
+    const elementRect = this.elementRef.nativeElement.getBoundingClientRect();
+    const spaceBelow = window.innerHeight - elementRect.bottom;
+
+    // Estimate dropdown height based on number of languages
+    // (approx. 40px per item + some padding)
+    const dropdownHeight = this.languages.length * 40 + 20; 
+
+    // If not enough space below, open upwards
+    this.opensUp = spaceBelow < dropdownHeight;
   }
 }

@@ -83,6 +83,17 @@
     transform: translateY(0);
     pointer-events: auto;
   }
+
+  // --- Style for opening upwards ---
+  &.opens-up {
+    top: auto;
+    bottom: calc(100% + 10px);
+    // Adjust animation for upward opening
+    transform: translateY(10px);
+    &.is-open {
+      transform: translateY(0);
+    }
+  }
   // --- FIN ANIMACIÓN ---
 
   a {

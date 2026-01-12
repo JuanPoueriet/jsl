@@ -10,7 +10,10 @@
     <lucide-icon name="ChevronDown"></lucide-icon>
   </button>
 
-  <div class="lang-switcher__dropdown" [class.is-open]="isDropdownOpen">
+  <div 
+    class="lang-switcher__dropdown" 
+    [class.is-open]="isDropdownOpen"
+    [class.opens-up]="opensUp">
     <a
       *ngFor="let lang of languages"
       [routerLink]="getRouteForLang(lang.code)"
