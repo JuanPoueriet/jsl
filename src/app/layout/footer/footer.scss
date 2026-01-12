@@ -31,11 +31,11 @@
   
   // --- INICIO DE LA CORRECCIÓN ---
   
-  // 1. Columnas proporcionales para escritorio
-  grid-template-columns: 1.5fr 1fr 1fr 1.25fr; 
+  // 1. Columnas proporcionales para escritorio (con columna de idioma)
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.25fr; 
   
-  // 2. Definición de áreas para ESCRITORIO (esto faltaba)
-  grid-template-areas: "main links1 links2 newsletter";
+  // 2. Definición de áreas para ESCRITORIO
+  grid-template-areas: "main links1 links2 lang newsletter";
   gap: 3rem;
   
   // --- FIN DE LA CORRECCIÓN ---
@@ -48,6 +48,7 @@
     grid-template-areas: 
       "main main"
       "links1 links2"
+      "lang lang"
       "newsletter newsletter";
   }
 
@@ -59,7 +60,8 @@
       "main"
       "newsletter"
       "links1"
-      "links2";
+      "links2"
+      "lang";
     text-align: center;
   }
 }
@@ -83,6 +85,9 @@
   }
   &:nth-of-type(3) { // Columna de Recursos
     grid-area: links2;
+  }
+  &:nth-of-type(4) { // Columna de Idioma
+    grid-area: lang;
   }
 }
 

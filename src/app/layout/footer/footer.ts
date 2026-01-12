@@ -7,11 +7,12 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '@core/services/api.service'; // 1. Importar ApiService
 import { finalize } from 'rxjs/operators'; // 2. Importar finalize
+import { LanguageSwitcher } from '@app/layout/language-switcher';
 
 @Component({
   selector: 'jsl-footer',
   standalone: true,
-  imports: [CommonModule, RouterLink, TranslateModule, LucideAngularModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterLink, TranslateModule, LucideAngularModule, ReactiveFormsModule, LanguageSwitcher],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
