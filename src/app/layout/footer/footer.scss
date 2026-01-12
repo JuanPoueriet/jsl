@@ -31,11 +31,11 @@
   
   // --- INICIO DE LA CORRECCIÓN ---
   
-  // 1. Columnas proporcionales para escritorio (con columna de idioma)
-  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.25fr; 
+  // 1. Columnas proporcionales para escritorio (sin columna de idioma)
+  grid-template-columns: 1.5fr 1fr 1fr 1.25fr;
   
   // 2. Definición de áreas para ESCRITORIO
-  grid-template-areas: "main links1 links2 lang newsletter";
+  grid-template-areas: "main links1 links2 newsletter";
   gap: 3rem;
   
   // --- FIN DE LA CORRECCIÓN ---
@@ -48,7 +48,6 @@
     grid-template-areas: 
       "main main"
       "links1 links2"
-      "lang lang"
       "newsletter newsletter";
   }
 
@@ -60,8 +59,7 @@
       "main"
       "newsletter"
       "links1"
-      "links2"
-      "lang";
+      "links2";
     text-align: center;
   }
 }
@@ -85,9 +83,6 @@
   }
   &:nth-of-type(3) { // Columna de Recursos
     grid-area: links2;
-  }
-  &:nth-of-type(4) { // Columna de Idioma
-    grid-area: lang;
   }
 }
 
@@ -337,10 +332,21 @@
   color: var(--text-secondary);
   font-size: 0.85rem;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
+  flex-wrap: wrap;
+
+  jsl-language-switcher {
+    // This pushes the language switcher and subsequent elements to the right
+    margin-left: auto;
+  }
+
+  // --- Mobile adjustment ---
+  @media (max-width: 768px) {
+    jsl-language-switcher {
+      margin-left: 0; // Reset margin for centered column layout
+    }
+  }
 }
 
 .footer__bottom-links {

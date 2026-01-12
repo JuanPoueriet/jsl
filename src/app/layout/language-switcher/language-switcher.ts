@@ -1,6 +1,6 @@
 // src/app/layout/language-switcher/language-switcher.ts
 
-import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, NavigationEnd } from '@angular/router';
@@ -26,6 +26,7 @@ export class LanguageSwitcher implements OnInit, OnDestroy {
   public currentLang: string = 'es';
   public isDropdownOpen = false;
   public languages: { code: string; name: string }[] = [];
+  public opensUp = false;
 
   private routerSubscription: Subscription | undefined;
   private currentRouteWithoutLang: string[] = [];
@@ -33,6 +34,7 @@ export class LanguageSwitcher implements OnInit, OnDestroy {
   constructor(
     @Inject(TranslateService) public translate: TranslateService,
     private router: Router,
+    private elementRef: ElementRef,
   ) {}
 
   ngOnInit(): void {

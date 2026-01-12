@@ -59,11 +59,6 @@
       </ul>
     </div>
 
-    <div class="footer__col">
-      <h3 class="footer__col-title">{{ 'FOOTER.LANGUAGE' | translate }}</h3>
-      <jsl-language-switcher></jsl-language-switcher>
-    </div>
-
     <div class="footer__col footer__col--newsletter">
       <h3 class="footer__col-title">{{ 'FOOTER.NEWSLETTER_TITLE' | translate }}</h3>
       <p class="footer__newsletter-subtitle">{{ 'FOOTER.NEWSLETTER_SUBTITLE' | translate }}</p>
@@ -118,6 +113,9 @@
   
   <div class="footer__bottom container">
     <p>&copy; {{ currentYear }} JSL Technology. {{ 'FOOTER.COPYRIGHT' | translate }}</p>
+    
+    <jsl-language-switcher></jsl-language-switcher>
+
     <div class="footer__bottom-links">
       <a [routerLink]="[currentLang(), 'privacy-policy']">{{ 'LEGAL.PRIVACY_TITLE' | translate }}</a>
       <a [routerLink]="[currentLang(), 'terms-of-service']">{{ 'LEGAL.TERMS_TITLE' | translate }}</a>
