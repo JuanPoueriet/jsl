@@ -53,7 +53,12 @@ import {
   Bookmark,
   Share2,
   Link,
-  FileText
+  FileText,
+  LayoutTemplate,
+  Zap,
+  ShieldCheck,
+  Gauge,
+  Lock,
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
@@ -81,7 +86,12 @@ export const ICON_LIST = {
     Bookmark,
     Share2,
     Link,
-    FileText
+    FileText,
+    LayoutTemplate,
+    Zap,
+    ShieldCheck,
+    Gauge,
+    Lock,
   },
   // Redes sociales
   Social: {
