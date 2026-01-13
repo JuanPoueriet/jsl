@@ -25,6 +25,12 @@ export interface Solution {
   key: string;
   slug: string;
   icon: string;
+  heroImage: string;
+  sections: {
+    titleKey: string;
+    contentKey: string;
+  }[];
+  technologies: string[];
 }
 
 // Interface para Productos

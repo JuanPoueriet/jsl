@@ -910,16 +910,18 @@
     // padding-left: 1rem;
     // padding-right: 1rem;
   }
-  
-  --swiper-pagination-color: var(--accent-primary);
-  --swiper-pagination-bullet-inactive-color: var(--border-color);
-  --swiper-pagination-bullet-inactive-opacity: 1;
-  
-  // --- INICIO: Corrección Paginación ---
-  // 1. Colocar los puntos LO MÁS ABAJO POSIBLE (pero visibles)
-  //    Un valor positivo pequeño los sitúa cerca del borde inferior.
-  --swiper-pagination-bottom: 0.5rem; // <-- Ajustado a 0.5rem
-  // --- FIN: Corrección Paginación ---
+
+  & {
+    --swiper-pagination-color: var(--accent-primary);
+    --swiper-pagination-bullet-inactive-color: var(--border-color);
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    
+    // --- INICIO: Corrección Paginación ---
+    // 1. Colocar los puntos LO MÁS ABAJO POSIBLE (pero visibles)
+    //    Un valor positivo pequeño los sitúa cerca del borde inferior.
+    --swiper-pagination-bottom: 0.5rem; // <-- Ajustado a 0.5rem
+    // --- FIN: Corrección Paginación ---
+  }
 
   swiper-slide {
     height: auto;

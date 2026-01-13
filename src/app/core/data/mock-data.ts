@@ -12,21 +12,77 @@ export const SOLUTIONS = [
     key: 'WEB',
     slug: 'web-development',
     icon: 'Monitor',
+    heroImage: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?fit=crop&w=1200&q=80',
+    sections: [
+      {
+        titleKey: 'SOLUTIONS.WEB_SECTION_FRONTEND_TITLE',
+        contentKey: 'SOLUTIONS.WEB_SECTION_FRONTEND_DESC',
+      },
+      {
+        titleKey: 'SOLUTIONS.WEB_SECTION_BACKEND_TITLE',
+        contentKey: 'SOLUTIONS.WEB_SECTION_BACKEND_DESC',
+      },
+      {
+        titleKey: 'SOLUTIONS.WEB_SECTION_DEVOPS_TITLE',
+        contentKey: 'SOLUTIONS.WEB_SECTION_DEVOPS_DESC',
+      },
+    ],
+    technologies: ['Angular', 'React', 'Vue.js', 'Node.js', 'NestJS', '.NET', 'AWS', 'Azure', 'Docker'],
   },
   {
     key: 'MOBILE',
     slug: 'mobile-apps',
     icon: 'Smartphone',
+    heroImage: 'https://images.unsplash.com/photo-1607936834114-0a300c3f0b24?fit=crop&w=1200&q=80',
+    sections: [
+      {
+        titleKey: 'SOLUTIONS.MOBILE_SECTION_NATIVE_TITLE',
+        contentKey: 'SOLUTIONS.MOBILE_SECTION_NATIVE_DESC',
+      },
+      {
+        titleKey: 'SOLUTIONS.MOBILE_SECTION_HYBRID_TITLE',
+        contentKey: 'SOLUTIONS.MOBILE_SECTION_HYBRID_DESC',
+      },
+    ],
+    technologies: ['Swift', 'Kotlin', 'Flutter', 'React Native', 'Firebase'],
   },
   {
     key: 'DESKTOP',
     slug: 'desktop-software',
     icon: 'Server',
+    heroImage: 'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?fit=crop&w=1200&q=80',
+    sections: [
+      {
+        titleKey: 'SOLUTIONS.DESKTOP_SECTION_WINDOWS_TITLE',
+        contentKey: 'SOLUTIONS.DESKTOP_SECTION_WINDOWS_DESC',
+      },
+      {
+        titleKey: 'SOLUTIONS.DESKTOP_SECTION_MACOS_TITLE',
+        contentKey: 'SOLUTIONS.DESKTOP_SECTION_MACOS_DESC',
+      },
+    ],
+    technologies: ['.NET', 'WPF', 'Electron', 'JavaFX', 'Swift'],
   },
   {
     key: 'CLOUD',
     slug: 'cloud-architecture',
     icon: 'Cloud',
+    heroImage: 'https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?fit=crop&w=1200&q=80',
+    sections: [
+      {
+        titleKey: 'SOLUTIONS.CLOUD_SECTION_IAAS_TITLE',
+        contentKey: 'SOLUTIONS.CLOUD_SECTION_IAAS_DESC',
+      },
+      {
+        titleKey: 'SOLUTIONS.CLOUD_SECTION_PAAS_TITLE',
+        contentKey: 'SOLUTIONS.CLOUD_SECTION_PAAS_DESC',
+      },
+      {
+        titleKey: 'SOLUTIONS.CLOUD_SECTION_SAAS_TITLE',
+        contentKey: 'SOLUTIONS.CLOUD_SECTION_SAAS_DESC',
+      },
+    ],
+    technologies: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Terraform'],
   },
 ];
 
