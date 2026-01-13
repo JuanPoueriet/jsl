@@ -25,6 +25,7 @@ import * as ja from '@assets/i18n/ja.json';
 import * as ko from '@assets/i18n/ko.json';
 import * as pt from '@assets/i18n/pt.json';
 import * as zh from '@assets/i18n/zh.json';
+import * as ht from '@assets/i18n/ht.json';
 
 export function createTranslateLoader(): TranslateLoader {
   return {
@@ -48,6 +49,8 @@ export function createTranslateLoader(): TranslateLoader {
           return of(pt);
         case 'zh':
           return of(zh);
+        case 'ht':
+          return of(ht);
         default:
           return of(en);
       }

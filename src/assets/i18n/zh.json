@@ -44,7 +44,9 @@
     "IT_FULL": "Italiano (IT)",
     "JA_FULL": "日本語 (JA)",
     "KO_FULL": "한국어 (KO)",
-    "ZH_FULL": "简体中文 (ZH)"
+    "ZH_FULL": "中文 (ZH)",
+    "HT": "海地克里奥尔语",
+    "HT_FULL": "Kreyòl Ayisyen (HT)"
   },
   "FOOTER": {
     "SLOGAN": "为未来的领导者提供动力的软件解决方案。",

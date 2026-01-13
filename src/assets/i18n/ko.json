@@ -44,7 +44,9 @@
     "IT_FULL": "Italiano (IT)",
     "JA_FULL": "日本語 (JA)",
     "KO_FULL": "한국어 (KO)",
-    "ZH_FULL": "简体中文 (ZH)"
+    "ZH_FULL": "中文 (ZH)",
+    "HT": "아이티 크리올어",
+    "HT_FULL": "Kreyòl Ayisyen (HT)"
   },
   "FOOTER": {
     "SLOGAN": "내일의 리더를 지원하는 소프트웨어 솔루션.",

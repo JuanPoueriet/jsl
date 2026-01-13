@@ -44,7 +44,9 @@
     "IT_FULL": "Italiano (IT)",
     "JA_FULL": "日本語 (JA)",
     "KO_FULL": "한국어 (KO)",
-    "ZH_FULL": "中文 (ZH)"
+    "ZH_FULL": "中文 (ZH)",
+    "HT": "الكريولية الهايتية",
+    "HT_FULL": "Kreyòl Ayisyen (HT)"
   },
   "FOOTER": {
     "SLOGAN": "حلول برمجية تدعم قادة المستقبل.",

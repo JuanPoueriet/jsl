@@ -9,4 +9,5 @@ export const SUPPORTED_LANGUAGES: string[] = [
   'ko',
   'pt',
   'zh',
+  'ht',
 ];
