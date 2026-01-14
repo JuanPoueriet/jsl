@@ -33,11 +33,17 @@
   border-radius: $border-radius-lg;
   padding: 2.5rem 2rem;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transform: translateY(20px); // Estado inicial para la animación
+
+  &.is-visible {
+    transform: translateY(0);
+  }
 
   &:hover {
     transform: translateY(-10px);
-    box-shadow: $box-shadow-lg;
+    box-shadow: $box-shadow-xl;
+    border-color: var(--primary-color);
   }
 
   .step-icon {

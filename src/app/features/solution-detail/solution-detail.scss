@@ -5,6 +5,7 @@
 @use "app/styles/mixins" as *;
 
 // Importar parciales de estilos específicos de la página.
+@use "app/features/solution-detail/styles/animations";
 @use "app/features/solution-detail/styles/page-header";
 @use "app/features/solution-detail/styles/intro";
 @use "app/features/solution-detail/styles/benefits";
