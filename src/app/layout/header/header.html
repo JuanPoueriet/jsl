@@ -9,7 +9,12 @@
 
     <ul class="header__nav-links">
       <li class="dropdown" [class.open]="openDropdown === 'solutions'">
-        <button class="dropdown-toggle" (click)="toggleDropdown('solutions', $event)">
+        <button
+          class="dropdown-toggle"
+          (click)="toggleDropdown('solutions', $event)"
+          aria-haspopup="true"
+          [attr.aria-expanded]="openDropdown === 'solutions'"
+        >
           {{ 'HEADER.SERVICES' | translate }}
           <lucide-icon name="ChevronDown"></lucide-icon>
         </button>
@@ -49,7 +54,12 @@
       </li>
       
       <li class="dropdown" [class.open]="openDropdown === 'products'">
-        <button class="dropdown-toggle" (click)="toggleDropdown('products', $event)">
+        <button
+          class="dropdown-toggle"
+          (click)="toggleDropdown('products', $event)"
+          aria-haspopup="true"
+          [attr.aria-expanded]="openDropdown === 'products'"
+        >
           {{ 'HEADER.PRODUCTS' | translate }}
           <lucide-icon name="ChevronDown"></lucide-icon>
         </button>
@@ -83,7 +93,12 @@
       </li>
 
       <li class="dropdown" [class.open]="openDropdown === 'company'">
-        <button class="dropdown-toggle" (click)="toggleDropdown('company', $event)">
+        <button
+          class="dropdown-toggle"
+          (click)="toggleDropdown('company', $event)"
+          aria-haspopup="true"
+          [attr.aria-expanded]="openDropdown === 'company'"
+        >
           {{ 'FOOTER.COMPANY' | translate }}
           <lucide-icon name="ChevronDown"></lucide-icon>
         </button>
@@ -116,7 +131,12 @@
       </li>
 
       <li class="dropdown" [class.open]="openDropdown === 'resources'">
-        <button class="dropdown-toggle" (click)="toggleDropdown('resources', $event)">
+        <button
+          class="dropdown-toggle"
+          (click)="toggleDropdown('resources', $event)"
+          aria-haspopup="true"
+          [attr.aria-expanded]="openDropdown === 'resources'"
+        >
           {{ 'FOOTER.RESOURCES' | translate }}
           <lucide-icon name="ChevronDown"></lucide-icon>
         </button>
@@ -156,7 +176,12 @@
     </ul>
     <div class="header__controls">
       <jsl-language-switcher class="header__mobile-lang-switcher"></jsl-language-switcher>
-      <button class="header__mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+      <button
+        class="header__mobile-toggle"
+        (click)="toggleMobileMenu()"
+        aria-label="Toggle menu"
+        [attr.aria-expanded]="isMobileMenuOpen"
+      >
         @if (!isMobileMenuOpen) {
         <lucide-icon name="Menu"></lucide-icon>
         } @else {
