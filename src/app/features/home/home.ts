@@ -1,5 +1,5 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject, AfterViewInit } from '@angular/core';
-import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterLink } from '@angular/router';
@@ -7,12 +7,10 @@ import { Card } from '@shared/components/card/card';
 import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
 import { DataService } from '@core/services/data.service';
 import { SwiperOptions } from 'swiper/types';
-// import { EffectFade, Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import { toSignal } from '@angular/core/rxjs-interop';
-// import { register } from 'swiper/element/bundle';
 
 // Swiper Web Components
-import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import { Pagination, Autoplay, EffectCoverflow, EffectFade } from 'swiper/modules';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -31,10 +29,9 @@ register();
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class Home implements OnInit, AfterViewInit {
-
+export class Home implements OnInit {
   public heroSwiperConfig: SwiperOptions = {
     modules: [EffectFade, Autoplay, Pagination],
     effect: 'fade',
@@ -95,41 +92,6 @@ export class Home implements OnInit, AfterViewInit {
       this.currentLang = event.lang;
     });
   }
-
-   ngAfterViewInit(): void {
-    if (!isPlatformBrowser(this.platformId)) return;
-
-    setTimeout(() => {
-      const swiperEl = this.el.nativeElement.querySelector('swiper-container');
-
-      if (swiperEl) {
-        Object.assign(swiperEl, {
-          modules: [Pagination, Autoplay],
-          spaceBetween: 15,
-          slidesPerView: 1.4,
-          centeredSlides: true,
-          grabCursor: true,
-          pagination: {
-            clickable: true,
-            dynamicBullets: true,
-          },
-          // autoplay: {
-          //   delay: 5000,
-          //   disableOnInteraction: false,
-          // },
-          // breakpoints: {
-          //   640: { slidesPerView: 1.5 },
-          //   768: { slidesPerView: 2 },
-          //   1024: { slidesPerView: 2.5 },
-          //   1200: { slidesPerView: 3 },
-          // },
-        });
-
-        swiperEl.initialize();
-      }
-    }, 0);
-  }
-
 
   getStars(count: number): any[] {
     return new Array(count);
