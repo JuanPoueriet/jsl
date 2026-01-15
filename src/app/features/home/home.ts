@@ -21,7 +21,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 // import { register } from 'swiper/element/bundle';
 
 // Swiper Web Components
-import { Pagination, Autoplay, EffectCoverflow, EffectFade } from 'swiper/modules';
+import { Pagination, Autoplay, EffectCoverflow, EffectFade, Navigation } from 'swiper/modules';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -116,20 +116,27 @@ export class Home implements OnInit, AfterViewInit {
 
       if (swiperEl) {
         Object.assign(swiperEl, {
-          modules: [Pagination, Autoplay],
+          modules: [Pagination, Autoplay, Navigation],
           // spaceBetween: 15,
-          slidesPerView: 1,
-          centeredSlides: true,
+          // slidesPerView: 1,
+          // centeredSlides: true,
           grabCursor: true,
+
           loop: true, // ← Agrega esta línea para el bucle infinito
           // pagination: {
           //   clickable: true,
           //   dynamicBullets: true,
           // },
           autoplay: {
-            delay: 1000,
+            delay: 5000,
             disableOnInteraction: false,
           },
+          navigation: true,
+
+          // navigation: {
+          //   nextEl: '.swiper-button-next',
+          //   prevEl: '.swiper-button-prev',
+          // },
           // breakpoints: {
           //   640: { slidesPerView: 1.5 },
           //   768: { slidesPerView: 2 },
