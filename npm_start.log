@@ -1,0 +1,79 @@
+
+> app@0.0.0 start
+> ng serve
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+❯ Building...
+✔ Building...
+Browser bundles
+Initial chunk files  | Names            |  Raw size
+main.js              | main             | 787.09 kB |
+chunk-JCVSLWER.js    | -                |   6.80 kB |
+styles.css           | styles           |   4.80 kB |
+chunk-GBSWAXD5.js    | -                |   1.84 kB |
+chunk-HPK2B4U2.js    | -                |   1.71 kB |
+chunk-SG2LYVAH.js    | -                | 894 bytes |
+
+                     | Initial total    | 803.13 kB
+
+Lazy chunk files     | Names            |  Raw size
+chunk-FSRLSYQQ.js    | blog-detail      |  97.34 kB |
+chunk-ELXHR2PF.js    | careers          |  92.11 kB |
+chunk-XN4DO3KI.js    | home             |  89.34 kB |
+chunk-EILJK7RE.js    | solution-detail  |  47.88 kB |
+chunk-DSHP7HWF.js    | contact          |  36.17 kB |
+chunk-IZ2ZR5JU.js    | industries       |  31.02 kB |
+chunk-Q47CUZ4S.js    | blog             |  27.41 kB |
+chunk-3YHZTUF7.js    | about-us         |  25.67 kB |
+chunk-VZGEMDMV.js    | tech-stack       |  22.14 kB |
+chunk-GJKTOEUG.js    | -                |  16.73 kB |
+chunk-2RJ7M4JP.js    | faq              |  13.06 kB |
+chunk-UTWUEF4I.js    | process          |  13.03 kB |
+chunk-VJDTCWSR.js    | project-detail   |  12.92 kB |
+chunk-IJ33RPMP.js    | -                |  12.87 kB |
+chunk-3KZEEIMQ.js    | product-detail   |  12.21 kB |
+...and 7 more lazy chunks files. Use "--verbose" to show all the files.
+
+
+Server bundles
+Initial chunk files  | Names            |  Raw size
+main.server.mjs      | main.server      | 790.80 kB |
+chunk-QGX67DBA.mjs   | -                |  10.39 kB |
+server.mjs           | server           |   6.86 kB |
+chunk-XHQMSYBK.mjs   | -                |   6.84 kB |
+chunk-FI7F2UFK.mjs   | -                |   1.87 kB |
+chunk-BERPKG6E.mjs   | -                |   1.75 kB |
+chunk-VI6KR4OF.mjs   | -                | 928 bytes |
+polyfills.server.mjs | polyfills.server | 243 bytes |
+
+Lazy chunk files     | Names            |  Raw size
+chunk-LPRMXTYK.mjs   | blog-detail      |  97.42 kB |
+chunk-4QHMU5ZF.mjs   | careers          |  92.17 kB |
+chunk-EMORZPIW.mjs   | home             |  89.41 kB |
+chunk-745HVEYG.mjs   | solution-detail  |  47.95 kB |
+chunk-DXLNU2AT.mjs   | contact          |  36.21 kB |
+chunk-EXUALMKG.mjs   | industries       |  31.06 kB |
+chunk-SCTNUL6Q.mjs   | blog             |  27.48 kB |
+chunk-OR467PUF.mjs   | about-us         |  25.74 kB |
+chunk-S2BON2FA.mjs   | tech-stack       |  22.21 kB |
+chunk-SF2LTFOZ.mjs   | -                |  16.76 kB |
+chunk-IOTBWTQ4.mjs   | faq              |  13.13 kB |
+chunk-7TP3KOVF.mjs   | process          |  13.10 kB |
+chunk-3X6EMPXL.mjs   | project-detail   |  12.99 kB |
+chunk-DWI7OF3X.mjs   | product-detail   |  12.28 kB |
+chunk-M6DNOW5D.mjs   | not-found        |  11.52 kB |
+...and 7 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [10.536 seconds] - 2026-01-15T05:47:52.444Z
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: RouterLink is not used within the template of TopBar[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layout/top-bar/top-bar.ts:13:4:
+[37m      13 │     [32mRouterLink[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://localhost:4200/
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
