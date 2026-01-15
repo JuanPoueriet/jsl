@@ -1,4 +1,13 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, inject, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  OnInit,
+  inject,
+  AfterViewInit,
+  Inject,
+  PLATFORM_ID,
+  ElementRef,
+} from '@angular/core';
 import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
@@ -12,7 +21,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 // import { register } from 'swiper/element/bundle';
 
 // Swiper Web Components
-import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import { Pagination, Autoplay, EffectCoverflow, EffectFade } from 'swiper/modules';
 import { register } from 'swiper/element/bundle';
 
 register();
@@ -31,15 +40,14 @@ register();
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class Home implements OnInit, AfterViewInit {
-
   public heroSwiperConfig: SwiperOptions = {
     modules: [EffectFade, Autoplay, Pagination],
     effect: 'fade',
     fadeEffect: {
-      crossFade: true
+      crossFade: true,
     },
     pagination: {
       clickable: true,
@@ -86,6 +94,10 @@ export class Home implements OnInit, AfterViewInit {
   public products = toSignal(this.dataService.getProducts(), { initialValue: [] });
   public processSteps = toSignal(this.dataService.getProcessSteps(), { initialValue: [] });
 
+  private el = inject(ElementRef);
+
+  @Inject(PLATFORM_ID) private platformId = inject(PLATFORM_ID);
+
   constructor() {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
   }
@@ -96,7 +108,7 @@ export class Home implements OnInit, AfterViewInit {
     });
   }
 
-   ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
     setTimeout(() => {
@@ -105,18 +117,19 @@ export class Home implements OnInit, AfterViewInit {
       if (swiperEl) {
         Object.assign(swiperEl, {
           modules: [Pagination, Autoplay],
-          spaceBetween: 15,
-          slidesPerView: 1.4,
+          // spaceBetween: 15,
+          slidesPerView: 1,
           centeredSlides: true,
           grabCursor: true,
-          pagination: {
-            clickable: true,
-            dynamicBullets: true,
-          },
-          // autoplay: {
-          //   delay: 5000,
-          //   disableOnInteraction: false,
+          loop: true, // ← Agrega esta línea para el bucle infinito
+          // pagination: {
+          //   clickable: true,
+          //   dynamicBullets: true,
           // },
+          autoplay: {
+            delay: 1000,
+            disableOnInteraction: false,
+          },
           // breakpoints: {
           //   640: { slidesPerView: 1.5 },
           //   768: { slidesPerView: 2 },
@@ -129,7 +142,6 @@ export class Home implements OnInit, AfterViewInit {
       }
     }, 0);
   }
-
 
   getStars(count: number): any[] {
     return new Array(count);
