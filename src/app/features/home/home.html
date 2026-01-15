@@ -1,6 +1,5 @@
 <section class="hero-slider">
-  <!-- <swiper-container [config]="heroSwiperConfig" init="true"> -->
-  <swiper-container init="false">
+  <swiper-container [config]="heroSwiperConfig" init="true">
     <swiper-slide class="hero-slide">
       <img
         ngSrc="assets/imgs/Avif/img-2.avif"
@@ -47,6 +46,14 @@
       </div>
     </swiper-slide>
   </swiper-container>
+
+  <!-- Custom Navigation Buttons -->
+  <div class="hero-swiper-button-prev">
+    <lucide-icon name="ChevronLeft"></lucide-icon>
+  </div>
+  <div class="hero-swiper-button-next">
+    <lucide-icon name="ChevronRight"></lucide-icon>
+  </div>
 
   <div class="hero-bottom-bar">
     <div class="hero-bottom-bar__container container">

@@ -612,3 +612,55 @@ swiper-container {
 }
 
 // --- CAMBIO: Estilos .clients-section eliminados ---
+
+// --- 1.2. Hero Swiper Custom Navigation ---
+.hero-swiper-button-next,
+.hero-swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  opacity: 0; // Initially hidden
+
+  lucide-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+  }
+}
+
+.hero-slider:hover .hero-swiper-button-next,
+.hero-slider:hover .hero-swiper-button-prev {
+  opacity: 1; // Visible on slider hover
+}
+
+.hero-swiper-button-prev {
+  left: 2rem;
+}
+
+.hero-swiper-button-next {
+  right: 2rem;
+}
+
+// Responsividad para botones de navegación
+@media (max-width: 768px) {
+  .hero-swiper-button-next,
+  .hero-swiper-button-prev {
+    display: none;
+  }
+}

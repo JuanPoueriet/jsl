@@ -3,12 +3,8 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
   inject,
-  AfterViewInit,
-  Inject,
-  PLATFORM_ID,
-  ElementRef,
 } from '@angular/core';
-import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterLink } from '@angular/router';
@@ -42,9 +38,9 @@ register();
   styleUrl: './home.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class Home implements OnInit, AfterViewInit {
+export class Home implements OnInit {
   public heroSwiperConfig: SwiperOptions = {
-    modules: [EffectFade, Autoplay, Pagination],
+    modules: [EffectFade, Autoplay, Pagination, Navigation],
     effect: 'fade',
     fadeEffect: {
       crossFade: true,
@@ -57,6 +53,10 @@ export class Home implements OnInit, AfterViewInit {
       disableOnInteraction: false,
     },
     loop: true,
+    navigation: {
+      nextEl: '.hero-swiper-button-next',
+      prevEl: '.hero-swiper-button-prev',
+    },
   };
 
   public testimonialSwiperConfig: SwiperOptions = {
@@ -94,10 +94,6 @@ export class Home implements OnInit, AfterViewInit {
   public products = toSignal(this.dataService.getProducts(), { initialValue: [] });
   public processSteps = toSignal(this.dataService.getProcessSteps(), { initialValue: [] });
 
-  private el = inject(ElementRef);
-
-  @Inject(PLATFORM_ID) private platformId = inject(PLATFORM_ID);
-
   constructor() {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
   }
@@ -106,48 +102,6 @@ export class Home implements OnInit, AfterViewInit {
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
     });
-  }
-
-  ngAfterViewInit(): void {
-    if (!isPlatformBrowser(this.platformId)) return;
-
-    setTimeout(() => {
-      const swiperEl = this.el.nativeElement.querySelector('swiper-container');
-
-      if (swiperEl) {
-        Object.assign(swiperEl, {
-          modules: [Pagination, Autoplay, Navigation],
-          // spaceBetween: 15,
-          // slidesPerView: 1,
-          // centeredSlides: true,
-          grabCursor: true,
-
-          loop: true, // ← Agrega esta línea para el bucle infinito
-          // pagination: {
-          //   clickable: true,
-          //   dynamicBullets: true,
-          // },
-          autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-          },
-          navigation: true,
-
-          // navigation: {
-          //   nextEl: '.swiper-button-next',
-          //   prevEl: '.swiper-button-prev',
-          // },
-          // breakpoints: {
-          //   640: { slidesPerView: 1.5 },
-          //   768: { slidesPerView: 2 },
-          //   1024: { slidesPerView: 2.5 },
-          //   1200: { slidesPerView: 3 },
-          // },
-        });
-
-        swiperEl.initialize();
-      }
-    }, 0);
   }
 
   getStars(count: number): any[] {
