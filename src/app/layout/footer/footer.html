@@ -69,6 +69,7 @@
             type="email" 
             class="form-control" 
             [placeholder]="'FOOTER.NEWSLETTER_PLACEHOLDER' | translate" 
+            [attr.aria-label]="'FOOTER.NEWSLETTER_PLACEHOLDER' | translate"
             formControlName="email"
             [class.is-invalid]="nf['email'].invalid && (nf['email'].dirty || nf['email'].touched)">
           

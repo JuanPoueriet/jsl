@@ -1,0 +1,3 @@
+## 2026-01-16 - Critical Accessibility Gaps in Forms and Navigation
+**Learning:** Found critical accessibility patterns missing: 1) Input fields relying solely on placeholders without accessible labels (even hidden ones), and 2) Hardcoded English strings in ARIA attributes for navigation elements, bypassing the i18n system. This creates a fragmented experience for screen reader users in non-English locales.
+**Action:** Audit all form inputs for `aria-label` or `<label>` when visually hidden. Ensure all `aria-label` and `aria-description` attributes use the `translate` pipe. Added `.sr-only` utility to codebase to facilitate accessible hiding.

@@ -191,7 +191,7 @@
       <button
         class="header__mobile-toggle"
         (click)="toggleMobileMenu()"
-        aria-label="Toggle menu"
+        [attr.aria-label]="'HEADER.TOGGLE_MENU' | translate"
         [attr.aria-expanded]="isMobileMenuOpen"
       >
         @if (!isMobileMenuOpen) {
