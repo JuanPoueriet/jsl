@@ -267,8 +267,9 @@ li.dropdown {
   }
 }
 
-// Overlay para el menú móvil - siempre en el DOM
+// Overlay para el menú móvil
 .mobile-menu-overlay {
+  display: none; // Oculto por defecto para no interferir.
   position: fixed;
   top: 0;
   left: 0;
@@ -278,11 +279,11 @@ li.dropdown {
   z-index: 1200; // Entre el header y el menú móvil
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none;
   touch-action: none; // Prevenir scroll en el overlay
 
   // Estado visible
   &.visible {
+    display: block; // Se muestra al abrir el menú.
     opacity: 1;
     pointer-events: auto;
   }
