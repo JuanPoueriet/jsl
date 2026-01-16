@@ -7,6 +7,7 @@ import {
   Inject,
   PLATFORM_ID,
   ElementRef,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -16,9 +17,7 @@ import { Card } from '@shared/components/card/card';
 import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
 import { DataService } from '@core/services/data.service';
 import { SwiperOptions } from 'swiper/types';
-// import { EffectFade, Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import { toSignal } from '@angular/core/rxjs-interop';
-// import { register } from 'swiper/element/bundle';
 
 // Swiper Web Components
 import { Pagination, Autoplay, EffectCoverflow, EffectFade, Navigation } from 'swiper/modules';
@@ -44,19 +43,27 @@ register();
 })
 export class Home implements OnInit, AfterViewInit {
   public heroSwiperConfig: SwiperOptions = {
-    modules: [EffectFade, Autoplay, Pagination],
+    modules: [EffectFade, Autoplay, Pagination, Navigation],
     effect: 'fade',
     fadeEffect: {
       crossFade: true,
     },
     pagination: {
       clickable: true,
+      dynamicBullets: true,
     },
     autoplay: {
       delay: 5000,
       disableOnInteraction: false,
     },
     loop: true,
+    speed: 800,
+    grabCursor: true,
+    // ← CRÍTICO: Configuración de navegación CORRECTA
+    navigation: {
+      nextEl: '.hero-swiper-button-next',
+      prevEl: '.hero-swiper-button-prev',
+    },
   };
 
   public testimonialSwiperConfig: SwiperOptions = {
@@ -112,42 +119,142 @@ export class Home implements OnInit, AfterViewInit {
     if (!isPlatformBrowser(this.platformId)) return;
 
     setTimeout(() => {
-      const swiperEl = this.el.nativeElement.querySelector('swiper-container');
-
-      if (swiperEl) {
-        Object.assign(swiperEl, {
-          modules: [Pagination, Autoplay, Navigation],
-          // spaceBetween: 15,
-          // slidesPerView: 1,
-          // centeredSlides: true,
-          grabCursor: true,
-
-          loop: true, // ← Agrega esta línea para el bucle infinito
-          // pagination: {
-          //   clickable: true,
-          //   dynamicBullets: true,
-          // },
+      // 1. Hero Slider
+      const heroSwiperEl = this.el.nativeElement.querySelector('.hero-slider swiper-container');
+      
+      if (heroSwiperEl) {
+        // ← CRÍTICO: Configuración SIMPLIFICADA y DIRECTA
+        Object.assign(heroSwiperEl, {
+          modules: [EffectFade, Autoplay, Pagination, Navigation],
+          effect: 'fade',
+          fadeEffect: { crossFade: true },
+          pagination: { 
+            clickable: true,
+            dynamicBullets: true 
+          },
           autoplay: {
             delay: 5000,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           },
-          navigation: true,
-
-          // navigation: {
-          //   nextEl: '.swiper-button-next',
-          //   prevEl: '.swiper-button-prev',
-          // },
-          // breakpoints: {
-          //   640: { slidesPerView: 1.5 },
-          //   768: { slidesPerView: 2 },
-          //   1024: { slidesPerView: 2.5 },
-          //   1200: { slidesPerView: 3 },
-          // },
+          loop: true,
+          speed: 800,
+          grabCursor: true,
+          // ← CRÍTICO: Navegación correctamente configurada
+          navigation: {
+            nextEl: '.hero-swiper-button-next',
+            prevEl: '.hero-swiper-button-prev',
+            disabledClass: 'swiper-button-disabled',
+          },
         });
 
-        swiperEl.initialize();
+        // Inicializar
+        heroSwiperEl.initialize();
+        
+        // ← CRÍTICO: Forzar la visibilidad de los botones después de inicializar
+        setTimeout(() => {
+          // Asegurar que los botones estén visibles
+          const prevBtn = this.el.nativeElement.querySelector('.hero-swiper-button-prev');
+          const nextBtn = this.el.nativeElement.querySelector('.hero-swiper-button-next');
+          
+          if (prevBtn) {
+            prevBtn.style.opacity = '0.4';
+            prevBtn.style.visibility = 'visible';
+          }
+          if (nextBtn) {
+            nextBtn.style.opacity = '0.4';
+            nextBtn.style.visibility = 'visible';
+          }
+          
+          // Iniciar autoplay
+          if (heroSwiperEl.swiper && heroSwiperEl.swiper.autoplay) {
+            heroSwiperEl.swiper.autoplay.start();
+          }
+        }, 100);
       }
-    }, 0);
+
+      // 2. Testimonial Slider
+      const testimonialSwiperEl = this.el.nativeElement.querySelector('.testimonial-slider swiper-container');
+      
+      if (testimonialSwiperEl) {
+        Object.assign(testimonialSwiperEl, {
+          modules: [Pagination, Autoplay, EffectCoverflow],
+          effect: 'coverflow',
+          coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          },
+          spaceBetween: 30,
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          loop: true,
+          autoplay: {
+            delay: 7000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            clickable: true,
+          },
+        });
+
+        testimonialSwiperEl.initialize();
+        
+        setTimeout(() => {
+          if (testimonialSwiperEl.swiper && testimonialSwiperEl.swiper.autoplay) {
+            testimonialSwiperEl.swiper.autoplay.start();
+          }
+        }, 500);
+      }
+      
+      // ← NUEVO: Agregar event listeners manuales como fallback
+      this.setupCustomNavigation();
+      
+    }, 100); // Aumentado a 100ms para asegurar que el DOM esté listo
+  }
+
+  // ← NUEVO: Método para configurar navegación manual como fallback
+  private setupCustomNavigation(): void {
+    const prevButton = this.el.nativeElement.querySelector('.hero-swiper-button-prev');
+    const nextButton = this.el.nativeElement.querySelector('.hero-swiper-button-next');
+    const heroSwiperEl = this.el.nativeElement.querySelector('.hero-slider swiper-container');
+    
+    if (prevButton && heroSwiperEl) {
+      prevButton.addEventListener('click', () => {
+        if (heroSwiperEl.swiper) {
+          heroSwiperEl.swiper.slidePrev();
+          // Reiniciar autoplay
+          if (heroSwiperEl.swiper.autoplay) {
+            heroSwiperEl.swiper.autoplay.start();
+          }
+        }
+      });
+    }
+    
+    if (nextButton && heroSwiperEl) {
+      nextButton.addEventListener('click', () => {
+        if (heroSwiperEl.swiper) {
+          heroSwiperEl.swiper.slideNext();
+          // Reiniciar autoplay
+          if (heroSwiperEl.swiper.autoplay) {
+            heroSwiperEl.swiper.autoplay.start();
+          }
+        }
+      });
+    }
+    
+    // ← NUEVO: Asegurar que los botones sean visibles
+    if (prevButton) {
+      prevButton.style.opacity = '0.4';
+      prevButton.style.visibility = 'visible';
+    }
+    if (nextButton) {
+      nextButton.style.opacity = '0.4';
+      nextButton.style.visibility = 'visible';
+    }
   }
 
   getStars(count: number): any[] {

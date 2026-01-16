@@ -5,14 +5,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-
-  // Transición para el fondo y el borde
+  z-index: 1100; // Aumentado para asegurar que esté por encima de otros elementos
   transition: background-color 0.3s ease-out, backdrop-filter 0.3s ease-out,
     border-color 0.3s ease-out;
-
-  // Borde inferior transparente por defecto
   border-bottom: 1px solid transparent;
+  // REMOVIDO: overflow: hidden; - Esto estaba cortando el menú móvil
 }
 
 :host(.is-scrolled) {
@@ -20,7 +17,6 @@
   backdrop-filter: blur(10px);
   border-bottom-color: var(--border-color);
 
-  // Ocultar la Top-Bar (animará gracias a top-bar.scss)
   ::ng-deep jsl-top-bar .top-bar {
     height: 0;
     opacity: 0;
@@ -33,7 +29,6 @@
     height: 60px;
   }
 
-  // 4. Ocultar la línea separadora (ya tenemos el borde del :host)
   .header__nav::after {
     opacity: 0;
   }
@@ -44,6 +39,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  // REMOVIDO: overflow: hidden; - Esto también estaba cortando el menú
 }
 
 .header__nav {
@@ -54,13 +50,15 @@
   height: var(--header-height);
   position: relative;
   transition: height 0.3s ease-out;
+  // Asegurarse de que el nav no corte el menú
+  overflow: visible;
 
   &::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%; // 100% del .container (este era el fix)
+    width: 100%;
     height: 1px;
     background: var(--border-color);
     opacity: 1;
@@ -70,15 +68,6 @@
 
 .header__logo {
   font-size: 1.75rem;
-  // font-weight: 700;
-  // color: var(--text-primary);
-  // letter-spacing: -1px;
-
-  // &::first-letter {
-  //   color: var(--accent-primary);
-  // }
-
-  // font-size: 1.5rem;
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.72px;
@@ -88,15 +77,20 @@
   background-clip: text;
   color: #fff;
   padding-right: 5px;
+  // Asegurar que el logo no interfiera con el menú
+  position: relative;
+  z-index: 1200;
 }
 
 .header__nav-links {
   display: flex;
-  justify-content: center; // Centra los enlaces
-  flex-grow: 1; // Ocupa el espacio restante
-  gap: 1.25rem; // --- MODIFICADO: Espacio reducido para 7 elementos
+  justify-content: center;
+  flex-grow: 1;
+  gap: 1.25rem;
   list-style: none;
-  align-items: center; // --- AÑADIDO: Para centrar el botón CTA verticalmente
+  align-items: center;
+  // Asegurar que no corte elementos
+  overflow: visible;
 
   // Estilo base para enlaces y botones de dropdown
   a,
@@ -105,13 +99,13 @@
     font-weight: 500;
     color: var(--text-secondary);
     position: relative;
-    padding: 0.5rem 0.25rem; // Padding horizontal ligero
+    padding: 0.5rem 0.25rem;
     transition: color var(--transition-speed) ease;
     cursor: pointer;
     background-color: transparent;
     border: none;
     font-family: var(--font-family-base);
-    display: inline-flex; // Para alinear el ícono
+    display: inline-flex;
     align-items: center;
     gap: 0.25rem;
 
@@ -147,24 +141,25 @@
   // Estilos específicos del botón dropdown-toggle
   .dropdown-toggle {
     &.active {
-      color: var(--accent-primary); // Botón activo cuando el dropdown está abierto
+      color: var(--accent-primary);
     }
+    
     lucide-icon {
       margin-left: 0.25rem;
     }
   }
 
-  // --- INICIO: NUEVO ESTILO PARA EL BOTÓN CTA "CONTACTO" ---
+  // Estilo para el botón CTA "CONTACTO"
   li.header__nav-cta {
     a {
       background: var(--accent-gradient);
       color: #fff;
-      padding: 0.5rem 1.25rem; // Padding del botón
+      padding: 0.5rem 1.25rem;
       border-radius: var(--border-radius);
       transition: all var(--transition-speed) ease;
 
       &::after {
-        display: none; // Sin subrayado
+        display: none;
       }
 
       &:hover {
@@ -174,13 +169,11 @@
       }
 
       &.active {
-        // Estilo activo para el botón
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(var(--accent-primary-rgb), 0.3);
       }
     }
   }
-  // --- FIN: NUEVO ESTILO ---
 }
 
 // Contenedor del Dropdown (li)
@@ -196,26 +189,20 @@ li.dropdown {
 // Menú Dropdown (el panel flotante)
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 15px); // 15px por debajo del header
+  top: calc(100% + 15px);
   left: 50%;
-  transform: translateX(-50%) translateY(10px); // Centrado y listo para animar
-
-  // --- INICIO: MODIFICACIÓN DE ANCHO ---
-  min-width: 220px; // Ancho mínimo
-  width: auto; // Ancho automático según contenido
-  // --- FIN: MODIFICACIÓN DE ANCHO ---
-
+  transform: translateX(-50%) translateY(10px);
+  min-width: 220px;
+  width: auto;
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  z-index: 1010;
+  z-index: 1200; // Aumentado para dropdowns
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 0.5rem; // Espacio interno
-
-  // Animación
+  padding: 0.5rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -230,13 +217,13 @@ li.dropdown {
   a {
     font-size: 0.95rem;
     color: var(--text-secondary);
-    padding: 0.75rem 1rem; // Padding generoso
-    border-radius: 6px; // Bordes redondeados internos
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
     transition: all var(--transition-speed) ease;
-    white-space: nowrap; // --- AÑADIDO: Evita que los enlaces se partan
+    white-space: nowrap;
 
     &::after {
-      display: none; // Sin subrayado en el dropdown
+      display: none;
     }
 
     &:hover {
@@ -255,7 +242,10 @@ li.dropdown {
 .header__controls {
   display: flex;
   align-items: center;
-  gap: 1rem; // Espacio entre idioma y botón de menú
+  gap: 1rem;
+  // Asegurar que esté por encima del menú móvil
+  position: relative;
+  z-index: 1300;
 }
 
 // El selector de idioma para móvil (oculto en desktop)
@@ -269,6 +259,7 @@ li.dropdown {
   border: none;
   color: var(--text-primary);
   cursor: pointer;
+  z-index: 1300; // Aumentado para estar por encima del overlay
 
   lucide-icon {
     width: 28px;
@@ -276,8 +267,109 @@ li.dropdown {
   }
 }
 
+// Overlay para el menú móvil - siempre en el DOM
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1200; // Entre el header y el menú móvil
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  touch-action: none; // Prevenir scroll en el overlay
+
+  // Estado visible
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// Menú móvil tipo Drawer Navigation - siempre en el DOM
 .header__nav-links-mobile {
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+  background: var(--bg-secondary);
+  padding: 2rem;
+  padding-top: 60px;
+  z-index: 1300; // Más alto que el overlay
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  will-change: transform;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  list-style: none;
+  margin: 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  
+  /* Smooth scrolling for iOS */
+  overscroll-behavior: contain;
+  
+  /* Prevent text selection during drag */
+  user-select: none;
+  -webkit-user-select: none;
+  
+  /* Disable pull-to-refresh */
+  overscroll-behavior-y: contain;
+
+  // Estado abierto
+  &.open {
+    transform: translateX(0);
+  }
+
+  // Enlaces dentro del menú móvil
+  a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+
+    &.active,
+    &:hover {
+      color: var(--text-primary);
+      background-color: var(--border-color);
+    }
+  }
+
+  // Cabecera de sección en el menú móvil
+  .mobile-menu-header {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1.5rem 1rem 0.5rem 1rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 1rem;
+
+    &:first-of-type {
+      margin-top: 0;
+      border-top: none;
+    }
+  }
+}
+
+// Indicador visual para edge swipe (opcional)
+.edge-swipe-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 100vh;
+  z-index: 999; // Por debajo del header
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
 }
 
 // --- Media Query para Responsividad ---
@@ -290,72 +382,21 @@ li.dropdown {
     display: block;
   }
 
-  .header__nav-links-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem; // Espacio reducido entre enlaces
-    list-style: none;
-    position: fixed; // Fijo a la pantalla
-    top: 0; // Desde la parte superior
-    left: 0;
-    width: 100%;
-    height: 100vh; // Pantalla completa
-    background: var(--bg-secondary);
-    padding: calc(var(--header-height) + var(--top-bar-height) + 2rem) 2rem 2rem 2rem;
-    border-bottom: 1px solid var(--border-color);
-
-    transform: translateY(-120%);
-    opacity: 0;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-
-    &.open {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    // Estilo para enlaces
-    a {
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      display: block; // Ocupar todo el ancho
-      padding: 0.75rem 1rem; // Padding
-      border-radius: 6px;
-
-      &.active,
-      &:hover {
-        color: var(--text-primary);
-        background-color: var(--border-color);
-      }
-    }
-
-    // Cabecera de sección en el menú móvil
-    .mobile-menu-header {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 1.5rem 1rem 0.5rem 1rem;
-      border-top: 1px solid var(--border-color);
-      margin-top: 1rem;
-
-      &:first-of-type {
-        margin-top: 0;
-        border-top: none;
-      }
-    }
+  .header__mobile-lang-switcher {
+    display: block;
   }
 
   // Ajuste para el estado de scroll en móvil
-  :host(.is-scrolled) .header__nav-links-mobile {
-    // La altura del padding superior se reduce cuando hay scroll
-    padding-top: calc(60px + 2rem);
+  :host(.is-scrolled) {
+    .header__nav-links-mobile {
+      padding-top: calc(60px + 2rem);
+    }
   }
 
-  :host(:not(.is-scrolled)) .header__nav-links-mobile {
-    // La altura del padding superior es la normal
-    padding-top: calc(var(--header-height) + var(--top-bar-height) + 2rem);
+  :host(:not(.is-scrolled)) {
+    .header__nav-links-mobile {
+      padding-top: calc(var(--header-height) + var(--top-bar-height) + 2rem);
+    }
   }
 
   .header {
@@ -370,4 +411,142 @@ li.dropdown {
   }
 }
 
+// Para pantallas más pequeñas
+@media (max-width: 576px) {
+  .header__nav-links-mobile {
+    width: 85%;
+    padding: 1.5rem;
+    
+    a {
+      font-size: 1.1rem;
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .mobile-menu-header {
+      font-size: 0.75rem;
+      padding: 1rem 0.75rem 0.25rem 0.75rem;
+    }
+  }
+}
 
+// Para pantallas muy pequeñas
+@media (max-width: 375px) {
+  .header__nav-links-mobile {
+    width: 90%;
+    max-width: none;
+  }
+}
+
+// Prevenir scroll del body cuando el menú está abierto
+body.no-scroll {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+// Estilos para cuando el menú está siendo arrastrado
+.header__nav-links-mobile.dragging {
+  transition: none !important;
+}
+
+// Asegurar que los elementos dentro del header tén el z-index correcto
+::ng-deep {
+  // Asegurar que el top-bar no interfiera
+  jsl-top-bar {
+    position: relative;
+    z-index: 1100;
+  }
+  
+  // Asegurar que el language switcher no interfiera
+  jsl-language-switcher {
+    position: relative;
+    z-index: 1200;
+  }
+}
+
+// Clase auxiliar para debugging (puede ser removida en producción)
+.debug-zindex {
+  &:before {
+    content: 'z-index: ' attr(style);
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    z-index: 9999;
+  }
+}
+
+
+/* Agregar estos estilos al archivo header.scss */
+
+// Permitir scroll en el menú móvil
+.header__nav-links-mobile {
+  // ... estilos existentes ...
+  
+  // Habilitar scroll táctil
+  touch-action: pan-y;
+  
+  // Mejorar el scroll en iOS
+  -webkit-overflow-scrolling: touch;
+  
+  // Permitir scroll vertical
+  overflow-y: auto;
+  
+  // Cuando está siendo arrastrado, deshabilitar scroll
+  &.dragging {
+    overflow: hidden;
+    -webkit-overflow-scrolling: auto;
+  }
+}
+
+// Estilos para los enlaces dentro del menú
+.header__nav-links-mobile a {
+  // Asegurar que los enlaces sean clickeables
+  pointer-events: auto;
+  cursor: pointer;
+  
+  // Evitar selección de texto durante el arrastre
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  
+  &:active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+// Mejorar el overlay
+.mobile-menu-overlay {
+  // Asegurar que el overlay no interfiera con los clicks del menú
+  pointer-events: auto;
+  
+  &.visible {
+    // Cuando es visible, permitir clicks para cerrar
+    cursor: pointer;
+  }
+}
+
+// Asegurar que el body no-scroll funcione correctamente
+body.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  
+  // Para iOS
+  position: relative;
+}
+
+// Clase para cuando el menú está siendo arrastrado
+.header__nav-links-mobile.dragging {
+  // Deshabilitar transiciones durante el arrastre
+  transition: none !important;
+  
+  // Deshabilitar clicks durante el arrastre
+  a {
+    pointer-events: none;
+  }
+}

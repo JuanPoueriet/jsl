@@ -1,6 +1,11 @@
 <section class="hero-slider">
-  <!-- <swiper-container [config]="heroSwiperConfig" init="true"> -->
-  <swiper-container init="false">
+  <!-- Añadido #heroSwiper para referencia en TypeScript -->
+  <swiper-container 
+    #heroSwiper
+    [config]="heroSwiperConfig" 
+    init="true"
+    class="hero-main-swiper"
+  >
     <swiper-slide class="hero-slide">
       <img
         ngSrc="assets/imgs/Avif/img-2.avif"
@@ -48,6 +53,14 @@
     </swiper-slide>
   </swiper-container>
 
+  <!-- Custom Navigation Buttons - MODERNOS Y DISCRETOS -->
+  <div class="hero-swiper-button-prev" aria-label="Slide anterior" role="button" tabindex="0">
+    <lucide-icon name="ChevronLeft"></lucide-icon>
+  </div>
+  <div class="hero-swiper-button-next" aria-label="Slide siguiente" role="button" tabindex="0">
+    <lucide-icon name="ChevronRight"></lucide-icon>
+  </div>
+
   <div class="hero-bottom-bar">
     <div class="hero-bottom-bar__container container">
       <div class="hero-bottom-bar__col">
@@ -64,6 +77,7 @@
     </div>
   </div>
 </section>
+
 
 <section class="welcome-section container" jslAnimateOnScroll>
   <div class="welcome-section__text">

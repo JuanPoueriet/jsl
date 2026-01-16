@@ -1,13 +1,19 @@
 <header class="header">
+  <!-- Top Bar - Solo visible en desktop -->
   @if (isDesktop) {
   <jsl-top-bar></jsl-top-bar>
   }
+  
+  <!-- Navegación principal -->
   <nav class="header__nav container">
+    <!-- Logo -->
     <a [routerLink]="[currentLang, 'home']" class="header__logo" (click)="closeMobileMenu()">
       JSL Technology
     </a>
 
+    <!-- Navegación desktop -->
     <ul class="header__nav-links">
+      <!-- Dropdown: Soluciones/Servicios -->
       <li class="dropdown" [class.open]="openDropdown === 'solutions'">
         <button
           class="dropdown-toggle"
@@ -53,6 +59,7 @@
         </div>
       </li>
       
+      <!-- Dropdown: Productos -->
       <li class="dropdown" [class.open]="openDropdown === 'products'">
         <button
           class="dropdown-toggle"
@@ -92,6 +99,7 @@
         </div>
       </li>
 
+      <!-- Dropdown: Compañía -->
       <li class="dropdown" [class.open]="openDropdown === 'company'">
         <button
           class="dropdown-toggle"
@@ -130,6 +138,7 @@
         </div>
       </li>
 
+      <!-- Dropdown: Recursos -->
       <li class="dropdown" [class.open]="openDropdown === 'resources'">
         <button
           class="dropdown-toggle"
@@ -164,6 +173,7 @@
         </div>
       </li>
 
+      <!-- Botón CTA: Contacto -->
       <li class="header__nav-cta">
         <a
           [routerLink]="[currentLang, 'contact']"
@@ -174,6 +184,8 @@
         </a>
       </li>
     </ul>
+    
+    <!-- Controles móviles -->
     <div class="header__controls">
       <jsl-language-switcher class="header__mobile-lang-switcher"></jsl-language-switcher>
       <button
@@ -191,8 +203,27 @@
     </div>
   </nav>
 
-  @if (isMobileMenuOpen) {
-  <ul class="header__nav-links-mobile" [class.open]="isMobileMenuOpen">
+  <!-- Overlay para menú móvil -->
+  <!-- Siempre presente en el DOM, con visibilidad controlada por clase -->
+  <div 
+    class="mobile-menu-overlay" 
+    [class.visible]="isMobileMenuOpen"
+    (click)="closeMobileMenu()"
+    (touchstart)="onOverlayTouch($event)"
+  ></div>
+  
+  <!-- Menú móvil tipo Drawer Navigation -->
+  <!-- Siempre presente en el DOM, posición controlada por transform -->
+  <ul 
+    class="header__nav-links-mobile"
+    [class.open]="isMobileMenuOpen"
+    [style.transform]="'translateX(' + menuTranslateX + 'px)'"
+    [style.transition]="menuTransition"
+    (touchstart)="onMenuTouchStart($event)"
+    (touchmove)="onMenuTouchMove($event)"
+    (touchend)="onMenuTouchEnd($event)"
+  >
+    <!-- Sección: Servicios -->
     <li class="mobile-menu-header">{{ 'HEADER.SERVICES' | translate }}</li>
     <li>
       <a
@@ -236,6 +267,7 @@
       >
     </li>
 
+    <!-- Sección: Productos -->
     <li class="mobile-menu-header">{{ 'HEADER.PRODUCTS' | translate }}</li>
     <li>
       <a
@@ -271,6 +303,7 @@
       >
     </li>
 
+    <!-- Sección: Compañía -->
     <li class="mobile-menu-header">{{ 'FOOTER.COMPANY' | translate }}</li>
     <li>
       <a
@@ -305,6 +338,7 @@
       >
     </li>
 
+    <!-- Sección: Recursos -->
     <li class="mobile-menu-header">{{ 'FOOTER.RESOURCES' | translate }}</li>
     <li>
       <a
@@ -325,6 +359,7 @@
       }}</a>
     </li>
 
+    <!-- Sección: Contacto -->
     <li class="mobile-menu-header">{{ 'HEADER.CONTACT' | translate }}</li>
     <li>
       <a
@@ -335,5 +370,4 @@
       >
     </li>
   </ul>
-  }
-  </header>
+</header>
