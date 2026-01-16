@@ -60,6 +60,17 @@ import {
   ShieldCheck,
   Gauge,
   Lock,
+  LayoutGrid,
+  Package,
+  Building2,
+  AppWindow,
+  Users,
+  Workflow,
+  Cpu,
+  Briefcase,
+  Lightbulb,
+  Newspaper,
+  HelpCircle,
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
@@ -94,6 +105,17 @@ export const ICON_LIST = {
     ShieldCheck,
     Gauge,
     Lock,
+    LayoutGrid,
+    Package,
+    Building2,
+    AppWindow,
+    Users,
+    Workflow,
+    Cpu,
+    Briefcase,
+    Lightbulb,
+    Newspaper,
+    HelpCircle,
   },
   // Redes sociales
   Social: {

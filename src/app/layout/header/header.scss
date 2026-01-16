@@ -326,19 +326,33 @@ li.dropdown {
 
   // Enlaces dentro del menú móvil
   a {
-    font-size: 1.2rem;
+    font-size: 1rem; // Ligeramente más pequeño para un look más refinado
     font-weight: 500;
     color: var(--text-secondary);
-    display: block;
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
+    display: flex; // Usar flexbox para alinear icono y texto
+    align-items: center;
+    gap: 1.25rem; // Espacio entre icono y texto
+    padding: 0.85rem 1rem;
+    border-radius: 8px; // Bordes más redondeados
     text-decoration: none;
     transition: all var(--transition-speed) ease;
+    -webkit-tap-highlight-color: transparent; // Remover highlight azul en toque
+
+    lucide-icon {
+      width: 22px;
+      height: 22px;
+      color: var(--text-secondary);
+      transition: all var(--transition-speed) ease;
+    }
 
     &.active,
     &:hover {
-      color: var(--text-primary);
-      background-color: var(--border-color);
+      color: var(--accent-primary);
+      background-color: rgba(var(--accent-primary-rgb), 0.1);
+
+      lucide-icon {
+        color: var(--accent-primary);
+      }
     }
   }
 

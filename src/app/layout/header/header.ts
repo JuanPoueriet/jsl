@@ -189,7 +189,7 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
     this.isMobileMenuOpen = true;
     this.menuTransition = 'transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
     this.menuTranslateX = 0;
-    document.body.classList.add('no-scroll');
+    // document.body.classList.add('no-scroll');
     
     if (this.overlayElement) {
       this.overlayElement.classList.add('visible');
@@ -210,7 +210,7 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
     this.isMobileMenuOpen = false;
     this.menuTransition = 'transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
     this.menuTranslateX = -this.menuWidth;
-    document.body.classList.remove('no-scroll');
+    // document.body.classList.remove('no-scroll');
     this.closeDropdowns();
     
     if (this.overlayElement) {
