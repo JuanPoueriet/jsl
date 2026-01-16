@@ -231,40 +231,50 @@
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
         (click)="closeMobileMenu()"
-        >{{ 'HEADER.VIEW_ALL_SERVICES' | translate }}</a
       >
+        <lucide-icon name="LayoutGrid"></lucide-icon>
+        {{ 'HEADER.VIEW_ALL_SERVICES' | translate }}
+      </a>
     </li>
     <li>
       <a
         [routerLink]="[currentLang, 'solutions', 'web-development']"
         routerLinkActive="active"
         (click)="closeMobileMenu()"
-        >{{ 'SERVICES_LIST.WEB' | translate }}</a
       >
+        <lucide-icon name="Monitor"></lucide-icon>
+        {{ 'SERVICES_LIST.WEB' | translate }}
+      </a>
     </li>
     <li>
       <a
         [routerLink]="[currentLang, 'solutions', 'mobile-apps']"
         routerLinkActive="active"
         (click)="closeMobileMenu()"
-        >{{ 'SERVICES_LIST.MOBILE' | translate }}</a
       >
+        <lucide-icon name="Smartphone"></lucide-icon>
+        {{ 'SERVICES_LIST.MOBILE' | translate }}
+      </a>
     </li>
     <li>
       <a
         [routerLink]="[currentLang, 'solutions', 'desktop-software']"
         routerLinkActive="active"
         (click)="closeMobileMenu()"
-        >{{ 'SERVICES_LIST.DESKTOP' | translate }}</a
       >
+        <lucide-icon name="Laptop"></lucide-icon>
+        {{ 'SERVICES_LIST.DESKTOP' | translate }}
+      </a>
     </li>
     <li>
       <a
         [routerLink]="[currentLang, 'solutions', 'cloud-architecture']"
         routerLinkActive="active"
         (click)="closeMobileMenu()"
-        >{{ 'SERVICES_LIST.CLOUD' | translate }}</a
       >
+        <lucide-icon name="CloudCog"></lucide-icon>
+        {{ 'SERVICES_LIST.CLOUD' | translate }}
+      </a>
     </li>
 
     <!-- Sección: Productos -->
@@ -275,99 +285,101 @@
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
         (click)="closeMobileMenu()"
-        >{{ 'HEADER.VIEW_ALL_PRODUCTS' | translate }}</a
       >
+        <lucide-icon name="Package"></lucide-icon>
+        {{ 'HEADER.VIEW_ALL_PRODUCTS' | translate }}
+      </a>
     </li>
     <li>
       <a
         [routerLink]="[currentLang, 'products', 'jsl-erp']"
         routerLinkActive="active"
         (click)="closeMobileMenu()"
-        >{{ 'PRODUCTS_LIST.ERP' | translate }}</a
       >
+        <lucide-icon name="Building2"></lucide-icon>
+        {{ 'PRODUCTS_LIST.ERP' | translate }}
+      </a>
     </li>
     <li>
       <a
         [routerLink]="[currentLang, 'products', 'jsl-pos']"
         routerLinkActive="active"
         (click)="closeMobileMenu()"
-        >{{ 'PRODUCTS_LIST.POS' | translate }}</a
       >
+        <lucide-icon name="ShoppingCart"></lucide-icon>
+        {{ 'PRODUCTS_LIST.POS' | translate }}
+      </a>
     </li>
     <li>
       <a
         [routerLink]="[currentLang, 'products', 'proprietary-apps']"
         routerLinkActive="active"
         (click)="closeMobileMenu()"
-        >{{ 'PRODUCTS_LIST.MOBILE' | translate }}</a
       >
+        <lucide-icon name="AppWindow"></lucide-icon>
+        {{ 'PRODUCTS_LIST.MOBILE' | translate }}
+      </a>
     </li>
 
     <!-- Sección: Compañía -->
     <li class="mobile-menu-header">{{ 'FOOTER.COMPANY' | translate }}</li>
     <li>
-      <a
-        [routerLink]="[currentLang, 'about-us']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.ABOUT' | translate }}</a
-      >
+      <a [routerLink]="[currentLang, 'about-us']" routerLinkActive="active" (click)="closeMobileMenu()">
+        <lucide-icon name="Users"></lucide-icon>
+        {{ 'HEADER.ABOUT' | translate }}
+      </a>
     </li>
     <li>
-      <a
-        [routerLink]="[currentLang, 'process']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.PROCESS' | translate }}</a
-      >
+      <a [routerLink]="[currentLang, 'process']" routerLinkActive="active" (click)="closeMobileMenu()">
+        <lucide-icon name="Workflow"></lucide-icon>
+        {{ 'HEADER.PROCESS' | translate }}
+      </a>
     </li>
     <li>
       <a
         [routerLink]="[currentLang, 'tech-stack']"
         routerLinkActive="active"
         (click)="closeMobileMenu()"
-        >{{ 'HEADER.TECH_STACK' | translate }}</a
       >
+        <lucide-icon name="Cpu"></lucide-icon>
+        {{ 'HEADER.TECH_STACK' | translate }}
+      </a>
     </li>
     <li>
-      <a
-        [routerLink]="[currentLang, 'careers']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.CAREERS' | translate }}</a
-      >
+      <a [routerLink]="[currentLang, 'careers']" routerLinkActive="active" (click)="closeMobileMenu()">
+        <lucide-icon name="Briefcase"></lucide-icon>
+        {{ 'HEADER.CAREERS' | translate }}
+      </a>
     </li>
 
     <!-- Sección: Recursos -->
     <li class="mobile-menu-header">{{ 'FOOTER.RESOURCES' | translate }}</li>
     <li>
-      <a
-        [routerLink]="[currentLang, 'projects']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.PROJECTS' | translate }}</a
-      >
+      <a [routerLink]="[currentLang, 'projects']" routerLinkActive="active" (click)="closeMobileMenu()">
+        <lucide-icon name="Lightbulb"></lucide-icon>
+        {{ 'HEADER.PROJECTS' | translate }}
+      </a>
     </li>
     <li>
-      <a [routerLink]="[currentLang, 'blog']" routerLinkActive="active" (click)="closeMobileMenu()">{{
-        'HEADER.BLOG' | translate
-      }}</a>
+      <a [routerLink]="[currentLang, 'blog']" routerLinkActive="active" (click)="closeMobileMenu()">
+        <lucide-icon name="Newspaper"></lucide-icon>
+        {{ 'HEADER.BLOG' | translate }}
+      </a>
     </li>
     <li>
-      <a [routerLink]="[currentLang, 'faq']" routerLinkActive="active" (click)="closeMobileMenu()">{{
-        'HEADER.FAQ' | translate
-      }}</a>
+      <a [routerLink]="[currentLang, 'faq']" routerLinkActive="active" (click)="closeMobileMenu()">
+        <lucide-icon name="HelpCircle"></lucide-icon>
+        {{ 'HEADER.FAQ' | translate }}
+      </a>
     </li>
 
     <!-- Sección: Contacto -->
     <li class="mobile-menu-header">{{ 'HEADER.CONTACT' | translate }}</li>
     <li>
-      <a
-        [routerLink]="[currentLang, 'contact']"
-        routerLinkActive="active"
-        (click)="closeMobileMenu()"
-        >{{ 'HEADER.CONTACT' | translate }}</a
-      >
+      <a [routerLink]="[currentLang, 'contact']" routerLinkActive="active" (click)="closeMobileMenu()">
+        <lucide-icon name="Mail"></lucide-icon>
+        {{ 'HEADER.CONTACT' | translate }}
+      </a>
     </li>
   </ul>
 </header>
