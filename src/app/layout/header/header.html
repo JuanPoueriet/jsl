@@ -193,6 +193,7 @@
         (click)="toggleMobileMenu()"
         aria-label="Toggle menu"
         [attr.aria-expanded]="isMobileMenuOpen"
+        [class.open]="isMobileMenuOpen"
       >
         @if (!isMobileMenuOpen) {
         <lucide-icon name="Menu"></lucide-icon>

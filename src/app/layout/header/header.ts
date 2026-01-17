@@ -69,6 +69,7 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
   private isAnimating = false;
   private lastDragPosition = 0;
   private isHorizontalGesture = false;
+  private lastFocusedElement: HTMLElement | null = null;
 
   constructor(
     private translate: TranslateService,
@@ -189,7 +190,12 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
     this.isMobileMenuOpen = true;
     this.menuTransition = 'transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
     this.menuTranslateX = 0;
-    document.body.classList.add('no-scroll');
+    
+    if (this.isBrowser) {
+      document.body.classList.add('no-scroll');
+      this.lastFocusedElement = document.activeElement as HTMLElement;
+      this.triggerHapticFeedback();
+    }
     
     if (this.overlayElement) {
       this.overlayElement.classList.add('visible');
@@ -210,7 +216,16 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
     this.isMobileMenuOpen = false;
     this.menuTransition = 'transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
     this.menuTranslateX = -this.menuWidth;
-    document.body.classList.remove('no-scroll');
+    
+    if (this.isBrowser) {
+      document.body.classList.remove('no-scroll');
+      this.triggerHapticFeedback();
+      if (this.lastFocusedElement) {
+        this.lastFocusedElement.focus();
+        this.lastFocusedElement = null;
+      }
+    }
+
     this.closeDropdowns();
     
     if (this.overlayElement) {
@@ -222,6 +237,44 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
     setTimeout(() => {
       this.isAnimating = false;
     }, 300);
+  }
+
+  private triggerHapticFeedback() {
+    if (this.isBrowser && navigator.vibrate) {
+      navigator.vibrate(5);
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (!this.isMobileMenuOpen || !this.isBrowser) return;
+
+    if (event.key === 'Escape') {
+      this.closeMobileMenu();
+      return;
+    }
+
+    if (event.key === 'Tab') {
+      const focusableElements = this.menuElement?.querySelectorAll(
+        'a[href], button, textarea, input, select'
+      );
+      if (focusableElements && focusableElements.length > 0) {
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+        if (event.shiftKey) {
+          if (document.activeElement === firstElement) {
+            lastElement.focus();
+            event.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            firstElement.focus();
+            event.preventDefault();
+          }
+        }
+      }
+    }
   }
 
   // HANDLERS PARA GESTOS EN EL OVERLAY
