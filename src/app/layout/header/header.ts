@@ -71,6 +71,10 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
   private isHorizontalGesture = false;
   private lastFocusedElement: HTMLElement | null = null;
 
+  // Estado del acordeón móvil
+  public expandedSection: string | null = null;
+  public currentYear = new Date().getFullYear();
+
   constructor(
     private translate: TranslateService,
     private el: ElementRef,
@@ -180,6 +184,15 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
       this.openMobileMenu();
     }
     this.closeDropdowns();
+  }
+
+  // TOGGLE SECCIONES DEL MENÚ MÓVIL
+  toggleSection(section: string) {
+    if (this.expandedSection === section) {
+      this.expandedSection = null;
+    } else {
+      this.expandedSection = section;
+    }
   }
 
   // Método público llamado desde el template

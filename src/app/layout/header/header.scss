@@ -5,11 +5,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1100; // Aumentado para asegurar que esté por encima de otros elementos
-  transition: background-color 0.3s ease-out, backdrop-filter 0.3s ease-out,
-    border-color 0.3s ease-out;
+  z-index: 1100;
+  transition: background-color 0.3s ease-out, backdrop-filter 0.3s ease-out, border-color 0.3s ease-out;
   border-bottom: 1px solid transparent;
-  // REMOVIDO: overflow: hidden; - Esto estaba cortando el menú móvil
 }
 
 :host(.is-scrolled) {
@@ -39,7 +37,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // REMOVIDO: overflow: hidden; - Esto también estaba cortando el menú
 }
 
 .header__nav {
@@ -50,7 +47,6 @@
   height: var(--header-height);
   position: relative;
   transition: height 0.3s ease-out;
-  // Asegurarse de que el nav no corte el menú
   overflow: visible;
 
   &::after {
@@ -77,7 +73,6 @@
   background-clip: text;
   color: #fff;
   padding-right: 5px;
-  // Asegurar que el logo no interfiera con el menú
   position: relative;
   z-index: 1200;
 }
@@ -89,10 +84,8 @@
   gap: 1.25rem;
   list-style: none;
   align-items: center;
-  // Asegurar que no corte elementos
   overflow: visible;
 
-  // Estilo base para enlaces y botones de dropdown
   a,
   .dropdown-toggle {
     font-size: 1rem;
@@ -115,7 +108,6 @@
       transition: transform 0.3s ease;
     }
 
-    // Efecto de subrayado (solo para enlaces directos)
     &::after {
       content: '';
       position: absolute;
@@ -132,13 +124,11 @@
       color: var(--text-primary);
     }
 
-    // Solo enlaces <a> directos (no botones)
     &.active:not(button)::after {
       width: 100%;
     }
   }
 
-  // Estilos específicos del botón dropdown-toggle
   .dropdown-toggle {
     &.active {
       color: var(--accent-primary);
@@ -149,7 +139,6 @@
     }
   }
 
-  // Estilo para el botón CTA "CONTACTO"
   li.header__nav-cta {
     a {
       background: var(--accent-gradient);
@@ -176,17 +165,14 @@
   }
 }
 
-// Contenedor del Dropdown (li)
 li.dropdown {
   position: relative;
 
-  // Girar el chevron cuando está abierto
   &.open .dropdown-toggle lucide-icon {
     transform: rotate(180deg);
   }
 }
 
-// Menú Dropdown (el panel flotante)
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 15px);
@@ -198,7 +184,7 @@ li.dropdown {
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  z-index: 1200; // Aumentado para dropdowns
+  z-index: 1200;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -213,7 +199,6 @@ li.dropdown {
     pointer-events: auto;
   }
 
-  // Enlaces dentro del dropdown
   a {
     font-size: 0.95rem;
     color: var(--text-secondary);
@@ -243,12 +228,10 @@ li.dropdown {
   display: flex;
   align-items: center;
   gap: 1rem;
-  // Asegurar que esté por encima del menú móvil
   position: relative;
   z-index: 1300;
 }
 
-// El selector de idioma para móvil (oculto en desktop)
 .header__mobile-lang-switcher {
   display: none;
 }
@@ -259,7 +242,7 @@ li.dropdown {
   border: none;
   color: var(--text-primary);
   cursor: pointer;
-  z-index: 1300; // Aumentado para estar por encima del overlay
+  z-index: 1300;
 
   lucide-icon {
     width: 28px;
@@ -273,156 +256,317 @@ li.dropdown {
   transition: transform 0.3s ease;
 }
 
-// Overlay para el menú móvil
 .mobile-menu-overlay {
-  display: none; // Oculto por defecto para no interferir.
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px); // Glassmorphism
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 1200; // Entre el header y el menú móvil
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 1200;
   opacity: 0;
   transition: opacity 0.3s ease;
-  touch-action: none; // Prevenir scroll en el overlay
+  touch-action: none;
+  pointer-events: auto;
+  cursor: pointer;
 
-  // Estado visible
   &.visible {
-    display: block; // Se muestra al abrir el menú.
+    display: block;
     opacity: 1;
-    pointer-events: auto;
   }
 }
 
-// Menú móvil tipo Drawer Navigation - siempre en el DOM
+// ==========================================
+// Modern Mobile Menu Styles
+// ==========================================
+
 .header__nav-links-mobile {
   position: fixed;
   top: 0;
   left: 0;
-  width: 80%;
-  max-width: 320px;
+  width: 85%;
+  max-width: 380px;
   height: 100vh;
-  background: var(--bg-secondary);
-  padding: 2rem;
-  padding-top: calc(60px + env(safe-area-inset-top)); // Safe area support
-  padding-bottom: env(safe-area-inset-bottom);
-  z-index: 1300; // Más alto que el overlay
+  // Glassmorphism effect
+  background: rgba(18, 18, 18, 0.85); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  
+  display: flex;
+  flex-direction: column;
+  z-index: 1300;
   transform: translateX(-100%);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); // Easing suave
   will-change: transform;
-  overflow-y: auto;
+  box-shadow: 10px 0 40px rgba(0, 0, 0, 0.5);
+  
+  touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
-  list-style: none;
-  margin: 0;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
   
-  /* Smooth scrolling for iOS */
-  overscroll-behavior: contain;
-  
-  /* Prevent text selection during drag */
-  user-select: none;
-  -webkit-user-select: none;
-  
-  /* Disable pull-to-refresh */
-  overscroll-behavior-y: contain;
-  
-  // Drag Handle (Pill)
+  /* Drag Handle (Pill) */
   &::after {
     content: '';
     position: absolute;
     top: 50%;
-    right: 8px;
+    right: 6px;
     transform: translateY(-50%);
     width: 4px;
     height: 48px;
-    background-color: var(--border-color);
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 4px;
-    opacity: 0.5;
+    opacity: 0.6;
+    pointer-events: none;
   }
 
-  // Estado abierto
   &.open {
     transform: translateX(0);
-    
-    // Staggered Animation for items
-    li {
-      opacity: 0;
-      animation: slideIn 0.4s ease forwards;
-    }
-    
-    @for $i from 1 through 20 {
-       li:nth-child(#{$i}) {
-         animation-delay: #{$i * 0.05}s;
-       }
+  }
+  
+  &.dragging {
+    transition: none !important;
+    overflow: hidden;
+    a { pointer-events: none; }
+  }
+}
+
+// 1. Mobile Menu Header
+.mobile-menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: max(20px, env(safe-area-inset-top)) 24px 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(18, 18, 18, 0.5); 
+  flex-shrink: 0;
+
+  .mobile-logo-container {
+    .header__logo.mobile-logo {
+      font-size: 1.4rem;
+      padding: 0;
+      margin: 0;
     }
   }
 
-  // Enlaces dentro del menú móvil
-  a {
-    font-size: 1rem; // Ligeramente más pequeño para un look más refinado
-    font-weight: 500;
+  .mobile-close-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
     color: var(--text-secondary);
-    display: flex; // Usar flexbox para alinear icono y texto
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    gap: 1.25rem; // Espacio entre icono y texto
-    padding: 0.85rem 1rem;
-    border-radius: 8px; // Bordes más redondeados
-    text-decoration: none;
-    transition: all var(--transition-speed) ease;
-    -webkit-tap-highlight-color: transparent; // Remover highlight azul en toque
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
 
-    lucide-icon {
-      width: 22px;
-      height: 22px;
-      color: var(--text-secondary);
-      transition: all var(--transition-speed) ease;
+    &:hover, &:active {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      transform: scale(1.05);
     }
 
-    &.active,
-    &:hover {
+    lucide-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// 2. Mobile Menu Content (Scrollable)
+.mobile-menu-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+// 3. Accordions
+.mobile-accordion {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &.expanded {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+
+    .accordion-header {
       color: var(--accent-primary);
-      background-color: rgba(var(--accent-primary-rgb), 0.1);
+      
+      .chevron {
+        transform: rotate(180deg);
+        color: var(--accent-primary);
+      }
+    }
+    
+    .accordion-content {
+      max-height: 500px; // Altura máxima suficiente
+      opacity: 1;
+      padding-bottom: 12px;
+    }
+  }
+
+  .accordion-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.2s ease;
+
+    .chevron {
+      width: 18px;
+      height: 18px;
+      color: var(--text-secondary);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+    }
+  }
+
+  .accordion-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+}
+
+.mobile-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px 10px 24px; // Indented
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-left: 2px solid transparent;
 
       lucide-icon {
+        width: 18px;
+        height: 18px;
+        opacity: 0.7;
+      }
+
+      &:hover, &:active {
+        color: var(--text-primary);
+        background: rgba(255, 255, 255, 0.02);
+        
+        lucide-icon {
+          opacity: 1;
+          color: var(--accent-primary);
+        }
+      }
+
+      // Active router link
+      &.active-link { // Angular routerLinkActive class default is usually just 'active'?
+        // We used routerLinkActive="active" in HTML, but scoped styles might miss it without ::ng-deep if ViewEncapsulation is emulated.
+        // Actually simple <a> styles work.
+      }
+    }
+  }
+}
+
+// 4. CTA Button
+.mobile-cta-container {
+  margin-top: 10px;
+  padding: 0 4px;
+
+  .mobile-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    background: var(--accent-gradient);
+    color: white;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(var(--accent-primary-rgb), 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(var(--accent-primary-rgb), 0.3);
+    }
+
+    lucide-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// 5. Mobile Menu Footer
+.mobile-menu-footer {
+  padding: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(18, 18, 18, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+
+  .mobile-socials {
+    display: flex;
+    gap: 20px;
+
+    a {
+      color: var(--text-secondary);
+      transition: color 0.2s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+
+      &:hover, &:active {
         color: var(--accent-primary);
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
+
+      lucide-icon {
+        width: 20px;
+        height: 20px;
       }
     }
   }
 
-  // Cabecera de sección en el menú móvil
-  .mobile-menu-header {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 1.5rem 1rem 0.5rem 1rem;
-    border-top: 1px solid var(--border-color);
-    margin-top: 1rem;
-
-    &:first-of-type {
-      margin-top: 0;
-      border-top: none;
-    }
+  .mobile-copyright {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
   }
 }
 
-// Indicador visual para edge swipe (opcional)
-.edge-swipe-indicator {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 100vh;
-  z-index: 999; // Por debajo del header
-  pointer-events: none;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
-}
-
-// --- Media Query para Responsividad ---
+// Media Queries
 @media (max-width: 992px) {
   .header__nav-links {
     display: none;
@@ -436,19 +580,12 @@ li.dropdown {
     display: block;
   }
 
-  // Ajuste para el estado de scroll en móvil
   :host(.is-scrolled) {
     .header__nav-links-mobile {
-      padding-top: calc(60px + 2rem);
+      // Adjust if needed
     }
   }
-
-  :host(:not(.is-scrolled)) {
-    .header__nav-links-mobile {
-      padding-top: calc(var(--header-height) + var(--top-bar-height) + 2rem);
-    }
-  }
-
+  
   .header {
     background-color: rgba(13, 13, 13, 0.85);
     -webkit-backdrop-filter: blur(10px);
@@ -461,153 +598,12 @@ li.dropdown {
   }
 }
 
-// Para pantallas más pequeñas
-@media (max-width: 576px) {
-  .header__nav-links-mobile {
-    width: 85%;
-    padding: 1.5rem;
-    
-    a {
-      font-size: 1.1rem;
-      padding: 0.5rem 0.75rem;
-    }
-    
-    .mobile-menu-header {
-      font-size: 0.75rem;
-      padding: 1rem 0.75rem 0.25rem 0.75rem;
-    }
-  }
-}
-
-// Para pantallas muy pequeñas
-@media (max-width: 375px) {
-  .header__nav-links-mobile {
-    width: 90%;
-    max-width: none;
-  }
-}
-
-// Prevenir scroll del body cuando el menú está abierto
+// Scroll prevention
 body.no-scroll {
   overflow: hidden !important;
   position: fixed;
   width: 100%;
   height: 100%;
-}
-
-// Estilos para cuando el menú está siendo arrastrado
-.header__nav-links-mobile.dragging {
-  transition: none !important;
-}
-
-// Asegurar que los elementos dentro del header tén el z-index correcto
-::ng-deep {
-  // Asegurar que el top-bar no interfiera
-  jsl-top-bar {
-    position: relative;
-    z-index: 1100;
-  }
-  
-  // Asegurar que el language switcher no interfiera
-  jsl-language-switcher {
-    position: relative;
-    z-index: 1200;
-  }
-}
-
-// Clase auxiliar para debugging (puede ser removida en producción)
-.debug-zindex {
-  &:before {
-    content: 'z-index: ' attr(style);
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: red;
-    color: white;
-    padding: 5px;
-    font-size: 12px;
-    z-index: 9999;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
-/* Agregar estos estilos al archivo header.scss */
-
-// Permitir scroll en el menú móvil
-.header__nav-links-mobile {
-  // ... estilos existentes ...
-  
-  // Habilitar scroll táctil
-  touch-action: pan-y;
-  
-  // Mejorar el scroll en iOS
-  -webkit-overflow-scrolling: touch;
-  
-  // Permitir scroll vertical
-  overflow-y: auto;
-  
-  // Cuando está siendo arrastrado, deshabilitar scroll
-  &.dragging {
-    overflow: hidden;
-    -webkit-overflow-scrolling: auto;
-  }
-}
-
-// Estilos para los enlaces dentro del menú
-.header__nav-links-mobile a {
-  // Asegurar que los enlaces sean clickeables
-  pointer-events: auto;
-  cursor: pointer;
-  
-  // Evitar selección de texto durante el arrastre
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  
-  &:active {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-}
-
-// Mejorar el overlay
-.mobile-menu-overlay {
-  // Asegurar que el overlay no interfiera con los clicks del menú
-  pointer-events: auto;
-  
-  &.visible {
-    // Cuando es visible, permitir clicks para cerrar
-    cursor: pointer;
-  }
-}
-
-// Asegurar que el body no-scroll funcione correctamente
-body.no-scroll {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  
-  // Para iOS
-  position: relative;
-}
-
-// Clase para cuando el menú está siendo arrastrado
-.header__nav-links-mobile.dragging {
-  // Deshabilitar transiciones durante el arrastre
-  transition: none !important;
-  
-  // Deshabilitar clicks durante el arrastre
-  a {
-    pointer-events: none;
-  }
+  // iOS fix
+  position: relative; 
 }
