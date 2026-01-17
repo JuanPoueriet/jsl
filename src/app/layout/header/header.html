@@ -220,6 +220,8 @@
     [class.open]="isMobileMenuOpen"
     [style.transform]="'translateX(' + menuTranslateX + 'px)'"
     [style.transition]="menuTransition"
+    [cdkTrapFocus]="isMobileMenuOpen"
+    [cdkTrapFocusAutoCapture]="true"
     (touchstart)="onMenuTouchStart($event)"
     (touchmove)="onMenuTouchMove($event)"
     (touchend)="onMenuTouchEnd($event)"

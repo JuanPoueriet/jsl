@@ -11,12 +11,14 @@ import {
   NgZone,
   AfterViewInit,
   ChangeDetectorRef,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { TopBar } from '../top-bar/top-bar';
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
+import { A11yModule } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'jsl-header',
@@ -29,9 +31,11 @@ import { LanguageSwitcher } from '../language-switcher/language-switcher';
     LucideAngularModule,
     TopBar,
     LanguageSwitcher,
+    A11yModule,
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header implements OnInit, OnDestroy, AfterViewInit {
   isMobileMenuOpen = false;
@@ -245,37 +249,37 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (!this.isMobileMenuOpen || !this.isBrowser) return;
+  // @HostListener('document:keydown', ['$event'])
+  // handleKeyboardEvent(event: KeyboardEvent) {
+  //   if (!this.isMobileMenuOpen || !this.isBrowser) return;
 
-    if (event.key === 'Escape') {
-      this.closeMobileMenu();
-      return;
-    }
+  //   if (event.key === 'Escape') {
+  //     this.closeMobileMenu();
+  //     return;
+  //   }
 
-    if (event.key === 'Tab') {
-      const focusableElements = this.menuElement?.querySelectorAll(
-        'a[href], button, textarea, input, select'
-      );
-      if (focusableElements && focusableElements.length > 0) {
-        const firstElement = focusableElements[0] as HTMLElement;
-        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+  //   if (event.key === 'Tab') {
+  //     const focusableElements = this.menuElement?.querySelectorAll(
+  //       'a[href], button, textarea, input, select'
+  //     );
+  //     if (focusableElements && focusableElements.length > 0) {
+  //       const firstElement = focusableElements[0] as HTMLElement;
+  //       const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
 
-        if (event.shiftKey) {
-          if (document.activeElement === firstElement) {
-            lastElement.focus();
-            event.preventDefault();
-          }
-        } else {
-          if (document.activeElement === lastElement) {
-            firstElement.focus();
-            event.preventDefault();
-          }
-        }
-      }
-    }
-  }
+  //       if (event.shiftKey) {
+  //         if (document.activeElement === firstElement) {
+  //           lastElement.focus();
+  //           event.preventDefault();
+  //         }
+  //       } else {
+  //         if (document.activeElement === lastElement) {
+  //           firstElement.focus();
+  //           event.preventDefault();
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   // HANDLERS PARA GESTOS EN EL OVERLAY
   onOverlayTouch(event: TouchEvent) {

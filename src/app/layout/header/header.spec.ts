@@ -1,8 +1,11 @@
+import 'zone.js';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Header } from './header';
 import { provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { LucideAngularModule } from 'lucide-angular';
+import { ALL_ICONS } from '../../core/constants/icons';
 
 describe('Header', () => {
   let component: Header;
@@ -10,7 +13,7 @@ describe('Header', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Header, NoopAnimationsModule],
+      imports: [Header, NoopAnimationsModule, LucideAngularModule.pick(ALL_ICONS)],
       providers: [
         provideRouter([]), // Mock
         provideTranslateService() // Mock
@@ -31,12 +34,17 @@ describe('Header', () => {
     expect(component.isMobileMenuOpen).toBe(false);
   });
 
-  it('should toggle mobile menu on toggleMobileMenu()', () => {
+  it('should toggle mobile menu on toggleMobileMenu()', (done) => {
     expect(component.isMobileMenuOpen).toBe(false);
+
     component.toggleMobileMenu();
     expect(component.isMobileMenuOpen).toBe(true);
-    component.toggleMobileMenu();
-    expect(component.isMobileMenuOpen).toBe(false);
+
+    setTimeout(() => {
+      component.toggleMobileMenu();
+      expect(component.isMobileMenuOpen).toBe(false);
+      done();
+    }, 350);
   });
 
   it('should close mobile menu on closeMobileMenu()', () => {

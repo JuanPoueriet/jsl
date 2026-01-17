@@ -281,6 +281,7 @@ li.dropdown {
   left: 0;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px); // Glassmorphism
   -webkit-backdrop-filter: blur(4px);
@@ -305,6 +306,7 @@ li.dropdown {
   width: 80%;
   max-width: 320px;
   height: 100vh;
+  height: 100dvh;
   background: var(--bg-secondary);
   padding: 2rem;
   padding-top: calc(60px + env(safe-area-inset-top)); // Safe area support
