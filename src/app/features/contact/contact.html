@@ -37,11 +37,17 @@
       
       <!-- Campo Nombre -->
       <div class="form-group">
-        <label for="name">{{ 'CONTACT.FORM.NAME' | translate }}</label>
+        <label for="name">
+          {{ 'CONTACT.FORM.NAME' | translate }}
+          <span class="required-asterisk" aria-hidden="true">*</span>
+        </label>
         <input type="text" id="name" class="form-control" formControlName="name" 
-               [class.is-invalid]="f['name'].invalid && (f['name'].dirty || f['name'].touched)">
+               [class.is-invalid]="f['name'].invalid && (f['name'].dirty || f['name'].touched)"
+               aria-required="true"
+               [attr.aria-invalid]="f['name'].invalid && (f['name'].dirty || f['name'].touched)"
+               [attr.aria-describedby]="(f['name'].invalid && (f['name'].dirty || f['name'].touched)) ? 'name-error' : null">
         @if (f['name'].invalid && (f['name'].dirty || f['name'].touched)) {
-          <div class="form-error">
+          <div class="form-error" id="name-error">
             @if (f['name'].errors?.['required']) {
               <span>{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
             }
@@ -54,11 +60,17 @@
 
       <!-- Campo Email -->
       <div class="form-group">
-        <label for="email">{{ 'CONTACT.FORM.EMAIL' | translate }}</label>
+        <label for="email">
+          {{ 'CONTACT.FORM.EMAIL' | translate }}
+          <span class="required-asterisk" aria-hidden="true">*</span>
+        </label>
         <input type="email" id="email" class="form-control" formControlName="email"
-               [class.is-invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
+               [class.is-invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched)"
+               aria-required="true"
+               [attr.aria-invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched)"
+               [attr.aria-describedby]="(f['email'].invalid && (f['email'].dirty || f['email'].touched)) ? 'email-error' : null">
         @if (f['email'].invalid && (f['email'].dirty || f['email'].touched)) {
-          <div class="form-error">
+          <div class="form-error" id="email-error">
             @if (f['email'].errors?.['required']) {
               <span>{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
             }
@@ -71,9 +83,15 @@
 
       <!-- Campo Servicio -->
       <div class="form-group">
-        <label for="service">{{ 'CONTACT.FORM.SERVICE' | translate }}</label>
+        <label for="service">
+          {{ 'CONTACT.FORM.SERVICE' | translate }}
+          <span class="required-asterisk" aria-hidden="true">*</span>
+        </label>
         <select id="service" class="form-control" formControlName="service"
-                [class.is-invalid]="f['service'].invalid && (f['service'].dirty || f['service'].touched)">
+                [class.is-invalid]="f['service'].invalid && (f['service'].dirty || f['service'].touched)"
+                aria-required="true"
+                [attr.aria-invalid]="f['service'].invalid && (f['service'].dirty || f['service'].touched)"
+                [attr.aria-describedby]="(f['service'].invalid && (f['service'].dirty || f['service'].touched)) ? 'service-error' : null">
           <option value="" disabled>{{ 'CONTACT.FORM.SERVICE_PROMPT' | translate }}</option>
           <option value="erp">{{ 'PRODUCTS_LIST.ERP' | translate }}</option>
           <option value="pos">{{ 'PRODUCTS_LIST.POS' | translate }}</option>
@@ -82,7 +100,7 @@
           <option value="other">{{ 'CONTACT.FORM.SERVICE_OTHER' | translate }}</option>
         </select>
         @if (f['service'].invalid && (f['service'].dirty || f['service'].touched)) {
-          <div class="form-error">
+          <div class="form-error" id="service-error">
             @if (f['service'].errors?.['required']) {
               <span>{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
             }
@@ -92,11 +110,17 @@
 
       <!-- Campo Mensaje -->
       <div class="form-group">
-        <label for="message">{{ 'CONTACT.FORM.MESSAGE' | translate }}</label>
+        <label for="message">
+          {{ 'CONTACT.FORM.MESSAGE' | translate }}
+          <span class="required-asterisk" aria-hidden="true">*</span>
+        </label>
         <textarea id="message" class="form-control" rows="6" formControlName="message"
-                  [class.is-invalid]="f['message'].invalid && (f['message'].dirty || f['message'].touched)"></textarea>
+                  [class.is-invalid]="f['message'].invalid && (f['message'].dirty || f['message'].touched)"
+                  aria-required="true"
+                  [attr.aria-invalid]="f['message'].invalid && (f['message'].dirty || f['message'].touched)"
+                  [attr.aria-describedby]="(f['message'].invalid && (f['message'].dirty || f['message'].touched)) ? 'message-error' : null"></textarea>
         @if (f['message'].invalid && (f['message'].dirty || f['message'].touched)) {
-          <div class="form-error">
+          <div class="form-error" id="message-error">
             @if (f['message'].errors?.['required']) {
               <span>{{ 'CONTACT.FORM.ERRORS.REQUIRED' | translate }}</span>
             }
