@@ -78,6 +78,18 @@
   </div>
 </section>
 
+<!-- NUEVO: Tech Stack Slider (Marquee) -->
+<section class="tech-stack-slider">
+  <div class="container-fluid">
+    <swiper-container [config]="logoSwiperConfig" init="true" class="logo-slider">
+      @for (tech of techStack(); track tech.name) {
+        <swiper-slide class="logo-slide">
+          <img [src]="tech.imageUrl" [alt]="tech.name" loading="lazy" />
+        </swiper-slide>
+      }
+    </swiper-container>
+  </div>
+</section>
 
 <section class="welcome-section container" jslAnimateOnScroll>
   <div class="welcome-section__text">
@@ -94,38 +106,6 @@
       src="assets/imgs/Avif/photo-1542744173-8e7e53415bb0.avif"
       alt="Equipo trabajando en JSL Technology"
     />
-  </div>
-</section>
-
-<section class="testimonials-section">
-  <div class="container" jslAnimateOnScroll>
-    <div class="testimonials-header">
-      <span class="section-eyebrow">{{ 'HOME.TESTIMONIALS_EYEBROW' | translate }}</span>
-      <h2 class="section-title">{{ 'HOME.TESTIMONIALS_TITLE' | translate }}</h2>
-    </div>
-    <swiper-container [config]="testimonialSwiperConfig" init="true" class="testimonial-slider">
-      @for (testimonial of testimonials(); track testimonial.nameKey) {
-        <swiper-slide class="testimonial-card">
-          <div class="testimonial-card__stars">
-            @for (star of getStars(5); track $index) {
-              <lucide-icon name="Star"></lucide-icon>
-            }
-          </div>
-          <p class="testimonial-card__text">"{{ testimonial.textKey | translate }}"</p>
-          <div class="testimonial-card__author">
-            <img
-              [src]="testimonial.imageUrl"
-              [alt]="testimonial.nameKey | translate"
-              loading="lazy"
-            />
-            <div class="testimonial-card__author-info">
-              <span class="name">{{ testimonial.nameKey | translate }}</span>
-              <span class="role">{{ testimonial.roleKey | translate }}</span>
-            </div>
-          </div>
-        </swiper-slide>
-      }
-    </swiper-container>
   </div>
 </section>
 
@@ -189,6 +169,38 @@
   </div>
 </section>
 
+<section class="testimonials-section">
+  <div class="container" jslAnimateOnScroll>
+    <div class="testimonials-header">
+      <span class="section-eyebrow">{{ 'HOME.TESTIMONIALS_EYEBROW' | translate }}</span>
+      <h2 class="section-title">{{ 'HOME.TESTIMONIALS_TITLE' | translate }}</h2>
+    </div>
+    <swiper-container [config]="testimonialSwiperConfig" init="true" class="testimonial-slider">
+      @for (testimonial of testimonials(); track testimonial.nameKey) {
+        <swiper-slide class="testimonial-card">
+          <div class="testimonial-card__stars">
+            @for (star of getStars(5); track $index) {
+              <lucide-icon name="Star"></lucide-icon>
+            }
+          </div>
+          <p class="testimonial-card__text">"{{ testimonial.textKey | translate }}"</p>
+          <div class="testimonial-card__author">
+            <img
+              [src]="testimonial.imageUrl"
+              [alt]="testimonial.nameKey | translate"
+              loading="lazy"
+            />
+            <div class="testimonial-card__author-info">
+              <span class="name">{{ testimonial.nameKey | translate }}</span>
+              <span class="role">{{ testimonial.roleKey | translate }}</span>
+            </div>
+          </div>
+        </swiper-slide>
+      }
+    </swiper-container>
+  </div>
+</section>
+
 <section class="process-section">
   <div class="container">
     <div class="process-header" jslAnimateOnScroll>
@@ -214,7 +226,26 @@
         <lucide-icon name="ArrowRight"></lucide-icon>
       </a>
     </div>
-    </div>
+  </div>
+</section>
+
+<section class="latest-insights container">
+  <div class="latest-insights__header" jslAnimateOnScroll>
+    <span class="section-eyebrow">{{ 'HOME.BLOG_EYEBROW' | translate }}</span>
+    <h2 class="section-title">{{ 'HOME.BLOG_TITLE' | translate }}</h2>
+  </div>
+  <div class="insights-grid">
+    @for (post of latestBlogPosts(); track post.key) {
+      <jsl-card
+        [imageUrl]="post.imageUrl"
+        [title]="'BLOG.' + post.key + '_TITLE' | translate"
+        [description]="'BLOG.' + post.key + '_DESC' | translate"
+        [link]="['/', currentLang, 'blog', post.slug]"
+        jslAnimateOnScroll
+      >
+      </jsl-card>
+    }
+  </div>
 </section>
 
 <jsl-cta-section></jsl-cta-section>

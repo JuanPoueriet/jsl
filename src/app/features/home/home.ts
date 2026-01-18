@@ -13,9 +13,10 @@ import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/comm
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterLink } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { Card } from '@shared/components/card/card';
 import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
-import { DataService } from '@core/services/data.service';
+import { DataService, Technology } from '@core/services/data.service';
 import { SwiperOptions } from 'swiper/types';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -66,6 +67,38 @@ export class Home implements OnInit, AfterViewInit {
     },
   };
 
+  public logoSwiperConfig: SwiperOptions = {
+    modules: [Autoplay],
+    slidesPerView: 2,
+    spaceBetween: 30,
+    loop: true,
+    speed: 3000, // Velocidad constante para efecto marquee
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false,
+    },
+    allowTouchMove: false, // Deshabilitar interacción manual para marquee puro
+    breakpoints: {
+      640: {
+        slidesPerView: 3,
+        spaceBetween: 40,
+      },
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 50,
+      },
+      1024: {
+        slidesPerView: 5,
+        spaceBetween: 60,
+      },
+      1280: {
+        slidesPerView: 6,
+        spaceBetween: 70,
+      },
+    },
+  };
+
   public testimonialSwiperConfig: SwiperOptions = {
     modules: [Pagination, Autoplay, EffectCoverflow],
     effect: 'coverflow',
@@ -100,6 +133,30 @@ export class Home implements OnInit, AfterViewInit {
   public solutions = toSignal(this.dataService.getSolutions(), { initialValue: [] });
   public products = toSignal(this.dataService.getProducts(), { initialValue: [] });
   public processSteps = toSignal(this.dataService.getProcessSteps(), { initialValue: [] });
+
+  public techStack = toSignal(
+    this.dataService.getTechStack().pipe(
+      map((categories) => {
+        const allTechs: Technology[] = [];
+        const seen = new Set<string>();
+        categories.forEach((cat) => {
+          cat.technologies.forEach((tech) => {
+            if (!seen.has(tech.name)) {
+              allTechs.push(tech);
+              seen.add(tech.name);
+            }
+          });
+        });
+        return allTechs;
+      })
+    ),
+    { initialValue: [] }
+  );
+
+  public latestBlogPosts = toSignal(
+    this.dataService.getBlogPosts().pipe(map((posts) => posts.slice(0, 3))),
+    { initialValue: [] }
+  );
 
   private el = inject(ElementRef);
 
@@ -173,9 +230,44 @@ export class Home implements OnInit, AfterViewInit {
         }, 100);
       }
 
-      // 2. Testimonial Slider
-      const testimonialSwiperEl = this.el.nativeElement.querySelector('.testimonial-slider swiper-container');
-      
+      // 2. Logo Slider (Tech Stack)
+      const logoSwiperEl = this.el.nativeElement.querySelector('.tech-stack-slider swiper-container');
+
+      if (logoSwiperEl) {
+        Object.assign(logoSwiperEl, {
+          modules: [Autoplay],
+          slidesPerView: 2,
+          spaceBetween: 30,
+          loop: true,
+          speed: 3000,
+          autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: false,
+          },
+          allowTouchMove: false,
+          breakpoints: {
+            640: { slidesPerView: 3, spaceBetween: 40 },
+            768: { slidesPerView: 4, spaceBetween: 50 },
+            1024: { slidesPerView: 5, spaceBetween: 60 },
+            1280: { slidesPerView: 6, spaceBetween: 70 },
+          },
+        });
+
+        logoSwiperEl.initialize();
+
+        setTimeout(() => {
+          if (logoSwiperEl.swiper && logoSwiperEl.swiper.autoplay) {
+            logoSwiperEl.swiper.autoplay.start();
+          }
+        }, 100);
+      }
+
+      // 3. Testimonial Slider
+      const testimonialSwiperEl = this.el.nativeElement.querySelector(
+        '.testimonial-slider swiper-container'
+      );
+
       if (testimonialSwiperEl) {
         Object.assign(testimonialSwiperEl, {
           modules: [Pagination, Autoplay, EffectCoverflow],
@@ -202,17 +294,16 @@ export class Home implements OnInit, AfterViewInit {
         });
 
         testimonialSwiperEl.initialize();
-        
+
         setTimeout(() => {
           if (testimonialSwiperEl.swiper && testimonialSwiperEl.swiper.autoplay) {
             testimonialSwiperEl.swiper.autoplay.start();
           }
         }, 500);
       }
-      
+
       // ← NUEVO: Agregar event listeners manuales como fallback
       this.setupCustomNavigation();
-      
     }, 100); // Aumentado a 100ms para asegurar que el DOM esté listo
   }
 
