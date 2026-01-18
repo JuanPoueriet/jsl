@@ -91,6 +91,7 @@ export class Seo {
       // La lógica interna se encarga de la limpieza solo en el navegador.
       if (currentLang) {
         this.updateHreflangTags(this.baseUrl, canonicalPath);
+        this.updateLanguageTag(currentLang);
       }
     });
   }
@@ -140,6 +141,13 @@ export class Seo {
     this.metaService.updateTag({ name: 'twitter:title', content: title });
     this.metaService.updateTag({ name: 'twitter:description', content: description });
     this.metaService.updateTag({ name: 'twitter:image', content: imageUrl });
+  }
+
+  /**
+   * 6. ¡NUEVO! Actualiza el atributo lang del html.
+   */
+  private updateLanguageTag(lang: string): void {
+    this.document.documentElement.lang = lang;
   }
 
   /**
