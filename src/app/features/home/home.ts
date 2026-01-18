@@ -17,6 +17,7 @@ import { map } from 'rxjs/operators';
 import { Card } from '@shared/components/card/card';
 import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
 import { DataService, Technology } from '@core/services/data.service';
+import { ToastService } from '@core/services/toast.service';
 import { SwiperOptions } from 'swiper/types';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -127,6 +128,26 @@ export class Home implements OnInit, AfterViewInit {
 
   private translate = inject(TranslateService);
   private dataService = inject(DataService);
+  private toastService = inject(ToastService);
+
+  public stats = [
+    { valueKey: 'HOME.STATS_PROJECTS', icon: 'CheckCircle' },
+    { valueKey: 'HOME.STATS_UPTIME', icon: 'Server' },
+    { valueKey: 'HOME.STATS_COSTS', icon: 'TrendingDown' },
+    { valueKey: 'HOME.STATS_SUPPORT', icon: 'Headphones' },
+  ];
+
+  public teamMembers = [
+    { nameKey: 'ABOUT.TEAM_MEMBER_1_NAME', roleKey: 'ABOUT.TEAM_MEMBER_1_ROLE', image: 'assets/imgs/Avif/img-1.avif' },
+    { nameKey: 'ABOUT.TEAM_MEMBER_2_NAME', roleKey: 'ABOUT.TEAM_MEMBER_2_ROLE', image: 'assets/imgs/Avif/img-2.avif' },
+    { nameKey: 'ABOUT.TEAM_MEMBER_3_NAME', roleKey: 'ABOUT.TEAM_MEMBER_3_ROLE', image: 'assets/imgs/Avif/photo-1517694712202-14dd9538aa97.avif' },
+  ];
+
+  public faqPreview = [
+    { titleKey: 'FAQ.Q1_TITLE', descKey: 'FAQ.Q1_DESC', isOpen: false },
+    { titleKey: 'FAQ.Q2_TITLE', descKey: 'FAQ.Q2_DESC', isOpen: false },
+    { titleKey: 'FAQ.Q3_TITLE', descKey: 'FAQ.Q3_DESC', isOpen: false },
+  ];
 
   public testimonials = toSignal(this.dataService.getTestimonials(), { initialValue: [] });
   public projects = toSignal(this.dataService.getProjects(), { initialValue: [] });
@@ -350,5 +371,18 @@ export class Home implements OnInit, AfterViewInit {
 
   getStars(count: number): any[] {
     return new Array(count);
+  }
+
+  toggleFaq(index: number) {
+    this.faqPreview[index].isOpen = !this.faqPreview[index].isOpen;
+  }
+
+  downloadLeadMagnet() {
+    // Simular descarga
+    this.toastService.show(
+      'Descarga iniciada... El Whitepaper se ha enviado a tu correo electrónico.',
+      'success',
+      5000
+    );
   }
 }
