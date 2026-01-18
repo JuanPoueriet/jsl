@@ -8,8 +8,11 @@ import {
   PLATFORM_ID,
   ElementRef,
   ViewChild,
+  Renderer2,
+  signal,
+  OnDestroy,
 } from '@angular/core';
-import { CommonModule, isPlatformBrowser, NgOptimizedImage } from '@angular/common';
+import { CommonModule, isPlatformBrowser, NgOptimizedImage, DOCUMENT } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterLink } from '@angular/router';
@@ -20,6 +23,7 @@ import { DataService, Technology } from '@core/services/data.service';
 import { ToastService } from '@core/services/toast.service';
 import { SwiperOptions } from 'swiper/types';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { DigitalMaturitySelector } from './components/digital-maturity-selector/digital-maturity-selector';
 
 // Swiper Web Components
 import { Pagination, Autoplay, EffectCoverflow, EffectFade, Navigation } from 'swiper/modules';
@@ -38,12 +42,13 @@ register();
     RouterLink,
     Card,
     AnimateOnScroll,
+    DigitalMaturitySelector,
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class Home implements OnInit, AfterViewInit {
+export class Home implements OnInit, AfterViewInit, OnDestroy {
   public heroSwiperConfig: SwiperOptions = {
     modules: [EffectFade, Autoplay, Pagination, Navigation],
     effect: 'fade',
@@ -179,7 +184,12 @@ export class Home implements OnInit, AfterViewInit {
     { initialValue: [] }
   );
 
+  public activeTab = signal<'services' | 'products'>('services');
+
   private el = inject(ElementRef);
+  private renderer = inject(Renderer2);
+  private document = inject(DOCUMENT);
+  private schemaScript: any; // HTMLScriptElement
 
   @Inject(PLATFORM_ID) private platformId = inject(PLATFORM_ID);
 
@@ -190,7 +200,99 @@ export class Home implements OnInit, AfterViewInit {
   ngOnInit() {
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
+      // Re-generate schema on lang change if needed, but for now simple init
     });
+    this.addSchemaData();
+  }
+
+  ngOnDestroy() {
+    if (this.schemaScript) {
+      this.renderer.removeChild(this.document.head, this.schemaScript);
+    }
+  }
+
+  setActiveTab(tab: 'services' | 'products') {
+    this.activeTab.set(tab);
+  }
+
+  private addSchemaData() {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          'name': 'JSL Technology',
+          'url': 'https://jsl.technology',
+          'logo': 'https://jsl.technology/assets/logo.png',
+          'sameAs': [
+            'https://www.linkedin.com/company/jsl-technology',
+            'https://twitter.com/jsl_tech'
+          ],
+          'contactPoint': {
+            '@type': 'ContactPoint',
+            'telephone': '+1-809-555-5555',
+            'contactType': 'customer service',
+            'areaServed': 'Global',
+            'availableLanguage': ['Spanish', 'English']
+          }
+        },
+        {
+          '@type': 'Service',
+          'serviceType': 'Software Development',
+          'provider': {
+            '@type': 'Organization',
+            'name': 'JSL Technology'
+          },
+          'areaServed': {
+            '@type': 'Place',
+            'name': 'Global'
+          },
+          'hasOfferCatalog': {
+            '@type': 'OfferCatalog',
+            'name': 'Software Solutions',
+            'itemListElement': [
+              {
+                '@type': 'Offer',
+                'itemOffered': {
+                  '@type': 'Service',
+                  'name': 'Web Development'
+                }
+              },
+              {
+                '@type': 'Offer',
+                'itemOffered': {
+                  '@type': 'Service',
+                  'name': 'Mobile App Development'
+                }
+              },
+              {
+                '@type': 'Offer',
+                'itemOffered': {
+                  '@type': 'Service',
+                  'name': 'ERP Implementation'
+                }
+              }
+            ]
+          }
+        },
+        {
+          '@type': 'FAQPage',
+          'mainEntity': this.faqPreview.map(faq => ({
+            '@type': 'Question',
+            'name': this.translate.instant(faq.titleKey),
+            'acceptedAnswer': {
+              '@type': 'Answer',
+              'text': this.translate.instant(faq.descKey)
+            }
+          }))
+        }
+      ]
+    };
+
+    this.schemaScript = this.renderer.createElement('script');
+    this.schemaScript.type = 'application/ld+json';
+    this.schemaScript.text = JSON.stringify(schema);
+    this.renderer.appendChild(this.document.head, this.schemaScript);
   }
 
   ngAfterViewInit(): void {

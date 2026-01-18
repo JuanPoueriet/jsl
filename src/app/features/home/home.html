@@ -76,6 +76,14 @@
       </div>
     </div>
   </div>
+
+  <!-- NUEVO: Scroll Down Indicator -->
+  <div class="scroll-indicator">
+    <div class="mouse">
+      <div class="wheel"></div>
+    </div>
+    <div class="arrow"></div>
+  </div>
 </section>
 
 <!-- NUEVO COMPONENTE: Stats Bar (Métricas) -->
@@ -134,44 +142,73 @@
   </div>
 </section>
 
-<section class="featured-services container">
-  <div class="featured-services__header" jslAnimateOnScroll>
-    <span class="section-eyebrow">{{ 'HOME.SERVICES_EYEBROW' | translate }}</span>
-    <h2 class="section-title">{{ 'HOME.SERVICES_TITLE' | translate }}</h2>
-    <p class="section-subtitle">{{ 'HOME.SERVICES_SUBTITLE' | translate }}</p>
+<section class="offerings-section container" id="offerings">
+  <div class="offerings-header" jslAnimateOnScroll>
+    <span class="section-eyebrow">{{ 'HOME.OFFERINGS_EYEBROW' | translate }}</span>
+    <h2 class="section-title">{{ 'HOME.OFFERINGS_TITLE' | translate }}</h2>
+
+    <div class="offerings-tabs-container">
+      <div class="offerings-tabs">
+        <button
+          class="tab-btn"
+          [class.active]="activeTab() === 'services'"
+          (click)="setActiveTab('services')"
+        >
+          {{ 'HEADER.SERVICES' | translate }}
+        </button>
+        <button
+          class="tab-btn"
+          [class.active]="activeTab() === 'products'"
+          (click)="setActiveTab('products')"
+        >
+          {{ 'HEADER.PRODUCTS' | translate }}
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="solutions-grid">
-    @for (solution of solutions(); track solution.key) {
-      <jsl-card
-        [icon]="solution.icon"
-        [title]="'SOLUTIONS.' + solution.key + '_TITLE' | translate"
-        [description]="'SOLUTIONS.' + solution.key + '_DESC' | translate"
-        [link]="['/', currentLang, 'solutions', solution.slug]"
-        jslAnimateOnScroll
-      >
-      </jsl-card>
+
+  <div class="offerings-content">
+    @if (activeTab() === 'services') {
+      <div class="solutions-grid fade-in">
+        @for (solution of solutions(); track solution.key) {
+          <jsl-card
+            [icon]="solution.icon"
+            [title]="'SOLUTIONS.' + solution.key + '_TITLE' | translate"
+            [description]="'SOLUTIONS.' + solution.key + '_DESC' | translate"
+            [link]="['/', currentLang, 'solutions', solution.slug]"
+            jslAnimateOnScroll
+          >
+          </jsl-card>
+        }
+      </div>
+    }
+
+    @if (activeTab() === 'products') {
+      <div class="products-grid fade-in">
+        @for (product of products(); track product.key) {
+          <jsl-card
+            [icon]="product.icon"
+            [title]="'PRODUCTS.' + product.key + '_TITLE' | translate"
+            [description]="'PRODUCTS.' + product.key + '_DESC' | translate"
+            [link]="['/', currentLang, 'products', product.slug]"
+            jslAnimateOnScroll
+          >
+          </jsl-card>
+        }
+      </div>
     }
   </div>
 </section>
 
-<section class="featured-products container">
-  <div class="featured-products__header" jslAnimateOnScroll>
-    <span class="section-eyebrow">{{ 'HOME.PRODUCTS_EYEBROW' | translate }}</span>
-    <h2 class="section-title">{{ 'HOME.PRODUCTS_TITLE' | translate }}</h2>
-    <p class="section-subtitle">{{ 'HOME.PRODUCTS_SUBTITLE' | translate }}</p>
+<!-- NUEVO: Maturity Diagnosis Section -->
+<section class="maturity-section container" jslAnimateOnScroll>
+  <div class="section-header text-center" style="text-align: center; margin-bottom: 3rem;">
+    <span class="section-eyebrow">{{ 'MATURITY.EYEBROW' | translate }}</span>
+    <h2 class="section-title">{{ 'MATURITY.TITLE' | translate }}</h2>
+    <p class="section-subtitle">{{ 'MATURITY.SUBTITLE' | translate }}</p>
   </div>
-  <div class="products-grid">
-    @for (product of products(); track product.key) {
-      <jsl-card
-        [icon]="product.icon"
-        [title]="'PRODUCTS.' + product.key + '_TITLE' | translate"
-        [description]="'PRODUCTS.' + product.key + '_DESC' | translate"
-        [link]="['/', currentLang, 'products', product.slug]"
-        jslAnimateOnScroll
-      >
-      </jsl-card>
-    }
-  </div>
+
+  <jsl-digital-maturity-selector></jsl-digital-maturity-selector>
 </section>
 
 <section class="featured-projects container">
