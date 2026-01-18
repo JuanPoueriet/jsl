@@ -63,10 +63,22 @@
   </swiper-container>
 
   <!-- Custom Navigation Buttons - MODERNOS Y DISCRETOS -->
-  <div class="hero-swiper-button-prev" aria-label="Slide anterior" role="button" tabindex="0">
+  <div
+    class="hero-swiper-button-prev"
+    aria-label="Previous slide"
+    role="button"
+    tabindex="0"
+    (keydown.enter)="onPrevNav()"
+    (keydown.space)="onPrevNav()">
     <lucide-icon name="ChevronLeft"></lucide-icon>
   </div>
-  <div class="hero-swiper-button-next" aria-label="Slide siguiente" role="button" tabindex="0">
+  <div
+    class="hero-swiper-button-next"
+    aria-label="Next slide"
+    role="button"
+    tabindex="0"
+    (keydown.enter)="onNextNav()"
+    (keydown.space)="onNextNav()">
     <lucide-icon name="ChevronRight"></lucide-icon>
   </div>
 
@@ -434,6 +446,25 @@
       <span>{{ 'HOME.FAQ_PREVIEW_LINK' | translate }}</span>
       <lucide-icon name="ArrowRight"></lucide-icon>
     </a>
+  </div>
+</section>
+
+<!-- NUEVO COMPONENTE: Casos de Éxito (Before/After) -->
+<section class="success-cases-section container" style="margin-bottom: 5rem;">
+  <div class="section-header text-center" style="margin-bottom: 3rem;">
+     <span class="section-eyebrow">Visual Transformation</span>
+     <h2 class="section-title">See the Difference</h2>
+     <p class="section-subtitle">From legacy systems to modern, high-performance interfaces.</p>
+  </div>
+
+  <div style="max-width: 900px; margin: 0 auto;">
+     <jsl-image-comparison
+       beforeImage="assets/imgs/Avif/legacy-ui.avif"
+       afterImage="assets/imgs/Avif/modern-ui.avif"
+       beforeLabel="Legacy System"
+       afterLabel="JSL Solution"
+       alt="Dashboard modernization comparison"
+     ></jsl-image-comparison>
   </div>
 </section>
 

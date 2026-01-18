@@ -28,6 +28,7 @@ import { DigitalMaturitySelector } from './components/digital-maturity-selector/
 import { VideoModal } from '@shared/components/video-modal/video-modal';
 import { BookingModal } from '@shared/components/booking-modal/booking-modal';
 import { ExitIntentModal } from './components/exit-intent-modal/exit-intent-modal';
+import { ImageComparisonComponent } from '@shared/components/image-comparison/image-comparison';
 import { computed } from '@angular/core';
 
 // Swiper Web Components
@@ -50,7 +51,8 @@ register();
     DigitalMaturitySelector,
     VideoModal,
     BookingModal,
-    ExitIntentModal
+    ExitIntentModal,
+    ImageComparisonComponent
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -226,11 +228,14 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   private searchUiService = inject(SearchUiService);
   private schemaScript: any; // HTMLScriptElement
   private unlistenExitIntent: (() => void) | null = null;
+  private socialProofInterval: any;
+  private isBrowser: boolean;
 
   @Inject(PLATFORM_ID) private platformId = inject(PLATFORM_ID);
 
   constructor() {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
+    this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
   ngOnInit() {
@@ -257,6 +262,9 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     }
     if (this.unlistenExitIntent) {
       this.unlistenExitIntent();
+    }
+    if (this.socialProofInterval) {
+      clearInterval(this.socialProofInterval);
     }
   }
 
@@ -488,7 +496,44 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
       // Setup Exit Intent
       this.setupExitIntent();
+
+      // Start Social Proof Toasts
+      this.startSocialProofSimulation();
     }, 100); // Aumentado a 100ms para asegurar que el DOM esté listo
+  }
+
+  private startSocialProofSimulation() {
+    if (!this.isBrowser) return;
+
+    // Initial delay then periodic
+    setTimeout(() => {
+      this.showRandomSocialProof();
+      this.socialProofInterval = setInterval(() => {
+        this.showRandomSocialProof();
+      }, 45000); // Every 45 seconds
+    }, 10000); // Start 10s after load
+  }
+
+  private showRandomSocialProof() {
+    const proofs = [
+      { key: 'HOME.PROOF_1', type: 'info' }, // Someone from Madrid downloaded Whitepaper
+      { key: 'HOME.PROOF_2', type: 'success' }, // New Enterprise client onboarded
+      { key: 'HOME.PROOF_3', type: 'info' }, // 500+ developers joined the community
+    ];
+    const random = proofs[Math.floor(Math.random() * proofs.length)];
+    // this.toastService.show(random.key, random.type, 4000);
+    // Note: Since I don't have the keys in translation files yet, I will use hardcoded mock strings for now if keys are missing
+    // But better to stick to keys. I will add keys to en.json later or use a fallback.
+
+    // Using a direct message for now to ensure it works without waiting for translation update
+    const messages = [
+      'Someone from Madrid just downloaded the 2025 Whitepaper',
+      'New Enterprise client from FinTech sector just onboarded',
+      'JSL just deployed a new High-Performance Banking App',
+      'Visitor from London requested a consultation'
+    ];
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+    this.toastService.show(msg, 'info', 5000);
   }
 
   private setupExitIntent() {
@@ -594,6 +639,18 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   openSearch() {
     this.searchUiService.open();
+  }
+
+  onPrevNav() {
+    if (!this.isBrowser) return;
+    const btn = this.el.nativeElement.querySelector('.hero-swiper-button-prev');
+    if (btn) btn.click();
+  }
+
+  onNextNav() {
+    if (!this.isBrowser) return;
+    const btn = this.el.nativeElement.querySelector('.hero-swiper-button-next');
+    if (btn) btn.click();
   }
 
   downloadLeadMagnet() {

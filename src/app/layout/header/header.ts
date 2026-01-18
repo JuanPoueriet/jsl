@@ -285,7 +285,16 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (!this.isMobileMenuOpen || !this.isBrowser) return;
+    if (!this.isBrowser) return;
+
+    // Global Search Shortcut (Cmd/Ctrl + K)
+    if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+      event.preventDefault();
+      this.searchUiService.open();
+      return;
+    }
+
+    if (!this.isMobileMenuOpen) return;
 
     if (event.key === 'Escape') {
       this.closeMobileMenu();

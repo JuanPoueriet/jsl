@@ -83,6 +83,7 @@ import {
   Layers,
   HardDrive,
   Loader2,
+  ChevronsLeftRight,
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
@@ -137,6 +138,7 @@ export const ICON_LIST = {
     Layers,
     HardDrive,
     Loader2,
+    ChevronsLeftRight,
   },
   // Redes sociales
   Social: {
