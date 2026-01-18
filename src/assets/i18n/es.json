@@ -154,7 +154,18 @@
     "TEAM_TEASER_SUBTITLE": "Un equipo multidisciplinario de ingenieros, diseñadores y estrategas comprometidos con tu éxito.",
     "FAQ_PREVIEW_EYEBROW": "Dudas Comunes",
     "FAQ_PREVIEW_TITLE": "Preguntas Frecuentes",
-    "FAQ_PREVIEW_LINK": "Ver todas las preguntas"
+    "FAQ_PREVIEW_LINK": "Ver todas las preguntas",
+    "PARTNERS_TITLE": "Empresas Innovadoras que Confían en Nosotros",
+    "STICKY_CTA": "Agendar Asesoría Gratuita"
+  },
+  "EXIT_MODAL": {
+    "TITLE": "¡Espera! No te vayas sin esto",
+    "SUBTITLE": "Obtén nuestra Guía de Transformación Digital 2025 exclusiva antes de irte.",
+    "BENEFIT_1": "5 Estrategias para reducir costos un 30%",
+    "BENEFIT_2": "Casos de éxito de implementaciones ERP",
+    "BENEFIT_3": "Checklist para migración a la nube",
+    "CTA": "Sí, quiero la guía gratuita",
+    "DISCLAIMER": "Respetamos tu privacidad. Cero spam."
   },
   "CONTACT": {
     "TITLE": "Hablemos de tu Proyecto",

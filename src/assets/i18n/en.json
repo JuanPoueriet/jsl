@@ -152,7 +152,18 @@
     "TEAM_TEASER_SUBTITLE": "A multidisciplinary team of engineers, designers, and strategists committed to your success.",
     "FAQ_PREVIEW_EYEBROW": "Common Doubts",
     "FAQ_PREVIEW_TITLE": "Frequently Asked Questions",
-    "FAQ_PREVIEW_LINK": "View all questions"
+    "FAQ_PREVIEW_LINK": "View all questions",
+    "PARTNERS_TITLE": "Trusted by Innovative Companies",
+    "STICKY_CTA": "Book a Free Strategy Call"
+  },
+  "EXIT_MODAL": {
+    "TITLE": "Wait! Don't leave empty-handed",
+    "SUBTITLE": "Get our exclusive 2025 Digital Transformation Guide before you go.",
+    "BENEFIT_1": "5 Strategies to reduce costs by 30%",
+    "BENEFIT_2": "Case studies of successful ERP implementations",
+    "BENEFIT_3": "Checklist for cloud migration",
+    "CTA": "Yes, I want the free guide",
+    "DISCLAIMER": "We respect your privacy. No spam."
   },
   "CONTACT": {
     "TITLE": "Let's Talk About Your Project",

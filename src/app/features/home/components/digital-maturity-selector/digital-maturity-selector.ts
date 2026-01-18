@@ -1,5 +1,5 @@
-import { Component, signal, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, signal, computed, effect, inject, PLATFORM_ID, Renderer2, OnDestroy } from '@angular/core';
+import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { RouterLink } from '@angular/router';
@@ -11,7 +11,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './digital-maturity-selector.html',
   styleUrl: './digital-maturity-selector.scss'
 })
-export class DigitalMaturitySelector {
+export class DigitalMaturitySelector implements OnDestroy {
+  private platformId = inject(PLATFORM_ID);
+  private renderer = inject(Renderer2);
+  private document = inject(DOCUMENT);
+  private schemaScript: any; // HTMLScriptElement
+
   step = signal(0);
   answers = signal<Record<string, any>>({});
 
@@ -77,5 +82,50 @@ export class DigitalMaturitySelector {
   reset() {
     this.step.set(0);
     this.answers.set({});
+  }
+
+  constructor() {
+    effect(() => {
+      if (this.result()) {
+        this.injectSchema();
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.removeSchema();
+  }
+
+  private removeSchema() {
+    if (this.schemaScript) {
+      this.renderer.removeChild(this.document.head, this.schemaScript);
+      this.schemaScript = null;
+    }
+  }
+
+  private injectSchema() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    this.removeSchema(); // Remove existing script if any
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "Digital Maturity Assessment",
+      "description": "Assess your company's digital maturity level.",
+      "hasPart": this.questions.map(q => ({
+        "@type": "Question",
+        "name": q.titleKey,
+        "suggestedAnswer": q.options.map(o => ({
+          "@type": "Answer",
+          "text": o.labelKey
+        }))
+      }))
+    };
+
+    this.schemaScript = this.renderer.createElement('script');
+    this.schemaScript.type = 'application/ld+json';
+    this.schemaScript.text = JSON.stringify(schema);
+    this.renderer.appendChild(this.document.head, this.schemaScript);
   }
 }

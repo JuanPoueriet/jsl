@@ -16,6 +16,7 @@ import {
   TECH_STACK,
   CAREER_POSITIONS,
   FAQ_ITEMS,
+  PARTNERS,
 } from '@core/data/mock-data';
 
 // --- DEFINICIÓN DE INTERFACES PARA TODO EL SITIO ---
@@ -45,6 +46,7 @@ export interface Project {
   key: string;
   slug: string;
   imageUrl: string;
+  metrics?: string[];
 }
 
 // Interface para Artículos del Blog
@@ -96,6 +98,12 @@ export interface TechCategory {
   key: string;
   icon: string;
   technologies: Technology[];
+}
+
+// Interface para Partners
+export interface Partner {
+  name: string;
+  imageUrl: string;
 }
 
 // Interface para Posiciones de Carrera
@@ -183,6 +191,11 @@ export class DataService {
   // --- Métodos de Stack Tecnológico ---
   getTechStack(): Observable<TechCategory[]> {
     return of(TECH_STACK);
+  }
+
+  // --- Métodos de Partners ---
+  getPartners(): Observable<Partner[]> {
+    return of(PARTNERS);
   }
 
   // --- Métodos de Carreras ---

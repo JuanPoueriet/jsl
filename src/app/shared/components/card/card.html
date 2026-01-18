@@ -16,6 +16,13 @@
 
     <div class="card__content">
       <h3 class="card__title">{{ title }}</h3>
+      @if (metrics.length > 0) {
+        <div class="card__metrics">
+          @for (metric of metrics; track $index) {
+            <span class="card__metric-tag">{{ metric }}</span>
+          }
+        </div>
+      }
       <p class="card__description">{{ description }}</p>
       <span class="card__link">
         {{ 'COMMON.READ_MORE' | translate }} <lucide-icon name="ArrowRight"></lucide-icon>

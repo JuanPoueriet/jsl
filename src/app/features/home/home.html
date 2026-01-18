@@ -108,6 +108,20 @@
   </div>
 </section>
 
+<!-- NUEVO: Partners / Clients Section -->
+<section class="partners-section">
+  <div class="container">
+     <p class="partners-title">{{ 'HOME.PARTNERS_TITLE' | translate }}</p>
+     <div class="partners-grid">
+        @for (partner of partners(); track partner.name) {
+           <div class="partner-logo">
+              <img [src]="partner.imageUrl" [alt]="partner.name" loading="lazy">
+           </div>
+        }
+     </div>
+  </div>
+</section>
+
 <!-- NUEVO: Tech Stack Slider (Marquee) -->
 <section class="tech-stack-slider">
   <div class="container-fluid">
@@ -249,6 +263,7 @@
         [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
         [description]="'PROJECTS.' + project.key + '_DESC' | translate"
         [link]="['/', currentLang, 'projects', project.slug]"
+        [metrics]="project.metrics || []"
         jslAnimateOnScroll
       >
       </jsl-card>
@@ -419,3 +434,17 @@
   [isOpen]="isBookingModalOpen()"
   (close)="closeBookingModal()">
 </jsl-booking-modal>
+
+<jsl-exit-intent-modal
+  [isOpen]="isExitModalOpen()"
+  (close)="closeExitModal()"
+  (confirm)="onExitModalConfirm()">
+</jsl-exit-intent-modal>
+
+<!-- Sticky CTA for Mobile -->
+<div class="mobile-sticky-cta">
+  <button (click)="openBookingModal()">
+    {{ 'HOME.STICKY_CTA' | translate }}
+    <lucide-icon name="Calendar"></lucide-icon>
+  </button>
+</div>

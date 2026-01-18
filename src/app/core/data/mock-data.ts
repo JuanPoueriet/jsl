@@ -209,18 +209,21 @@ export const PROJECTS = [
     slug: 'erp-logistics-optimization',
     imageUrl: 'https://images.unsplash.com/photo-1556761175-577380e25f2b?fit=crop&w=600&q=80',
     category: 'Enterprise',
+    metrics: ['30% Cost Reduction', '99.8% Inventory Accuracy'],
   },
   {
     key: 'CASE_ECOMMERCE',
     slug: 'b2b-ecommerce-platform',
     imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?fit=crop&w=600&q=80',
     category: 'Commerce',
+    metrics: ['200% Order Increase', '45% Sales Growth'],
   },
   {
     key: 'CASE_MOBILE_APP',
     slug: 'fleet-management-mobile-app',
     imageUrl: 'https://images.unsplash.com/photo-1607936834114-0a300c3f0b24?fit=crop&w=600&q=80',
     category: 'Mobile',
+    metrics: ['40% Efficiency Boost', '18% Fuel Savings'],
   },
 ];
 
@@ -346,6 +349,17 @@ export const TECH_STACK = [
       { name: 'Kotlin (Android)', imageUrl: 'assets/imgs/logos/kotlin.svg' },
     ],
   },
+];
+
+/**
+ * DATOS DE CLIENTES / PARTNERS
+ */
+export const PARTNERS = [
+  { name: 'Microsoft', imageUrl: 'assets/imgs/logos/microsoft.svg' },
+  { name: 'Google', imageUrl: 'assets/imgs/logos/google-cloud.svg' },
+  { name: 'Amazon', imageUrl: 'assets/imgs/logos/aws.svg' },
+  { name: 'Docker', imageUrl: 'assets/imgs/logos/docker.svg' },
+  { name: 'Salesforce', imageUrl: 'assets/imgs/logos/salesforce.svg' }
 ];
 
 /**
