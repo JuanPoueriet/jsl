@@ -82,6 +82,7 @@ import {
   Building,
   Layers,
   HardDrive,
+  Loader2,
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
@@ -135,6 +136,7 @@ export const ICON_LIST = {
     Building,
     Layers,
     HardDrive,
+    Loader2,
   },
   // Redes sociales
   Social: {

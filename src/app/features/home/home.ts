@@ -12,6 +12,7 @@ import {
   signal,
   OnDestroy,
 } from '@angular/core';
+import { SearchUiService } from '@core/services/search-ui.service';
 import { CommonModule, isPlatformBrowser, NgOptimizedImage, DOCUMENT } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
@@ -216,10 +217,13 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   );
 
   public activeTab = signal<'services' | 'products'>('services');
+  public isReturningVisitor = signal(false);
+  public isSubmitting = signal(false);
 
   private el = inject(ElementRef);
   private renderer = inject(Renderer2);
   private document = inject(DOCUMENT);
+  private searchUiService = inject(SearchUiService);
   private schemaScript: any; // HTMLScriptElement
   private unlistenExitIntent: (() => void) | null = null;
 
@@ -234,6 +238,16 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       this.currentLang = event.lang;
       // Re-generate schema on lang change if needed, but for now simple init
     });
+
+    if (isPlatformBrowser(this.platformId)) {
+      const visited = localStorage.getItem('jsl_visited');
+      if (visited) {
+        this.isReturningVisitor.set(true);
+      } else {
+        localStorage.setItem('jsl_visited', 'true');
+      }
+    }
+
     this.addSchemaData();
   }
 
@@ -309,6 +323,15 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
               }
             ]
           }
+        },
+        {
+          '@type': 'BreadcrumbList',
+          'itemListElement': [{
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': 'https://jsl.technology/'
+          }]
         },
         {
           '@type': 'FAQPage',
@@ -569,12 +592,22 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     this.selectedProjectCategory.set(category);
   }
 
+  openSearch() {
+    this.searchUiService.open();
+  }
+
   downloadLeadMagnet() {
-    // Simular descarga
-    this.toastService.show(
-      'Descarga iniciada... El Whitepaper se ha enviado a tu correo electrónico.',
-      'success',
-      5000
-    );
+    if (this.isSubmitting()) return;
+    this.isSubmitting.set(true);
+
+    // Simular descarga con delay
+    setTimeout(() => {
+      this.toastService.show(
+        'HOME.LEAD_MAGNET_SENT',
+        'success',
+        5000
+      );
+      this.isSubmitting.set(false);
+    }, 2000);
   }
 }
