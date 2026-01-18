@@ -11,7 +11,10 @@ import {
   NgZone,
   AfterViewInit,
   ChangeDetectorRef,
+  effect,
+  inject,
 } from '@angular/core';
+import { SearchUiService } from '@core/services/search-ui.service';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
@@ -76,7 +79,12 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
   // Estado del acordeón móvil
   public expandedSection: string | null = null;
   public currentYear = new Date().getFullYear();
-  public isSearchOpen = false;
+
+  private searchUiService = inject(SearchUiService);
+
+  get isSearchOpen() {
+    return this.searchUiService.isOpen();
+  }
 
   constructor(
     private translate: TranslateService,
@@ -91,6 +99,16 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
 
     this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
+    });
+
+    effect(() => {
+      if (this.isBrowser) {
+        if (this.searchUiService.isOpen()) {
+          document.body.classList.add('no-scroll');
+        } else {
+          document.body.classList.remove('no-scroll');
+        }
+      }
     });
   }
 
@@ -180,12 +198,7 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
   }
 
   toggleSearch() {
-    this.isSearchOpen = !this.isSearchOpen;
-    if (this.isSearchOpen) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
+    this.searchUiService.toggle();
   }
 
   // TOGGLE MANUAL DEL MENÚ

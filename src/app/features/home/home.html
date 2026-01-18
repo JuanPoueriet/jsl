@@ -16,6 +16,9 @@
 
       <div class="hero-slide__overlay"></div>
       <div class="hero-slide__content container">
+        @if (isReturningVisitor()) {
+          <p class="welcome-back-msg">{{ 'HOME.WELCOME_BACK' | translate }}</p>
+        }
         <h1 class="hero-slide__title">{{ 'HOME.HERO1_TITLE' | translate }}</h1>
         <p class="hero-slide__subtitle">{{ 'HOME.HERO1_SUBTITLE' | translate }}</p>
         <div class="hero-actions">
@@ -167,6 +170,13 @@
     <span class="section-eyebrow">{{ 'HOME.OFFERINGS_EYEBROW' | translate }}</span>
     <h2 class="section-title">{{ 'HOME.OFFERINGS_TITLE' | translate }}</h2>
 
+    <div class="search-trigger-container">
+      <div class="search-trigger" (click)="openSearch()">
+        <lucide-icon name="Search"></lucide-icon>
+        <span>{{ 'HOME.SEARCH_PLACEHOLDER' | translate }}</span>
+      </div>
+    </div>
+
     <div class="offerings-tabs-container">
       <div class="offerings-tabs">
         <button
@@ -232,7 +242,7 @@
 
   <div class="maturity-cta">
     <button (click)="openBookingModal()" class="welcome-section__cta">
-      <span>Book a Strategy Call</span>
+      <span>{{ 'HOME.STICKY_CTA' | translate }}</span>
       <lucide-icon name="Calendar"></lucide-icon>
     </button>
   </div>
@@ -281,9 +291,14 @@
 
       <div class="lead-magnet-form">
         <input type="email" placeholder="tu@email.com" class="lead-magnet-input" />
-        <button (click)="downloadLeadMagnet()" class="lead-magnet-btn">
-          {{ 'HOME.LEAD_MAGNET_BTN' | translate }}
-          <lucide-icon name="Download"></lucide-icon>
+        <button (click)="downloadLeadMagnet()" class="lead-magnet-btn" [disabled]="isSubmitting()">
+          @if (isSubmitting()) {
+             <span>{{ 'HOME.LEAD_MAGNET_SENDING' | translate }}</span>
+             <lucide-icon name="Loader2" class="spin-icon"></lucide-icon>
+          } @else {
+             {{ 'HOME.LEAD_MAGNET_BTN' | translate }}
+             <lucide-icon name="Download"></lucide-icon>
+          }
         </button>
       </div>
       <p class="lead-magnet-disclaimer">{{ 'HOME.LEAD_MAGNET_DISCLAIMER' | translate }}</p>
