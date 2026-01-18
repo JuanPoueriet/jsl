@@ -3,7 +3,7 @@
   <p class="page-subtitle" jslAnimateOnScroll>{{ 'PROJECTS.SUBTITLE' | translate }}</p>
 
   <div class="projects-grid">
-    @for (project of projects(); track project.key) {
+    @for (project of paginatedProjects(); track project.key) {
       <jsl-card 
         [imageUrl]="project.imageUrl"
         [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
@@ -13,6 +13,15 @@
       </jsl-card>
     }
   </div>
+
+  @if (projects().length > itemsPerPage) {
+    <app-pagination
+      [totalItems]="projects().length"
+      [itemsPerPage]="itemsPerPage"
+      [currentPage]="currentPage()"
+      (pageChange)="onPageChange($event)">
+    </app-pagination>
+  }
 </div>
 
 <jsl-cta-section 

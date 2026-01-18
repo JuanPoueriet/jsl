@@ -17,6 +17,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { TopBar } from '../top-bar/top-bar';
 import { LanguageSwitcher } from '../language-switcher/language-switcher';
+import { SearchOverlayComponent } from '../../shared/components/search-overlay/search-overlay';
 
 @Component({
   selector: 'jsl-header',
@@ -29,6 +30,7 @@ import { LanguageSwitcher } from '../language-switcher/language-switcher';
     LucideAngularModule,
     TopBar,
     LanguageSwitcher,
+    SearchOverlayComponent
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
@@ -74,6 +76,7 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
   // Estado del acordeón móvil
   public expandedSection: string | null = null;
   public currentYear = new Date().getFullYear();
+  public isSearchOpen = false;
 
   constructor(
     private translate: TranslateService,
@@ -174,6 +177,15 @@ export class Header implements OnInit, OnDestroy, AfterViewInit {
 
   closeDropdowns() {
     this.openDropdown = null;
+  }
+
+  toggleSearch() {
+    this.isSearchOpen = !this.isSearchOpen;
+    if (this.isSearchOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
   }
 
   // TOGGLE MANUAL DEL MENÚ

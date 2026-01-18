@@ -8,6 +8,9 @@ import { Footer } from './layout/footer/footer';
 import { Seo } from './core/services/seo';
 import { ChatBubbleComponent } from './shared/components/chat-bubble/chat-bubble';
 import { SUPPORTED_LANGUAGES } from '@core/constants/languages';
+import { ToastComponent } from './shared/components/toast/toast';
+import { CookieBannerComponent } from './shared/components/cookie-banner/cookie-banner';
+import { BreadcrumbsComponent } from './shared/components/breadcrumbs/breadcrumbs';
 
 @Component({
   selector: 'jsl-root',
@@ -18,6 +21,9 @@ import { SUPPORTED_LANGUAGES } from '@core/constants/languages';
     Header,
     Footer,
     ChatBubbleComponent,
+    ToastComponent,
+    CookieBannerComponent,
+    BreadcrumbsComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

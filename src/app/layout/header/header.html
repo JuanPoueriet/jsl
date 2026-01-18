@@ -183,10 +183,18 @@
           {{ 'HEADER.CONTACT' | translate }}
         </a>
       </li>
+      <li>
+        <button class="header__search-btn" (click)="toggleSearch()" aria-label="Search">
+          <lucide-icon name="Search" [size]="20"></lucide-icon>
+        </button>
+      </li>
     </ul>
     
     <!-- Controles móviles -->
     <div class="header__controls">
+      <button class="header__search-btn-mobile" (click)="toggleSearch()" aria-label="Search">
+        <lucide-icon name="Search" [size]="20"></lucide-icon>
+      </button>
       <jsl-language-switcher class="header__mobile-lang-switcher"></jsl-language-switcher>
       <button
         class="header__mobile-toggle"
@@ -414,3 +422,7 @@
     </div>
   </div>
 </header>
+
+@if (isSearchOpen) {
+  <app-search-overlay (close)="toggleSearch()"></app-search-overlay>
+}

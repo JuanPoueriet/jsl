@@ -10,6 +10,7 @@ import { switchMap } from 'rxjs/operators';
 
 import { DataService, Solution } from '@core/services/data.service';
 import { CtaComponent } from '@shared/components/cta/cta';
+import { RelatedContentComponent } from '@shared/components/related-content/related-content';
 
 @Component({
   selector: 'jsl-solution-detail',
@@ -20,6 +21,7 @@ import { CtaComponent } from '@shared/components/cta/cta';
     RouterLink,
     LucideAngularModule,
     CtaComponent,
+    RelatedContentComponent
   ],
   templateUrl: './solution-detail.html',
   styleUrls: ['./solution-detail.scss'],
@@ -30,6 +32,8 @@ export class SolutionDetail implements OnInit, OnDestroy {
 
   private langSub: Subscription | undefined;
   private solutionData: Solution | undefined;
+
+  public otherSolutions: Solution[] = [];
 
   constructor(
     @Inject(TranslateService) private translate: TranslateService,
@@ -58,13 +62,22 @@ export class SolutionDetail implements OnInit, OnDestroy {
     );
 
     this.solution$.subscribe(solution => {
-      this.solutionData = solution;
-      this.updateTitle();
+      if (solution) {
+        this.solutionData = solution;
+        this.updateTitle();
+        this.loadOtherSolutions(solution);
+      }
     });
   }
 
   ngOnDestroy(): void {
     this.langSub?.unsubscribe();
+  }
+
+  loadOtherSolutions(current: Solution) {
+    this.dataService.getSolutions().subscribe(solutions => {
+      this.otherSolutions = solutions.filter(s => s.slug !== current.slug).slice(0, 3);
+    });
   }
 
   /**

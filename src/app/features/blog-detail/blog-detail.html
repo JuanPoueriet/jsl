@@ -104,6 +104,11 @@
           <div class="content-wrapper">
             <div class="content-body" [innerHTML]="'BLOG.' + post.key + '_CONTENT' | translate"></div>
             
+            <app-social-share
+              [url]="'/blog/' + post.slug"
+              [title]="'BLOG.' + post.key + '_TITLE' | translate"
+            ></app-social-share>
+
             <div class="content-divider">
               <div class="divider-line"></div>
               <lucide-icon name="Bookmark" class="divider-icon"></lucide-icon>
@@ -114,52 +119,6 @@
       </main>
 
       <div class="action-section">
-        <div class="social-share" jslAnimateOnScroll>
-          <div class="share-header">
-            <lucide-icon name="Share2" class="share-icon"></lucide-icon>
-            <h3>{{ 'Compartir este artículo' | translate }}</h3>
-          </div>
-          <div class="social-share__links">
-            <a
-              href="https://www.linkedin.com/sharing/share-offsite/?url={{ 'https://www.jsl.technology/' + currentLang + '/blog/' + post.slug }}"
-              target="_blank"
-              rel="noopener"
-              class="social-link social-link--linkedin"
-              aria-label="Compartir en LinkedIn"
-            >
-              <lucide-icon name="Linkedin"></lucide-icon>
-              <span class="social-tooltip">LinkedIn</span>
-            </a>
-
-            <a
-              href="https://twitter.com/intent/tweet?url={{ 'https://www.jsl.technology/' + currentLang + '/blog/' + post.slug }}&text={{ 'BLOG.' + post.key + '_TITLE' | translate }}"
-              target="_blank"
-              rel="noopener"
-              class="social-link social-link--twitter"
-              aria-label="Compartir en Twitter"
-            >
-              <lucide-icon name="Twitter"></lucide-icon>
-              <span class="social-tooltip">Twitter</span>
-            </a>
-
-            <a
-              href="https://api.whatsapp.com/send?text={{ 'BLOG.' + post.key + '_TITLE' | translate }} {{ 'https://www.jsl.technology/' + currentLang + '/blog/' + post.slug }}"
-              target="_blank"
-              rel="noopener"
-              class="social-link social-link--whatsapp"
-              aria-label="Compartir en WhatsApp"
-            >
-              <lucide-icon name="MessageCircle"></lucide-icon>
-              <span class="social-tooltip">WhatsApp</span>
-            </a>
-
-            <button class="social-link social-link--copy" (click)="copyLink()" aria-label="Copiar enlace">
-              <lucide-icon name="Link"></lucide-icon>
-              <span class="social-tooltip" #copyTooltip>Copiar enlace</span>
-            </button>
-          </div>
-        </div>
-
         <div class="reading-progress">
           <div class="progress-bar">
             <div class="progress-fill" [style.width.%]="scrollProgress"></div>

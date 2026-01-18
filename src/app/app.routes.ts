@@ -165,6 +165,22 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'server-error',
+        loadComponent: () => import('./features/server-error/server-error').then(c => c.ServerError),
+        data: {
+          title: 'ERRORS.500_TITLE',
+          description: 'ERRORS.500_DESC'
+        }
+      },
+      {
+        path: 'thank-you',
+        loadComponent: () => import('./features/thank-you/thank-you').then(c => c.ThankYou),
+        data: {
+          title: 'THANK_YOU.TITLE',
+          description: 'THANK_YOU.MESSAGE'
+        }
+      },
+      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
