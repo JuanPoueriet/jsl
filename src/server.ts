@@ -6,6 +6,9 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import compression from 'compression';
+import rateLimit from 'express-rate-limit';
+
 // --- AÑADIDO: Importar los datos para el sitemap dinámico ---
 import { PROJECTS, BLOG_POSTS } from './app/core/data/mock-data';
 import { SUPPORTED_LANGUAGES } from './app/core/constants/languages';
@@ -15,6 +18,18 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+// --- OPTIMIZACIÓN: Compresión Gzip/Brotli ---
+app.use(compression());
+
+// --- SEGURIDAD: Rate Limiting ---
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutos
+	max: 100, // Límite de 100 peticiones por IP por ventana
+	standardHeaders: true, // Devuelve info en cabeceras `RateLimit-*`
+	legacyHeaders: false, // Deshabilita cabeceras `X-RateLimit-*`
+});
+// Aplicar rate limiting a todas las rutas
+app.use(limiter);
 
 app.get('/', (req, res) => {
   const supportedLangs = SUPPORTED_LANGUAGES;
