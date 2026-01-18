@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,7 +13,7 @@ import { ALL_ICONS } from '@core/constants/icons';
   styleUrls: ['./cookie-banner.scss']
 })
 export class CookieBannerComponent implements OnInit {
-  isVisible = false;
+  isVisible = signal(false);
   readonly icons = ALL_ICONS;
 
   constructor(private cookieService: CookieService) {}
@@ -23,19 +23,19 @@ export class CookieBannerComponent implements OnInit {
     if (!consent) {
       // Delay slightly to not jar the user immediately
       setTimeout(() => {
-        this.isVisible = true;
+        this.isVisible.set(true);
       }, 1000);
     }
   }
 
   accept(): void {
     this.cookieService.set('cookie-consent', 'true', 365);
-    this.isVisible = false;
+    this.isVisible.set(false);
     // Here you would trigger loading of third-party scripts (GA, etc.)
   }
 
   decline(): void {
     this.cookieService.set('cookie-consent', 'false', 365);
-    this.isVisible = false;
+    this.isVisible.set(false);
   }
 }

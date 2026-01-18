@@ -428,5 +428,11 @@
     "SEND": "Enviar",
     "OPEN": "Abrir chat",
     "CLOSE": "Cerrar chat"
+  },
+  "COOKIE": {
+    "TITLE": "Valoramos su privacidad",
+    "DESCRIPTION": "Utilizamos cookies para mejorar su experiencia de navegación, ofrecer contenidos personalizados y analizar nuestro tráfico.",
+    "ACCEPT": "Aceptar todo",
+    "DECLINE": "Rechazar todo"
   }
 }
