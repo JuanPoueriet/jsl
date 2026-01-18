@@ -26,6 +26,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { DigitalMaturitySelector } from './components/digital-maturity-selector/digital-maturity-selector';
 import { VideoModal } from '@shared/components/video-modal/video-modal';
 import { BookingModal } from '@shared/components/booking-modal/booking-modal';
+import { ExitIntentModal } from './components/exit-intent-modal/exit-intent-modal';
 import { computed } from '@angular/core';
 
 // Swiper Web Components
@@ -47,7 +48,8 @@ register();
     AnimateOnScroll,
     DigitalMaturitySelector,
     VideoModal,
-    BookingModal
+    BookingModal,
+    ExitIntentModal
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -179,10 +181,13 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   public solutions = toSignal(this.dataService.getSolutions(), { initialValue: [] });
   public products = toSignal(this.dataService.getProducts(), { initialValue: [] });
   public processSteps = toSignal(this.dataService.getProcessSteps(), { initialValue: [] });
+  public partners = toSignal(this.dataService.getPartners(), { initialValue: [] });
 
   // Modal signals
   public isVideoModalOpen = signal(false);
   public isBookingModalOpen = signal(false);
+  public isExitModalOpen = signal(false);
+
   // Default video
   public demoVideoUrl = 'https://www.youtube.com/embed/LXb3EKWsInQ'; // Tech demo placeholder
 
@@ -216,6 +221,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   private renderer = inject(Renderer2);
   private document = inject(DOCUMENT);
   private schemaScript: any; // HTMLScriptElement
+  private unlistenExitIntent: (() => void) | null = null;
 
   @Inject(PLATFORM_ID) private platformId = inject(PLATFORM_ID);
 
@@ -234,6 +240,9 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     if (this.schemaScript) {
       this.renderer.removeChild(this.document.head, this.schemaScript);
+    }
+    if (this.unlistenExitIntent) {
+      this.unlistenExitIntent();
     }
   }
 
@@ -453,7 +462,26 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
       // ← NUEVO: Agregar event listeners manuales como fallback
       this.setupCustomNavigation();
+
+      // Setup Exit Intent
+      this.setupExitIntent();
     }, 100); // Aumentado a 100ms para asegurar que el DOM esté listo
+  }
+
+  private setupExitIntent() {
+    // Only on desktop
+    if (window.innerWidth > 1024) {
+      // Use a flag to show only once per session
+      const hasShownExitModal = sessionStorage.getItem('jsl_exit_modal_shown');
+
+      if (!hasShownExitModal) {
+        this.unlistenExitIntent = this.renderer.listen(this.document, 'mouseleave', (event: MouseEvent) => {
+          if (event.clientY <= 0) {
+            this.openExitModal();
+          }
+        });
+      }
+    }
   }
 
   // ← NUEVO: Método para configurar navegación manual como fallback
@@ -519,6 +547,22 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   closeBookingModal() {
     this.isBookingModalOpen.set(false);
+  }
+
+  openExitModal() {
+    if (!sessionStorage.getItem('jsl_exit_modal_shown')) {
+      this.isExitModalOpen.set(true);
+      sessionStorage.setItem('jsl_exit_modal_shown', 'true');
+    }
+  }
+
+  closeExitModal() {
+    this.isExitModalOpen.set(false);
+  }
+
+  onExitModalConfirm() {
+    this.closeExitModal();
+    this.downloadLeadMagnet();
   }
 
   setProjectCategory(category: string) {
