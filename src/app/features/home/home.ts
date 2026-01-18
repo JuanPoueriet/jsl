@@ -24,6 +24,9 @@ import { ToastService } from '@core/services/toast.service';
 import { SwiperOptions } from 'swiper/types';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DigitalMaturitySelector } from './components/digital-maturity-selector/digital-maturity-selector';
+import { VideoModal } from '@shared/components/video-modal/video-modal';
+import { BookingModal } from '@shared/components/booking-modal/booking-modal';
+import { computed } from '@angular/core';
 
 // Swiper Web Components
 import { Pagination, Autoplay, EffectCoverflow, EffectFade, Navigation } from 'swiper/modules';
@@ -43,6 +46,8 @@ register();
     Card,
     AnimateOnScroll,
     DigitalMaturitySelector,
+    VideoModal,
+    BookingModal
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -156,9 +161,30 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   public testimonials = toSignal(this.dataService.getTestimonials(), { initialValue: [] });
   public projects = toSignal(this.dataService.getProjects(), { initialValue: [] });
+
+  // New filtering logic for projects
+  public selectedProjectCategory = signal<string>('All');
+  public projectCategories = ['All', 'Enterprise', 'Commerce', 'Mobile']; // Could be dynamic
+
+  public filteredProjects = computed(() => {
+    const allProjects = this.projects();
+    const category = this.selectedProjectCategory();
+
+    if (category === 'All') {
+      return allProjects;
+    }
+    return allProjects.filter((p: any) => p.category === category);
+  });
+
   public solutions = toSignal(this.dataService.getSolutions(), { initialValue: [] });
   public products = toSignal(this.dataService.getProducts(), { initialValue: [] });
   public processSteps = toSignal(this.dataService.getProcessSteps(), { initialValue: [] });
+
+  // Modal signals
+  public isVideoModalOpen = signal(false);
+  public isBookingModalOpen = signal(false);
+  // Default video
+  public demoVideoUrl = 'https://www.youtube.com/embed/LXb3EKWsInQ'; // Tech demo placeholder
 
   public techStack = toSignal(
     this.dataService.getTechStack().pipe(
@@ -477,6 +503,26 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   toggleFaq(index: number) {
     this.faqPreview[index].isOpen = !this.faqPreview[index].isOpen;
+  }
+
+  openVideoModal() {
+    this.isVideoModalOpen.set(true);
+  }
+
+  closeVideoModal() {
+    this.isVideoModalOpen.set(false);
+  }
+
+  openBookingModal() {
+    this.isBookingModalOpen.set(true);
+  }
+
+  closeBookingModal() {
+    this.isBookingModalOpen.set(false);
+  }
+
+  setProjectCategory(category: string) {
+    this.selectedProjectCategory.set(category);
   }
 
   downloadLeadMagnet() {
