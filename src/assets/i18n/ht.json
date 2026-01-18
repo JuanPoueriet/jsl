@@ -406,5 +406,11 @@
     "SEND": "Voye",
     "OPEN": "Louvri chat",
     "CLOSE": "Fèmen chat"
+  },
+  "COOKIE": {
+    "TITLE": "Nou bay vi prive ou valè",
+    "DESCRIPTION": "Nou itilize bonbon pou amelyore eksperyans navigasyon ou, sèvi anons pèsonalize oswa kontni, epi analize trafik nou an.",
+    "ACCEPT": "Aksepte tout",
+    "DECLINE": "Refize tout"
   }
 }

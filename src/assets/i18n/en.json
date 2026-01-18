@@ -428,5 +428,11 @@
     "SEND": "Send",
     "OPEN": "Open chat",
     "CLOSE": "Close chat"
+  },
+  "COOKIE": {
+    "TITLE": "We value your privacy",
+    "DESCRIPTION": "We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic.",
+    "ACCEPT": "Accept All",
+    "DECLINE": "Decline All"
   }
 }
