@@ -79,6 +79,9 @@ import {
   Headphones,
   Play,
   Rocket,
+  Building,
+  Layers,
+  HardDrive,
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
@@ -129,6 +132,9 @@ export const ICON_LIST = {
     Download,
     Minus,
     Plus,
+    Building,
+    Layers,
+    HardDrive,
   },
   // Redes sociales
   Social: {
