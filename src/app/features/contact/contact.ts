@@ -38,8 +38,7 @@ export class Contact implements OnInit, OnDestroy {
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       service: ['', [Validators.required]],
-      message: ['', [Validators.required, Validators.minLength(10)]],
-      privacy: [false, Validators.requiredTrue]
+      message: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
 

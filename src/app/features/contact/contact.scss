@@ -83,6 +83,11 @@
     font-weight: 500;
     color: var(--text-secondary);
     margin-bottom: 0.5rem;
+
+    .required-asterisk {
+      color: var(--accent-primary);
+      margin-left: 0.2rem;
+    }
   }
 }
 
