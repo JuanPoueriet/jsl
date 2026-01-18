@@ -871,6 +871,344 @@ swiper-container {
   }
 }
 
+// --- NUEVO COMPONENTE: Stats Section ---
+.stats-section {
+  padding: 3rem 0;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.8rem;
+
+  &__icon {
+    color: var(--accent-primary);
+    lucide-icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+}
+
+// --- NUEVO COMPONENTE: Team Teaser (Integrated in Welcome) ---
+.team-teaser.welcome-section__image {
+  img {
+    display: none; // Ocultar imagen anterior si existe
+  }
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // 2 columnas para 3 items (uno abajo centrado o 2x2)
+  gap: 1.5rem;
+
+  // Si son 3 items, el ultimo ocupa todo el ancho o ajustamos
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background-color: var(--bg-card);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+
+  &__img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: calc(var(--border-radius) - 4px);
+    background-color: var(--bg-secondary); // Placeholder bg
+    display: block !important; // Forzar display
+  }
+
+  &__info {
+    .name {
+      display: block;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+    .role {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+  }
+}
+
+// --- NUEVO COMPONENTE: Lead Magnet ---
+.lead-magnet-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.lead-magnet-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: center;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+}
+
+.lead-magnet-content {
+  .lead-magnet-eyebrow {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .lead-magnet-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .lead-magnet-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+}
+
+.lead-magnet-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
+
+  .lead-magnet-input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+
+    &:focus {
+      border-color: var(--accent-primary);
+      outline: none;
+    }
+  }
+
+  .lead-magnet-btn {
+    padding: 0.8rem 1.5rem;
+    background: var(--accent-gradient);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform var(--transition-speed) ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.lead-magnet-disclaimer {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.lead-magnet-visual {
+  display: flex;
+  justify-content: center;
+
+  .book-mockup {
+    width: 200px;
+    height: 280px;
+    background: var(--accent-gradient);
+    border-radius: 4px;
+    box-shadow:
+      -10px 10px 20px rgba(0,0,0,0.3),
+      -2px 0 0 rgba(255,255,255,0.2) inset; // Spine effect
+    position: relative;
+    transform: rotateY(-15deg) rotateX(5deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .book-cover {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      text-align: center;
+      gap: 1rem;
+      padding: 1rem;
+
+      span {
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      right: -10px; // Page thickness
+      width: 10px;
+      height: calc(100% - 10px);
+      background: #fff;
+      transform: skewY(45deg);
+      z-index: -1;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -10px; // Bottom thickness
+      left: 5px;
+      width: 100%;
+      height: 10px;
+      background: #fff;
+      transform: skewX(45deg);
+      z-index: -1;
+    }
+  }
+}
+
+// --- NUEVO COMPONENTE: FAQ Preview ---
+.faq-preview-section {
+  padding: 6rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.faq-preview-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .section-eyebrow {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  transition: border-color 0.3s ease;
+
+  &.open {
+    border-color: var(--accent-primary);
+  }
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    background-color: var(--bg-secondary);
+  }
+}
+
+.faq-answer {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+
+  &-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+}
+
+.faq-preview-footer {
+  margin-top: 3rem;
+  text-align: center;
+
+  .welcome-section__cta {
+    display: inline-flex;
+    margin: 0 auto;
+  }
+}
+
 // --- CAMBIO: Estilos .clients-section eliminados ---
 
 

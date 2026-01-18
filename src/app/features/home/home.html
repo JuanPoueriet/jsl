@@ -78,6 +78,22 @@
   </div>
 </section>
 
+<!-- NUEVO COMPONENTE: Stats Bar (Métricas) -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      @for (stat of stats; track stat.valueKey) {
+        <div class="stat-item" jslAnimateOnScroll>
+          <div class="stat-item__icon">
+            <lucide-icon [name]="stat.icon"></lucide-icon>
+          </div>
+          <span class="stat-item__value">{{ stat.valueKey | translate }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
 <!-- NUEVO: Tech Stack Slider (Marquee) -->
 <section class="tech-stack-slider">
   <div class="container-fluid">
@@ -101,11 +117,20 @@
       <lucide-icon name="ArrowRight"></lucide-icon>
     </a>
   </div>
-  <div class="welcome-section__image">
-    <img
-      src="assets/imgs/Avif/photo-1542744173-8e7e53415bb0.avif"
-      alt="Equipo trabajando en JSL Technology"
-    />
+
+  <!-- MODIFICADO: Team Teaser (Elemento Humano) en lugar de imagen estática -->
+  <div class="welcome-section__image team-teaser">
+    <div class="team-grid">
+       @for (member of teamMembers; track member.nameKey) {
+        <div class="team-card">
+           <img [src]="member.image" [alt]="member.nameKey | translate" class="team-card__img" />
+           <div class="team-card__info">
+              <span class="name">{{ member.nameKey | translate }}</span>
+              <span class="role">{{ member.roleKey | translate }}</span>
+           </div>
+        </div>
+       }
+    </div>
   </div>
 </section>
 
@@ -166,6 +191,34 @@
       >
       </jsl-card>
     }
+  </div>
+</section>
+
+<!-- NUEVO COMPONENTE: Lead Magnet (Captura Intermedia) -->
+<section class="lead-magnet-section">
+  <div class="container lead-magnet-container" jslAnimateOnScroll>
+    <div class="lead-magnet-content">
+      <span class="lead-magnet-eyebrow">{{ 'HOME.LEAD_MAGNET_EYEBROW' | translate }}</span>
+      <h2 class="lead-magnet-title">{{ 'HOME.LEAD_MAGNET_TITLE' | translate }}</h2>
+      <p class="lead-magnet-subtitle">{{ 'HOME.LEAD_MAGNET_SUBTITLE' | translate }}</p>
+
+      <div class="lead-magnet-form">
+        <input type="email" placeholder="tu@email.com" class="lead-magnet-input" />
+        <button (click)="downloadLeadMagnet()" class="lead-magnet-btn">
+          {{ 'HOME.LEAD_MAGNET_BTN' | translate }}
+          <lucide-icon name="Download"></lucide-icon>
+        </button>
+      </div>
+      <p class="lead-magnet-disclaimer">{{ 'HOME.LEAD_MAGNET_DISCLAIMER' | translate }}</p>
+    </div>
+    <div class="lead-magnet-visual">
+       <div class="book-mockup">
+         <div class="book-cover">
+            <lucide-icon name="FileText" size="64"></lucide-icon>
+            <span>Whitepaper 2025</span>
+         </div>
+       </div>
+    </div>
   </div>
 </section>
 
@@ -245,6 +298,33 @@
       >
       </jsl-card>
     }
+  </div>
+</section>
+
+<!-- NUEVO COMPONENTE: FAQ Preview (Manejo de Objeciones) -->
+<section class="faq-preview-section container" jslAnimateOnScroll>
+  <div class="faq-preview-header">
+     <span class="section-eyebrow">{{ 'HOME.FAQ_PREVIEW_EYEBROW' | translate }}</span>
+     <h2 class="section-title">{{ 'HOME.FAQ_PREVIEW_TITLE' | translate }}</h2>
+  </div>
+  <div class="faq-list">
+    @for (item of faqPreview; track $index) {
+      <div class="faq-item" [class.open]="item.isOpen">
+        <button class="faq-question" (click)="toggleFaq($index)" [attr.aria-expanded]="item.isOpen">
+          {{ item.titleKey | translate }}
+          <lucide-icon [name]="item.isOpen ? 'Minus' : 'Plus'"></lucide-icon>
+        </button>
+        <div class="faq-answer" [style.max-height]="item.isOpen ? '500px' : '0'">
+          <div class="faq-answer-inner" [innerHTML]="item.descKey | translate"></div>
+        </div>
+      </div>
+    }
+  </div>
+  <div class="faq-preview-footer">
+    <a [routerLink]="['/', currentLang, 'faq']" class="welcome-section__cta">
+      <span>{{ 'HOME.FAQ_PREVIEW_LINK' | translate }}</span>
+      <lucide-icon name="ArrowRight"></lucide-icon>
+    </a>
   </div>
 </section>
 

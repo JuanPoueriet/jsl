@@ -5,6 +5,7 @@ import {
   Calendar,
   Check,
   CheckCheck,
+  CheckCircle,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -71,6 +72,11 @@ import {
   Lightbulb,
   Newspaper,
   HelpCircle,
+  Download,
+  Minus,
+  Plus,
+  TrendingDown,
+  Headphones,
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
@@ -116,6 +122,9 @@ export const ICON_LIST = {
     Lightbulb,
     Newspaper,
     HelpCircle,
+    Download,
+    Minus,
+    Plus,
   },
   // Redes sociales
   Social: {
@@ -152,6 +161,7 @@ export const ICON_LIST = {
     Gem,
     Compass,
     TrendingUp,
+    TrendingDown,
     ShoppingCart,
     Truck,
     Landmark,
@@ -161,6 +171,8 @@ export const ICON_LIST = {
     MessageCircle,
     Check,
     CheckCheck,
+    CheckCircle,
+    Headphones,
   },
 };
 
