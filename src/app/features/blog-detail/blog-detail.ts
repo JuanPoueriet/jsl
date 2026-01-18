@@ -26,10 +26,8 @@ import { Title } from '@angular/platform-browser';
 import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
 import { CtaComponent } from '@shared/components/cta/cta';
 import { Card } from '@shared/components/card/card';
-import { Seo } from '@core/services/seo'; // <--- 1. IMPORTAR SEO SERVICE
-
-// --- CORRECCIÓN: Se elimina la importación estática de PrismJS ---
-// import * as Prism from 'prismjs';
+import { Seo } from '@core/services/seo';
+import { SocialShareComponent } from '@shared/components/social-share/social-share';
 
 // Swiper Web Components
 import { Pagination, Autoplay } from 'swiper/modules';
@@ -47,6 +45,7 @@ register();
     AnimateOnScroll,
     CtaComponent,
     Card,
+    SocialShareComponent
   ],
   templateUrl: './blog-detail.html',
   styleUrl: './blog-detail.scss',
@@ -63,7 +62,7 @@ export class BlogDetail
   private titleService = inject(Title);
   private el = inject(ElementRef);
   @Inject(PLATFORM_ID) private platformId = inject(PLATFORM_ID);
-  private seoService = inject(Seo); // <--- 2. INYECTAR SEO SERVICE
+  private seoService = inject(Seo);
 
   @ViewChild('copyTooltip') copyTooltip!: ElementRef;
   @ViewChild('bannerImage') bannerImage!: ElementRef;
@@ -186,36 +185,32 @@ export class BlogDetail
     }, 0);
   }
 
-  // --- INICIO: Corrección de warning PrismJS ---
   // Prism code highlighting
   ngAfterViewChecked(): void {
     if (isPlatformBrowser(this.platformId) && !this.highlighted) {
       const hasContent = this.el.nativeElement.querySelector('.blog-content p');
       if (hasContent) {
         // Usamos import() dinámico para cargar prismjs solo en el navegador
-        // y evitar el warning de ESM (Módulo no ES).
         import('prismjs').then(Prism => {
           setTimeout(() => {
-            // Se asume que Prism tiene un export 'default' o es un CJS
             const prismModule = (Prism as any).default || Prism;
             prismModule.highlightAll();
             this.highlighted = true;
-          }, 500); // Mantenemos el timeout por si el contenido se renderiza tarde
+          }, 500);
         }).catch(err => console.error('Error loading PrismJS', err));
       }
     }
   }
-  // --- FIN: Corrección de warning PrismJS ---
 
   ngOnInit(): void {
     this.langSub = this.translate.onLangChange.subscribe((event) => {
       this.currentLang = event.lang;
-      this.updateMetadata(); // <--- 3. CAMBIO
+      this.updateMetadata();
     });
 
     this.post$.subscribe((post) => {
       this.postData = post;
-      this.updateMetadata(); // <--- 4. CAMBIO
+      this.updateMetadata();
     });
 
     // Initialize scroll progress
@@ -228,51 +223,40 @@ export class BlogDetail
     this.langSub?.unsubscribe();
   }
 
-  // --- 5. CAMBIO: Renombrar y expandir esta función ---
   private updateMetadata(): void {
     if (!this.postData) return;
 
     // Claves para la traducción
     const titleKey = `BLOG.${this.postData.key}_TITLE`;
-    const excerptKey = `BLOG.${this.postData.key}_EXCERPT`; // <-- Usaremos el excerpt como descripción
+    const excerptKey = `BLOG.${this.postData.key}_EXCERPT`;
 
     // URLs
     const baseUrl = this.seoService.getBaseUrl();
     const postUrl = `${baseUrl}/${this.currentLang}/blog/${this.postData.slug}`;
 
-    // --- INICIO: Corrección de URL de Imagen ---
     let imageUrl = this.postData.imageUrl;
     
     if (imageUrl && !imageUrl.startsWith('http')) {
-      // Si la URL es relativa (p.ej., "../../../../assets/imgs/...")
-      // buscamos la parte 'assets/' y la volvemos absoluta.
       const assetsIndex = imageUrl.indexOf('assets/');
       if (assetsIndex > -1) {
         const relativePath = imageUrl.substring(assetsIndex);
         imageUrl = `${baseUrl}/${relativePath}`;
       }
     }
-    // --- FIN: Corrección de URL de Imagen ---
-
 
     // Traducir título y descripción
     this.translate.get([titleKey, excerptKey]).subscribe(translations => {
       const translatedTitle = translations[titleKey] || 'Artículo de JSL Technology';
       const translatedDesc = translations[excerptKey] || 'Lee este artículo en JSL Technology';
 
-      // 1. Setear el <title> de la página (como antes)
       this.titleService.setTitle(`${translatedTitle} | JSL Technology Blog`);
-
-      // 2. Setear la etiqueta canónica (importante para SEO)
       this.seoService.updateCanonicalTag(postUrl);
-
-      // 3. Setear todas las etiquetas sociales (OG y Twitter)
       this.seoService.updateSocialTags(
         translatedTitle,
         translatedDesc,
         postUrl,
-        imageUrl, // <-- Usar la imagen específica (y ahora absoluta)
-        'article' // <-- Indicar que esto es un 'artículo'
+        imageUrl,
+        'article'
       );
     });
   }

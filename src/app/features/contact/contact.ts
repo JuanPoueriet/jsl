@@ -1,11 +1,14 @@
-import { Component, OnInit, OnDestroy, Inject } from '@angular/core'; // 1. Añadir OnDestroy
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
-import { ApiService } from '@core/services/api.service'; // 2. Importar ApiService
+import { ApiService } from '@core/services/api.service';
+import { ToastService } from '@core/services/toast.service';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil, finalize } from 'rxjs/operators';
+import { ALL_ICONS } from '@core/constants/icons';
 
 @Component({
   selector: 'jsl-contact',
@@ -15,17 +18,19 @@ import { takeUntil, finalize } from 'rxjs/operators';
   styleUrl: './contact.scss',
 })
 export class Contact implements OnInit, OnDestroy {
-  // 3. Implementar OnDestroy
   contactForm!: FormGroup;
   isSubmitting = false;
   submitSuccess = false;
   submitError = false;
+  readonly icons = ALL_ICONS;
 
-  private destroy$ = new Subject<void>(); // 4. Para gestionar la desuscripción
+  private destroy$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
-    private apiService: ApiService // 5. Inyectar ApiService
+    private apiService: ApiService,
+    private toastService: ToastService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +39,7 @@ export class Contact implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       service: ['', [Validators.required]],
       message: ['', [Validators.required, Validators.minLength(10)]],
+      privacy: [false, Validators.requiredTrue]
     });
   }
 
@@ -46,10 +52,10 @@ export class Contact implements OnInit, OnDestroy {
     return this.contactForm.controls;
   }
 
-  // 6. Lógica de envío refactorizada
   onSubmit(): void {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
+      this.toastService.show('CONTACT.ERROR_MESSAGE', 'error');
       return;
     }
 
@@ -57,13 +63,11 @@ export class Contact implements OnInit, OnDestroy {
     this.submitSuccess = false;
     this.submitError = false;
 
-    // 7. Usar el ApiService en lugar de setTimeout
     this.apiService
       .sendContactForm(this.contactForm.value)
       .pipe(
-        takeUntil(this.destroy$), // Desuscribirse automáticamente
+        takeUntil(this.destroy$),
         finalize(() => {
-          // Esto se ejecuta siempre (éxito o error)
           this.isSubmitting = false;
         })
       )
@@ -72,10 +76,13 @@ export class Contact implements OnInit, OnDestroy {
           console.log('Respuesta de API:', response);
           this.submitSuccess = true;
           this.contactForm.reset();
+          this.toastService.show('CONTACT.SUCCESS_MESSAGE', 'success');
+          this.router.navigate(['/thank-you']);
         },
         error: (err: any) => {
           console.error('Error al enviar formulario:', err);
           this.submitError = true;
+          this.toastService.show('CONTACT.ERROR_MESSAGE', 'error');
         },
       });
   }

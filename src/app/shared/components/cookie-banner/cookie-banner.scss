@@ -1,0 +1,141 @@
+@use 'app/styles/variables' as *;
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  animation: slideUp 0.5s ease-out;
+  border-top: 1px solid #e5e7eb;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.cookie-content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+
+  .cookie-icon {
+    color: #3b82f6;
+    background: #eff6ff;
+    padding: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cookie-text {
+    h3 {
+      margin: 0 0 4px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1f2937;
+    }
+    p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #6b7280;
+      line-height: 1.5;
+      max-width: 600px;
+    }
+  }
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 12px;
+  white-space: nowrap;
+
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+  }
+
+  .btn-decline {
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #4b5563;
+
+    &:hover {
+      background: #f3f4f6;
+      border-color: #9ca3af;
+    }
+  }
+
+  .btn-accept {
+    background: #111827; // Use primary color
+    border: 1px solid #111827;
+    color: white;
+
+    &:hover {
+      background: #1f2937;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+// Dark Mode
+:host-context(.dark) {
+  .cookie-banner {
+    background: #1f2937;
+    border-color: #374151;
+
+    .cookie-content {
+      .cookie-icon {
+        background: rgba(59, 130, 246, 0.1);
+      }
+
+      .cookie-text {
+        h3 { color: white; }
+        p { color: #9ca3af; }
+      }
+    }
+
+    .cookie-actions {
+      .btn-decline {
+        border-color: #4b5563;
+        color: #e5e7eb;
+        &:hover { background: #374151; }
+      }
+
+      .btn-accept {
+        background: white;
+        border-color: white;
+        color: #111827;
+        &:hover { background: #f3f4f6; }
+      }
+    }
+  }
+}

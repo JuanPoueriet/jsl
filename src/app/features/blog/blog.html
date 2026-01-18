@@ -57,7 +57,7 @@
     </div>
   }
   <div class="blog-grid">
-    @for (post of regularPosts(); track post.key) {
+    @for (post of paginatedPosts(); track post.key) {
       <jsl-card
         [imageUrl]="post.imageUrl"
         [title]="'BLOG.' + post.key + '_TITLE' | translate"
@@ -68,6 +68,15 @@
       </jsl-card>
     }
   </div>
+
+  @if (totalItems() > itemsPerPage) {
+    <app-pagination
+      [totalItems]="totalItems()"
+      [itemsPerPage]="itemsPerPage"
+      [currentPage]="currentPage()"
+      (pageChange)="onPageChange($event)">
+    </app-pagination>
+  }
 
   @if (regularPosts().length === 0 && !featuredPost()) {
     <p class="no-results" jslAnimateOnScroll>

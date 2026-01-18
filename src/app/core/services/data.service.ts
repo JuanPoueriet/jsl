@@ -209,4 +209,41 @@ export class DataService {
       ),
     );
   }
+
+  // --- Método de Búsqueda Global ---
+  search(query: string): Observable<{ type: string; item: any }[]> {
+    const q = query.toLowerCase();
+    const results: { type: string; item: any }[] = [];
+
+    // Search in Solutions
+    SOLUTIONS.forEach(s => {
+      // Assuming keys or simple check, in real app we check translated titles
+      if (s.slug.includes(q) || s.key.toLowerCase().includes(q)) {
+        results.push({ type: 'solution', item: s });
+      }
+    });
+
+    // Search in Products
+    PRODUCTS.forEach(p => {
+      if (p.slug.includes(q) || p.key.toLowerCase().includes(q)) {
+        results.push({ type: 'product', item: p });
+      }
+    });
+
+    // Search in Blog
+    BLOG_POSTS.forEach(b => {
+      if (b.slug.includes(q) || b.key.toLowerCase().includes(q) || b.tags.some(t => t.toLowerCase().includes(q))) {
+        results.push({ type: 'blog', item: b });
+      }
+    });
+
+    // Search in Projects
+    PROJECTS.forEach(p => {
+      if (p.slug.includes(q) || p.key.toLowerCase().includes(q)) {
+        results.push({ type: 'project', item: p });
+      }
+    });
+
+    return of(results);
+  }
 }

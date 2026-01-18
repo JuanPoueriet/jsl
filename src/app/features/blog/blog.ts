@@ -6,8 +6,9 @@ import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
 import { DataService } from '@core/services/data.service';
 import { CtaComponent } from '@shared/components/cta/cta';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { RouterLink } from '@angular/router'; // <-- Importar RouterLink
-import { LucideAngularModule } from 'lucide-angular'; // <-- Importar Lucide
+import { RouterLink } from '@angular/router';
+import { LucideAngularModule } from 'lucide-angular';
+import { PaginationComponent } from '@shared/components/pagination/pagination';
 
 @Component({
   selector: 'jsl-blog',
@@ -18,12 +19,13 @@ import { LucideAngularModule } from 'lucide-angular'; // <-- Importar Lucide
     Card,
     AnimateOnScroll,
     CtaComponent,
-    RouterLink, // <-- Añadir
-    LucideAngularModule, // <-- Añadir
+    RouterLink,
+    LucideAngularModule,
+    PaginationComponent
   ],
   templateUrl: './blog.html',
   styleUrl: './blog.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush, // <-- Añadir
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Blog implements OnInit {
   private translate = inject(TranslateService);
@@ -31,7 +33,9 @@ export class Blog implements OnInit {
 
   public currentLang: string;
 
-  // --- NUEVA LÓGICA DE SIGNALS ---
+  // Pagination settings
+  public currentPage = signal(1);
+  public itemsPerPage = 6;
 
   // 1. Señal base de todos los posts
   private allPosts = toSignal(this.dataService.getBlogPosts(), {
@@ -52,6 +56,9 @@ export class Blog implements OnInit {
   private filteredPosts = computed(() => {
     const term = this.searchTerm().toLowerCase();
     const tag = this.selectedTag();
+
+    // Reset pagination when filters change
+    // Note: We can't set signals inside computed. We should handle this in the set methods.
 
     // Obtener claves de traducción para la búsqueda
     const titleKeys = this.allPosts().map((p) => `BLOG.${p.key}_TITLE`);
@@ -86,7 +93,14 @@ export class Blog implements OnInit {
     return this.filteredPosts(); // Si no hay destacado, mostrar todos
   });
 
-  // --- FIN NUEVA LÓGICA ---
+  // 7. Paginated posts
+  public paginatedPosts = computed(() => {
+    const posts = this.regularPosts();
+    const startIndex = (this.currentPage() - 1) * this.itemsPerPage;
+    return posts.slice(startIndex, startIndex + this.itemsPerPage);
+  });
+
+  public totalItems = computed(() => this.regularPosts().length);
 
   constructor() {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
@@ -100,23 +114,23 @@ export class Blog implements OnInit {
 
   // --- MÉTODOS PARA ACTUALIZAR FILTROS ---
 
-  /**
-   * Actualiza el tag seleccionado.
-   * Si se hace clic en el tag ya activo, se deselecciona.
-   */
   selectTag(tag: string | null): void {
     if (this.selectedTag() === tag) {
       this.selectedTag.set(null); // Deseleccionar
     } else {
       this.selectedTag.set(tag); // Seleccionar nuevo tag
     }
+    this.currentPage.set(1);
   }
 
-  /**
-   * Actualiza el término de búsqueda desde el input.
-   */
   onSearch(event: Event): void {
     const term = (event.target as HTMLInputElement).value;
     this.searchTerm.set(term);
+    this.currentPage.set(1);
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage.set(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
