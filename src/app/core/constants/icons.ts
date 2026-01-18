@@ -77,12 +77,16 @@ import {
   Plus,
   TrendingDown,
   Headphones,
+  Play,
+  Rocket,
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
 export const ICON_LIST = {
   // Navegación principal y UI general
   General: {
+    Rocket,
+    Play,
     Menu,
     X,
     ArrowRight,

@@ -18,9 +18,15 @@
       <div class="hero-slide__content container">
         <h1 class="hero-slide__title">{{ 'HOME.HERO1_TITLE' | translate }}</h1>
         <p class="hero-slide__subtitle">{{ 'HOME.HERO1_SUBTITLE' | translate }}</p>
-        <a [routerLink]="['/', currentLang, 'about-us']" class="hero-slide__cta">{{
-          'HEADER.ABOUT' | translate
-        }}</a>
+        <div class="hero-actions">
+          <a [routerLink]="['/', currentLang, 'about-us']" class="hero-slide__cta">{{
+            'HEADER.ABOUT' | translate
+          }}</a>
+          <button (click)="openVideoModal()" class="hero-slide__cta hero-slide__cta--secondary">
+             <lucide-icon name="Play"></lucide-icon>
+             Watch Reel
+          </button>
+        </div>
       </div>
     </swiper-slide>
 
@@ -209,6 +215,13 @@
   </div>
 
   <jsl-digital-maturity-selector></jsl-digital-maturity-selector>
+
+  <div class="maturity-cta">
+    <button (click)="openBookingModal()" class="welcome-section__cta">
+      <span>Book a Strategy Call</span>
+      <lucide-icon name="Calendar"></lucide-icon>
+    </button>
+  </div>
 </section>
 
 <section class="featured-projects container">
@@ -217,8 +230,20 @@
     <h2 class="section-title">{{ 'HOME.PROJECTS_TITLE' | translate }}</h2>
     <p class="section-subtitle">{{ 'HOME.PROJECTS_SUBTITLE' | translate }}</p>
   </div>
+
+  <div class="projects-filter">
+    @for (category of projectCategories; track category) {
+      <button
+        class="filter-pill"
+        [class.active]="selectedProjectCategory() === category"
+        (click)="setProjectCategory(category)">
+        {{ category }}
+      </button>
+    }
+  </div>
+
   <div class="projects-grid">
-    @for (project of projects(); track project.key) {
+    @for (project of filteredProjects(); track project.key) {
       <jsl-card
         [imageUrl]="project.imageUrl"
         [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
@@ -285,9 +310,26 @@
               <span class="role">{{ testimonial.roleKey | translate }}</span>
             </div>
           </div>
+
+          <!-- Social Proof Badge Simulation -->
+          <div class="social-proof-badge">
+             <lucide-icon name="CheckCircle" size="14"></lucide-icon>
+             <span>Verified Review</span>
+          </div>
         </swiper-slide>
       }
     </swiper-container>
+
+    <div class="social-proof-widgets">
+       <div class="sp-widget">
+          <span class="sp-score">4.9/5</span>
+          <span class="sp-source">on Clutch</span>
+       </div>
+       <div class="sp-widget">
+          <span class="sp-score">5.0/5</span>
+          <span class="sp-source">on Google</span>
+       </div>
+    </div>
   </div>
 </section>
 
@@ -366,3 +408,14 @@
 </section>
 
 <jsl-cta-section></jsl-cta-section>
+
+<jsl-video-modal
+  [isOpen]="isVideoModalOpen()"
+  [videoUrl]="demoVideoUrl"
+  (close)="closeVideoModal()">
+</jsl-video-modal>
+
+<jsl-booking-modal
+  [isOpen]="isBookingModalOpen()"
+  (close)="closeBookingModal()">
+</jsl-booking-modal>

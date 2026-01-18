@@ -1,4 +1,3 @@
-// mock-data.ts
 // src/app/core/data/mock-data.ts
 
 import { BlogPost, TeamMember } from '@core/services/data.service';
@@ -209,16 +208,19 @@ export const PROJECTS = [
     key: 'CASE_ERP',
     slug: 'erp-logistics-optimization',
     imageUrl: 'https://images.unsplash.com/photo-1556761175-577380e25f2b?fit=crop&w=600&q=80',
+    category: 'Enterprise',
   },
   {
     key: 'CASE_ECOMMERCE',
     slug: 'b2b-ecommerce-platform',
     imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?fit=crop&w=600&q=80',
+    category: 'Commerce',
   },
   {
     key: 'CASE_MOBILE_APP',
     slug: 'fleet-management-mobile-app',
     imageUrl: 'https://images.unsplash.com/photo-1607936834114-0a300c3f0b24?fit=crop&w=600&q=80',
+    category: 'Mobile',
   },
 ];
 
