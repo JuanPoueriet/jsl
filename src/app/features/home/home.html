@@ -1,8 +1,7 @@
 <section class="hero-slider">
-  <!-- Añadido #heroSwiper para referencia en TypeScript -->
   <swiper-container 
     #heroSwiper
-    [config]="heroSwiperConfig" 
+    [config]="heroSwiperConfig"
     init="true"
     class="hero-main-swiper"
   >
@@ -13,18 +12,17 @@
         priority
         alt="Shaping the future of digital innovation"
       />
-
       <div class="hero-slide__overlay"></div>
-      <div class="hero-slide__content container">
+      <div class="hero-slide__content">
         @if (isReturningVisitor()) {
           <p class="welcome-back-msg">{{ 'HOME.WELCOME_BACK' | translate }}</p>
         }
         <h1 class="hero-slide__title">{{ 'HOME.HERO1_TITLE' | translate }}</h1>
         <p class="hero-slide__subtitle">{{ 'HOME.HERO1_SUBTITLE' | translate }}</p>
         <div class="hero-actions">
-          <a [routerLink]="['/', currentLang, 'about-us']" class="hero-slide__cta">{{
-            'HEADER.ABOUT' | translate
-          }}</a>
+          <a [routerLink]="['/', currentLang, 'about-us']" class="hero-slide__cta">
+            {{ 'HEADER.ABOUT' | translate }}
+          </a>
           <button (click)="openVideoModal()" class="hero-slide__cta hero-slide__cta--secondary">
              <lucide-icon name="Play"></lucide-icon>
              Watch Reel
@@ -34,51 +32,35 @@
     </swiper-slide>
 
     <swiper-slide class="hero-slide">
-      <!-- <img ngSrc="https://images.unsplash.com/photo-1587620962725-abab7fe55159?fit=crop&w=1920&q=80"  -->
       <img ngSrc="assets/imgs/Avif/photo-1587620962725-abab7fe55159.avif" fill alt="ERP Software" />
-
       <div class="hero-slide__overlay"></div>
-      <div class="hero-slide__content container">
+      <div class="hero-slide__content">
         <h1 class="hero-slide__title">{{ 'HOME.HERO2_TITLE' | translate }}</h1>
         <p class="hero-slide__subtitle">{{ 'HOME.HERO2_SUBTITLE' | translate }}</p>
-        <a [routerLink]="['/', currentLang, 'products']" class="hero-slide__cta">{{
-          'HOME.HERO2_CTA' | translate
-        }}</a>
+        <a [routerLink]="['/', currentLang, 'products']" class="hero-slide__cta">
+          {{ 'HOME.HERO2_CTA' | translate }}
+        </a>
       </div>
     </swiper-slide>
 
     <swiper-slide class="hero-slide">
-      <!-- <img ngSrc="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?fit=crop&w=1920&q=80"  -->
       <img ngSrc="assets/imgs/Avif/photo-1517694712202-14dd9538aa97.avif" fill alt="Custom Solutions" />
-
       <div class="hero-slide__overlay"></div>
-      <div class="hero-slide__content container">
+      <div class="hero-slide__content">
         <h1 class="hero-slide__title">{{ 'HOME.HERO3_TITLE' | translate }}</h1>
         <p class="hero-slide__subtitle">{{ 'HOME.HERO3_SUBTITLE' | translate }}</p>
-        <a [routerLink]="['/', currentLang, 'solutions']" class="hero-slide__cta">{{
-          'HOME.HERO3_CTA' | translate
-        }}</a>
+        <a [routerLink]="['/', currentLang, 'solutions']" class="hero-slide__cta">
+          {{ 'HOME.HERO3_CTA' | translate }}
+        </a>
       </div>
     </swiper-slide>
   </swiper-container>
 
-  <!-- Custom Navigation Buttons - MODERNOS Y DISCRETOS -->
-  <div
-    class="hero-swiper-button-prev"
-    aria-label="Previous slide"
-    role="button"
-    tabindex="0"
-    (keydown.enter)="onPrevNav()"
-    (keydown.space)="onPrevNav()">
+  <!-- Navigation Arrows -->
+  <div class="hero-swiper-button-prev" role="button" aria-label="Previous slide">
     <lucide-icon name="ChevronLeft"></lucide-icon>
   </div>
-  <div
-    class="hero-swiper-button-next"
-    aria-label="Next slide"
-    role="button"
-    tabindex="0"
-    (keydown.enter)="onNextNav()"
-    (keydown.space)="onNextNav()">
+  <div class="hero-swiper-button-next" role="button" aria-label="Next slide">
     <lucide-icon name="ChevronRight"></lucide-icon>
   </div>
 
@@ -98,16 +80,12 @@
     </div>
   </div>
 
-  <!-- NUEVO: Scroll Down Indicator -->
   <div class="scroll-indicator">
-    <div class="mouse">
-      <div class="wheel"></div>
-    </div>
-    <div class="arrow"></div>
+    <div class="mouse"></div>
   </div>
 </section>
 
-<!-- NUEVO COMPONENTE: Stats Bar (Métricas) -->
+<!-- Stats Section -->
 <section class="stats-section">
   <div class="container">
     <div class="stats-grid">
@@ -123,7 +101,7 @@
   </div>
 </section>
 
-<!-- NUEVO: Partners / Clients Section -->
+<!-- Partners Section -->
 <section class="partners-section">
   <div class="container">
      <p class="partners-title">{{ 'HOME.PARTNERS_TITLE' | translate }}</p>
@@ -137,7 +115,7 @@
   </div>
 </section>
 
-<!-- NUEVO: Tech Stack Slider (Marquee) -->
+<!-- Tech Stack Marquee -->
 <section class="tech-stack-slider">
   <div class="container-fluid">
     <swiper-container [config]="logoSwiperConfig" init="true" class="logo-slider">
@@ -150,6 +128,7 @@
   </div>
 </section>
 
+<!-- Welcome & Team -->
 <section class="welcome-section container" jslAnimateOnScroll>
   <div class="welcome-section__text">
     <span class="section-eyebrow">{{ 'HOME.WELCOME_EYEBROW' | translate }}</span>
@@ -161,7 +140,6 @@
     </a>
   </div>
 
-  <!-- MODIFICADO: Team Teaser (Elemento Humano) en lugar de imagen estática -->
   <div class="welcome-section__image team-teaser">
     <div class="team-grid">
        @for (member of teamMembers; track member.nameKey) {
@@ -177,145 +155,155 @@
   </div>
 </section>
 
-<section class="offerings-section container" id="offerings">
-  <div class="offerings-header" jslAnimateOnScroll>
-    <span class="section-eyebrow">{{ 'HOME.OFFERINGS_EYEBROW' | translate }}</span>
-    <h2 class="section-title">{{ 'HOME.OFFERINGS_TITLE' | translate }}</h2>
+<!-- Offerings (Services/Products) -->
+<section class="offerings-section" id="offerings">
+  <div class="container">
+    <div class="offerings-header" jslAnimateOnScroll>
+      <span class="section-eyebrow">{{ 'HOME.OFFERINGS_EYEBROW' | translate }}</span>
+      <h2 class="section-title">{{ 'HOME.OFFERINGS_TITLE' | translate }}</h2>
 
-    <div class="search-trigger-container">
-      <div class="search-trigger" (click)="openSearch()">
-        <lucide-icon name="Search"></lucide-icon>
-        <span>{{ 'HOME.SEARCH_PLACEHOLDER' | translate }}</span>
+      <div class="search-trigger-container">
+        <div class="search-trigger" (click)="openSearch()">
+          <lucide-icon name="Search"></lucide-icon>
+          <span>{{ 'HOME.SEARCH_PLACEHOLDER' | translate }}</span>
+        </div>
+      </div>
+
+      <div class="offerings-tabs-container">
+        <div class="offerings-tabs">
+          <button
+            class="tab-btn"
+            [class.active]="activeTab() === 'services'"
+            (click)="setActiveTab('services')"
+          >
+            {{ 'HEADER.SERVICES' | translate }}
+          </button>
+          <button
+            class="tab-btn"
+            [class.active]="activeTab() === 'products'"
+            (click)="setActiveTab('products')"
+          >
+            {{ 'HEADER.PRODUCTS' | translate }}
+          </button>
+        </div>
       </div>
     </div>
 
-    <div class="offerings-tabs-container">
-      <div class="offerings-tabs">
-        <button
-          class="tab-btn"
-          [class.active]="activeTab() === 'services'"
-          (click)="setActiveTab('services')"
-        >
-          {{ 'HEADER.SERVICES' | translate }}
-        </button>
-        <button
-          class="tab-btn"
-          [class.active]="activeTab() === 'products'"
-          (click)="setActiveTab('products')"
-        >
-          {{ 'HEADER.PRODUCTS' | translate }}
-        </button>
-      </div>
+    <div class="offerings-content">
+      @if (isLoading()) {
+        <div class="solutions-grid">
+           @for (i of [1,2,3]; track $index) {
+             <div class="skeleton-wrapper">
+               <app-skeleton-loader shape="circle" width="48px" height="48px"></app-skeleton-loader>
+               <app-skeleton-loader width="60%" height="24px"></app-skeleton-loader>
+               <app-skeleton-loader width="100%" height="16px"></app-skeleton-loader>
+               <app-skeleton-loader width="90%" height="16px"></app-skeleton-loader>
+             </div>
+           }
+        </div>
+      } @else {
+        @if (activeTab() === 'services') {
+          <div class="solutions-grid">
+            @for (solution of solutions(); track solution.key) {
+              <jsl-card
+                [icon]="solution.icon"
+                [title]="'SOLUTIONS.' + solution.key + '_TITLE' | translate"
+                [description]="'SOLUTIONS.' + solution.key + '_DESC' | translate"
+                [link]="['/', currentLang, 'solutions', solution.slug]"
+                variant="service"
+                jslAnimateOnScroll
+              >
+              </jsl-card>
+            }
+          </div>
+        }
+
+        @if (activeTab() === 'products') {
+          <div class="products-grid">
+            @for (product of products(); track product.key) {
+              <jsl-card
+                [icon]="product.icon"
+                [title]="'PRODUCTS.' + product.key + '_TITLE' | translate"
+                [description]="'PRODUCTS.' + product.key + '_DESC' | translate"
+                [link]="['/', currentLang, 'products', product.slug]"
+                variant="service"
+                jslAnimateOnScroll
+              >
+              </jsl-card>
+            }
+          </div>
+        }
+      }
     </div>
-  </div>
-
-  <div class="offerings-content">
-    @if (isLoading()) {
-      <div class="solutions-grid">
-         @for (i of [1,2,3]; track $index) {
-           <div class="skeleton-wrapper">
-             <app-skeleton-loader shape="circle" width="48px" height="48px"></app-skeleton-loader>
-             <app-skeleton-loader width="60%" height="24px"></app-skeleton-loader>
-             <app-skeleton-loader width="100%" height="16px"></app-skeleton-loader>
-             <app-skeleton-loader width="90%" height="16px"></app-skeleton-loader>
-           </div>
-         }
-      </div>
-    } @else {
-      @if (activeTab() === 'services') {
-        <div class="solutions-grid fade-in">
-          @for (solution of solutions(); track solution.key) {
-            <jsl-card
-              [icon]="solution.icon"
-              [title]="'SOLUTIONS.' + solution.key + '_TITLE' | translate"
-              [description]="'SOLUTIONS.' + solution.key + '_DESC' | translate"
-              [link]="['/', currentLang, 'solutions', solution.slug]"
-              jslAnimateOnScroll
-            >
-            </jsl-card>
-          }
-        </div>
-      }
-
-      @if (activeTab() === 'products') {
-        <div class="products-grid fade-in">
-          @for (product of products(); track product.key) {
-            <jsl-card
-              [icon]="product.icon"
-              [title]="'PRODUCTS.' + product.key + '_TITLE' | translate"
-              [description]="'PRODUCTS.' + product.key + '_DESC' | translate"
-              [link]="['/', currentLang, 'products', product.slug]"
-              jslAnimateOnScroll
-            >
-            </jsl-card>
-          }
-        </div>
-      }
-    }
   </div>
 </section>
 
-<!-- NUEVO: Maturity Diagnosis Section -->
-<section class="maturity-section container" jslAnimateOnScroll>
-  <div class="section-header text-center">
-    <span class="section-eyebrow">{{ 'MATURITY.EYEBROW' | translate }}</span>
-    <h2 class="section-title">{{ 'MATURITY.TITLE' | translate }}</h2>
-    <p class="section-subtitle">{{ 'MATURITY.SUBTITLE' | translate }}</p>
-  </div>
-
-  <div class="maturity-grid">
-    <div>
-      <h3>Assess your Tech Stack</h3>
-      <jsl-digital-maturity-selector></jsl-digital-maturity-selector>
+<!-- Maturity & ROI -->
+<section class="maturity-section">
+  <div class="container" jslAnimateOnScroll>
+    <div class="section-header text-center">
+      <span class="section-eyebrow">{{ 'MATURITY.EYEBROW' | translate }}</span>
+      <h2 class="section-title">{{ 'MATURITY.TITLE' | translate }}</h2>
+      <p class="section-subtitle" style="margin: 0 auto;">{{ 'MATURITY.SUBTITLE' | translate }}</p>
     </div>
-    <div>
-      <h3>Calculate Potential Savings</h3>
-      <app-roi-calculator></app-roi-calculator>
+
+    <div class="maturity-grid">
+      <div>
+        <h3 class="text-center" style="margin-bottom: 2rem;">Assess your Tech Stack</h3>
+        <jsl-digital-maturity-selector></jsl-digital-maturity-selector>
+      </div>
+      <div>
+        <h3 class="text-center" style="margin-bottom: 2rem;">Calculate Potential Savings</h3>
+        <app-roi-calculator></app-roi-calculator>
+      </div>
     </div>
-  </div>
 
-  <div class="maturity-cta">
-    <button (click)="openBookingModal()" class="welcome-section__cta">
-      <span>{{ 'HOME.STICKY_CTA' | translate }}</span>
-      <lucide-icon name="Calendar"></lucide-icon>
-    </button>
-  </div>
-</section>
-
-<section class="featured-projects container">
-  <div class="featured-projects__header" jslAnimateOnScroll>
-    <span class="section-eyebrow">{{ 'HOME.PROJECTS_EYEBROW' | translate }}</span>
-    <h2 class="section-title">{{ 'HOME.PROJECTS_TITLE' | translate }}</h2>
-    <p class="section-subtitle">{{ 'HOME.PROJECTS_SUBTITLE' | translate }}</p>
-  </div>
-
-  <div class="projects-filter">
-    @for (category of projectCategories; track category) {
-      <button
-        class="filter-pill"
-        [class.active]="selectedProjectCategory() === category"
-        (click)="setProjectCategory(category)">
-        {{ category }}
+    <div class="text-center" style="margin-top: 4rem;">
+      <button (click)="openBookingModal()" class="welcome-section__cta">
+        <span>{{ 'HOME.STICKY_CTA' | translate }}</span>
+        <lucide-icon name="Calendar"></lucide-icon>
       </button>
-    }
-  </div>
-
-  <div class="projects-grid">
-    @for (project of filteredProjects(); track project.key) {
-      <jsl-card
-        [imageUrl]="project.imageUrl"
-        [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
-        [description]="'PROJECTS.' + project.key + '_DESC' | translate"
-        [link]="['/', currentLang, 'projects', project.slug]"
-        [metrics]="project.metrics || []"
-        jslAnimateOnScroll
-      >
-      </jsl-card>
-    }
+    </div>
   </div>
 </section>
 
-<!-- NUEVO COMPONENTE: Lead Magnet (Captura Intermedia) -->
+<!-- Featured Projects -->
+<section class="featured-projects">
+  <div class="container">
+    <div class="section-header text-center" jslAnimateOnScroll>
+      <span class="section-eyebrow">{{ 'HOME.PROJECTS_EYEBROW' | translate }}</span>
+      <h2 class="section-title">{{ 'HOME.PROJECTS_TITLE' | translate }}</h2>
+      <p class="section-subtitle" style="margin: 0 auto 2rem auto;">{{ 'HOME.PROJECTS_SUBTITLE' | translate }}</p>
+    </div>
+
+    <div class="projects-filter">
+      @for (category of projectCategories; track category) {
+        <button
+          class="filter-pill"
+          [class.active]="selectedProjectCategory() === category"
+          (click)="setProjectCategory(category)">
+          {{ category }}
+        </button>
+      }
+    </div>
+
+    <div class="projects-grid">
+      @for (project of filteredProjects(); track project.key) {
+        <jsl-card
+          [imageUrl]="project.imageUrl"
+          [title]="'PROJECTS.' + project.key + '_TITLE' | translate"
+          [description]="'PROJECTS.' + project.key + '_DESC' | translate"
+          [link]="['/', currentLang, 'projects', project.slug]"
+          [metrics]="project.metrics || []"
+          jslAnimateOnScroll
+        >
+        </jsl-card>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Lead Magnet -->
 <section class="lead-magnet-section">
   <div class="container lead-magnet-container" jslAnimateOnScroll>
     <div class="lead-magnet-content">
@@ -339,27 +327,30 @@
     </div>
     <div class="lead-magnet-visual">
        <div class="book-mockup">
-         <div class="book-cover">
-            <lucide-icon name="FileText" size="64"></lucide-icon>
-            <span>Whitepaper 2025</span>
+         <div class="book-cover" style="padding: 2rem; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <lucide-icon name="FileText" size="48" style="margin-bottom: 1rem;"></lucide-icon>
+            <span style="font-weight: 800; font-size: 1.5rem; text-transform: uppercase;">Whitepaper 2025</span>
+            <span style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">Digital Transformation Guide</span>
          </div>
        </div>
     </div>
   </div>
 </section>
 
+<!-- Testimonials -->
 <section class="testimonials-section">
   <div class="container" jslAnimateOnScroll>
-    <div class="testimonials-header">
+    <div class="section-header text-center" style="margin-bottom: 4rem;">
       <span class="section-eyebrow">{{ 'HOME.TESTIMONIALS_EYEBROW' | translate }}</span>
       <h2 class="section-title">{{ 'HOME.TESTIMONIALS_TITLE' | translate }}</h2>
     </div>
+
     <swiper-container [config]="testimonialSwiperConfig" init="true" class="testimonial-slider">
       @for (testimonial of testimonials(); track testimonial.nameKey) {
         <swiper-slide class="testimonial-card">
           <div class="testimonial-card__stars">
             @for (star of getStars(5); track $index) {
-              <lucide-icon name="Star"></lucide-icon>
+              <lucide-icon name="Star" fill="currentColor"></lucide-icon>
             }
           </div>
           <p class="testimonial-card__text">"{{ testimonial.textKey | translate }}"</p>
@@ -374,35 +365,19 @@
               <span class="role">{{ testimonial.roleKey | translate }}</span>
             </div>
           </div>
-
-          <!-- Social Proof Badge Simulation -->
-          <div class="social-proof-badge">
-             <lucide-icon name="CheckCircle" size="14"></lucide-icon>
-             <span>Verified Review</span>
-          </div>
         </swiper-slide>
       }
     </swiper-container>
-
-    <div class="social-proof-widgets">
-       <div class="sp-widget">
-          <span class="sp-score">4.9/5</span>
-          <span class="sp-source">on Clutch</span>
-       </div>
-       <div class="sp-widget">
-          <span class="sp-score">5.0/5</span>
-          <span class="sp-source">on Google</span>
-       </div>
-    </div>
   </div>
 </section>
 
+<!-- Process -->
 <section class="process-section">
   <div class="container">
-    <div class="process-header" jslAnimateOnScroll>
+    <div class="section-header text-center" jslAnimateOnScroll>
       <span class="section-eyebrow">{{ 'HOME.PROCESS_EYEBROW' | translate }}</span>
       <h2 class="section-title">{{ 'HOME.PROCESS_TITLE' | translate }}</h2>
-      <p class="section-subtitle">{{ 'HOME.PROCESS_SUBTITLE' | translate }}</p>
+      <p class="section-subtitle" style="margin: 0 auto;">{{ 'HOME.PROCESS_SUBTITLE' | translate }}</p>
     </div>
     <div class="process-grid">
       @for (step of processSteps(); track step.key) {
@@ -416,7 +391,7 @@
       }
     </div>
 
-    <div class="process-section__cta" jslAnimateOnScroll>
+    <div class="text-center" style="margin-top: 4rem;" jslAnimateOnScroll>
       <a [routerLink]="['/', currentLang, 'about-us']" class="welcome-section__cta">
         <span>{{ 'HEADER.ABOUT' | translate }}</span>
         <lucide-icon name="ArrowRight"></lucide-icon>
@@ -425,28 +400,31 @@
   </div>
 </section>
 
-<section class="latest-insights container">
-  <div class="latest-insights__header" jslAnimateOnScroll>
-    <span class="section-eyebrow">{{ 'HOME.BLOG_EYEBROW' | translate }}</span>
-    <h2 class="section-title">{{ 'HOME.BLOG_TITLE' | translate }}</h2>
-  </div>
-  <div class="insights-grid">
-    @for (post of latestBlogPosts(); track post.key) {
-      <jsl-card
-        [imageUrl]="post.imageUrl"
-        [title]="'BLOG.' + post.key + '_TITLE' | translate"
-        [description]="'BLOG.' + post.key + '_DESC' | translate"
-        [link]="['/', currentLang, 'blog', post.slug]"
-        jslAnimateOnScroll
-      >
-      </jsl-card>
-    }
+<!-- Blog -->
+<section class="featured-projects" style="background: var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header text-center" jslAnimateOnScroll>
+      <span class="section-eyebrow">{{ 'HOME.BLOG_EYEBROW' | translate }}</span>
+      <h2 class="section-title">{{ 'HOME.BLOG_TITLE' | translate }}</h2>
+    </div>
+    <div class="projects-grid">
+      @for (post of latestBlogPosts(); track post.key) {
+        <jsl-card
+          [imageUrl]="post.imageUrl"
+          [title]="'BLOG.' + post.key + '_TITLE' | translate"
+          [description]="'BLOG.' + post.key + '_DESC' | translate"
+          [link]="['/', currentLang, 'blog', post.slug]"
+          jslAnimateOnScroll
+        >
+        </jsl-card>
+      }
+    </div>
   </div>
 </section>
 
-<!-- NUEVO COMPONENTE: FAQ Preview (Manejo de Objeciones) -->
-<section class="faq-preview-section container" jslAnimateOnScroll>
-  <div class="faq-preview-header">
+<!-- FAQ Preview -->
+<section class="faq-preview-section">
+  <div class="faq-preview-header" jslAnimateOnScroll>
      <span class="section-eyebrow">{{ 'HOME.FAQ_PREVIEW_EYEBROW' | translate }}</span>
      <h2 class="section-title">{{ 'HOME.FAQ_PREVIEW_TITLE' | translate }}</h2>
   </div>
@@ -471,15 +449,15 @@
   </div>
 </section>
 
-<!-- NUEVO COMPONENTE: Casos de Éxito (Before/After) -->
+<!-- Success Cases -->
 <section class="success-cases-section container">
-  <div class="section-header text-center">
+  <div class="section-header text-center" style="margin-bottom: 3rem;">
      <span class="section-eyebrow">Visual Transformation</span>
      <h2 class="section-title">See the Difference</h2>
-     <p class="section-subtitle">From legacy systems to modern, high-performance interfaces.</p>
+     <p class="section-subtitle" style="margin: 0 auto;">From legacy systems to modern, high-performance interfaces.</p>
   </div>
 
-  <div class="comparison-container">
+  <div class="comparison-container" style="max-width: 900px; margin: 0 auto;">
      <jsl-image-comparison
        beforeImage="assets/imgs/Avif/legacy-ui.avif"
        afterImage="assets/imgs/Avif/modern-ui.avif"
@@ -490,8 +468,7 @@
   </div>
 </section>
 
-<jsl-cta-section></jsl-cta-section>
-
+<!-- Modals -->
 <jsl-video-modal
   [isOpen]="isVideoModalOpen()"
   [videoUrl]="demoVideoUrl"
@@ -509,7 +486,7 @@
   (confirm)="onExitModalConfirm()">
 </jsl-exit-intent-modal>
 
-<!-- Sticky CTA for Mobile -->
+<!-- Mobile Sticky CTA -->
 <div class="mobile-sticky-cta">
   <button (click)="openBookingModal()">
     {{ 'HOME.STICKY_CTA' | translate }}

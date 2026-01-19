@@ -1,57 +1,37 @@
 /* src/styles.scss */
 
-// 1. Importación de Tipografía (Poppins)
-// --- ELIMINADO: @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-//     (Se movió a index.html para una carga más rápida)
-
-// 2. Definición de Variables CSS (Paleta Dark Mode)
+// 1. Definition of CSS Variables (Dark Mode Palette)
 :root {
-  // Colores (Basados en las imágenes de referencia)
-  --bg-primary: #0D0D0D;      // Un negro muy profundo, casi puro
-  --bg-secondary: #1A1A1A;    // Para tarjetas, header (ligeramente más claro)
-  --border-color: #2C2C2C;    // Bordes sutiles
+  // Colors
+  --bg-primary: #0D0D0D;      // Deep black
+  --bg-secondary: #1A1A1A;    // Dark gray
+  --bg-tertiary: #252525;     // Lighter gray for tags/accents
+  --bg-card: #1A1A1A;         // Explicit card background
 
-  // Tipografía
-  --text-primary: #F5F5F5;     // Blanco principal (casi blanco)
-  --text-secondary: #A0A0A0;  // Gris (para subtítulos y párrafos)
+  --border-color: #2C2C2C;    // Subtle borders
+
+  // Typography
+  --text-primary: #F5F5F5;     // Off-white
+  --text-secondary: #A0A0A0;  // Gray
+  --text-tertiary: #666666;   // Darker gray
   --font-family-base: 'Poppins', sans-serif;
 
-  // Acentos (Extraídos de IMG-20251020-WA0002.jpg)
-  --accent-primary: #FF4B2B;
-  --accent-secondary: #FF416C;
-  --accent-gradient: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-
-  // Layout
-  --max-width: 1200px;
-  --top-bar-height: 40px;  // <-- AÑADIR
-  --header-height: 75px;
-  --border-radius: 8px;
-
-
-
-
-
-
-
-
-
-  --accent-primary: #FF4B2B;
-  --accent-primary-rgb: 255, 75, 43; // <-- AÑADE ESTA LÍNEA
-  --accent-secondary: #FF416C;
-  --accent-gradient: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-
---font-family-base: 'Poppins', sans-serif;
-
-  // Acentos
+  // Accents (JSL Brand)
   --accent-primary: #FF4B2B;
   --accent-primary-rgb: 255, 75, 43;
   --accent-secondary: #FF416C;
-  --accent-secondary-rgb: 255, 65, 108; // <-- AÑADE ESTA LÍNEA
+  --accent-secondary-rgb: 255, 65, 108;
   --accent-gradient: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
 
+  // Layout & Spacing
+  --max-width: 1200px;
+  --top-bar-height: 40px;
+  --header-height: 75px;
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
 }
 
-// 3. Reseteo Básico y Estilos Globales
+// 2. Reset & Global Styles
 * {
   margin: 0;
   padding: 0;
@@ -68,6 +48,7 @@ body {
   font-family: var(--font-family-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
 a {
@@ -80,16 +61,21 @@ a {
   }
 }
 
-// Clase utilitaria para centrar contenido
 .container {
   width: 90%;
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
-// Estilo de scrollbar (para un look más "tech")
+.container-fluid {
+  width: 100%;
+  margin: 0 auto;
+}
+
+// Custom Scrollbar
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px; // For horizontal scrolling
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
@@ -102,16 +88,17 @@ a {
   background: var(--text-secondary);
 }
 
+// Page Wrapper
 .page-container {
-  padding-top: 4rem; // Espacio desde el header
-  padding-bottom: 4rem; // Espacio antes del footer
-  min-height: 50vh; // Asegura que la página tenga algo de altura
-
-  margin-top: calc(var(--header-height) + var(--top-bar-height));;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  min-height: 50vh;
+  margin-top: calc(var(--header-height) + var(--top-bar-height));
 }
 
+// Global Typography Utilities
 .page-title {
-  font-size: 3rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1rem;
@@ -122,84 +109,44 @@ a {
   font-size: 1.2rem;
   font-weight: 300;
   color: var(--text-secondary);
+  max-width: 800px;
 }
 
-// Clases genéricas para secciones (las usaremos más adelante)
-.section-eyebrow {
-  display: block;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--accent-primary);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+.text-center { text-align: center; }
 
-.section-title {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  line-height: 1.8;
-  max-width: 700px; // Limita el ancho de los párrafos
-}
-
+// Animation Directive Styles
 [jslAnimateOnScroll] {
-  // Estado inicial (oculto)
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 
-  // Estado visible (cuando se añade la clase)
   &.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-// Para añadir un efecto de "stagger" (retraso) a las tarjetas en un grid
+// Staggered Animations
 .solutions-grid,
 .products-grid,
-.projects-grid,
-.core-values-grid {
-  @for $i from 1 through 10 { // Soporta hasta 10 tarjetas
+.projects-grid {
+  @for $i from 1 through 10 {
     > *:nth-child(#{$i}) {
-      transition-delay: #{$i * 0.1}s; // Retraso de 0.1s por tarjeta
+      transition-delay: #{$i * 0.1}s;
     }
   }
 }
 
-lucide-icon{
+lucide-icon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-// img{
-//   width: 100% !important;
-//   height: auto !important;
-//   display: flex !important;
-//   align-items: center !important;
-//   justify-content: center !important;
-//   overflow: hidden;
-// }
-
 @media (max-width: 992px) {
+  // Disable hover on touch devices to prevent sticky hover states
   *:hover {
     cursor: default;
   }
 }
 
-
-body {
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-}
