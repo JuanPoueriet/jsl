@@ -29,11 +29,23 @@ export class BreadcrumbsComponent implements OnInit {
       filter(event => event instanceof NavigationEnd),
       distinctUntilChanged()
     ).subscribe(() => {
-      this.breadcrumbs = this.buildBreadcrumbs(this.activatedRoute.root);
+      this.generateBreadcrumbs();
     });
 
     // Build initial
+    this.generateBreadcrumbs();
+  }
+
+  private generateBreadcrumbs() {
     this.breadcrumbs = this.buildBreadcrumbs(this.activatedRoute.root);
+
+    // Hide breadcrumbs on Home page to avoid redundancy
+    if (this.breadcrumbs.length > 0) {
+      const last = this.breadcrumbs[this.breadcrumbs.length - 1];
+      if (last.label === 'HEADER.HOME') {
+        this.breadcrumbs = [];
+      }
+    }
   }
 
   private buildBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: Breadcrumb[] = []): Breadcrumb[] {

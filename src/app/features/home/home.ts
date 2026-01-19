@@ -29,6 +29,8 @@ import { VideoModal } from '@shared/components/video-modal/video-modal';
 import { BookingModal } from '@shared/components/booking-modal/booking-modal';
 import { ExitIntentModal } from './components/exit-intent-modal/exit-intent-modal';
 import { ImageComparisonComponent } from '@shared/components/image-comparison/image-comparison';
+import { SkeletonLoaderComponent } from '@shared/components/skeleton-loader/skeleton-loader.component';
+import { RoiCalculatorComponent } from '@shared/components/roi-calculator/roi-calculator.component';
 import { computed } from '@angular/core';
 
 // Swiper Web Components
@@ -52,7 +54,9 @@ register();
     VideoModal,
     BookingModal,
     ExitIntentModal,
-    ImageComparisonComponent
+    ImageComparisonComponent,
+    SkeletonLoaderComponent,
+    RoiCalculatorComponent
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
@@ -221,6 +225,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   public activeTab = signal<'services' | 'products'>('services');
   public isReturningVisitor = signal(false);
   public isSubmitting = signal(false);
+  public isLoading = signal(true); // For skeleton loader demo
 
   private el = inject(ElementRef);
   private renderer = inject(Renderer2);
@@ -251,6 +256,11 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       } else {
         localStorage.setItem('jsl_visited', 'true');
       }
+
+      // Simulate initial loading
+      setTimeout(() => {
+        this.isLoading.set(false);
+      }, 1500);
     }
 
     this.addSchemaData();

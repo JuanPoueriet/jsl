@@ -84,6 +84,8 @@ import {
   HardDrive,
   Loader2,
   ChevronsLeftRight,
+  Calculator,
+  DollarSign,
 } from 'lucide-angular';
 
 // Agrupación de iconos por propósito
@@ -187,6 +189,8 @@ export const ICON_LIST = {
     CheckCheck,
     CheckCircle,
     Headphones,
+    Calculator,
+    DollarSign,
   },
 };
 
