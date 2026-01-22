@@ -187,6 +187,7 @@
       "SERVICE_OTHER": "Otro",
       "MESSAGE": "Tu Mensaje",
       "SUBMIT": "Enviar Mensaje",
+      "PRIVACY_CONSENT": "Acepto la <a href='/es/privacy-policy' target='_blank'>Política de Privacidad</a>.",
       "ERRORS": {
         "REQUIRED": "Este campo es requerido.",
         "EMAIL": "Por favor, introduce un correo válido.",
