@@ -1,6 +1,10 @@
-<div class="toast-container">
+<div class="toast-container" aria-live="polite" aria-atomic="false">
   @for (toast of toastService.toasts$ | async; track toast.id) {
-    <div class="toast" [ngClass]="toast.type">
+    <div
+      class="toast"
+      [ngClass]="toast.type"
+      [attr.role]="toast.type === 'error' ? 'alert' : 'status'"
+    >
       <div class="toast-icon">
         @if (toast.type === 'success') {
           <lucide-icon [name]="icons.Check" [size]="20"></lucide-icon>
@@ -14,6 +18,9 @@
       <button class="toast-close" (click)="remove(toast.id)" aria-label="Close">
         <lucide-icon [name]="icons.X" [size]="16"></lucide-icon>
       </button>
+      @if (toast.duration && toast.duration > 0) {
+        <div class="toast-progress" [style.animation-duration.ms]="toast.duration"></div>
+      }
     </div>
   }
 </div>
