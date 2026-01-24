@@ -1,4 +1,4 @@
-<div class="search-overlay" (click)="closeOverlay()">
+<div class="search-overlay" (click)="closeOverlay()" cdkTrapFocus role="dialog" aria-modal="true">
   <div class="search-container" (click)="$event.stopPropagation()">
     <div class="search-header">
       <div class="input-wrapper">
@@ -10,23 +10,24 @@
           (ngModelChange)="onSearchInput($event)"
           [placeholder]="'SEARCH.PLACEHOLDER' | translate"
           aria-label="Search"
+          aria-controls="search-results-list"
         >
-        <button class="close-btn" (click)="closeOverlay()">
+        <button class="close-btn" (click)="closeOverlay()" [attr.aria-label]="'SEARCH.CLOSE' | translate">
           <lucide-icon [name]="icons.X" [size]="24"></lucide-icon>
         </button>
       </div>
     </div>
 
     @if (results.length > 0 || query) {
-      <div class="search-results">
+      <div class="search-results" role="region" [attr.aria-label]="'SEARCH.RESULTS_LABEL' | translate" aria-live="polite">
         @if (results.length === 0 && query) {
           <div class="no-results">
             <p>{{ 'SEARCH.NO_RESULTS' | translate }} "{{ query }}"</p>
           </div>
         } @else {
-          <div class="results-list">
+          <div class="results-list" id="search-results-list" role="list">
             @for (result of results; track $index) {
-              <a [routerLink]="getLink(result)" (click)="closeOverlay()" class="result-item">
+              <a [routerLink]="getLink(result)" (click)="closeOverlay()" class="result-item" role="listitem">
                 <div class="result-icon">
                   @if (result.type === 'blog') { <lucide-icon [name]="icons.FileText" [size]="18"></lucide-icon> }
                   @if (result.type === 'solution') { <lucide-icon [name]="icons.Zap" [size]="18"></lucide-icon> }

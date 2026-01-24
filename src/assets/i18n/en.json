@@ -15,6 +15,12 @@
     "VIEW_ALL_SERVICES": "View All Solutions",
     "VIEW_ALL_PRODUCTS": "View All Products"
   },
+  "SEARCH": {
+    "PLACEHOLDER": "What solution are you looking for?",
+    "NO_RESULTS": "No results for",
+    "CLOSE": "Close search",
+    "RESULTS_LABEL": "Search results"
+  },
   "TOP_BAR": {
     "PORTFOLIO": "Portfolio",
     "GET_QUOTE": "Get a Quote",
