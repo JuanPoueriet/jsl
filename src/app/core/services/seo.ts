@@ -105,6 +105,37 @@ export class Seo {
   }
 
   /**
+   * 7. ¡NUEVO! Inyecta JSON-LD Schema en el <head>.
+   */
+  public setJsonLd(data: any): void {
+    const scriptId = 'json-ld-schema';
+
+    // Eliminar script previo si existe (para evitar duplicados en navegación SPA)
+    // Se ejecuta en ambos entornos, ya que en servidor se recrea el DOM.
+    const oldScript = this.document.getElementById(scriptId);
+    if (oldScript) {
+      oldScript.remove();
+    }
+
+    const script = this.document.createElement('script');
+    script.id = scriptId;
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(data);
+    this.document.head.appendChild(script);
+  }
+
+  /**
+   * 8. ¡NUEVO! Elimina el JSON-LD Schema del <head>.
+   */
+  public removeJsonLd(): void {
+    const scriptId = 'json-ld-schema';
+    const script = this.document.getElementById(scriptId);
+    if (script) {
+      script.remove();
+    }
+  }
+
+  /**
    * 3. ¡NUEVO! Actualiza la etiqueta <link rel="canonical">.
    */
   public updateCanonicalTag(url: string): void {
