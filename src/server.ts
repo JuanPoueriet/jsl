@@ -12,6 +12,7 @@ import rateLimit from 'express-rate-limit';
 // --- AÑADIDO: Importar los datos para el sitemap dinámico ---
 import { PROJECTS, BLOG_POSTS } from './app/core/data/mock-data';
 import { SUPPORTED_LANGUAGES } from './app/core/constants/languages';
+import { getData, saveData } from './server/db';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -20,6 +21,7 @@ const angularApp = new AngularNodeAppEngine();
 
 // --- OPTIMIZACIÓN: Compresión Gzip/Brotli ---
 app.use(compression());
+app.use(express.json()); // Enable JSON body parsing for API
 
 // --- SEGURIDAD: Rate Limiting ---
 const limiter = rateLimit({
@@ -30,6 +32,46 @@ const limiter = rateLimit({
 });
 // Aplicar rate limiting a todas las rutas
 app.use(limiter);
+
+// --- API ROUTES (CMS) ---
+
+app.get('/api/content', async (req, res) => {
+  try {
+    const data = await getData();
+    res.json(data);
+  } catch (err) {
+    console.error('Error loading content:', err);
+    res.status(500).json({ error: 'Failed to load data' });
+  }
+});
+
+app.post('/api/auth/login', (req, res) => {
+  const { password } = req.body;
+  const validPassword = process.env['ADMIN_PASSWORD'] || 'admin123';
+  if (password === validPassword) {
+    res.json({ token: 'jsl-admin-token-secure' });
+  } else {
+    res.status(401).json({ error: 'Invalid password' });
+  }
+});
+
+app.post('/api/content', async (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (authHeader !== 'Bearer jsl-admin-token-secure') {
+    res.status(401).json({ error: 'Unauthorized' });
+    return;
+  }
+
+  try {
+    await saveData(req.body);
+    res.json({ success: true });
+  } catch (err) {
+    console.error('Error saving content:', err);
+    res.status(500).json({ error: 'Failed to save data' });
+  }
+});
+
+// --- END API ROUTES ---
 
 app.get('/', (req, res) => {
   const supportedLangs = SUPPORTED_LANGUAGES;

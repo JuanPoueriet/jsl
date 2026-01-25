@@ -1,8 +1,8 @@
-// data.service.ts
 // src/app/core/services/data.service.ts
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 // Importamos TODA nuestra data mock centralizada
 import {
@@ -47,6 +47,7 @@ export interface Project {
   slug: string;
   imageUrl: string;
   metrics?: string[];
+  category?: string; // Added to match mock data usage if needed
 }
 
 // Interface para Artículos del Blog
@@ -120,97 +121,138 @@ export interface FaqItem {
 }
 
 /**
- * Servicio centralizado para proveer toda la data (mock) de la aplicación.
+ * Servicio centralizado para proveer toda la data de la aplicación.
+ * Intenta cargar data dinámica desde el backend (/api/content), con fallback a los mocks estáticos.
  */
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor() {}
+  private http = inject(HttpClient);
+  // BehaviorSubject que mantiene el estado actual de los datos.
+  // Inicialmente vacío, usará los fallbacks en los getters.
+  private dataSubject = new BehaviorSubject<any>({});
+
+  constructor() {
+    this.loadData();
+  }
+
+  /**
+   * Carga los datos desde la API.
+   * Si falla (ej. en desarrollo local sin backend), se maneja el error silenciosamente
+   * y la app sigue funcionando con los datos mock estáticos gracias a los fallbacks.
+   */
+  public loadData() {
+    this.http.get<any>('/api/content').pipe(
+      catchError(err => {
+        // En un entorno real, podríamos loguear esto solo en debug
+        // console.warn('No dynamic content API found, using static mocks.', err);
+        return of(null);
+      })
+    ).subscribe(data => {
+      if (data) {
+        this.dataSubject.next(data);
+      }
+    });
+  }
+
+  /**
+   * Helper genérico para obtener una lista con fallback.
+   */
+  private getList<T>(key: string, fallback: T[]): Observable<T[]> {
+    return this.dataSubject.pipe(
+      map(data => (data[key] as T[]) || fallback)
+    );
+  }
 
   // --- Métodos de Soluciones ---
   getSolutions(): Observable<Solution[]> {
-    return of(SOLUTIONS);
+    return this.getList('SOLUTIONS', SOLUTIONS);
   }
 
   getSolutionBySlug(slug: string): Observable<Solution | undefined> {
-    const solution = SOLUTIONS.find((s) => s.slug === slug);
-    return of(solution);
+    return this.getSolutions().pipe(
+      map(items => items.find(s => s.slug === slug))
+    );
   }
 
   // --- Métodos de Productos ---
   getProducts(): Observable<Product[]> {
-    return of(PRODUCTS);
+    return this.getList('PRODUCTS', PRODUCTS);
   }
 
   getProductBySlug(slug: string): Observable<Product | undefined> {
-    const product = PRODUCTS.find((p) => p.slug === slug);
-    return of(product);
+    return this.getProducts().pipe(
+      map(items => items.find(p => p.slug === slug))
+    );
   }
 
   // --- Métodos de Proyectos (Casos de Éxito) ---
   getProjects(): Observable<Project[]> {
-    return of(PROJECTS);
+    return this.getList('PROJECTS', PROJECTS);
   }
 
   getProjectBySlug(slug: string): Observable<Project | undefined> {
-    const project = PROJECTS.find((p) => p.slug === slug);
-    return of(project);
+    return this.getProjects().pipe(
+      map(items => items.find(p => p.slug === slug))
+    );
   }
 
   // --- Métodos de Blog ---
   getBlogPosts(): Observable<BlogPost[]> {
-    return of(BLOG_POSTS);
+    return this.getList('BLOG_POSTS', BLOG_POSTS);
   }
 
   getPostBySlug(slug: string): Observable<BlogPost | undefined> {
-    const post = BLOG_POSTS.find((p) => p.slug === slug);
-    return of(post);
+    return this.getBlogPosts().pipe(
+      map(items => items.find(p => p.slug === slug))
+    );
   }
 
   // --- Métodos de Equipo ---
   getTeamMembers(): Observable<TeamMember[]> {
-    return of(TEAM_MEMBERS);
+    return this.getList('TEAM_MEMBERS', TEAM_MEMBERS);
   }
 
   getTeamMemberByKey(key: string): Observable<TeamMember | undefined> {
-    const member = TEAM_MEMBERS.find((m) => m.key === key);
-    return of(member);
+    return this.getTeamMembers().pipe(
+      map(items => items.find(m => m.key === key))
+    );
   }
 
   // --- Métodos de Testimonios ---
   getTestimonials(): Observable<Testimonial[]> {
-    return of(TESTIMONIALS);
+    return this.getList('TESTIMONIALS', TESTIMONIALS);
   }
 
   // --- Métodos de Proceso ---
   getProcessSteps(): Observable<ProcessStep[]> {
-    return of(PROCESS_STEPS);
+    return this.getList('PROCESS_STEPS', PROCESS_STEPS);
   }
 
   // --- Métodos de Stack Tecnológico ---
   getTechStack(): Observable<TechCategory[]> {
-    return of(TECH_STACK);
+    return this.getList('TECH_STACK', TECH_STACK);
   }
 
   // --- Métodos de Partners ---
   getPartners(): Observable<Partner[]> {
-    return of(PARTNERS);
+    return this.getList('PARTNERS', PARTNERS);
   }
 
   // --- Métodos de Carreras ---
   getCareersPositions(): Observable<CareerPosition[]> {
-    return of(CAREER_POSITIONS);
+    return this.getList('CAREER_POSITIONS', CAREER_POSITIONS);
   }
 
   // --- Métodos de FAQ ---
   getFaqItems(): Observable<FaqItem[]> {
-    return of(FAQ_ITEMS);
+    return this.getList('FAQ_ITEMS', FAQ_ITEMS);
   }
 
   // --- Método para posts relacionados ---
   getRelatedPosts(currentSlug: string, tags: string[]): Observable<BlogPost[]> {
-    return of(BLOG_POSTS).pipe(
+    return this.getBlogPosts().pipe(
       map((posts) =>
         posts
           .filter(
@@ -226,37 +268,46 @@ export class DataService {
   // --- Método de Búsqueda Global ---
   search(query: string): Observable<{ type: string; item: any }[]> {
     const q = query.toLowerCase();
-    const results: { type: string; item: any }[] = [];
 
-    // Search in Solutions
-    SOLUTIONS.forEach(s => {
-      // Assuming keys or simple check, in real app we check translated titles
-      if (s.slug.includes(q) || s.key.toLowerCase().includes(q)) {
-        results.push({ type: 'solution', item: s });
-      }
-    });
+    return this.dataSubject.pipe(
+      map(data => {
+        const solutions = (data.SOLUTIONS as Solution[]) || SOLUTIONS;
+        const products = (data.PRODUCTS as Product[]) || PRODUCTS;
+        const blogPosts = (data.BLOG_POSTS as BlogPost[]) || BLOG_POSTS;
+        const projects = (data.PROJECTS as Project[]) || PROJECTS;
 
-    // Search in Products
-    PRODUCTS.forEach(p => {
-      if (p.slug.includes(q) || p.key.toLowerCase().includes(q)) {
-        results.push({ type: 'product', item: p });
-      }
-    });
+        const results: { type: string; item: any }[] = [];
 
-    // Search in Blog
-    BLOG_POSTS.forEach(b => {
-      if (b.slug.includes(q) || b.key.toLowerCase().includes(q) || b.tags.some(t => t.toLowerCase().includes(q))) {
-        results.push({ type: 'blog', item: b });
-      }
-    });
+        // Search in Solutions
+        solutions.forEach(s => {
+          if (s.slug.includes(q) || s.key.toLowerCase().includes(q)) {
+            results.push({ type: 'solution', item: s });
+          }
+        });
 
-    // Search in Projects
-    PROJECTS.forEach(p => {
-      if (p.slug.includes(q) || p.key.toLowerCase().includes(q)) {
-        results.push({ type: 'project', item: p });
-      }
-    });
+        // Search in Products
+        products.forEach(p => {
+          if (p.slug.includes(q) || p.key.toLowerCase().includes(q)) {
+            results.push({ type: 'product', item: p });
+          }
+        });
 
-    return of(results);
+        // Search in Blog
+        blogPosts.forEach(b => {
+          if (b.slug.includes(q) || b.key.toLowerCase().includes(q) || b.tags.some(t => t.toLowerCase().includes(q))) {
+            results.push({ type: 'blog', item: b });
+          }
+        });
+
+        // Search in Projects
+        projects.forEach(p => {
+          if (p.slug.includes(q) || p.key.toLowerCase().includes(q)) {
+            results.push({ type: 'project', item: p });
+          }
+        });
+
+        return results;
+      })
+    );
   }
 }
