@@ -1,7 +1,7 @@
 <div class="roi-calculator-card">
   <div class="roi-header">
     <div class="icon-wrapper">
-      <lucide-icon [name]="icons.Calculator"></lucide-icon>
+      <lucide-icon [name]="icons.Calculator" aria-hidden="true"></lucide-icon>
     </div>
     <h3>ROI Calculator</h3>
     <p>Estimate your potential savings with automation.</p>
@@ -10,46 +10,52 @@
   <div class="roi-content">
     <div class="inputs-section">
       <div class="input-group">
-        <label>
-          <lucide-icon [name]="icons.Clock" size="16"></lucide-icon>
+        <label for="roi-hours">
+          <lucide-icon [name]="icons.Clock" size="16" aria-hidden="true"></lucide-icon>
           Hours saved per week (per employee)
         </label>
         <div class="range-wrapper">
           <input
+            id="roi-hours"
             type="range"
             [ngModel]="hoursSaved()"
             (ngModelChange)="hoursSaved.set($event)"
-            min="1" max="40" step="1">
+            min="1" max="40" step="1"
+            [attr.aria-valuetext]="hoursSaved() + ' hours'">
           <span class="value">{{ hoursSaved() }} hrs</span>
         </div>
       </div>
 
       <div class="input-group">
-        <label>
-          <lucide-icon [name]="icons.DollarSign" size="16"></lucide-icon>
+        <label for="roi-rate">
+          <lucide-icon [name]="icons.DollarSign" size="16" aria-hidden="true"></lucide-icon>
           Hourly Rate (avg)
         </label>
         <div class="range-wrapper">
           <input
+            id="roi-rate"
             type="range"
             [ngModel]="hourlyRate()"
             (ngModelChange)="hourlyRate.set($event)"
-            min="10" max="200" step="5">
+            min="10" max="200" step="5"
+            [attr.aria-valuetext]="'$' + hourlyRate() + '/hour'">
           <span class="value">${{ hourlyRate() }}</span>
         </div>
       </div>
 
       <div class="input-group">
-        <label>
-          <lucide-icon [name]="icons.Users" size="16"></lucide-icon>
+        <label for="roi-employees">
+          <lucide-icon [name]="icons.Users" size="16" aria-hidden="true"></lucide-icon>
           Number of Employees
         </label>
         <div class="range-wrapper">
           <input
+            id="roi-employees"
             type="range"
             [ngModel]="employees()"
             (ngModelChange)="employees.set($event)"
-            min="1" max="100" step="1">
+            min="1" max="100" step="1"
+            [attr.aria-valuetext]="employees() + ' employees'">
           <span class="value">{{ employees() }}</span>
         </div>
       </div>
