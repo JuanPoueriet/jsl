@@ -22,6 +22,7 @@ import { Card } from '@shared/components/card/card';
 import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
 import { DataService, Technology } from '@core/services/data.service';
 import { ToastService } from '@core/services/toast.service';
+import { Seo } from '@core/services/seo';
 import { SwiperOptions } from 'swiper/types';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DigitalMaturitySelector } from './components/digital-maturity-selector/digital-maturity-selector';
@@ -148,6 +149,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   private translate = inject(TranslateService);
   private dataService = inject(DataService);
   private toastService = inject(ToastService);
+  private seo = inject(Seo);
 
   public stats = [
     { valueKey: 'HOME.STATS_PROJECTS', icon: 'CheckCircle' },
@@ -231,7 +233,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   private renderer = inject(Renderer2);
   private document = inject(DOCUMENT);
   private searchUiService = inject(SearchUiService);
-  private schemaScript: any; // HTMLScriptElement
   private unlistenExitIntent: (() => void) | null = null;
   private socialProofInterval: any;
   private isBrowser: boolean;
@@ -263,13 +264,11 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       }, 1500);
     }
 
-    this.addSchemaData();
+    this.setSchemaData();
   }
 
   ngOnDestroy() {
-    if (this.schemaScript) {
-      this.renderer.removeChild(this.document.head, this.schemaScript);
-    }
+    this.seo.removeJsonLd();
     if (this.unlistenExitIntent) {
       this.unlistenExitIntent();
     }
@@ -282,7 +281,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     this.activeTab.set(tab);
   }
 
-  private addSchemaData() {
+  private setSchemaData() {
     const schema = {
       '@context': 'https://schema.org',
       '@graph': [
@@ -365,10 +364,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       ]
     };
 
-    this.schemaScript = this.renderer.createElement('script');
-    this.schemaScript.type = 'application/ld+json';
-    this.schemaScript.text = JSON.stringify(schema);
-    this.renderer.appendChild(this.document.head, this.schemaScript);
+    this.seo.setJsonLd(schema);
   }
 
   ngAfterViewInit(): void {

@@ -8,6 +8,7 @@ import { Subscription, Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { DataService, Product } from '@core/services/data.service';
 import { Title } from '@angular/platform-browser';
+import { Seo } from '@core/services/seo';
 import { CtaComponent } from '@shared/components/cta/cta'; // --- CAMBIO: Importar CTA ---
 
 @Component({
@@ -34,7 +35,8 @@ export class ProductDetail implements OnInit, OnDestroy {
     @Inject(TranslateService) private translate: TranslateService,
     private route: ActivatedRoute,
     private dataService: DataService,
-    private titleService: Title
+    private titleService: Title,
+    private seo: Seo
     // --- CAMBIO: 'Location' eliminado del constructor ---
   ) {
     this.currentLang = this.translate.currentLang || this.translate.defaultLang || 'es';
@@ -59,11 +61,15 @@ export class ProductDetail implements OnInit, OnDestroy {
     this.product$.subscribe(product => {
       this.productData = product;
       this.updateTitle();
+      if (product) {
+        this.setProductSchema(product);
+      }
     });
   }
 
   ngOnDestroy(): void {
     this.langSub?.unsubscribe();
+    this.seo.removeJsonLd();
   }
 
   private updateTitle(): void {
@@ -72,6 +78,29 @@ export class ProductDetail implements OnInit, OnDestroy {
       this.translate.get(titleKey).subscribe(translatedTitle => {
         this.titleService.setTitle(`${translatedTitle} | JSL Technology`);
       });
+    }
+  }
+
+  private setProductSchema(product: Product): void {
+    if (product.key === 'ERP' || product.slug === 'jsl-erp') {
+      const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        'name': 'JSL-ERP',
+        'applicationCategory': 'BusinessApplication',
+        'operatingSystem': 'Web',
+        'description': 'Comprehensive ERP solution for enterprise resource planning.',
+        'author': {
+          '@type': 'Organization',
+          'name': 'JSL Technology'
+        },
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'USD'
+        }
+      };
+      this.seo.setJsonLd(schema);
     }
   }
 
