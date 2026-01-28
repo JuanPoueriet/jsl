@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { A11yModule } from '@angular/cdk/a11y';
 import { LucideAngularModule } from 'lucide-angular';
 import { ALL_ICONS } from '@core/constants/icons';
 import { DataService, BlogPost, Solution, Product, Project } from '@core/services/data.service';
@@ -12,7 +13,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 @Component({
   selector: 'app-search-overlay',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, TranslateModule, LucideAngularModule],
+  imports: [CommonModule, RouterModule, FormsModule, TranslateModule, LucideAngularModule, A11yModule],
   templateUrl: './search-overlay.html',
   styleUrls: ['./search-overlay.scss']
 })
