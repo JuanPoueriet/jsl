@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
 import { ALL_ICONS } from '@core/constants/icons';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ToastService } from '@core/services/toast.service';
 
 @Component({
   selector: 'app-social-share',
@@ -17,6 +18,11 @@ export class SocialShareComponent {
   @Input() description: string = '';
 
   readonly icons = ALL_ICONS;
+
+  constructor(
+    private toastService: ToastService,
+    private translateService: TranslateService
+  ) {}
 
   get shareUrl(): string {
     // If running in browser, use window.location.href if url is not provided or relative
@@ -54,8 +60,9 @@ export class SocialShareComponent {
 
   copyLink(): void {
     navigator.clipboard.writeText(this.shareUrl).then(() => {
-      // Could show a small tooltip or just rely on user knowing it worked
-      // Or emit an event to show a toast
+      this.translateService.get('SHARE.LINK_COPIED').subscribe(msg => {
+        this.toastService.show(msg, 'success');
+      });
     });
   }
 }

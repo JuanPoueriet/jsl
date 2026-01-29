@@ -533,6 +533,10 @@
     "ACCEPT": "Accept All",
     "DECLINE": "Decline All"
   },
+  "SHARE": {
+    "LABEL": "Share this",
+    "LINK_COPIED": "Link copied to clipboard"
+  },
   "MATURITY": {
     "EYEBROW": "Quick Diagnosis",
     "TITLE": "Measure Your Digital Maturity",
