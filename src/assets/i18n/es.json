@@ -533,6 +533,10 @@
     "ACCEPT": "Aceptar todo",
     "DECLINE": "Rechazar todo"
   },
+  "SHARE": {
+    "LABEL": "Compartir",
+    "LINK_COPIED": "Enlace copiado al portapapeles"
+  },
   "MATURITY": {
     "EYEBROW": "Diagnóstico Rápido",
     "TITLE": "Mide tu Madurez Digital",
