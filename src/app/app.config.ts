@@ -4,12 +4,14 @@ import {
   provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { TranslateLoader, provideTranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { LucideAngularModule } from 'lucide-angular';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { CookieService } from 'ngx-cookie-service';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+import { rateLimitInterceptor } from './core/interceptors/rate-limit.interceptor';
 import { ALL_ICONS } from './core/constants/icons';
 
 import { routes } from './app.routes';
@@ -65,8 +67,10 @@ export const appConfig: ApplicationConfig = {
       routes,
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
     ),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([rateLimitInterceptor])),
     provideAnimationsAsync(),
+    importProvidersFrom(RecaptchaV3Module),
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI' },
     provideTranslateService({
       fallbackLang: 'en',
       loader: {

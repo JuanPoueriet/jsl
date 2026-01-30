@@ -12,8 +12,8 @@ importers:
         specifier: ^20.3.11
         version: 20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))
       '@angular/cdk':
-        specifier: ^21.1.0
-        version: 21.1.2(@angular/common@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(@angular/platform-browser@20.3.16(@angular/animations@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2)))(@angular/common@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2)))(rxjs@7.8.2)
+        specifier: ^20.0.0
+        version: 20.2.14(@angular/common@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/common':
         specifier: ^20.3.11
         version: 20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2)
@@ -53,6 +53,9 @@ importers:
       lucide-angular:
         specifier: ^0.552.0
         version: 0.552.0(@angular/common@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))
+      ng-recaptcha:
+        specifier: ^13.2.1
+        version: 13.2.1(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))
       ngx-cookie-service:
         specifier: ~20.0.0
         version: 20.0.1(@angular/common@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))
@@ -249,12 +252,11 @@ packages:
       vitest:
         optional: true
 
-  '@angular/cdk@21.1.2':
-    resolution: {integrity: sha512-0q+PhBKmjKO0Yi353VCpMxT0g787cllLhdpyxh00i3twxNWvFkQZgy2Ih187ZXydvW+u9mFkK9+UGLzncQ0yng==}
+  '@angular/cdk@20.2.14':
+    resolution: {integrity: sha512-7bZxc01URbiPiIBWThQ69XwOxVduqEKN4PhpbF2AAyfMc/W8Hcr4VoIJOwL0O1Nkq5beS8pCAqoOeIgFyXd/kg==}
     peerDependencies:
-      '@angular/common': ^21.0.0 || ^22.0.0
-      '@angular/core': ^21.0.0 || ^22.0.0
-      '@angular/platform-browser': ^21.0.0 || ^22.0.0
+      '@angular/common': ^20.0.0 || ^21.0.0
+      '@angular/core': ^20.0.0 || ^21.0.0
       rxjs: ^6.5.3 || ^7.4.0
 
   '@angular/cli@20.3.15':
@@ -1253,6 +1255,9 @@ packages:
   '@types/express@5.0.6':
     resolution: {integrity: sha512-sKYVuV7Sv9fbPIt/442koC7+IIwK5olP1KWeD88e/idgoJqDm3JV/YUiPwkoKK92ylff2MGxSz1CSjsXelx0YA==}
 
+  '@types/grecaptcha@3.0.9':
+    resolution: {integrity: sha512-fFxMtjAvXXMYTzDFK5NpcVB7WHnrHVLl00QzEGpuFxSAC789io6M+vjcn+g5FTEamIJtJr/IHkCDsqvJxeWDyw==}
+
   '@types/http-errors@2.0.5':
     resolution: {integrity: sha512-r8Tayk8HJnX0FztbZN7oVqGccWgw98T/0neJphO91KkmOzug1KkofZURD4UaD5uH8AqcFLfdPErnBod0u71/qg==}
 
@@ -2222,6 +2227,11 @@ packages:
     resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
     engines: {node: '>= 0.6'}
 
+  ng-recaptcha@13.2.1:
+    resolution: {integrity: sha512-aBOoFla9t6AfT9t5paykoXomCDKreBKouB16VUFxSZwn1RCfDsdcaTmSNJKYLFz5j0Cq/V+szY9f3mHLgzRw5Q==}
+    peerDependencies:
+      '@angular/core': ^17.0.0
+
   ngx-cookie-service@20.0.1:
     resolution: {integrity: sha512-XTPrW/5ihI3DvTljDj14E501fouHdiONCnd1SPhvqyHNHjvKECFWuTzOpcHrWl9X1ZOKfOG/uXW8G8fINcL9fQ==}
     peerDependencies:
@@ -3065,11 +3075,10 @@ snapshots:
       - tsx
       - yaml
 
-  '@angular/cdk@21.1.2(@angular/common@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(@angular/platform-browser@20.3.16(@angular/animations@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2)))(@angular/common@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2)))(rxjs@7.8.2)':
+  '@angular/cdk@20.2.14(@angular/common@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2)':
     dependencies:
       '@angular/common': 20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/core': 20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2)
-      '@angular/platform-browser': 20.3.16(@angular/animations@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2)))(@angular/common@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))
       parse5: 8.0.0
       rxjs: 7.8.2
       tslib: 2.8.1
@@ -3979,6 +3988,8 @@ snapshots:
       '@types/body-parser': 1.19.6
       '@types/express-serve-static-core': 5.1.1
       '@types/serve-static': 2.2.0
+
+  '@types/grecaptcha@3.0.9': {}
 
   '@types/http-errors@2.0.5': {}
 
@@ -5056,6 +5067,12 @@ snapshots:
   negotiator@0.6.4: {}
 
   negotiator@1.0.0: {}
+
+  ng-recaptcha@13.2.1(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2)):
+    dependencies:
+      '@angular/core': 20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2)
+      '@types/grecaptcha': 3.0.9
+      tslib: 2.8.1
 
   ngx-cookie-service@20.0.1(@angular/common@20.3.16(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.16(@angular/compiler@20.3.16)(rxjs@7.8.2)):
     dependencies:

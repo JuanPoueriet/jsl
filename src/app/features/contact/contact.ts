@@ -6,6 +6,7 @@ import { LucideAngularModule } from 'lucide-angular';
 import { ApiService } from '@core/services/api.service';
 import { ToastService } from '@core/services/toast.service';
 import { Router } from '@angular/router';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { Subject } from 'rxjs';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { ALL_ICONS } from '@core/constants/icons';
@@ -30,7 +31,8 @@ export class Contact implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private apiService: ApiService,
     private toastService: ToastService,
-    private router: Router
+    private router: Router,
+    private recaptchaV3Service: ReCaptchaV3Service
   ) {}
 
   ngOnInit(): void {
@@ -63,8 +65,26 @@ export class Contact implements OnInit, OnDestroy {
     this.submitSuccess = false;
     this.submitError = false;
 
+    // Ejecutar reCAPTCHA v3 antes de enviar
+    this.recaptchaV3Service.execute('contact')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (token) => {
+          this.sendFormWithToken(token);
+        },
+        error: (err) => {
+          console.error('Error de reCAPTCHA:', err);
+          this.isSubmitting = false;
+          this.toastService.show('Error de seguridad (Captcha). Intente nuevamente.', 'error');
+        }
+      });
+  }
+
+  private sendFormWithToken(token: string): void {
+    const formData = { ...this.contactForm.value, token };
+
     this.apiService
-      .sendContactForm(this.contactForm.value)
+      .sendContactForm(formData)
       .pipe(
         takeUntil(this.destroy$),
         finalize(() => {
@@ -82,7 +102,10 @@ export class Contact implements OnInit, OnDestroy {
         error: (err: any) => {
           console.error('Error al enviar formulario:', err);
           this.submitError = true;
-          this.toastService.show('CONTACT.ERROR_MESSAGE', 'error');
+          // Si es 429, el interceptor ya mostró el mensaje específico.
+          if (err.status !== 429) {
+            this.toastService.show('CONTACT.ERROR_MESSAGE', 'error');
+          }
         },
       });
   }

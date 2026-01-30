@@ -38,6 +38,7 @@
     "express": "^5.1.0",
     "express-rate-limit": "^8.2.1",
     "lucide-angular": "^0.552.0",
+    "ng-recaptcha": "^13.2.1",
     "ngx-cookie-service": "~20.0.0",
     "prismjs": "^1.30.0",
     "rxjs": "~7.8.0",
