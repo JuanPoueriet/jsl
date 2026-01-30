@@ -181,6 +181,41 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'developers',
+        loadComponent: () => import('./features/developers/developers').then(c => c.Developers),
+        data: { title: 'DEVELOPERS.TITLE', description: 'DEVELOPERS.SUBTITLE' }
+      },
+      {
+        path: 'roadmap',
+        loadComponent: () => import('./features/roadmap/roadmap').then(c => c.Roadmap),
+        data: { title: 'ROADMAP.TITLE', description: 'ROADMAP.SUBTITLE' }
+      },
+      {
+        path: 'events',
+        loadComponent: () => import('./features/events/events').then(c => c.Events),
+        data: { title: 'EVENTS.TITLE', description: 'EVENTS.SUBTITLE' }
+      },
+      {
+        path: 'status',
+        loadComponent: () => import('./features/status/status').then(c => c.Status),
+        data: { title: 'STATUS.TITLE', description: 'STATUS.SUBTITLE' }
+      },
+      {
+        path: 'life-at-jsl',
+        loadComponent: () => import('./features/life-at-jsl/life-at-jsl').then(c => c.LifeAtJsl),
+        data: { title: 'LIFE_AT_JSL.TITLE', description: 'LIFE_AT_JSL.SUBTITLE' }
+      },
+      {
+        path: 'press',
+        loadComponent: () => import('./features/press/press').then(c => c.Press),
+        data: { title: 'PRESS.TITLE', description: 'PRESS.SUBTITLE' }
+      },
+      {
+        path: 'pricing',
+        loadComponent: () => import('./features/pricing/pricing').then(c => c.Pricing),
+        data: { title: 'PRICING.TITLE', description: 'PRICING.SUBTITLE' }
+      },
+      {
         path: 'security',
         loadComponent: () => import('./features/trust/trust').then(c => c.Trust),
         data: {

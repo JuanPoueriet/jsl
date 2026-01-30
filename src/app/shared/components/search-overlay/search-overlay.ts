@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { ALL_ICONS } from '@core/constants/icons';
-import { DataService, BlogPost, Solution, Product, Project } from '@core/services/data.service';
+import { DataService, BlogPost, Solution, Product, Project, StaticPage } from '@core/services/data.service';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
@@ -62,6 +62,7 @@ export class SearchOverlayComponent {
       case 'product': return ['/products', result.item.slug];
       case 'blog': return ['/blog', result.item.slug];
       case 'project': return ['/projects', result.item.slug];
+      case 'page': return ['/', result.item.slug];
       default: return ['/'];
     }
   }
@@ -69,6 +70,7 @@ export class SearchOverlayComponent {
   getTitle(result: { type: string; item: any }): string {
     if (result.type === 'solution') return (result.item as Solution).sections[0].titleKey;
     if (result.type === 'blog') return (result.item as BlogPost).key + '.TITLE';
+    if (result.type === 'page') return (result.item as StaticPage).key;
     // Fallback for others using key convention
     return result.item.key + '.TITLE';
   }

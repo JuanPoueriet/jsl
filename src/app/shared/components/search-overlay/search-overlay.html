@@ -32,6 +32,7 @@
                   @if (result.type === 'solution') { <lucide-icon [name]="icons.Zap" [size]="18"></lucide-icon> }
                   @if (result.type === 'product') { <lucide-icon [name]="icons.Package" [size]="18"></lucide-icon> }
                   @if (result.type === 'project') { <lucide-icon [name]="icons.Briefcase" [size]="18"></lucide-icon> }
+                  @if (result.type === 'page') { <lucide-icon [name]="icons.Layout" [size]="18"></lucide-icon> }
                 </div>
                 <div class="result-info">
                   <span class="result-title">{{ getTitle(result) | translate }}</span>
