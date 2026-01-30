@@ -4,6 +4,8 @@ import { App } from './app';
 import { Seo } from './core/services/seo';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 // Mock del SeoService
 const mockSeoService = {
@@ -19,6 +21,8 @@ describe('App', () => {
       imports: [App],
       providers: [
         provideZonelessChangeDetection(),
+        provideHttpClient(),
+        provideHttpClientTesting(),
         provideRouter([]), // Mock del router
         provideTranslateService(), // Mock de ngx-translate
         { provide: Seo, useValue: mockSeoService } // Proveemos el mock de SeoService

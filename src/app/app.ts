@@ -29,10 +29,19 @@ import { BreadcrumbsComponent } from './shared/components/breadcrumbs/breadcrumb
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
+export class App implements OnInit {
   title = 'jsl-technology-web';
   isScrolled = false;
   private isBrowser: boolean;
+
+  // Swipe blocker variables
+  private edgeThreshold = 24;
+  private minHorizontalMove = 10;
+  private startX = 0;
+  private startY = 0;
+  private maybeEdge = false;
+  private touchId: number | null = null;
+  private supportsPassive = false;
 
   constructor(
     private translate: TranslateService,
@@ -50,6 +59,75 @@ export class App {
       // Ejecutar al cargar la página
       this.updateScrollAndResize();
     }
+
+    this.checkPassiveSupport();
+  }
+
+  ngOnInit() {
+    if (this.isBrowser) {
+      this.initSwipeBlocker();
+    }
+  }
+
+  private checkPassiveSupport() {
+    try {
+      const opts = Object.defineProperty({}, 'passive', {
+        get: () => { this.supportsPassive = true; return true; }
+      });
+      (window as any).addEventListener('testPassive', null, opts);
+      (window as any).removeEventListener('testPassive', null, opts);
+    } catch (e) { }
+  }
+
+  private initSwipeBlocker() {
+    const addOpts = this.supportsPassive ? { passive: false } : false;
+
+    document.addEventListener('touchstart', this.onTouchStart.bind(this), addOpts as any);
+    document.addEventListener('touchmove', this.onTouchMove.bind(this), addOpts as any);
+    document.addEventListener('touchend', this.onTouchEnd.bind(this), addOpts as any);
+    document.addEventListener('touchcancel', this.onTouchEnd.bind(this), addOpts as any);
+  }
+
+  private onTouchStart(e: TouchEvent) {
+    if (!e.touches || e.touches.length === 0) return;
+    const t = e.touches[0];
+    this.startX = t.clientX;
+    this.startY = t.clientY;
+    this.maybeEdge = this.startX <= this.edgeThreshold;
+    this.touchId = t.identifier;
+  }
+
+  private onTouchMove(e: TouchEvent) {
+    if (!this.maybeEdge) return;
+
+    let t: Touch | null = null;
+    if (e.touches && e.touches.length) {
+      for (let i = 0; i < e.touches.length; i++) {
+        if (e.touches[i].identifier === this.touchId) { t = e.touches[i]; break; }
+      }
+      if (!t) t = e.touches[0];
+    } else {
+      return;
+    }
+
+    const dx = t.clientX - this.startX;
+    const dy = t.clientY - this.startY;
+
+    // Sólo nos importa movimiento horizontal dominando sobre vertical, y hacia la derecha.
+    if (dx > this.minHorizontalMove && Math.abs(dx) > Math.abs(dy)) {
+      try {
+        if (e.cancelable) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      } catch (err) {
+      }
+    }
+  }
+
+  private onTouchEnd(e: TouchEvent) {
+    this.maybeEdge = false;
+    this.touchId = null;
   }
 
   private initializeLanguage(): void {
