@@ -1,22 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BlogDetail } from './blog-detail';
-import { provideZonelessChangeDetection } from '@angular/core';
+import { Ventures } from './ventures';
 import { TranslateModule } from '@ngx-translate/core';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { provideRouter, ActivatedRoute } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
+import { ActivatedRoute } from '@angular/router';
+import { provideRouter } from '@angular/router';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ALL_ICONS } from '@core/constants/icons';
-import { of } from 'rxjs';
 
-describe('BlogDetail', () => {
-  let component: BlogDetail;
-  let fixture: ComponentFixture<BlogDetail>;
+describe('Ventures', () => {
+  let component: Ventures;
+  let fixture: ComponentFixture<Ventures>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        BlogDetail,
+        Ventures,
         TranslateModule.forRoot(),
         LucideAngularModule.pick(ALL_ICONS)
       ],
@@ -28,7 +28,6 @@ describe('BlogDetail', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            paramMap: of({ get: () => 'future-of-angular-ssr' }),
             snapshot: { paramMap: { get: () => 'en' } }
           }
         }
@@ -36,7 +35,7 @@ describe('BlogDetail', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BlogDetail);
+    fixture = TestBed.createComponent(Ventures);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

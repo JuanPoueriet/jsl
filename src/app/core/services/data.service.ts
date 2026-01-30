@@ -1,4 +1,3 @@
-// data.service.ts
 // src/app/core/services/data.service.ts
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -17,9 +16,21 @@ import {
   CAREER_POSITIONS,
   FAQ_ITEMS,
   PARTNERS,
+  VENTURES
 } from '@core/data/mock-data';
 
 // --- DEFINICIÓN DE INTERFACES PARA TODO EL SITIO ---
+
+// Interface para Ventures
+export interface Venture {
+  key: string;
+  slug: string;
+  name: string;
+  descriptionKey: string;
+  logoUrl: string;
+  status: 'Incubate' | 'Accelerate' | 'Scale';
+  website: string;
+}
 
 // Interface para Soluciones
 export interface Solution {
@@ -48,6 +59,7 @@ export interface Project {
   slug: string;
   imageUrl: string;
   metrics?: string[];
+  category: string;
 }
 
 // Interface para Artículos del Blog
@@ -71,6 +83,7 @@ export interface TeamMember {
   imageUrl: string;
   linkedIn?: string;
   twitter?: string;
+  certifications?: string[];
 }
 
 // Interface para Testimonios
@@ -134,7 +147,9 @@ const STATIC_PAGES: StaticPage[] = [
   { key: 'LIFE_AT_JSL.TITLE', slug: 'life-at-jsl' },
   { key: 'PRESS.TITLE', slug: 'press' },
   { key: 'PRICING.TITLE', slug: 'pricing' },
-  { key: 'SECURITY_CENTER.TITLE', slug: 'security' }
+  { key: 'SECURITY_CENTER.TITLE', slug: 'security' },
+  { key: 'HEADER.VENTURES', slug: 'ventures' },
+  { key: 'HEADER.INVESTORS', slug: 'investors' }
 ];
 
 /**
@@ -145,6 +160,11 @@ const STATIC_PAGES: StaticPage[] = [
 })
 export class DataService {
   constructor() {}
+
+  // --- Métodos de Ventures ---
+  getVentures(): Observable<Venture[]> {
+    return of(VENTURES);
+  }
 
   // --- Métodos de Soluciones ---
   getSolutions(): Observable<Solution[]> {
@@ -246,9 +266,15 @@ export class DataService {
     const q = query.toLowerCase();
     const results: { type: string; item: any }[] = [];
 
+    // Search in Ventures
+    VENTURES.forEach(v => {
+      if (v.name.toLowerCase().includes(q) || v.slug.includes(q)) {
+        results.push({ type: 'venture', item: v });
+      }
+    });
+
     // Search in Solutions
     SOLUTIONS.forEach(s => {
-      // Assuming keys or simple check, in real app we check translated titles
       if (s.slug.includes(q) || s.key.toLowerCase().includes(q)) {
         results.push({ type: 'solution', item: s });
       }

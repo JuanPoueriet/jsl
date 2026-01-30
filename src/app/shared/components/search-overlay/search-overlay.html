@@ -1,49 +1,58 @@
 <div class="search-overlay" (click)="closeOverlay()">
   <div class="search-container" (click)="$event.stopPropagation()">
-    <div class="search-header">
-      <div class="input-wrapper">
-        <lucide-icon [name]="icons.Search" [size]="20" class="search-icon"></lucide-icon>
+    <header class="search-header">
+      <div class="search-input-wrapper">
+        <lucide-icon name="Search" class="search-icon"></lucide-icon>
         <input
           #searchInput
           type="text"
+          [placeholder]="'SEARCH.PLACEHOLDER' | translate"
           [(ngModel)]="query"
           (ngModelChange)="onSearchInput($event)"
-          [placeholder]="'SEARCH.PLACEHOLDER' | translate"
           aria-label="Search"
-        >
-        <button class="close-btn" (click)="closeOverlay()">
-          <lucide-icon [name]="icons.X" [size]="24"></lucide-icon>
+        />
+        <button *ngIf="query" (click)="query = ''; onSearchInput('')" class="clear-btn">
+          <lucide-icon name="X"></lucide-icon>
         </button>
       </div>
+      <button (click)="closeOverlay()" class="close-btn">Esc</button>
+    </header>
+
+    <!-- Filter Tabs -->
+    <div class="search-filters" *ngIf="results.length > 0">
+      <button [class.active]="activeFilter === 'all'" (click)="setFilter('all')">All</button>
+      <button [class.active]="activeFilter === 'project'" (click)="setFilter('project')">Projects</button>
+      <button [class.active]="activeFilter === 'venture'" (click)="setFilter('venture')">Ventures</button>
+      <button [class.active]="activeFilter === 'product'" (click)="setFilter('product')">Products</button>
+      <button [class.active]="activeFilter === 'blog'" (click)="setFilter('blog')">Blog</button>
     </div>
 
-    @if (results.length > 0 || query) {
-      <div class="search-results">
-        @if (results.length === 0 && query) {
-          <div class="no-results">
-            <p>{{ 'SEARCH.NO_RESULTS' | translate }} "{{ query }}"</p>
-          </div>
-        } @else {
-          <div class="results-list">
-            @for (result of results; track $index) {
-              <a [routerLink]="getLink(result)" (click)="closeOverlay()" class="result-item">
-                <div class="result-icon">
-                  @if (result.type === 'blog') { <lucide-icon [name]="icons.FileText" [size]="18"></lucide-icon> }
-                  @if (result.type === 'solution') { <lucide-icon [name]="icons.Zap" [size]="18"></lucide-icon> }
-                  @if (result.type === 'product') { <lucide-icon [name]="icons.Package" [size]="18"></lucide-icon> }
-                  @if (result.type === 'project') { <lucide-icon [name]="icons.Briefcase" [size]="18"></lucide-icon> }
-                  @if (result.type === 'page') { <lucide-icon [name]="icons.Layout" [size]="18"></lucide-icon> }
-                </div>
-                <div class="result-info">
-                  <span class="result-title">{{ getTitle(result) | translate }}</span>
-                  <span class="result-type">{{ result.type | titlecase }}</span>
-                </div>
-                <lucide-icon [name]="icons.ChevronRight" [size]="16" class="arrow"></lucide-icon>
-              </a>
-            }
-          </div>
-        }
+    <div class="search-results" *ngIf="filteredResults.length > 0; else noResults">
+      <ul>
+        <li *ngFor="let result of filteredResults">
+          <a [routerLink]="getLink(result)" (click)="closeOverlay()">
+            <div class="result-icon">
+              <lucide-icon *ngIf="result.type === 'solution'" name="LayoutGrid"></lucide-icon>
+              <lucide-icon *ngIf="result.type === 'product'" name="Package"></lucide-icon>
+              <lucide-icon *ngIf="result.type === 'blog'" name="FileText"></lucide-icon>
+              <lucide-icon *ngIf="result.type === 'project'" name="Lightbulb"></lucide-icon>
+              <lucide-icon *ngIf="result.type === 'venture'" name="Rocket"></lucide-icon>
+              <lucide-icon *ngIf="result.type === 'page'" name="Link"></lucide-icon>
+            </div>
+            <div class="result-info">
+              <span class="result-title">{{ getTitle(result) | translate }}</span>
+              <span class="result-type">{{ result.type | titlecase }}</span>
+            </div>
+            <lucide-icon name="ChevronRight" class="arrow-icon"></lucide-icon>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <ng-template #noResults>
+      <div class="no-results" *ngIf="query">
+        <p>{{ 'SEARCH.NO_RESULTS' | translate }}</p>
       </div>
-    }
+    </ng-template>
   </div>
 </div>

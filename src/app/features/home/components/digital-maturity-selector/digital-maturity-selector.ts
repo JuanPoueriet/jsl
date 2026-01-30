@@ -59,14 +59,28 @@ export class DigitalMaturitySelector implements OnDestroy {
     const goal = this.answers()['goal'];
 
     let recommendationKey = 'MATURITY.REC_GENERAL';
-    if (size === 'startup') recommendationKey = 'MATURITY.REC_STARTUP';
-    else if (goal === 'efficiency') recommendationKey = 'MATURITY.REC_EFFICIENCY';
-    else if (goal === 'innovation') recommendationKey = 'MATURITY.REC_INNOVATION';
+    let ctaLink: any[] = ['/contact'];
+    let ctaLabelKey = 'HEADER.CONTACT';
+
+    if (size === 'startup') {
+      recommendationKey = 'MATURITY.REC_STARTUP';
+      ctaLink = ['/ventures']; // Suggest Ventures for startups
+      ctaLabelKey = 'HEADER.VENTURES';
+    } else if (goal === 'efficiency') {
+      recommendationKey = 'MATURITY.REC_EFFICIENCY';
+      ctaLink = ['/virteex-ecosystem']; // Suggest Virteex for efficiency
+      ctaLabelKey = 'VIRTEEX.TITLE';
+    } else if (goal === 'innovation') {
+      recommendationKey = 'MATURITY.REC_INNOVATION';
+      ctaLink = ['/solutions/cloud-architecture']; // Suggest Cloud for innovation
+      ctaLabelKey = 'SERVICES_LIST.CLOUD';
+    }
 
     return {
       titleKey: 'MATURITY.RESULT_TITLE',
       descKey: recommendationKey,
-      ctaLink: ['/contact']
+      ctaLink: ctaLink,
+      ctaLabelKey: ctaLabelKey
     };
   });
 

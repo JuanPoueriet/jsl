@@ -1,4 +1,4 @@
-@use 'app/styles/variables' as *;
+@use '../../../styles/variables' as *;
 
 .search-overlay {
   position: fixed;
@@ -18,9 +18,9 @@
   .search-container {
     width: 100%;
     max-width: 600px;
-    background: white;
-    border-radius: $border-radius-lg;
-    box-shadow: $box-shadow-xl;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     overflow: hidden;
     margin: 0 16px;
     display: flex;
@@ -30,15 +30,21 @@
   }
 
   .search-header {
-    padding: 16px;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    .input-wrapper {
+    .search-input-wrapper {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 0.75rem;
+      flex: 1;
 
-      .search-icon { color: #9ca3af; }
+      .search-icon {
+        color: var(--text-muted);
+      }
 
       input {
         flex: 1;
@@ -46,47 +52,101 @@
         font-size: 1.1rem;
         outline: none;
         background: transparent;
-        color: #1f2937;
+        color: var(--text-main);
 
-        &::placeholder { color: #9ca3af; }
+        &::placeholder { color: var(--text-muted); }
       }
 
-      .close-btn {
+      .clear-btn {
         background: none;
         border: none;
         cursor: pointer;
-        color: #6b7280;
-        padding: 4px;
-        &:hover { color: #111827; }
+        color: var(--text-muted);
+        display: flex;
+
+        &:hover { color: var(--text-main); }
+      }
+    }
+
+    .close-btn {
+      background: var(--bg-body);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      margin-left: 1rem;
+
+      &:hover {
+        background: var(--bg-secondary);
+      }
+    }
+  }
+
+  .search-filters {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+
+    button {
+      background: none;
+      border: none;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+
+      &:hover {
+        background: var(--bg-secondary);
+        color: var(--text-main);
+      }
+
+      &.active {
+        background: var(--primary);
+        color: white;
       }
     }
   }
 
   .search-results {
     overflow-y: auto;
-    padding: 8px 0;
 
-    .no-results {
-      padding: 32px;
-      text-align: center;
-      color: #6b7280;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
-    .result-item {
+    li {
+      border-bottom: 1px solid var(--border-color);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    a {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 12px 16px;
+      gap: 1rem;
+      padding: 1rem;
       text-decoration: none;
       transition: background 0.2s;
       cursor: pointer;
 
       &:hover {
-        background: #f3f4f6;
+        background: var(--bg-secondary);
       }
 
       .result-icon {
-        color: #6b7280;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
       }
 
       .result-info {
@@ -96,48 +156,29 @@
 
         .result-title {
           font-weight: 500;
-          color: #1f2937;
+          color: var(--text-main);
           font-size: 1rem;
         }
 
         .result-type {
           font-size: 0.75rem;
-          color: #9ca3af;
+          color: var(--text-muted);
           text-transform: uppercase;
         }
       }
 
-      .arrow { color: #d1d5db; }
+      .arrow-icon {
+        color: var(--text-muted);
+      }
     }
+  }
+
+  .no-results {
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-muted);
   }
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-// Dark Mode
-:host-context(.dark) {
-  .search-container {
-    background: #1f2937;
-    border: 1px solid #374151;
-
-    .search-header {
-      border-color: #374151;
-
-      input {
-        color: white;
-        &::placeholder { color: #6b7280; }
-      }
-    }
-
-    .search-results {
-      .result-item {
-        &:hover { background: #374151; }
-
-        .result-info {
-          .result-title { color: #f3f4f6; }
-        }
-      }
-    }
-  }
-}

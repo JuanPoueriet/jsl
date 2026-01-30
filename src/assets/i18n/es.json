@@ -20,7 +20,9 @@
     "LOGIN_SUPPORT": "Soporte Técnico",
     "PARTNERS": "Partners",
     "PRESS": "Sala de Prensa",
-    "SECURITY": "Confianza y Seguridad"
+    "SECURITY": "Confianza y Seguridad",
+    "SUPPORT": "Soporte",
+    "CLIENT_PORTAL": "Portal Clientes"
   },
   "TOP_BAR": {
     "PORTFOLIO": "Portafolio",
@@ -639,5 +641,56 @@
     "DRP": "Recuperación ante Desastres",
     "COMPLIANCE": "Cumplimiento",
     "BADGES": "Certificaciones de Seguridad"
+  },
+  "VENTURES": {
+    "TITLE": "Ventures & Innovation Lab",
+    "SUBTITLE": "Desde la Incubación de Ideas hasta el Escalamiento y Salida. Construimos la próxima generación de compañías SaaS.",
+    "LIFECYCLE_TITLE": "Nuestro Proceso de Venture Building",
+    "STEP1_TITLE": "Incubar",
+    "STEP1_DESC": "Validamos problemas del mercado y construimos MVPs rápidos.",
+    "STEP2_TITLE": "Acelerar",
+    "STEP2_DESC": "Encontramos el Product-Market Fit y optimizamos para el crecimiento.",
+    "STEP3_TITLE": "Escalar",
+    "STEP3_DESC": "Expandimos operaciones y preparamos para salida o independencia.",
+    "PORTFOLIO_TITLE": "Nuestro Portafolio",
+    "VIRTEEX_DESC": "Ecosistema ERP en la nube para empresas modernas.",
+    "PAYFLOW_DESC": "Solución Fintech para nómina automatizada.",
+    "SMARTHARVEST_DESC": "Plataforma IoT Agrotech para monitoreo de cultivos.",
+    "CTA_EYEBROW": "¿Tienes una idea disruptiva?",
+    "CTA_TITLE": "Asóciate con nuestro Lab",
+    "CTA_SUBTITLE": "Cofundamos startups con expertos en el dominio. Construyamos juntos."
+  },
+  "INVESTORS": {
+    "TITLE": "Inversionistas y Gobernanza",
+    "SUBTITLE": "Construyendo un Holding Tecnológico resiliente con transparencia y visión a largo plazo.",
+    "GOVERNANCE_TITLE": "Gobernanza Corporativa",
+    "GOVERNANCE_DESC": "Nuestra estructura asegura responsabilidad, equidad y transparencia en nuestra relación con todos los interesados.",
+    "GOVERNANCE_POINT1": "Junta Directiva Independiente",
+    "GOVERNANCE_POINT2": "Auditorías Financieras Trimestrales",
+    "GOVERNANCE_POINT3": "Código Estricto de Ética y Cumplimiento",
+    "FINANCIAL_TITLE": "Estabilidad Financiera",
+    "STAT_YEARS": "Años de Rentabilidad",
+    "STAT_GROWTH": "Crecimiento de Ingresos YoY",
+    "STAT_CLIENTS": "Clientes Empresariales",
+    "CTA_EYEBROW": "Relación con Inversionistas",
+    "CTA_TITLE": "Solicitar Informe Financiero",
+    "CTA_SUBTITLE": "Inversionistas calificados pueden acceder a nuestros informes detallados de rendimiento."
+  },
+  "VIRTEEX": {
+    "TITLE": "Ecosistema Virteex",
+    "SUBTITLE": "El Sistema Operativo para la Empresa Moderna.",
+    "VISIT_SITE": "Visitar Sitio Oficial",
+    "ECOSYSTEM_TITLE": "Una Arquitectura Unificada",
+    "CTA_EYEBROW": "¿Listo para actualizar?",
+    "CTA_TITLE": "Cámbiate a Virteex",
+    "CTA_SUBTITLE": "Únete a miles de empresas que operan en nuestra nube."
+  },
+  "WHITEPAPER": {
+    "DEFAULT_TITLE": "Descargar Whitepaper",
+    "DEFAULT_DESC": "Obtén información exclusiva de la industria.",
+    "EMAIL_PLACEHOLDER": "Ingresa tu correo corporativo",
+    "DOWNLOAD_BTN": "Descargar PDF",
+    "SUCCESS_MSG": "¡Enlace de descarga enviado!",
+    "SENT_MSG": "Revisa tu bandeja de entrada para el enlace de descarga."
   }
 }

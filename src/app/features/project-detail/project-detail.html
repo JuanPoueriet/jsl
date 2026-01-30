@@ -17,6 +17,21 @@
 
     <main class="detail-page-content">
       
+      <!-- New Metrics Section -->
+      @if (project.metrics && project.metrics.length > 0) {
+        <section class="metrics-section content-block">
+          <h2>{{ 'PROJECTS.METRICS_TITLE' | translate }}</h2>
+          <div class="metrics-grid">
+            @for (metric of project.metrics; track metric) {
+              <div class="metric-card">
+                <lucide-icon name="TrendingUp" class="metric-icon"></lucide-icon>
+                <span class="metric-value">{{ metric }}</span>
+              </div>
+            }
+          </div>
+        </section>
+      }
+
       <section class="content-block">
         <h2>{{ 'PROJECTS.DETAIL_CHALLENGE_TITLE' | translate }}</h2>
         <p>{{ 'PROJECTS.' + project.key + '_DETAIL_CHALLENGE' | translate }}</p>

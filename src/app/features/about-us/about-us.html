@@ -49,6 +49,15 @@
         <div class="team-member-card__info">
           <h3 class="team-member-card__name">{{ member.nameKey | translate }}</h3>
           <p class="team-member-card__role">{{ member.roleKey | translate }}</p>
+
+          <!-- Certifications -->
+          @if (member.certifications && member.certifications.length > 0) {
+            <div class="team-member-certs">
+              @for (cert of member.certifications; track cert) {
+                <span class="cert-badge">{{ cert }}</span>
+              }
+            </div>
+          }
         </div>
       </div>
     }
