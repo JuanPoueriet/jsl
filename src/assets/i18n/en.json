@@ -549,6 +549,11 @@
     "OPEN": "Open chat",
     "CLOSE": "Close chat"
   },
+  "SEARCH": {
+    "PLACEHOLDER": "What solution are you looking for?",
+    "NO_RESULTS": "No results found for",
+    "CLOSE": "Close search"
+  },
   "COOKIE": {
     "TITLE": "We value your privacy",
     "DESCRIPTION": "We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic.",
