@@ -52,7 +52,7 @@ swiper-container {
   &__overlay {
     position: absolute;
     top: 0;
-    left: 0;
+    inset-inline-start: 0;
     width: 100%;
     height: 100%;
     background: radial-gradient(50% 50% at 50% 50%, rgba(50, 50, 50, 0) 0%, lab(0% 0 0 / 0.8) 100%);
@@ -142,7 +142,7 @@ swiper-container {
 .scroll-indicator {
   position: absolute;
   bottom: 120px; // Encima de la bottom bar
-  left: 50%;
+  inset-inline-start: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
@@ -165,7 +165,7 @@ swiper-container {
       border-radius: 2px;
       position: absolute;
       top: 10px;
-      left: 50%;
+      inset-inline-start: 50%;
       transform: translateX(-50%);
       animation: scrollWheel 2s infinite;
     }
@@ -304,7 +304,7 @@ swiper-container {
 .hero-bottom-bar {
   position: absolute;
   bottom: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 100%;
   z-index: 10; // Por encima del swiper
   backdrop-filter: blur(15px);
@@ -499,12 +499,12 @@ swiper-container {
   }
   
   &::before {
-    left: 0;
+    inset-inline-start: 0;
     // background: linear-gradient(to right, rgba(0,0,0,0.1), transparent);
   }
   
   &::after {
-    right: 0;
+    inset-inline-end: 0;
     // background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
   }
   
@@ -739,7 +739,7 @@ swiper-container {
     content: '“';
     position: absolute;
     top: -20px;
-    left: 1rem;
+    inset-inline-start: 1rem;
     font-size: 150px;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.03);
@@ -933,7 +933,7 @@ swiper-container {
   content: '';
   position: absolute;
   top: 52px;
-  left: 15%;
+  inset-inline-start: 15%;
   width: 70%;
   height: 2px;
   background: var(--border-color);
@@ -1504,7 +1504,7 @@ swiper-container {
 
 // Posicionamiento específico para cada botón
 .hero-swiper-button-prev {
-  left: 2.5rem; // Reducido de 3.5rem para estar más cerca del borde
+  inset-inline-start: 2.5rem; // Reducido de 3.5rem para estar más cerca del borde
   
   // Efecto de entrada desde la izquierda
   &:hover {
@@ -1513,7 +1513,7 @@ swiper-container {
 }
 
 .hero-swiper-button-next {
-  right: 2.5rem; // Reducido de 3.5rem para estar más cerca del borde
+  inset-inline-end: 2.5rem; // Reducido de 3.5rem para estar más cerca del borde
   
   // Efecto de entrada desde la derecha
   &:hover {
@@ -1622,7 +1622,7 @@ swiper-container {
 .mobile-sticky-cta {
   position: fixed;
   bottom: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 100%;
   padding: 1rem;
   background: rgba(255, 255, 255, 0.1); // Glassmorphism base if supported, else solid

@@ -19,6 +19,21 @@
     // Color de fondo base
     var(--bg-secondary);
   
+  [dir="rtl"] & {
+    background:
+      radial-gradient(
+        600px circle at 100% 0%,
+        rgba(var(--accent-primary-rgb), 0.15),
+        transparent 40%
+      ),
+      radial-gradient(
+        600px circle at 0% 0%,
+        rgba(var(--accent-secondary-rgb), 0.15),
+        transparent 40%
+      ),
+      var(--bg-secondary);
+  }
+
   padding-top: 5rem;
   border-top: 1px solid var(--border-color);
   margin-top: 6rem;
@@ -135,7 +150,7 @@
   a {
     color: var(--text-secondary);
     font-size: 0.9rem;
-    transition: color var(--transition-speed) ease, padding-left var(--transition-speed) ease;
+    transition: color var(--transition-speed) ease, padding-inline-start var(--transition-speed) ease;
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
@@ -151,7 +166,7 @@
 
     &:hover {
       color: var(--text-primary);
-      padding-left: 5px;
+      padding-inline-start: 5px;
       
       lucide-icon {
         color: var(--accent-primary);
@@ -166,7 +181,7 @@
   }
   // Quitar padding en hover para enlaces de contacto
   &.footer__links--contact a:hover {
-    padding-left: 0;
+    padding-inline-start: 0;
   }
 }
 
@@ -231,7 +246,9 @@
       color: var(--text-primary);
       background-color: var(--bg-primary); // Más oscuro
       border: 1px solid var(--border-color);
-      border-radius: var(--border-radius) 0 0 var(--border-radius);
+      border-radius: var(--border-radius);
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
       transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
   
       &:focus {
@@ -260,10 +277,12 @@
       color: #fff;
       background: var(--accent-gradient);
       border: 1px solid var(--accent-primary);
-      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      border-radius: var(--border-radius);
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
       cursor: pointer;
       transition: all var(--transition-speed) ease;
-      margin-left: -1px; // Solapamiento
+      margin-inline-start: -1px; // Solapamiento
       z-index: 1;
 
       lucide-icon {
@@ -295,7 +314,7 @@
 }
 .form-error {
   color: #e74c3c;
-  text-align: left;
+  text-align: start;
   padding: 0;
 }
 .submit-success, .submit-error {
@@ -338,13 +357,13 @@
 
   jsl-language-switcher {
     // This pushes the language switcher and subsequent elements to the right
-    margin-left: auto;
+    margin-inline-start: auto;
   }
 
   // --- Mobile adjustment ---
   @media (max-width: 768px) {
     jsl-language-switcher {
-      margin-left: 0; // Reset margin for centered column layout
+      margin-inline-start: 0; // Reset margin for centered column layout
     }
   }
 }
@@ -366,17 +385,15 @@
 // Ajustes finales para móvil
 @media (max-width: 768px) {
   .footer__logo, .footer__slogan, .footer__col-title {
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
   }
   // Centrar el subrayado del título
   .footer__col-title::after {
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
   }
   .footer__links a {
     justify-content: center;
-    padding-left: 0 !important;
+    padding-inline-start: 0 !important;
   }
   .footer__socials {
     justify-content: center;

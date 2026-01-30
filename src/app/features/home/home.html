@@ -5,6 +5,7 @@
     [config]="heroSwiperConfig" 
     init="true"
     class="hero-main-swiper"
+    [attr.dir]="directionService.isRtl() ? 'rtl' : 'ltr'"
   >
     <swiper-slide class="hero-slide">
       <img
@@ -140,7 +141,7 @@
 <!-- NUEVO: Tech Stack Slider (Marquee) -->
 <section class="tech-stack-slider">
   <div class="container-fluid">
-    <swiper-container [config]="logoSwiperConfig" init="true" class="logo-slider">
+    <swiper-container [config]="logoSwiperConfig" init="true" class="logo-slider" [attr.dir]="directionService.isRtl() ? 'rtl' : 'ltr'">
       @for (tech of techStack(); track tech.name) {
         <swiper-slide class="logo-slide">
           <img [src]="tech.imageUrl" [alt]="tech.name" loading="lazy" />
@@ -354,7 +355,7 @@
       <span class="section-eyebrow">{{ 'HOME.TESTIMONIALS_EYEBROW' | translate }}</span>
       <h2 class="section-title">{{ 'HOME.TESTIMONIALS_TITLE' | translate }}</h2>
     </div>
-    <swiper-container [config]="testimonialSwiperConfig" init="true" class="testimonial-slider">
+    <swiper-container [config]="testimonialSwiperConfig" init="true" class="testimonial-slider" [attr.dir]="directionService.isRtl() ? 'rtl' : 'ltr'">
       @for (testimonial of testimonials(); track testimonial.nameKey) {
         <swiper-slide class="testimonial-card">
           <div class="testimonial-card__stars">

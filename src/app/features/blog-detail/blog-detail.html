@@ -181,6 +181,7 @@
               init="false"
               class="related-posts-slider"
               jslAnimateOnScroll
+              [attr.dir]="directionService.isRtl() ? 'rtl' : 'ltr'"
             >
               @for (relatedPost of relatedPosts; track trackBySlug($index, relatedPost)) {
                 <swiper-slide class="related-post-slide">
