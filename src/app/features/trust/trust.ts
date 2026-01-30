@@ -7,6 +7,7 @@ import { CtaComponent } from '@shared/components/cta/cta';
   selector: 'jsl-trust',
   standalone: true,
   imports: [CommonModule, TranslateModule, CtaComponent],
-  templateUrl: './trust.html'
+  templateUrl: './trust.html',
+  styleUrls: ['./trust.scss']
 })
 export class Trust {}

@@ -15,8 +15,9 @@
     "VIEW_ALL_SERVICES": "View All Solutions",
     "VIEW_ALL_PRODUCTS": "View All Products",
     "LOGIN": "Login",
-    "LOGIN_VIRTEEX": "Virteex Login",
-    "LOGIN_CLIENT": "Client Portal",
+    "LOGIN_VIRTEEX": "Virteex Cloud",
+    "LOGIN_CLIENT": "Billing Portal",
+    "LOGIN_SUPPORT": "Technical Support",
     "PARTNERS": "Partners",
     "PRESS": "Press Room",
     "SECURITY": "Trust & Security"
@@ -579,5 +580,64 @@
     "REC_INNOVATION": "It's time to lead the market. Let's talk about Cloud Architecture and custom AI solutions.",
     "CTA_CONTACT": "Talk to an Expert",
     "CTA_RESTART": "Start Over"
+  },
+  "DEVELOPERS": {
+    "TITLE": "Developer Hub",
+    "SUBTITLE": "Build the future with our open APIs and SDKs.",
+    "API_DOCS": "API Documentation",
+    "GET_KEY": "Get API Key",
+    "STATUS": "System Status"
+  },
+  "ROADMAP": {
+    "TITLE": "Public Roadmap",
+    "SUBTITLE": "See what we are building next.",
+    "IN_DEV": "In Development",
+    "PLANNED": "Planned",
+    "RELEASED": "Released"
+  },
+  "EVENTS": {
+    "TITLE": "Events & Webinars",
+    "SUBTITLE": "Join our live sessions and learn from the experts.",
+    "UPCOMING": "Upcoming Events",
+    "PAST": "Past Recordings",
+    "REGISTER": "Register"
+  },
+  "STATUS": {
+    "TITLE": "System Status",
+    "SUBTITLE": "Real-time performance metrics.",
+    "OPERATIONAL": "All Systems Operational",
+    "INCIDENTS": "Incident History",
+    "UPTIME": "Uptime"
+  },
+  "LIFE_AT_JSL": {
+    "TITLE": "Life at JSL",
+    "SUBTITLE": "Join our culture of innovation.",
+    "TEAM": "Our Team",
+    "BENEFITS": "Perks & Benefits",
+    "GALLERY": "Moments"
+  },
+  "PRESS": {
+    "TITLE": "Press Room",
+    "SUBTITLE": "News, assets, and media resources.",
+    "KIT": "Press Kit",
+    "DOWNLOAD": "Download Assets",
+    "MENTIONS": "In the Media"
+  },
+  "PRICING": {
+    "TITLE": "Pricing Calculator",
+    "SUBTITLE": "Estimate your project cost in minutes.",
+    "WIZARD_STEP_1": "Project Type",
+    "WIZARD_STEP_2": "Scale",
+    "WIZARD_STEP_3": "Features",
+    "ESTIMATE": "Your Estimate"
+  },
+  "SECURITY_CENTER": {
+    "TITLE": "Security Center",
+    "SUBTITLE": "Enterprise-grade security and compliance.",
+    "ENCRYPTION": "End-to-End Encryption",
+    "BACKUPS": "Daily Backups",
+    "DRP": "Disaster Recovery",
+    "COMPLIANCE": "Compliance",
+    "BADGES": "Security Certifications"
   }
 }

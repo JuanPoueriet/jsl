@@ -15,8 +15,9 @@
     "VIEW_ALL_SERVICES": "Ver Todas las Soluciones",
     "VIEW_ALL_PRODUCTS": "Ver Todos los Productos",
     "LOGIN": "Acceso",
-    "LOGIN_VIRTEEX": "Acceso Virteex",
-    "LOGIN_CLIENT": "Portal de Clientes",
+    "LOGIN_VIRTEEX": "Virteex Cloud",
+    "LOGIN_CLIENT": "Portal de Facturación",
+    "LOGIN_SUPPORT": "Soporte Técnico",
     "PARTNERS": "Partners",
     "PRESS": "Sala de Prensa",
     "SECURITY": "Confianza y Seguridad"
@@ -579,5 +580,64 @@
     "REC_INNOVATION": "Es momento de liderar el mercado. Hablemos de Arquitectura Cloud y soluciones a medida con IA.",
     "CTA_CONTACT": "Hablar con un Experto",
     "CTA_RESTART": "Empezar de nuevo"
+  },
+  "DEVELOPERS": {
+    "TITLE": "Centro de Desarrolladores",
+    "SUBTITLE": "Construye el futuro con nuestras APIs abiertas y SDKs.",
+    "API_DOCS": "Documentación API",
+    "GET_KEY": "Obtener API Key",
+    "STATUS": "Estado del Sistema"
+  },
+  "ROADMAP": {
+    "TITLE": "Roadmap Público",
+    "SUBTITLE": "Mira lo que estamos construyendo.",
+    "IN_DEV": "En Desarrollo",
+    "PLANNED": "Planeado",
+    "RELEASED": "Lanzado"
+  },
+  "EVENTS": {
+    "TITLE": "Eventos y Webinars",
+    "SUBTITLE": "Únete a nuestras sesiones en vivo y aprende de los expertos.",
+    "UPCOMING": "Próximos Eventos",
+    "PAST": "Grabaciones Pasadas",
+    "REGISTER": "Registrarse"
+  },
+  "STATUS": {
+    "TITLE": "Estado del Sistema",
+    "SUBTITLE": "Métricas de rendimiento en tiempo real.",
+    "OPERATIONAL": "Todos los sistemas operativos",
+    "INCIDENTS": "Historial de Incidentes",
+    "UPTIME": "Tiempo de Actividad"
+  },
+  "LIFE_AT_JSL": {
+    "TITLE": "Vida en JSL",
+    "SUBTITLE": "Únete a nuestra cultura de innovación.",
+    "TEAM": "Nuestro Equipo",
+    "BENEFITS": "Beneficios",
+    "GALLERY": "Momentos"
+  },
+  "PRESS": {
+    "TITLE": "Sala de Prensa",
+    "SUBTITLE": "Noticias, activos y recursos para medios.",
+    "KIT": "Kit de Prensa",
+    "DOWNLOAD": "Descargar Recursos",
+    "MENTIONS": "En los Medios"
+  },
+  "PRICING": {
+    "TITLE": "Calculadora de Precios",
+    "SUBTITLE": "Estima el costo de tu proyecto en minutos.",
+    "WIZARD_STEP_1": "Tipo de Proyecto",
+    "WIZARD_STEP_2": "Escala",
+    "WIZARD_STEP_3": "Funcionalidades",
+    "ESTIMATE": "Tu Estimado"
+  },
+  "SECURITY_CENTER": {
+    "TITLE": "Centro de Seguridad",
+    "SUBTITLE": "Seguridad y cumplimiento de grado empresarial.",
+    "ENCRYPTION": "Encriptación de Extremo a Extremo",
+    "BACKUPS": "Copias de Seguridad Diarias",
+    "DRP": "Recuperación ante Desastres",
+    "COMPLIANCE": "Cumplimiento",
+    "BADGES": "Certificaciones de Seguridad"
   }
 }

@@ -120,6 +120,23 @@ export interface FaqItem {
   answerKey: string;
 }
 
+// Interface para Páginas Estáticas
+export interface StaticPage {
+  key: string;
+  slug: string;
+}
+
+const STATIC_PAGES: StaticPage[] = [
+  { key: 'DEVELOPERS.TITLE', slug: 'developers' },
+  { key: 'ROADMAP.TITLE', slug: 'roadmap' },
+  { key: 'EVENTS.TITLE', slug: 'events' },
+  { key: 'STATUS.TITLE', slug: 'status' },
+  { key: 'LIFE_AT_JSL.TITLE', slug: 'life-at-jsl' },
+  { key: 'PRESS.TITLE', slug: 'press' },
+  { key: 'PRICING.TITLE', slug: 'pricing' },
+  { key: 'SECURITY_CENTER.TITLE', slug: 'security' }
+];
+
 /**
  * Servicio centralizado para proveer toda la data (mock) de la aplicación.
  */
@@ -255,6 +272,13 @@ export class DataService {
     PROJECTS.forEach(p => {
       if (p.slug.includes(q) || p.key.toLowerCase().includes(q)) {
         results.push({ type: 'project', item: p });
+      }
+    });
+
+    // Search in Static Pages
+    STATIC_PAGES.forEach(p => {
+      if (p.slug.includes(q) || p.key.toLowerCase().includes(q)) {
+        results.push({ type: 'page', item: p });
       }
     });
 
