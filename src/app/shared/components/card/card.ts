@@ -18,5 +18,6 @@ export class Card {
   @Input() description: string = 'Card description goes here.';
   
   @Input() link: any[] | string | null = null; 
+  @Input() externalLink: string | null | undefined = null;
   @Input() metrics: string[] = [];
 }

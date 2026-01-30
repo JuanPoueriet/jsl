@@ -165,6 +165,30 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'partners',
+        loadComponent: () => import('./features/partners/partners').then(c => c.Partners),
+        data: {
+          title: 'PARTNERS_PAGE.TITLE',
+          description: 'PARTNERS_PAGE.SUBTITLE'
+        }
+      },
+      {
+        path: 'news',
+        loadComponent: () => import('./features/news/news').then(c => c.News),
+        data: {
+          title: 'NEWS_PAGE.TITLE',
+          description: 'NEWS_PAGE.SUBTITLE'
+        }
+      },
+      {
+        path: 'security',
+        loadComponent: () => import('./features/trust/trust').then(c => c.Trust),
+        data: {
+          title: 'TRUST_PAGE.TITLE',
+          description: 'TRUST_PAGE.SUBTITLE'
+        }
+      },
+      {
         path: 'server-error',
         loadComponent: () => import('./features/server-error/server-error').then(c => c.ServerError),
         data: {

@@ -13,7 +13,13 @@
     "CAREERS": "Careers",
     "FAQ": "FAQ",
     "VIEW_ALL_SERVICES": "View All Solutions",
-    "VIEW_ALL_PRODUCTS": "View All Products"
+    "VIEW_ALL_PRODUCTS": "View All Products",
+    "LOGIN": "Login",
+    "LOGIN_VIRTEEX": "Virteex Login",
+    "LOGIN_CLIENT": "Client Portal",
+    "PARTNERS": "Partners",
+    "PRESS": "Press Room",
+    "SECURITY": "Trust & Security"
   },
   "TOP_BAR": {
     "PORTFOLIO": "Portfolio",
@@ -83,7 +89,8 @@
     "BREADCRUMB_HOME": "Home",
     "AUTHOR": "Author",
     "PUBLISHED_DATE": "Published on",
-    "PLACEHOLDER_TITLE": "More Information Coming Soon"
+    "PLACEHOLDER_TITLE": "More Information Coming Soon",
+    "VISIT_WEBSITE": "Visit Website"
   },
   "HOME": {
     "HERO1_TITLE": "Shaping The Future Of Digital Innovation",
@@ -413,6 +420,21 @@
     "TERMS_SECTION_2_P1": "You agree not to use the website for any unlawful purpose or any purpose prohibited by these terms. You may not use the website in any manner that could damage, disable, or overburden the site.",
     "TERMS_SECTION_3_TITLE": "Intellectual Property",
     "TERMS_SECTION_3_P1": "All content present on this site, including text, graphics, logos, and images, is the property of JSL Technology and is protected by copyright laws."
+  },
+  "PARTNERS_PAGE": {
+    "TITLE": "Partners Program",
+    "SUBTITLE": "Join our ecosystem of integrators and distributors.",
+    "CONTENT": "Become a strategic partner and grow with us. We offer exclusive benefits for certified partners."
+  },
+  "NEWS_PAGE": {
+    "TITLE": "Press Room",
+    "SUBTITLE": "Latest corporate news and announcements from JSL Technology.",
+    "CONTENT": "Stay updated with our latest milestones, acquisitions, and product launches."
+  },
+  "TRUST_PAGE": {
+    "TITLE": "Trust & Security",
+    "SUBTITLE": "Our commitment to security, compliance, and governance.",
+    "CONTENT": "We adhere to the highest standards of security to protect your data and ensure business continuity."
   },
   "NOT_FOUND": {
     "TITLE": "Page Not Found (404)",

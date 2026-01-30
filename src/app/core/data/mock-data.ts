@@ -94,16 +94,19 @@ export const PRODUCTS = [
     key: 'ERP',
     slug: 'jsl-erp',
     icon: 'Database',
+    externalUrl: 'https://virteex.com',
   },
   {
     key: 'POS',
     slug: 'jsl-pos',
     icon: 'ShoppingCart',
+    externalUrl: 'https://pos.jsl.technology',
   },
   {
     key: 'MOBILE_APPS',
     slug: 'proprietary-apps',
     icon: 'Smartphone',
+    externalUrl: 'https://apps.jsl.technology',
   },
 ];
 

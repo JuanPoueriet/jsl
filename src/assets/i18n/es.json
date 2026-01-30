@@ -13,7 +13,13 @@
     "CAREERS": "Carreras",
     "FAQ": "FAQ",
     "VIEW_ALL_SERVICES": "Ver Todas las Soluciones",
-    "VIEW_ALL_PRODUCTS": "Ver Todos los Productos"
+    "VIEW_ALL_PRODUCTS": "Ver Todos los Productos",
+    "LOGIN": "Acceso",
+    "LOGIN_VIRTEEX": "Acceso Virteex",
+    "LOGIN_CLIENT": "Portal de Clientes",
+    "PARTNERS": "Partners",
+    "PRESS": "Sala de Prensa",
+    "SECURITY": "Confianza y Seguridad"
   },
   "TOP_BAR": {
     "PORTFOLIO": "Portafolio",
@@ -83,7 +89,8 @@
     "BREADCRUMB_HOME": "Inicio",
     "AUTHOR": "Autor",
     "PUBLISHED_DATE": "Publicado el",
-    "PLACEHOLDER_TITLE": "Más Información Próximamente"
+    "PLACEHOLDER_TITLE": "Más Información Próximamente",
+    "VISIT_WEBSITE": "Visitar Sitio Web"
   },
   "HOME": {
     "HERO1_TITLE": "Moldeando el Futuro de la Innovación Digital",
@@ -413,6 +420,21 @@
     "TERMS_SECTION_2_P1": "Usted se compromete a no utilizar el sitio web para ningún propósito ilegal o prohibido por estos términos. No puede utilizar el sitio web de ninguna manera que pueda dañar, deshabilitar o sobrecargar el sitio.",
     "TERMS_SECTION_3_TITLE": "Propiedad Intelectual",
     "TERMS_SECTION_3_P1": "Todo el contenido presente en este sitio, incluyendo texto, gráficos, logotipos e imágenes, es propiedad de JSL Technology y está protegido por las leyes de derechos de autor."
+  },
+  "PARTNERS_PAGE": {
+    "TITLE": "Programa de Partners",
+    "SUBTITLE": "Únete a nuestro ecosistema de integradores y distribuidores.",
+    "CONTENT": "Conviértete en un socio estratégico y crece con nosotros. Ofrecemos beneficios exclusivos para partners certificados."
+  },
+  "NEWS_PAGE": {
+    "TITLE": "Sala de Prensa",
+    "SUBTITLE": "Últimas noticias corporativas y anuncios de JSL Technology.",
+    "CONTENT": "Mantente actualizado con nuestros últimos hitos, adquisiciones y lanzamientos de productos."
+  },
+  "TRUST_PAGE": {
+    "TITLE": "Confianza y Seguridad",
+    "SUBTITLE": "Nuestro compromiso con la seguridad, el cumplimiento y la gobernanza.",
+    "CONTENT": "Nos adherimos a los más altos estándares de seguridad para proteger sus datos y garantizar la continuidad del negocio."
   },
   "NOT_FOUND": {
     "TITLE": "Página No Encontrada (404)",

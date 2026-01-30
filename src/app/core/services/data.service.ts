@@ -39,6 +39,7 @@ export interface Product {
   key: string;
   slug: string;
   icon: string;
+  externalUrl?: string;
 }
 
 // Interface para Casos de Éxito (Proyectos)

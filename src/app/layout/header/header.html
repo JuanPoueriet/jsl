@@ -79,22 +79,22 @@
             >{{ 'HEADER.VIEW_ALL_PRODUCTS' | translate }}</a
           >
           <a
-            [routerLink]="[currentLang, 'products', 'jsl-erp']"
-            routerLinkActive="active"
+            href="https://virteex.com"
+            target="_blank"
             (click)="closeMobileMenu()"
-            >{{ 'PRODUCTS_LIST.ERP' | translate }}</a
+            >{{ 'PRODUCTS_LIST.ERP' | translate }} <lucide-icon name="ExternalLink" size="14"></lucide-icon></a
           >
           <a
-            [routerLink]="[currentLang, 'products', 'jsl-pos']"
-            routerLinkActive="active"
+            href="https://pos.jsl.technology"
+            target="_blank"
             (click)="closeMobileMenu()"
-            >{{ 'PRODUCTS_LIST.POS' | translate }}</a
+            >{{ 'PRODUCTS_LIST.POS' | translate }} <lucide-icon name="ExternalLink" size="14"></lucide-icon></a
           >
           <a
-            [routerLink]="[currentLang, 'products', 'proprietary-apps']"
-            routerLinkActive="active"
+            href="https://apps.jsl.technology"
+            target="_blank"
             (click)="closeMobileMenu()"
-            >{{ 'PRODUCTS_LIST.MOBILE' | translate }}</a
+            >{{ 'PRODUCTS_LIST.MOBILE' | translate }} <lucide-icon name="ExternalLink" size="14"></lucide-icon></a
           >
         </div>
       </li>
@@ -135,6 +135,18 @@
             (click)="closeMobileMenu()"
             >{{ 'HEADER.CAREERS' | translate }}</a
           >
+          <a
+            [routerLink]="[currentLang, 'partners']"
+            routerLinkActive="active"
+            (click)="closeMobileMenu()"
+            >{{ 'HEADER.PARTNERS' | translate }}</a
+          >
+          <a
+            [routerLink]="[currentLang, 'security']"
+            routerLinkActive="active"
+            (click)="closeMobileMenu()"
+            >{{ 'HEADER.SECURITY' | translate }}</a
+          >
         </div>
       </li>
 
@@ -165,10 +177,43 @@
             >{{ 'HEADER.BLOG' | translate }}</a
           >
           <a
+            [routerLink]="[currentLang, 'news']"
+            routerLinkActive="active"
+            (click)="closeMobileMenu()"
+            >{{ 'HEADER.PRESS' | translate }}</a
+          >
+          <a
             [routerLink]="[currentLang, 'faq']"
             routerLinkActive="active"
             (click)="closeMobileMenu()"
             >{{ 'HEADER.FAQ' | translate }}</a
+          >
+        </div>
+      </li>
+
+      <!-- Dropdown: Login -->
+      <li class="dropdown" [class.open]="openDropdown === 'login'">
+        <button
+          class="dropdown-toggle"
+          (click)="toggleDropdown('login', $event)"
+          aria-haspopup="true"
+          [attr.aria-expanded]="openDropdown === 'login'"
+        >
+          {{ 'HEADER.LOGIN' | translate }}
+          <lucide-icon name="ChevronDown"></lucide-icon>
+        </button>
+        <div class="dropdown-menu" [class.open]="openDropdown === 'login'">
+          <a
+            href="https://app.virteex.com"
+            target="_blank"
+            (click)="closeMobileMenu()"
+            >{{ 'HEADER.LOGIN_VIRTEEX' | translate }} <lucide-icon name="ExternalLink" size="14"></lucide-icon></a
+          >
+          <a
+            href="https://portal.jsl.technology"
+            target="_blank"
+            (click)="closeMobileMenu()"
+            >{{ 'HEADER.LOGIN_CLIENT' | translate }} <lucide-icon name="ExternalLink" size="14"></lucide-icon></a
           >
         </div>
       </li>
@@ -303,20 +348,20 @@
               </a>
             </li>
             <li>
-              <a [routerLink]="[currentLang, 'products', 'jsl-erp']" (click)="closeMobileMenu()">
-                <lucide-icon name="Building2"></lucide-icon>
+              <a href="https://virteex.com" target="_blank" (click)="closeMobileMenu()">
+                <lucide-icon name="ExternalLink"></lucide-icon>
                 {{ 'PRODUCTS_LIST.ERP' | translate }}
               </a>
             </li>
             <li>
-              <a [routerLink]="[currentLang, 'products', 'jsl-pos']" (click)="closeMobileMenu()">
-                <lucide-icon name="ShoppingCart"></lucide-icon>
+              <a href="https://pos.jsl.technology" target="_blank" (click)="closeMobileMenu()">
+                <lucide-icon name="ExternalLink"></lucide-icon>
                 {{ 'PRODUCTS_LIST.POS' | translate }}
               </a>
             </li>
             <li>
-              <a [routerLink]="[currentLang, 'products', 'proprietary-apps']" (click)="closeMobileMenu()">
-                <lucide-icon name="AppWindow"></lucide-icon>
+              <a href="https://apps.jsl.technology" target="_blank" (click)="closeMobileMenu()">
+                <lucide-icon name="ExternalLink"></lucide-icon>
                 {{ 'PRODUCTS_LIST.MOBILE' | translate }}
               </a>
             </li>
@@ -356,6 +401,18 @@
                 {{ 'HEADER.CAREERS' | translate }}
               </a>
             </li>
+            <li>
+              <a [routerLink]="[currentLang, 'partners']" (click)="closeMobileMenu()">
+                <lucide-icon name="Users"></lucide-icon>
+                {{ 'HEADER.PARTNERS' | translate }}
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="[currentLang, 'security']" (click)="closeMobileMenu()">
+                <lucide-icon name="ShieldCheck"></lucide-icon>
+                {{ 'HEADER.SECURITY' | translate }}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -381,9 +438,39 @@
               </a>
             </li>
             <li>
+              <a [routerLink]="[currentLang, 'news']" (click)="closeMobileMenu()">
+                <lucide-icon name="Newspaper"></lucide-icon>
+                {{ 'HEADER.PRESS' | translate }}
+              </a>
+            </li>
+            <li>
               <a [routerLink]="[currentLang, 'faq']" (click)="closeMobileMenu()">
                 <lucide-icon name="HelpCircle"></lucide-icon>
                 {{ 'HEADER.FAQ' | translate }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section: Login -->
+      <div class="mobile-accordion" [class.expanded]="expandedSection === 'login'">
+        <button class="accordion-header" (click)="toggleSection('login')">
+          <span>{{ 'HEADER.LOGIN' | translate }}</span>
+          <lucide-icon name="ChevronDown" class="chevron"></lucide-icon>
+        </button>
+        <div class="accordion-content">
+          <ul class="mobile-links-list">
+            <li>
+              <a href="https://app.virteex.com" target="_blank" (click)="closeMobileMenu()">
+                <lucide-icon name="ExternalLink"></lucide-icon>
+                {{ 'HEADER.LOGIN_VIRTEEX' | translate }}
+              </a>
+            </li>
+            <li>
+              <a href="https://portal.jsl.technology" target="_blank" (click)="closeMobileMenu()">
+                <lucide-icon name="ExternalLink"></lucide-icon>
+                {{ 'HEADER.LOGIN_CLIENT' | translate }}
               </a>
             </li>
           </ul>
