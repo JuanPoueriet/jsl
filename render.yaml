@@ -3,7 +3,7 @@ services:
     name: jsl
     env: node
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: pnpm install && pnpm run build
     startCommand: node dist/app/server/server.mjs
     envVars:
       - key: NODE_ENV

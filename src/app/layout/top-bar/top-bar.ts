@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { LanguageSwitcher } from '../language-switcher/language-switcher'; // Importamos el selector de idioma
@@ -10,7 +9,6 @@ import { LanguageSwitcher } from '../language-switcher/language-switcher'; // Im
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
     TranslateModule,
     LucideAngularModule,
     LanguageSwitcher // Lo añadimos aquí
