@@ -27,6 +27,7 @@ import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
 import { CtaComponent } from '@shared/components/cta/cta';
 import { Card } from '@shared/components/card/card';
 import { Seo } from '@core/services/seo';
+import { DirectionService } from '@core/services/direction.service';
 import { SocialShareComponent } from '@shared/components/social-share/social-share';
 
 // Swiper Web Components
@@ -63,6 +64,7 @@ export class BlogDetail
   private el = inject(ElementRef);
   @Inject(PLATFORM_ID) private platformId = inject(PLATFORM_ID);
   private seoService = inject(Seo);
+  public directionService = inject(DirectionService);
 
   @ViewChild('copyTooltip') copyTooltip!: ElementRef;
   @ViewChild('bannerImage') bannerImage!: ElementRef;

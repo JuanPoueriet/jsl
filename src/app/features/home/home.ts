@@ -13,6 +13,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { SearchUiService } from '@core/services/search-ui.service';
+import { DirectionService } from '@core/services/direction.service';
 import { CommonModule, isPlatformBrowser, NgOptimizedImage, DOCUMENT } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
@@ -231,6 +232,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   private renderer = inject(Renderer2);
   private document = inject(DOCUMENT);
   private searchUiService = inject(SearchUiService);
+  public directionService = inject(DirectionService);
   private schemaScript: any; // HTMLScriptElement
   private unlistenExitIntent: (() => void) | null = null;
   private socialProofInterval: any;

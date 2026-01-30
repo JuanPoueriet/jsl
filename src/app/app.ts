@@ -6,6 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Header } from './layout/header/header';
 import { Footer } from './layout/footer/footer';
 import { Seo } from './core/services/seo';
+import { DirectionService } from './core/services/direction.service';
 import { ChatBubbleComponent } from './shared/components/chat-bubble/chat-bubble';
 import { SUPPORTED_LANGUAGES } from '@core/constants/languages';
 import { ToastComponent } from './shared/components/toast/toast';
@@ -36,6 +37,7 @@ export class App {
   constructor(
     private translate: TranslateService,
     private seo: Seo,
+    private directionService: DirectionService, // Inject to initialize
     @Inject(PLATFORM_ID) private platformId: Object,
     private cookieService: CookieService,
   ) {

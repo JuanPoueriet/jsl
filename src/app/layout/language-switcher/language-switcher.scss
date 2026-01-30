@@ -61,7 +61,7 @@
 .lang-switcher__dropdown {
   position: absolute;
   top: calc(100% + 10px); // Se posiciona 10px por debajo del botón
-  right: 0;
+  inset-inline-end: 0;
   width: 160px;
   background-color: var(--bg-secondary);
   border: 1px solid var(--border-color); // El dropdown mantiene su borde

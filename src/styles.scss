@@ -203,3 +203,14 @@ body {
   -ms-user-select: none;
   -moz-user-select: none;
 }
+
+/* RTL Support */
+[dir="rtl"] {
+  /* Flip directional icons */
+  lucide-icon[name="ArrowRight"],
+  lucide-icon[name="ArrowLeft"],
+  lucide-icon[name="ChevronRight"],
+  lucide-icon[name="ChevronLeft"] {
+    transform: scaleX(-1);
+  }
+}

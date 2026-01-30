@@ -72,7 +72,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: #fff;
-  padding-right: 5px;
+  padding-inline-end: 5px;
   position: relative;
   z-index: 1200;
 }
@@ -135,7 +135,7 @@
     }
     
     lucide-icon {
-      margin-left: 0.25rem;
+      margin-inline-start: 0.25rem;
     }
   }
 
@@ -286,7 +286,7 @@ li.dropdown {
 .header__nav-links-mobile {
   position: fixed;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 85%;
   max-width: 380px;
   height: 100vh;
@@ -294,12 +294,17 @@ li.dropdown {
   background: rgba(18, 18, 18, 0.85); 
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-inline-end: 1px solid rgba(255, 255, 255, 0.08);
   
   display: flex;
   flex-direction: column;
   z-index: 1300;
   transform: translateX(-100%);
+
+  [dir="rtl"] & {
+    transform: translateX(100%);
+  }
+
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); // Easing suave
   will-change: transform;
   box-shadow: 10px 0 40px rgba(0, 0, 0, 0.5);
@@ -312,7 +317,7 @@ li.dropdown {
     content: '';
     position: absolute;
     top: 50%;
-    right: 6px;
+    inset-inline-end: 6px;
     transform: translateY(-50%);
     width: 4px;
     height: 48px;
@@ -427,7 +432,7 @@ li.dropdown {
     font-weight: 600;
     color: var(--text-primary);
     cursor: pointer;
-    text-align: left;
+    text-align: start;
     transition: color 0.2s ease;
 
     .chevron {
@@ -456,12 +461,13 @@ li.dropdown {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 10px 16px 10px 24px; // Indented
+      padding-block: 10px;
+      padding-inline: 24px 16px; // Indented start
       color: var(--text-secondary);
       font-size: 0.95rem;
       text-decoration: none;
       transition: all 0.2s ease;
-      border-left: 2px solid transparent;
+      border-inline-start: 2px solid transparent;
 
       lucide-icon {
         width: 18px;
