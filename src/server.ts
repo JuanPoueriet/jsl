@@ -21,15 +21,48 @@ const angularApp = new AngularNodeAppEngine();
 // --- OPTIMIZACIÓN: Compresión Gzip/Brotli ---
 app.use(compression());
 
-// --- SEGURIDAD: Rate Limiting ---
-const limiter = rateLimit({
-	windowMs: 15 * 60 * 1000, // 15 minutos
-	max: 100, // Límite de 100 peticiones por IP por ventana
-	standardHeaders: true, // Devuelve info en cabeceras `RateLimit-*`
-	legacyHeaders: false, // Deshabilita cabeceras `X-RateLimit-*`
+// --- SEGURIDAD: Rate Limiting Avanzado (Throttling Dinámico) ---
+
+// 1. Limiter para Lectura (GET) - Navegación fluida
+// Permite ráfagas (bursts) de exploración.
+const readLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minuto
+  max: 100, // 100 peticiones por minuto (Suficiente para cargar assets y navegar)
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: 'Demasiadas solicitudes de lectura. Por favor espera un momento.',
 });
-// Aplicar rate limiting a todas las rutas
-app.use(limiter);
+
+// 2. Limiter para Acciones (POST/PUT/DELETE) - Estricto
+// Evita spam en formularios.
+const writeLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minuto
+  max: 3, // Solo 3 acciones por minuto (ej. 3 envíos de formulario)
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: 'Estás realizando acciones demasiado rápido.',
+});
+
+// 3. Limiter para Autenticación/Sensible - Muy Estricto
+// Protección contra fuerza bruta.
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 5, // 5 intentos por 15 min
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: 'Demasiados intentos de autenticación.',
+});
+
+// Middleware para aplicar limiters según el método HTTP
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/auth')) {
+    authLimiter(req, res, next);
+  } else if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(req.method)) {
+    writeLimiter(req, res, next);
+  } else {
+    readLimiter(req, res, next);
+  }
+});
 
 app.get('/', (req, res) => {
   const supportedLangs = SUPPORTED_LANGUAGES;
@@ -153,6 +186,29 @@ function generateUrlEntry(route: string): string {
  * });
  * ```
  */
+
+// --- ENDPOINT MOCK PARA CONTACTO (Con validación simulada de Captcha) ---
+app.use(express.json()); // Necesario para parsear el body JSON
+
+app.post('/api/contact', (req, res) => {
+  const { name, email, message, token } = req.body;
+
+  // Simulación de validación de Captcha
+  if (!token) {
+    // Si fuera real, validaríamos contra Google API aquí
+    console.warn('Intento de envío sin token de captcha');
+    // En producción esto sería un 400 o 403, pero para demo permitimos pasar si es mock
+    // res.status(400).json({ success: false, message: 'Captcha token missing' });
+    // return;
+  }
+
+  console.log('Recibido formulario de contacto:', { name, email, hasToken: !!token });
+
+  // Simular proceso
+  setTimeout(() => {
+    res.json({ success: true, message: 'Formulario recibido correctamente' });
+  }, 500);
+});
 
 
 app.get('/sitemap.xml', (req, res) => {
