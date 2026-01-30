@@ -1,6 +1,39 @@
 // src/app/core/data/mock-data.ts
 
-import { BlogPost, TeamMember } from '@core/services/data.service';
+import { BlogPost, TeamMember, Venture } from '@core/services/data.service';
+
+/**
+ * DATOS DE VENTURES (Innovation Lab)
+ */
+export const VENTURES: Venture[] = [
+  {
+    key: 'VIRTEEX',
+    slug: 'virteex-ecosystem',
+    name: 'Virteex',
+    descriptionKey: 'VENTURES.VIRTEEX_DESC',
+    logoUrl: 'assets/imgs/logos/virteex.svg',
+    status: 'Scale',
+    website: 'https://virteex.com'
+  },
+  {
+    key: 'PAYFLOW',
+    slug: 'payflow-fintech',
+    name: 'PayFlow',
+    descriptionKey: 'VENTURES.PAYFLOW_DESC',
+    logoUrl: 'assets/imgs/logos/payflow.svg',
+    status: 'Accelerate',
+    website: '#'
+  },
+  {
+    key: 'AGROTECH',
+    slug: 'smart-harvest',
+    name: 'SmartHarvest',
+    descriptionKey: 'VENTURES.SMARTHARVEST_DESC',
+    logoUrl: 'assets/imgs/logos/agrotech.svg',
+    status: 'Incubate',
+    website: '#'
+  }
+];
 
 /**
  * DATOS DE SOLUCIONES
@@ -145,6 +178,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     imageUrl: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?fit=crop&w=300&q=80',
     linkedIn: 'https://linkedin.com/in/member1',
     twitter: 'https://twitter.com/member1',
+    certifications: ['AWS Certified Architect', 'PMP']
   },
   {
     key: 'MEMBER_2',
@@ -154,6 +188,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=300&q=80',
     linkedIn: 'https://linkedin.com/in/member2',
     twitter: 'https://twitter.com/member2',
+    certifications: ['Google UX Design', 'Figma Expert']
   },
   {
     key: 'MEMBER_3',
@@ -163,6 +198,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     imageUrl: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?fit=crop&w=300&q=80',
     linkedIn: 'https://linkedin.com/in/member3',
     twitter: 'https://twitter.com/member3',
+    certifications: ['Azure DevOps Engineer', 'CKA']
   },
   {
     key: 'MEMBER_4',
@@ -172,6 +208,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     imageUrl: 'https://images.unsplash.com/photo-1507003211162-080c3e30NThl?fit=crop&w=300&q=80',
     linkedIn: 'https://linkedin.com/in/member4',
     twitter: 'https://twitter.com/member4',
+    certifications: ['React Native Specialist', 'Scrum Master']
   },
 ];
 

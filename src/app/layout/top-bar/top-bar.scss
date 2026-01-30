@@ -17,10 +17,29 @@
 
 .top-bar__container {
   display: flex;
-  justify-content: flex-end; // <-- Alinea el selector de idioma a la derecha
+  justify-content: space-between;
   align-items: center;
   height: 100%;
   gap: 1.5rem; 
+}
+
+.top-bar__links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.top-bar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--primary);
+  }
 }
 
 // Ocultar en móvil (ya estaba)

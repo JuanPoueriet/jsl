@@ -93,6 +93,30 @@ export const routes: Routes = [
         ]
       },
       {
+        path: 'ventures',
+        loadComponent: () => import('./features/ventures/ventures').then(c => c.Ventures),
+        data: {
+          title: 'HEADER.VENTURES',
+          description: 'VENTURES.SUBTITLE'
+        }
+      },
+      {
+        path: 'investors',
+        loadComponent: () => import('./features/investors/investors').then(c => c.Investors),
+        data: {
+          title: 'HEADER.INVESTORS',
+          description: 'INVESTORS.SUBTITLE'
+        }
+      },
+      {
+        path: 'virteex-ecosystem',
+        loadComponent: () => import('./features/virteex-landing/virteex-landing').then(c => c.VirteexLanding),
+        data: {
+          title: 'VIRTEEX.TITLE',
+          description: 'VIRTEEX.SUBTITLE'
+        }
+      },
+      {
         path: 'process',
         loadComponent: () => import('./features/process/process').then(c => c.Process),
         data: {

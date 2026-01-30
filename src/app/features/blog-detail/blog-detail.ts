@@ -25,6 +25,7 @@ import { DataService, BlogPost, TeamMember } from '@core/services/data.service';
 import { Title } from '@angular/platform-browser';
 import { AnimateOnScroll } from '@shared/directives/animate-on-scroll';
 import { CtaComponent } from '@shared/components/cta/cta';
+import { WhitepaperDownloadComponent } from '@shared/components/whitepaper-download/whitepaper-download';
 import { Card } from '@shared/components/card/card';
 import { Seo } from '@core/services/seo';
 import { DirectionService } from '@core/services/direction.service';
@@ -45,6 +46,7 @@ register();
     LucideAngularModule,
     AnimateOnScroll,
     CtaComponent,
+    WhitepaperDownloadComponent,
     Card,
     SocialShareComponent
   ],

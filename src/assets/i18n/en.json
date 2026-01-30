@@ -5,6 +5,8 @@
     "PRODUCTS": "Products",
     "PROJECTS": "Case Studies",
     "BLOG": "Blog",
+    "VENTURES": "Ventures",
+    "INVESTORS": "Investors",
     "PROCESS": "Process",
     "INDUSTRIES": "Industries",
     "TECH_STACK": "Technologies",
@@ -20,7 +22,9 @@
     "LOGIN_SUPPORT": "Technical Support",
     "PARTNERS": "Partners",
     "PRESS": "Press Room",
-    "SECURITY": "Trust & Security"
+    "SECURITY": "Trust & Security",
+    "SUPPORT": "Support",
+    "CLIENT_PORTAL": "Client Portal"
   },
   "TOP_BAR": {
     "PORTFOLIO": "Portfolio",
@@ -95,7 +99,7 @@
   },
   "HOME": {
     "HERO1_TITLE": "Shaping The Future Of Digital Innovation",
-    "HERO1_SUBTITLE": "Bridging the gap between Consultancy and Venture Building. Executing global digital transformation with precision engineering.",
+    "HERO1_SUBTITLE": "Bridging the gap between Consultancy and Venture Building. We orchestrate digital transformation.",
     "HERO1_CTA": "More Info",
     "HERO2_TITLE": "ERP Software that Drives Your Growth",
     "HERO2_SUBTITLE": "Discover our enterprise software solutions (ERP & POS) designed to optimize and scale your business.",
@@ -348,7 +352,8 @@
     "DETAIL_RESULT_TITLE": "The Result",
     "CTA_EYEBROW": "Ready to be our next success story?",
     "CTA_TITLE": "Let's Transform Your Business",
-    "CTA_SUBTITLE": "Explore how our custom solutions have empowered other companies, and let's discuss how we can do the same for you."
+    "CTA_SUBTITLE": "Explore how our custom solutions have empowered other companies, and let's discuss how we can do the same for you.",
+    "METRICS_TITLE": "Impact Metrics"
   },
   "ABOUT": {
     "TITLE": "About JSL Technology",
@@ -639,5 +644,56 @@
     "DRP": "Disaster Recovery",
     "COMPLIANCE": "Compliance",
     "BADGES": "Security Certifications"
+  },
+  "VENTURES": {
+    "TITLE": "Ventures & Innovation Lab",
+    "SUBTITLE": "From Incubating Ideas to Scaling Exits. We build the next generation of SaaS companies.",
+    "LIFECYCLE_TITLE": "Our Venture Building Process",
+    "STEP1_TITLE": "Incubate",
+    "STEP1_DESC": "We validate market problems and build rapid MVPs.",
+    "STEP2_TITLE": "Accelerate",
+    "STEP2_DESC": "We find Product-Market Fit and optimize for growth.",
+    "STEP3_TITLE": "Scale",
+    "STEP3_DESC": "We expand operations and prepare for exit or independence.",
+    "PORTFOLIO_TITLE": "Our Portfolio",
+    "VIRTEEX_DESC": "Cloud ERP Ecosystem for modern enterprises.",
+    "PAYFLOW_DESC": "Fintech solution for automated payroll.",
+    "SMARTHARVEST_DESC": "Agrotech IoT platform for crop monitoring.",
+    "CTA_EYEBROW": "Got a disruptive idea?",
+    "CTA_TITLE": "Partner with our Lab",
+    "CTA_SUBTITLE": "We co-found startups with domain experts. Let's build together."
+  },
+  "INVESTORS": {
+    "TITLE": "Investors & Governance",
+    "SUBTITLE": "Building a resilient Tech Holding with transparency and long-term vision.",
+    "GOVERNANCE_TITLE": "Corporate Governance",
+    "GOVERNANCE_DESC": "Our structure ensures accountability, fairness, and transparency in our relationship with all stakeholders.",
+    "GOVERNANCE_POINT1": "Independent Board of Directors",
+    "GOVERNANCE_POINT2": "Quarterly Financial Audits",
+    "GOVERNANCE_POINT3": "Strict Compliance & Ethics Code",
+    "FINANCIAL_TITLE": "Financial Stability",
+    "STAT_YEARS": "Years of Profitability",
+    "STAT_GROWTH": "YoY Revenue Growth",
+    "STAT_CLIENTS": "Enterprise Clients",
+    "CTA_EYEBROW": "Investor Relations",
+    "CTA_TITLE": "Request Financial Report",
+    "CTA_SUBTITLE": "Qualified investors can access our detailed performance reports."
+  },
+  "VIRTEEX": {
+    "TITLE": "Virteex Ecosystem",
+    "SUBTITLE": "The Operating System for Modern Business.",
+    "VISIT_SITE": "Visit Official Site",
+    "ECOSYSTEM_TITLE": "A Unified Architecture",
+    "CTA_EYEBROW": "Ready to upgrade?",
+    "CTA_TITLE": "Switch to Virteex",
+    "CTA_SUBTITLE": "Join thousands of businesses running on our cloud."
+  },
+  "WHITEPAPER": {
+    "DEFAULT_TITLE": "Download Whitepaper",
+    "DEFAULT_DESC": "Get exclusive industry insights.",
+    "EMAIL_PLACEHOLDER": "Enter your work email",
+    "DOWNLOAD_BTN": "Download PDF",
+    "SUCCESS_MSG": "Download link sent!",
+    "SENT_MSG": "Check your inbox for the download link."
   }
 }

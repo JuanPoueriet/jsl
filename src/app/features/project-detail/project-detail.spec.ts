@@ -3,6 +3,7 @@ import { ProjectDetail } from './project-detail';
 import { provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('ProjectDetail', () => {
   let component: ProjectDetail;
@@ -13,7 +14,8 @@ describe('ProjectDetail', () => {
       imports: [ProjectDetail, NoopAnimationsModule],
       providers: [
         provideRouter([]), // Mock
-        provideTranslateService() // Mock
+        provideTranslateService(), // Mock
+        provideZonelessChangeDetection()
       ]
     })
     .compileComponents();

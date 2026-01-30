@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { ALL_ICONS } from '@core/constants/icons';
-import { DataService, BlogPost, Solution, Product, Project, StaticPage } from '@core/services/data.service';
+import { DataService, BlogPost, Solution, Product, Project, StaticPage, Venture } from '@core/services/data.service';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
@@ -22,6 +22,8 @@ export class SearchOverlayComponent {
 
   query = '';
   results: { type: string; item: any }[] = [];
+  activeFilter = 'all';
+
   readonly icons = ALL_ICONS;
   private searchSubject = new Subject<string>();
 
@@ -52,6 +54,15 @@ export class SearchOverlayComponent {
     });
   }
 
+  setFilter(filter: string) {
+    this.activeFilter = filter;
+  }
+
+  get filteredResults() {
+    if (this.activeFilter === 'all') return this.results;
+    return this.results.filter(r => r.type === this.activeFilter);
+  }
+
   closeOverlay(): void {
     this.close.emit();
   }
@@ -62,6 +73,7 @@ export class SearchOverlayComponent {
       case 'product': return ['/products', result.item.slug];
       case 'blog': return ['/blog', result.item.slug];
       case 'project': return ['/projects', result.item.slug];
+      case 'venture': return ['/ventures']; // Point to main page for now
       case 'page': return ['/', result.item.slug];
       default: return ['/'];
     }
@@ -71,6 +83,7 @@ export class SearchOverlayComponent {
     if (result.type === 'solution') return (result.item as Solution).sections[0].titleKey;
     if (result.type === 'blog') return (result.item as BlogPost).key + '.TITLE';
     if (result.type === 'page') return (result.item as StaticPage).key;
+    if (result.type === 'venture') return (result.item as Venture).name;
     // Fallback for others using key convention
     return result.item.key + '.TITLE';
   }
