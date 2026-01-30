@@ -8,7 +8,8 @@
         [icon]="product.icon"
         [title]="'PRODUCTS.' + product.key + '_TITLE' | translate"
         [description]="'PRODUCTS.' + product.key + '_DESC' | translate"
-        [link]="['/', currentLang, 'products', product.slug]">
+        [link]="['/', currentLang, 'products', product.slug]"
+        [externalLink]="product.externalUrl">
       </jsl-card>
     }
   </div>
