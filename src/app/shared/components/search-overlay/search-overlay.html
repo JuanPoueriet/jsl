@@ -1,4 +1,4 @@
-<div class="search-overlay" (click)="closeOverlay()">
+<div class="search-overlay" (click)="closeOverlay()" role="dialog" aria-modal="true" aria-label="Search">
   <div class="search-container" (click)="$event.stopPropagation()">
     <header class="search-header">
       <div class="search-input-wrapper">
@@ -11,7 +11,7 @@
           (ngModelChange)="onSearchInput($event)"
           aria-label="Search"
         />
-        <button *ngIf="query" (click)="query = ''; onSearchInput('')" class="clear-btn">
+        <button *ngIf="query" (click)="query = ''; onSearchInput('')" class="clear-btn" aria-label="Clear search query">
           <lucide-icon name="X"></lucide-icon>
         </button>
       </div>
@@ -20,11 +20,11 @@
 
     <!-- Filter Tabs -->
     <div class="search-filters" *ngIf="results.length > 0">
-      <button [class.active]="activeFilter === 'all'" (click)="setFilter('all')">All</button>
-      <button [class.active]="activeFilter === 'project'" (click)="setFilter('project')">Projects</button>
-      <button [class.active]="activeFilter === 'venture'" (click)="setFilter('venture')">Ventures</button>
-      <button [class.active]="activeFilter === 'product'" (click)="setFilter('product')">Products</button>
-      <button [class.active]="activeFilter === 'blog'" (click)="setFilter('blog')">Blog</button>
+      <button [class.active]="activeFilter === 'all'" [attr.aria-pressed]="activeFilter === 'all'" (click)="setFilter('all')">All</button>
+      <button [class.active]="activeFilter === 'project'" [attr.aria-pressed]="activeFilter === 'project'" (click)="setFilter('project')">Projects</button>
+      <button [class.active]="activeFilter === 'venture'" [attr.aria-pressed]="activeFilter === 'venture'" (click)="setFilter('venture')">Ventures</button>
+      <button [class.active]="activeFilter === 'product'" [attr.aria-pressed]="activeFilter === 'product'" (click)="setFilter('product')">Products</button>
+      <button [class.active]="activeFilter === 'blog'" [attr.aria-pressed]="activeFilter === 'blog'" (click)="setFilter('blog')">Blog</button>
     </div>
 
     <div class="search-results" *ngIf="filteredResults.length > 0; else noResults">
