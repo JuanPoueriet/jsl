@@ -1,0 +1,3 @@
+## 2026-02-01 - TranslatePipe Testing in Zoneless Angular 19+
+**Learning:** Components using `TranslatePipe` (ngx-translate v17+) require a `TranslateService` mock that provides `onTranslationChange`, `onLangChange`, AND `onFallbackLangChange` EventEmitters/Subjects. Missing `onFallbackLangChange` causes `Cannot read properties of undefined (reading 'subscribe')` errors. Additionally, unit tests in this zoneless application MUST include `provideZonelessChangeDetection()` in `TestBed` providers.
+**Action:** When testing i18n components, use a comprehensive mock for `TranslateService` and always include zoneless providers.
