@@ -12,6 +12,8 @@
 }
 
 .toast {
+  position: relative;
+  overflow: hidden;
   pointer-events: auto;
   display: flex;
   align-items: center;
@@ -25,24 +27,42 @@
   animation: slideIn 0.3s ease-out;
   border: 1px solid rgba(0,0,0,0.05);
 
+  --toast-color: #3b82f6;
+
   &.success {
-    border-left: 4px solid #10b981;
-    .toast-icon { color: #10b981; }
+    --toast-color: #10b981;
+    border-left: 4px solid var(--toast-color);
+    .toast-icon { color: var(--toast-color); }
   }
 
   &.error {
-    border-left: 4px solid #ef4444;
-    .toast-icon { color: #ef4444; }
+    --toast-color: #ef4444;
+    border-left: 4px solid var(--toast-color);
+    .toast-icon { color: var(--toast-color); }
   }
 
   &.info {
-    border-left: 4px solid #3b82f6;
-    .toast-icon { color: #3b82f6; }
+    --toast-color: #3b82f6;
+    border-left: 4px solid var(--toast-color);
+    .toast-icon { color: var(--toast-color); }
   }
 
   &.warning {
-    border-left: 4px solid #f59e0b;
-    .toast-icon { color: #f59e0b; }
+    --toast-color: #f59e0b;
+    border-left: 4px solid var(--toast-color);
+    .toast-icon { color: var(--toast-color); }
+  }
+
+  .toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--toast-color);
+    opacity: 0.2;
+    width: 100%;
+    transform-origin: left;
+    animation: progress linear forwards;
   }
 }
 
@@ -86,6 +106,11 @@
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+@keyframes progress {
+  from { width: 100%; }
+  to { width: 0%; }
 }
 
 // Dark mode support
