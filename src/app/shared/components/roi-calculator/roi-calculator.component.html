@@ -10,45 +10,51 @@
   <div class="roi-content">
     <div class="inputs-section">
       <div class="input-group">
-        <label>
-          <lucide-icon [name]="icons.Clock" size="16"></lucide-icon>
+        <label for="hours-saved">
+          <lucide-icon [name]="icons.Clock" size="16" aria-hidden="true"></lucide-icon>
           Hours saved per week (per employee)
         </label>
         <div class="range-wrapper">
           <input
+            id="hours-saved"
             type="range"
             [ngModel]="hoursSaved()"
             (ngModelChange)="hoursSaved.set($event)"
+            [attr.aria-valuetext]="hoursSaved() + ' hours saved per week'"
             min="1" max="40" step="1">
           <span class="value">{{ hoursSaved() }} hrs</span>
         </div>
       </div>
 
       <div class="input-group">
-        <label>
-          <lucide-icon [name]="icons.DollarSign" size="16"></lucide-icon>
+        <label for="hourly-rate">
+          <lucide-icon [name]="icons.DollarSign" size="16" aria-hidden="true"></lucide-icon>
           Hourly Rate (avg)
         </label>
         <div class="range-wrapper">
           <input
+            id="hourly-rate"
             type="range"
             [ngModel]="hourlyRate()"
             (ngModelChange)="hourlyRate.set($event)"
+            [attr.aria-valuetext]="'$' + hourlyRate() + ' per hour'"
             min="10" max="200" step="5">
           <span class="value">${{ hourlyRate() }}</span>
         </div>
       </div>
 
       <div class="input-group">
-        <label>
-          <lucide-icon [name]="icons.Users" size="16"></lucide-icon>
+        <label for="employee-count">
+          <lucide-icon [name]="icons.Users" size="16" aria-hidden="true"></lucide-icon>
           Number of Employees
         </label>
         <div class="range-wrapper">
           <input
+            id="employee-count"
             type="range"
             [ngModel]="employees()"
             (ngModelChange)="employees.set($event)"
+            [attr.aria-valuetext]="employees() + ' employees'"
             min="1" max="100" step="1">
           <span class="value">{{ employees() }}</span>
         </div>
