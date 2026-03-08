@@ -1,0 +1,25 @@
+jsl-monorepo/
+├── .gemini/              # AI assistant configurations
+├── public/               # Static assets served from root
+│   └── favicon.ico
+├── src/                  # Application source code
+│   ├── app/              # Angular application core
+│   │   ├── core/         # Global services, constants, and data mocks
+│   │   ├── features/     # Specific page-level components and logic
+│   │   ├── layout/       # App-wide structural components (Header, Footer)
+│   │   ├── shared/       # Common UI components, directives, and pipes
+│   │   ├── styles/       # Component-specific style utilities
+│   │   ├── app.config.ts # Global application providers
+│   │   ├── app.routes.ts # Main routing definition
+│   │   └── app.ts        # Root component
+│   ├── assets/           # Localized strings, images, and sounds
+│   ├── index.html        # Main HTML template
+│   ├── main.ts           # Client-side bootstrap
+│   ├── server.ts         # SSR server implementation (Express)
+│   └── styles.scss       # Global style definitions
+├── angular.json          # Angular CLI workspace configuration
+├── package.json          # Project metadata and dependencies
+├── pnpm-lock.yaml        # Strict dependency lockfile
+├── render.yaml           # Deployment configuration (Render.com)
+├── tsconfig.json         # Root TypeScript configuration
+└── README.md             # Main project documentation
